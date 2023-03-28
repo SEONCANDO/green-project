@@ -1,9 +1,19 @@
 @charset "UTF-8";
-.col-md-5 {
-    background: #0c3521;
+
+#box1{
+    background: #0F4229;
+    height: 650px;
 }
 
-#box > .row {
-    height: 400px;
-    background: #0dcaf0;
+#box2 {
+    background: #263147;
+    height: 650px;
+}
+
+#box {
+    text-align: center;
+}
+
+.row {
+    align-content: space-around;
 }
