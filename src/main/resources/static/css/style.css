@@ -82,6 +82,9 @@ h5, .h5, h6, .h6, .fw-semi-bold {
     }
 
     /* 메인 페이지*/
+
+
+
     #header {
         position: fixed;
         top: 0;
@@ -92,18 +95,29 @@ h5, .h5, h6, .h6, .fw-semi-bold {
         background-color: #fff;
     }
     }
-
-    .visual {
-        background: mintcream;
+    .visual{
         margin-top: 80px;
     }
+    .main-wrap{
+        width: 100%;
+        margin: 10px auto;
 
-    .visual div {
         position: relative;
-        max-width: 1200px;
-        margin: auto;
+    /*   글이 이미지 앞으로 오게하는 position 지정  */
+    }
+    .main-image{
+        width: 100%;
+        vertical-align: middle;
+    }
+    .main-text {
+        position: absolute;
+        top: 40%;
+        left: 50%;
+        width: 100%;
+        transform: translate(-50%,-50%);
+        font-size: 20px;
+        text-align: center;
     }
 
-    .visual div img {
-    width: 100%;
-}
+
+
