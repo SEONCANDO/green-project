@@ -1,0 +1,9 @@
+@charset "UTF-8";
+.col-md-5 {
+    background: #0c3521;
+}
+
+#box > .row {
+    height: 400px;
+    background: #0dcaf0;
+}
