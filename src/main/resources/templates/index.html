@@ -6,6 +6,41 @@
     <meta charset="UTF-8">
     <title> Index Page </title>
 <div layout:fragment="content">
-    <h1> 본문 영역 </h1>
+    <div id="container">
+        <section class="visual">
+            <div class="wrap">
+                <div class="visual_text">
+                    <img src="/img/main_banner.jpg" alt="메인 배너">
+                    <p class="subtitle">필요 없는 가전 수거신청하고 그린 포인트 받자!</p>
+                    <p>폐가전제품 무상방문수거 서비스</p>
+                </div>
+            </div>
+        </section>
+        <section class="board">
+            <div class="wrap">
+                <h2 class="main_title">Q&A</h2>
+                <div class="qna">
+                    qna 게시판 공간
+                </div>
+            </div>
+        </section>
+        <section class="process">
+            <div class="wrap">
+                <h2>수거 과정</h2>
+                <div class="service_panel participation active">
+                    <p class="participation_subtitle">수거 이렇게 이루어져요</p>
+                    <h3 class="service+title"></h3>
+                    <ol class="participation_list">
+                        <li><span>01</span>탄소중립포인트 <br>녹색생활 실천 회원가입</li>
+                        <li><span>02</span><a href="arrow image" th:alt="화살표">실천항목별 참여설정 <br>&lt;매뉴얼게시판&gt;참고</a></li>
+                        <li><span>03</span>녹색생활 <br>실천활동</li>
+                        <li><span>04</span>포인트 <br>적립</li>
+                        <li><span>05</span>인센티브 <br>수령</li>
+                    </ol>
+                    <a href="#" class="service_more">신청하러 가기 &nbsp;→</a>
+                </div>
+            </div>
+        </section>
+    </div>
 </div>
 </html>

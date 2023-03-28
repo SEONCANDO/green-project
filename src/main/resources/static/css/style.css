@@ -81,4 +81,29 @@ h5, .h5, h6, .h6, .fw-semi-bold {
         opacity: 1;
     }
 
+    /* 메인 페이지*/
+    #header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 40;
+        border-bottom: 1px solid #dfdfdf;
+        background-color: #fff;
+    }
+    }
+
+    .visual {
+        background: mintcream;
+        margin-top: 80px;
+    }
+
+    .visual div {
+        position: relative;
+        max-width: 1200px;
+        margin: auto;
+    }
+
+    .visual div img {
+    width: 100%;
 }
