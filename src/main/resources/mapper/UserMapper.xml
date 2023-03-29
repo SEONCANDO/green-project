@@ -7,5 +7,9 @@
          insert into user(userId, userPass, userEmail, userPhone, zipCode, address1, address2, address3, address4)
          values(#{userId}, #{userPass}, #{userEmail}, #{userPhone}, #{zipCode}, #{address1}, #{address2}, #{address3}, #{address4})
      </insert>
+    
+    <select id="">
+        
+    </select>
 </mapper>
 
