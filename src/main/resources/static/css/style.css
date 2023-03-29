@@ -95,7 +95,6 @@ h5, .h5, h6, .h6, .fw-semi-bold {
         transition: .5s;
         opacity: 1;
     }
-}
 
 /* 메인 페이지*/
 #header {
@@ -118,6 +117,11 @@ h5, .h5, h6, .h6, .fw-semi-bold {
     padding-bottom: 81px;
     position: relative;
 }
+    /* 메인 페이지*/
+
+    .main-wrap{
+        width: 100%;
+        margin: 10px auto;
 
 .visual div {
     position: relative;
@@ -197,3 +201,22 @@ h5, .h5, h6, .h6, .fw-semi-bold {
 .notice_list {
     margin-top: 16px;
 }
+        position: relative;
+    /*   글이 이미지 앞으로 오게하는 position 지정  */
+    }
+    .main-image{
+        width: 100%;
+        vertical-align: middle;
+    }
+    .main-text {
+        position: absolute;
+        top: 40%;
+        left: 50%;
+        width: 100%;
+        transform: translate(-50%,-50%);
+        font-size: 20px;
+        text-align: center;
+    }
+
+
+
