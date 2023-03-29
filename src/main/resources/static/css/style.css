@@ -120,21 +120,21 @@ h5, .h5, h6, .h6, .fw-semi-bold {
 }
 
 /* 메인 페이지*/
-.main-wrap {
+.main_wrap {
     width: 100%;
     margin: 10px auto;
     position: relative;
     /*   글이 이미지 앞으로 오게하는 position 지정  */
 }
 
-.main-image {
+.main_image {
     width: 100%;
     vertical-align: middle;
 }
 
-.main-text {
+.main_text {
     position: absolute;
-    top: 40%;
+    top: 55%;
     left: 50%;
     width: 100%;
     transform: translate(-50%, -50%);
@@ -142,27 +142,11 @@ h5, .h5, h6, .h6, .fw-semi-bold {
     text-align: center;
 }
 
-.visual div {
+/*.visual div {
     position: relative;
     max-width: 1200px;
     margin: auto;
-}
-
-.visual div img {
-    width: 100%;
-}
-
-/*.visual .visual_text {
-    position: relative;
-    z-index: 20;
-    padding-top: 207px;
 }*/
-
-.visual_text .subtitle {
-    font-size: 26px;
-    font-weight: 600;
-    color: #4d4d4d;
-}
 
 .main_title {
     font-size: 40px;
@@ -170,6 +154,53 @@ h5, .h5, h6, .h6, .fw-semi-bold {
     color: #222222;
     text-align: center;
     margin-bottom: 18px;
+}
+
+.main_subtitle {
+    font-size: 30px;
+    font-style: italic;
+    line-height: 2.25rem;
+    margin-bottom: 3px;
+    font-family: system-ui;
+
+    text-align: center;
+    color: #ffffff;
+}
+
+.main_subtitle2{
+    font-size: 80px;
+    font-weight: 600;
+    line-height: 38px;
+    margin-bottom: 15px;
+    font-family: system-ui;
+
+    padding-top: 5px;
+    text-align: center;
+    color: #ffffff;
+    /* 그림자 만들기 */
+    display: block;
+    text-shadow: 0 3px 4px rgba(0, 0, 0, 0.2);
+}
+
+button.btn1, .btn2 {
+    color: #fff;
+    background-color: darkorange;
+    border-color: darkorange;
+    /* 예약하기 버튼 색상지정 */
+    display: inline-block;
+    font-weight: 400;
+    line-height: 2;
+    text-align: center;
+    vertical-align: middle;
+    cursor: pointer;
+    user-select: none;
+    /* 형태 지정  */
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    border-radius: 4px;
+    transition: color 0.15s ease-in-out,
+    background-color 0.15s ease-in-out,
+    border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 
 .participation_list li:before {
