@@ -1,4 +1,10 @@
 package com.sunny.green.dao;
 
-public class UserDao {
+import com.sunny.green.vo.UserVo;
+import org.apache.ibatis.annotations.Mapper;
+
+@Mapper
+public interface UserDao {
+
+    public int joinUser(UserVo user);
 }
