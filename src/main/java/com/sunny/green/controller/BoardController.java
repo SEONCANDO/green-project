@@ -1,4 +1,4 @@
-package com.sunny.green.board;
+package com.sunny.green.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
