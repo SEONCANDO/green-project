@@ -1,0 +1,90 @@
+@charset "UTF-8";
+
+.content_container{
+    margin-top: 80px;
+    height: 100vh;
+}
+
+
+.pickup-headerImg {
+    width: 100%;
+}
+
+.page_main_text{
+    width: 200px;
+    font-size: 40px;
+    font-weight: bold;
+    color: black;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #89db2f;
+}
+
+.checkbox_text {
+    font-size: 30px;
+    margin-left: 10px;
+    font-weight: 600;
+    color: #272785;
+}
+
+.checkbox_all {
+    display: flex;
+}
+.permission_checkbox {
+    display: flex;
+}
+#chkbox{
+    width: 20px;
+}
+
+.permission_text{
+    height: 200px;
+    border: 1px solid #c1baba;
+    overflow: scroll;
+    color: black;
+    font-size: 13px;
+}
+.checkbox_text2 {
+    color: red;
+    display: flex;
+    align-items: center;
+    margin-left: 5px;
+    font-weight: 600;
+}
+
+.permission_text_num {
+    font-size: 23px;
+    font-weight: 600;
+}
+
+.content_border {
+    margin-top: 40px;
+    border-bottom: 3px solid #cdc9c9;
+}
+
+.content_title{
+    display: flex;
+    margin-top: 30px;
+    margin-left: 10px;
+    margin-bottom: 10px;
+}
+
+.page_content_title {
+    font-size: 30px;
+    color: #272785;
+    font-weight: bold;
+}
+
+#address_box > input {
+    width: 450px;
+}
+#pickup_info {
+    color: black;
+}
+
+.radio_form {
+    display: flex;
+    align-items: center;
+    margin-left: 25px;
+    font-size: 17px;
+}
