@@ -7,4 +7,6 @@ import org.apache.ibatis.annotations.Mapper;
 public interface UserDao {
 
     public int joinUser(UserVo user);
+
+    public UserVo selectUser(UserVo user);
 }
