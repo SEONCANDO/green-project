@@ -7,7 +7,7 @@
 }
 
 
-*{
+* {
     text-size-adjust: none;
     word-wrap: break-word;
     word-break: break-all;
@@ -95,6 +95,7 @@ h5, .h5, h6, .h6, .fw-semi-bold {
         transition: .5s;
         opacity: 1;
     }
+}
 
 /* 메인 페이지*/
 #header {
@@ -117,11 +118,29 @@ h5, .h5, h6, .h6, .fw-semi-bold {
     padding-bottom: 81px;
     position: relative;
 }
-    /* 메인 페이지*/
 
-    .main-wrap{
-        width: 100%;
-        margin: 10px auto;
+/* 메인 페이지*/
+.main-wrap {
+    width: 100%;
+    margin: 10px auto;
+    position: relative;
+    /*   글이 이미지 앞으로 오게하는 position 지정  */
+}
+
+.main-image {
+    width: 100%;
+    vertical-align: middle;
+}
+
+.main-text {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    width: 100%;
+    transform: translate(-50%, -50%);
+    font-size: 20px;
+    text-align: center;
+}
 
 .visual div {
     position: relative;
@@ -133,11 +152,11 @@ h5, .h5, h6, .h6, .fw-semi-bold {
     width: 100%;
 }
 
-.visual .visual_text {
+/*.visual .visual_text {
     position: relative;
     z-index: 20;
     padding-top: 207px;
-}
+}*/
 
 .visual_text .subtitle {
     font-size: 26px;
@@ -146,7 +165,6 @@ h5, .h5, h6, .h6, .fw-semi-bold {
 }
 
 .main_title {
-    font-family: "NEXON", sans-serif;
     font-size: 40px;
     font-weight: 700;
     color: #222222;
@@ -201,22 +219,14 @@ h5, .h5, h6, .h6, .fw-semi-bold {
 .notice_list {
     margin-top: 16px;
 }
-        position: relative;
-    /*   글이 이미지 앞으로 오게하는 position 지정  */
-    }
-    .main-image{
-        width: 100%;
-        vertical-align: middle;
-    }
-    .main-text {
-        position: absolute;
-        top: 40%;
-        left: 50%;
-        width: 100%;
-        transform: translate(-50%,-50%);
-        font-size: 20px;
-        text-align: center;
-    }
 
+.notice_list li .date {
+    float: right;
+    width: 80px;
+    color: #666;
+    font-size: 14px;
+    line-height: 26px;
+    letter-spacing: -0.3px;
+}
 
 
