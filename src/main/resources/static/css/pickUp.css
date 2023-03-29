@@ -2,6 +2,7 @@
 
 .content_container{
     margin-top: 125px;
+    margin-bottom: 260px;
     height: 100vh;
 }
 
@@ -77,6 +78,7 @@
 
 #address_box > input {
     width: 450px;
+    height: 40px;
 }
 #pickup_info {
     color: black;
