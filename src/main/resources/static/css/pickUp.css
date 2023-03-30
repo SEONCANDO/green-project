@@ -104,3 +104,8 @@
 #container_one{
     margin-bottom: 10px;
 }
+
+#DatePicker {
+    background: #fff url(../img/pickup/date_icon.png) no-repeat center right 4px;
+    background-size: 27px;
+}
