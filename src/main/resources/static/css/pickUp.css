@@ -1,7 +1,7 @@
 @charset "UTF-8";
 
 .content_container{
-    margin-top: 125px;
+    margin-top: 100px;
     margin-bottom: 260px;
     height: 100vh;
 }
@@ -91,8 +91,16 @@
     font-size: 17px;
 }
 
-#content_title {
+#content_header {
     position: absolute;
-    left: 340px;
-    top: 130px;
+    left: 350px;
+    top: 125px;
+}
+
+.content2 {
+    margin-top: 25px;
+}
+
+#container_one{
+    margin-bottom: 10px;
 }
