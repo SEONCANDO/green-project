@@ -52,3 +52,9 @@ function sample4_execDaumPostcode() {
         }
     }).open();
 }
+
+$(function() {
+    $("#DatePicker").datepicker({
+
+    })
+})
