@@ -40,7 +40,7 @@
             </div>
               <div>
                   <button id="button1">
-                      <a href="#" style="color:white; font-size: 26px; color: white; letter-spacing: -2px; font-weight: 700;">그린토피아 기능 둘러보기</a></button>
+                      <a href="/index" style="color:white; font-size: 26px; color: white; letter-spacing: -2px; font-weight: 700;">그린토피아 기능 둘러보기</a></button>
               </div>
               <div>
                   <button id="button2">
@@ -60,7 +60,9 @@
 
           <div>
               <img src="/img/join/user.png" style="width: 20px;">
-              <input type="text" name="userId" placeholder="아이디를 입력해주세요" class="put" style="width:91%">
+              <input type="text" name="userId" placeholder="아이디를 입력해주세요" class="put" style="width:45%" id="userId">
+              <button type="button" onclick="checkDuplicateId()" style="border: 1px solid #767676;">중복 검사</button>
+              <span id="idCheckMessage" style="color:red; font-weight: 700; letter-spacing: -2px;"></span>
           </div>
 
           <div>

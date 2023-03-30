@@ -9,4 +9,5 @@ public interface UserDao {
     public int joinUser(UserVo user);
 
     public UserVo selectUser(UserVo user);
+    public UserVo selectUserId(String userId);
 }

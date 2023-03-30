@@ -6,13 +6,9 @@
 <meta charset="UTF-8">
 <title> 그린토피아 </title>
 <div layout:fragment="content">
-    <div id="container">
-        <section class="visual">
-            <div class="main_wrap">
-                <div class="visual_text">
-                    <div class="main_image">
-                        <img src="/img/main_banner.jpg" alt="메인 배너" width="100%">
-                    </div>
+    <div class="visual_area visual_bg">
+        <section class="container" >
+            <div class="wrap">
                     <div class="main_text">
                         <div class="main_subtitle">필요 없는 가전 수거신청하고 그린 포인트 받자!</div>
                         <br/>
@@ -28,81 +24,81 @@
                 </div>
             </div>
         </section>
-        <section class="notice_area">
-            <div class="wrap">
-                <div class="notice_head">
-                    <h2 class="main_title">공지사항</h2>
-                </div>
-                <ul class="notice_list">
-                    <li>
-                        <p>
-                            <a href="#">공지1</a>
-                        </p>
-                        <span class="date">2023-03-24</span>
-                    </li>
-                    <li>
-                        <p>
-                            <a href="#">공지2</a>
-                        </p>
-                        <span class="date">2023-03-24</span>
-                    </li>
-                    <li>
-                        <p>
-                            <a href="#">공지3</a>
-                        </p>
-                        <span class="date">2023-03-24</span>
-                    </li>
-                    <li>
-                        <p>
-                            <a href="#">공지4</a>
-                        </p>
-                        <span class="date">2023-03-24</span>
-                    </li>
-                </ul>
-            </div>
-        </section>
-        <section class="service">
-            <div class="wrap">
-                <h2 class="main_title">수거 과정</h2>
-                <div class="service_panel participation active">
-                    <p class="participation_subtitle">수거 이렇게 이루어져요</p>
-                    <h3 class="service+title"></h3>
-                    <ol class="participation_list">
-                        <li><span>01</span>회원가입</li>
-                        <li><span>02</span>실천항목별 참여설정 <br>&lt;매뉴얼게시판&gt;참고</a></li>
-                        <li><span>03</span>녹색생활 <br>실천활동</li>
-                        <li><span>04</span>포인트 <br>적립</li>
-                        <li><span>05</span>인센티브 <br>수령</li>
-                    </ol>
-                    <a href="#" class="service_more">신청하러 가기 &nbsp;→</a>
-                </div>
-            </div>
-        </section>
     </div>
-    <div id="fp-nav" class="right" style="margin-top: -93px; z-index: 1001;">
-        <ul>
-            <li class="fp-nav-li0"><a href="#" class=""><span></span></a>
-                <div class="fp-tooltip right">이동을 새로 그리다 그린카</div>
-            </li>
-            <li class="fp-nav-li1"><a href="#" class=""><span></span></a>
-                <div class="fp-tooltip right">가까운 그린존</div>
-            </li>
-            <li class="fp-nav-li2"><a href="#" class=""><span></span></a>
-                <div class="fp-tooltip right">경제적인 요금/쿠폰</div>
-            </li>
-            <li class="fp-nav-li3"><a href="#" class=""><span></span></a>
-                <div class="fp-tooltip right">간편한 앱</div>
-            </li>
-            <li class="fp-nav-li4"><a href="#" class=""><span></span></a>
-                <div class="fp-tooltip right">그린카 이용안내</div>
-            </li>
-            <li class="fp-nav-li5"><a href="#" class=""><span></span></a>
-                <div class="fp-tooltip right">이벤트</div>
-            </li>
-            <li class="fp-nav-li6"><a href="#" class="active"><span></span></a>
-                <div class="fp-tooltip right">공지사항</div>
-            </li>
-        </ul>
-    </div>
+    <section class="notice_area">
+        <div class="wrap" id="notice_box">
+            <div class="notice_head">
+                <h2 class="main_title">공지사항</h2>
+            </div>
+            <ul class="notice_list">
+                <li>
+                    <p>
+                        <a href="#">공지1</a>
+                    </p>
+                    <span class="date">2023-03-24</span>
+                </li>
+                <li>
+                    <p>
+                        <a href="#">공지2</a>
+                    </p>
+                    <span class="date">2023-03-24</span>
+                </li>
+                <li>
+                    <p>
+                        <a href="#">공지3</a>
+                    </p>
+                    <span class="date">2023-03-24</span>
+                </li>
+                <li>
+                    <p>
+                        <a href="#">공지4</a>
+                    </p>
+                    <span class="date">2023-03-24</span>
+                </li>
+            </ul>
+        </div>
+    </section>
+    <section class="service">
+        <div class="wrap">
+            <h2 class="main_title">수거 과정</h2>
+            <div class="service_panel participation active">
+                <p class="participation_subtitle">수거 이렇게 이루어져요</p>
+                <h3 class="service+title"></h3>
+                <ol class="participation_list">
+                    <li><span>01</span>회원가입</li>
+                    <li><span>02</span><a href="#" th:alt="화살표">실천항목별 참여설정 <br>&lt;매뉴얼게시판&gt;참고</a></li>
+                    <li><span>03</span>녹색생활 <br>실천활동</li>
+                    <li><span>04</span>포인트 <br>적립</li>
+                    <li><span>05</span>인센티브 <br>수령</li>
+                </ol>
+                <a href="#" class="service_more">신청하러 가기 &nbsp;→</a>
+            </div>
+        </div>
+    </section>
+<div id="fp-nav" class="right" style="margin-top: -93px; z-index: 1001;">
+    <ul>
+        <li class="fp-nav-li0"><a href="#" class=""><span></span></a>
+            <div class="fp-tooltip right">이동을 새로 그리다 그린카</div>
+        </li>
+        <li class="fp-nav-li1"><a href="#" class=""><span></span></a>
+            <div class="fp-tooltip right">가까운 그린존</div>
+        </li>
+        <li class="fp-nav-li2"><a href="#" class=""><span></span></a>
+            <div class="fp-tooltip right">경제적인 요금/쿠폰</div>
+        </li>
+        <li class="fp-nav-li3"><a href="#" class=""><span></span></a>
+            <div class="fp-tooltip right">간편한 앱</div>
+        </li>
+        <li class="fp-nav-li4"><a href="#" class=""><span></span></a>
+            <div class="fp-tooltip right">그린카 이용안내</div>
+        </li>
+        <li class="fp-nav-li5"><a href="#" class=""><span></span></a>
+            <div class="fp-tooltip right">이벤트</div>
+        </li>
+        <li class="fp-nav-li6"><a href="#" class="active"><span></span></a>
+            <div class="fp-tooltip right">공지사항</div>
+        </li>
+    </ul>
+</div>
 </div>
 </html>
