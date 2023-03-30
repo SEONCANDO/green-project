@@ -53,6 +53,14 @@ public class UserController {
         return "/index";
     }
 
+    @GetMapping("/logout")
+    public String logout(HttpSession httpSession, Model mo){
+        httpSession.setAttribute("user", null);
+        mo.addAttribute("alert", "로그아웃 하셨습니다");
+        mo.addAttribute("url", "/index");
+        return "/alert";
+    }
+
     @PostMapping("/checkDuplicateId")
     @ResponseBody
     public String checkDuplicateId(@RequestParam("userId") String userId) {

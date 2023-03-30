@@ -284,3 +284,9 @@ button.btn1, .btn2 {
     font-weight: 500;
 }
 
+#callName {
+    font-size: 22px;
+    font-weight: 550;
+    letter-spacing: -2px;
+}
+
