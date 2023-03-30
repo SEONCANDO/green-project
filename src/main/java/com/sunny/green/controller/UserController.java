@@ -7,6 +7,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpSession;
 
@@ -30,7 +32,7 @@ public class UserController {
             System.out.println(userDB);
             session.setAttribute("user", userDB);
             model.addAttribute("alert", "로그인이 성공했습니다");
-            model.addAttribute("url", "/index2");
+            model.addAttribute("url", "/index");
         } else {
             System.out.println("실패했습니다");
             model.addAttribute("alert", "로그인에 실패했습니다");
@@ -49,5 +51,16 @@ public class UserController {
     public String join1(UserVo user){
         ud.joinUser(user);
         return "/index";
+    }
+
+    @PostMapping("/checkDuplicateId")
+    @ResponseBody
+    public String checkDuplicateId(@RequestParam("userId") String userId) {
+        UserVo existingUser = ud.selectUserId(userId);
+        if(existingUser != null) {
+            return "exist";
+        } else {
+            return "not exist";
+        }
     }
 }

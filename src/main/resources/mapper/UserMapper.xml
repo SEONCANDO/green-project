@@ -11,5 +11,9 @@
     <select id="selectUser" resultType="com.sunny.green.vo.UserVo">
         select * from user where userId = #{userId} and userPass = #{userPass}
     </select>
+
+    <select id="selectUserId" resultType="com.sunny.green.vo.UserVo">
+        select userId from user where userId = #{userId}
+    </select>
 </mapper>
 
