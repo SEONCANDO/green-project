@@ -13,7 +13,7 @@
 
 .page_main_text{
     width: 200px;
-    font-size: 40px;
+    font-size: 45px;
     font-weight: bold;
     color: black;
     margin-top: 10px;
@@ -89,4 +89,10 @@
     align-items: center;
     margin-left: 25px;
     font-size: 17px;
+}
+
+#content_title {
+    position: absolute;
+    left: 340px;
+    top: 130px;
 }
