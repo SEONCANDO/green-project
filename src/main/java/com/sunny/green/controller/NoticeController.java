@@ -7,6 +7,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class NoticeController {
     @GetMapping("/notice")
     public String index() {
-        return "notice/list";
+        return "bbs/noticeList";
     }
 }
