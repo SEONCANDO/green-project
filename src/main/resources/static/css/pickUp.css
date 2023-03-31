@@ -3,7 +3,7 @@
 .content_container{
     margin-top: 100px;
     margin-bottom: 260px;
-    height: 100vh;
+    height: 160vh;
 }
 
 
@@ -107,5 +107,142 @@
 
 #DatePicker {
     background: #fff url(../img/pickup/date_icon.png) no-repeat center right 4px;
+    background-size: 27px;
+}
+
+.content_memo {
+    width: 750px;
+    height: 200px;
+}
+
+.pickup_submit {
+    margin-top: 10px;
+    margin-left: 10px;
+}
+
+.pickup_submit > a {
+    margin-left: 10px;
+    width: 130px;
+    height: 63px;
+    font-size: 30px;
+}
+
+.pickup_submit > input {
+    width: 130px;
+    height: 63px;
+    font-size: 26px;
+}
+
+.pickup_as {
+    color: red;
+}
+
+.pickup_circle_sel {
+    background: #7460c1;
+    width: 130px;
+    height: 130px;
+    border-radius: 75px;
+    position: relative;
+}
+
+.pickup_circle_sel:after {
+    content: '';
+    width: 109px;
+    height: 2px;
+    background: #d3d3d3;
+    position: absolute;
+    top: 63px;
+    right: -100px;
+    z-index: -1;
+}
+
+.pickup_circle_none {
+    background: #dfdfdf;
+    width: 130px;
+    height: 130px;
+    border-radius: 75px;
+    position: relative;
+}
+
+#page_main_step2:after {
+    content: '';
+    width: 109px;
+    height: 2px;
+    background: #d3d3d3;
+    position: absolute;
+    top: 63px;
+    right: -100px;
+    z-index: -1;
+}
+
+.pickup_circle_sel > i {
+    font-size: 50px;
+    color: white;
+    margin-top: 35px;
+    margin-left: 44px;
+}
+
+.pickup_circle_none > i {
+    font-size: 50px;
+    color: #e9e8e8;
+    margin-top: 40px;
+    margin-left: 43px;
+}
+
+
+.pickup_circle_font {
+    margin-top: 10px;
+    font-size: 20px;
+    text-align: center;
+    font-weight: bold;
+    width: 129px;
+}
+
+#pickup_step {
+    margin-left: 10px;
+}
+
+#page_main_step {
+    margin-top: 50px;
+    margin-bottom: 60px;
+}
+
+.pickup_selectImg{
+    width: 300px;
+    height: 300px;
+}
+
+.pickup_washing {
+    background: #fff url(../img/pickup/washing-machine.png) no-repeat center;
+    background-size: 27px;
+}
+
+.pickup_refrigerator {
+    background: #fff url(../img/pickup/refrigerator.png) no-repeat center;
+    background-size: 27px;
+}
+
+.pickup_television {
+    background: #fff url(../img/pickup/television.png) no-repeat center;
+    background-size: 27px;
+}
+
+.pickup_airConditioner {
+    background: #fff url(../img/pickup/air-conditioner.png) no-repeat center;
+    background-size: 27px;
+}
+
+.pickup_computer {
+    background: #fff url(../img/pickup/computer.png) no-repeat center;
+    background-size: 27px;
+}
+
+.pickup_solar {
+    background: #fff url(../img/pickup/solar-cell.png) no-repeat center;
+    background-size: 27px;
+}
+
+.pickup_etc {
+    background: #fff url(../img/pickup/oven.png) no-repeat center;
     background-size: 27px;
 }
