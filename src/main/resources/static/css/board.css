@@ -89,5 +89,15 @@
     left: 0;
 }
 
+#test_obj {
+    position: absolute;
+    width: 70px;
+    height: 350px;
+    right: 50px;
+    border-radius: 70px;
+    top: 250px;
+    border: 1px solid #bd2130;
+}
+
 
 
