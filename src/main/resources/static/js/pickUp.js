@@ -91,3 +91,7 @@ $.datepicker.setDefaults({
 //         // case 6 : $('#day').text('토'); $('[name=weekday]').val('토'); break
 //     }
 // });
+
+
+
+// pickup page2 카테고리 버튼 이벤트
