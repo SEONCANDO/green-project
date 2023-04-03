@@ -5,128 +5,195 @@
 <header th:replace="/fragment/header"></header>
 <link rel="stylesheet" href="/css/pickUp.css" type="text/css">
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css" integrity="sha512-10/jx2EXwxxWqCLX/hHth/vu2KY3jCF70dCQB8TSgNjbCVAC/8vai53GfMDrO2Emgwccf2pJqxct9ehpzG+MTw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 <script src="/js/pickUp.js"></script>
 <body>
   <div class="container-fluid">
     <div class="content_container">
-      <div>
-        <img class="pickup-headerImg" src="/img/pickup_recycle.png" alt="픽업 상단 이미지">
-      </div>
-      <div class="container">
-        <div class="page_main_text">배출 신청</div>
-      </div>
-      <div class="container">
-        <div class="checkbox_all">
-          <label class="permission_checkbox">
-            <input id="chkbox" type="checkbox" name="permission_check" value="개인정보 제공 동의">
-          </label>
-          <div class="checkbox_text">개인정보 제공 동의</div>
-          <div class="checkbox_text2">(필수)</div>
+      <div class="content1">
+        <img class="pickup-headerImg" src="/img/pickup/pickup_recycle.png" alt="픽업 상단 이미지">
+        <div class="container" id="content_header">
+          <div class="page_main_text">배출 신청</div>
         </div>
       </div>
       <div class="container">
-        <div class="permission_text">
-          <div>
-            개인정보 수집 이용 등에 대한 사전 동의 개인정보보호를 위한 이용자 동의사항(자세한 내용은 “개인정보취급방침”을 확인하시기 바랍니다.)<br><br>
-            <div class="permission_text_num">가. 개인정보의 수집·이용 목적</div>
-            ① 홈페이지 회원 가입 및 관리 회원 가입의사 확인<br>
-            ② 회원제 서비스 제공에 따른 본인 식별/인증<br>
-            ③ 회원자격 유지/관리<br>
-            ④ 제한적 본인 확인제 시행에 따른 본인확인<br>
-            ⑤ 서비스 부정이용 방지, 맞춤서비스 제공<br>
-            ⑥ 만 14세 미만 아동의 개인정보 처리시 법정대리인의 동의여부 확인<br>
-            ⑦ 각종 고지/통지, 고충처리, 계약서/청구서 발송<br>
-            ⑧ 재화 또는 서비스 제공 물품배송, 요금결제/정산<br>
-            ⑨ 서비스 제공, 콘텐츠 제공, 본인인증, 연령인증, 채권추심<br><br>
-            <div class="permission_text_num">나. 개인정보의 처리</div>
-            ① 고충처리 민원인의 신원 확인<br>
-            ② 민원사항 확인, 사실조사를 위한 연락/통지<br>
-            ③ 처리결과 통보<br><br>
-            <div class="permission_text_num">다. 수집하는 개인정보의 항목</div>
-            ① 서비스 제공/필수항목 : 성명, 연락처, 주소<br>
-            ② 선택항목 : 배출품목, 수량<br>
-            ※ 인터넷 서비스 이용과정에서 IP주소, 쿠키, MAC주소, 서비스 이용기록, 방문기록, 불량 이 용기록 등 개인정보 항목이 자동으로 생성되어 수집될 수 있습니다.<br><br>
-            <div class="permission_text_num">라. 개인정보의 보유 및 이용기간</div>
-            ① 홈페이지 회원 가입 및 관리 : 이용자 홈페이지 탈퇴시까지<br>
-            ② 다만, 다음의 사유에 해당하는 경우에는 해당 사유 종료시까지<br>
-            관계 법령 위반에 따른 수사/조사 등이 진행중인 경우에는 해당 수사/조사 종료시까지<br>
-            홈페이지 이용에 따른 채권/채무관계 잔존시에는 해당 채권/채무관계 정산시까지<br>
-            ③ 서비스 제공 : 재화/서비스 공급완료 및 요금결제/정산 완료시까지<br>
-            ④ 다만, 다음의 사유에 해당하는 경우에는 해당 기간 종료시까지<br>
-            「전자상거래 등에서의 소비자 보호에 관한 법률」에 따른 표시/광고, 계약내용 및 이행 등 거래에 관한 기록 - 표시/광고에 관한 기록 : 6월 - 계약 또는 청약철회, 대금결제, 재화 등의 공급기록 : 5년 - 소비자 불만 또는 분쟁처리에 관한 기록 : 3년<br>
-            「통신비밀보호법」제41조에 따른 통신사실 확인자료 보관 - 가입자 전기통신일시, 개시/종료시간, 상대방 가입자번호, 사용도수, 발신기지국 위치추적자료 : 1년 - 컴퓨터통신, 인터넷 로그기록자료, 접속지 추적자료 : 3개월<br><br>          <div class="permission_text_num">마. 개인정보의 파기</div>
-            ① E-순환거버넌스는 개인정보 보유기간의 경과, 처리목적 달성 등 개인정 보가 불필요하게 되었을 때에는 지체없이 해당 개인정보를 파기합니다.<br>
-            ② 정보주체로부터 동의받은 개인정보 보유기간이 경과하거나 처리목적이 달성되었음에도 불구하고 다른 법령에 따라 개인정보를 계속 보존하여야 하는 경우에는, 해당 개인정보를 별도의 데이터베이스(DB)로 옮기거나 보관장소를 달리하여 보존합니다.
+        <div class="row" id="page_main_step">
+          <div class="col-3"></div>
+          <div class="col-2">
+            <div class="pickup_circle_sel"><i class="fa-regular fa-pen-to-square"></i></div>
+            <div class="pickup_circle_font">1단계<br>기본정보 입력</div>
+          </div>
+          <div class="col-2">
+            <div class="pickup_circle_none" id="page_main_step2"><i class="fa-solid fa-recycle"></i></div>
+            <div class="pickup_circle_font">2단계<br>배출품목 입력</div>
+          </div>
+          <div class="col-2">
+            <div class="pickup_circle_none"><i class="fa-solid fa-check"></i></div>
+            <div class="pickup_circle_font">3단계<br>예약 완료</div>
+          </div>
+          <div class="col-3"></div>
+        </div>
+      </div>
+      <div class="content2">
+        <div class="container" id="container_one">
+          <div class="checkbox_all">
+            <label class="permission_checkbox">
+              <input id="chkbox" type="checkbox" name="permission_check" value="개인정보 제공 동의">
+            </label>
+            <div class="checkbox_text">개인정보 제공 동의</div>
+            <div class="checkbox_text2">(필수)</div>
           </div>
         </div>
-      </div>
-      <div class="container">
-        <div class="content_border"></div>
-      </div>
-      <div class="container">
-        <div class="content_title">
-          <div class="page_content_title">고객정보 입력</div>
-          <form class="radio_form">
-            <input type="radio" name="pickup_info" value="기존 고객정보" checked="checked" style="margin-right: 10px;" /> 기존 고객정보
-            <input type="radio" name="pickup_info" value="새로운 정보 입력" style="margin-right: 10px; margin-left: 20px;" /> 새로운 정보 입력
-          </form>
+        <div class="container">
+          <div class="permission_text">
+            <div>
+              개인정보 수집 이용 등에 대한 사전 동의 개인정보보호를 위한 이용자 동의사항(자세한 내용은 “개인정보취급방침”을 확인하시기 바랍니다.)<br><br>
+              <div class="permission_text_num">가. 개인정보의 수집·이용 목적</div>
+              ① 홈페이지 회원 가입 및 관리 회원 가입의사 확인<br>
+              ② 회원제 서비스 제공에 따른 본인 식별/인증<br>
+              ③ 회원자격 유지/관리<br>
+              ④ 제한적 본인 확인제 시행에 따른 본인확인<br>
+              ⑤ 서비스 부정이용 방지, 맞춤서비스 제공<br>
+              ⑥ 만 14세 미만 아동의 개인정보 처리시 법정대리인의 동의여부 확인<br>
+              ⑦ 각종 고지/통지, 고충처리, 계약서/청구서 발송<br>
+              ⑧ 재화 또는 서비스 제공 물품배송, 요금결제/정산<br>
+              ⑨ 서비스 제공, 콘텐츠 제공, 본인인증, 연령인증, 채권추심<br><br>
+              <div class="permission_text_num">나. 개인정보의 처리</div>
+              ① 고충처리 민원인의 신원 확인<br>
+              ② 민원사항 확인, 사실조사를 위한 연락/통지<br>
+              ③ 처리결과 통보<br><br>
+              <div class="permission_text_num">다. 수집하는 개인정보의 항목</div>
+              ① 서비스 제공/필수항목 : 성명, 연락처, 주소<br>
+              ② 선택항목 : 배출품목, 수량<br>
+              ※ 인터넷 서비스 이용과정에서 IP주소, 쿠키, MAC주소, 서비스 이용기록, 방문기록, 불량 이 용기록 등 개인정보 항목이 자동으로 생성되어 수집될 수 있습니다.<br><br>
+              <div class="permission_text_num">라. 개인정보의 보유 및 이용기간</div>
+              ① 홈페이지 회원 가입 및 관리 : 이용자 홈페이지 탈퇴시까지<br>
+              ② 다만, 다음의 사유에 해당하는 경우에는 해당 사유 종료시까지<br>
+              관계 법령 위반에 따른 수사/조사 등이 진행중인 경우에는 해당 수사/조사 종료시까지<br>
+              홈페이지 이용에 따른 채권/채무관계 잔존시에는 해당 채권/채무관계 정산시까지<br>
+              ③ 서비스 제공 : 재화/서비스 공급완료 및 요금결제/정산 완료시까지<br>
+              ④ 다만, 다음의 사유에 해당하는 경우에는 해당 기간 종료시까지<br>
+              「전자상거래 등에서의 소비자 보호에 관한 법률」에 따른 표시/광고, 계약내용 및 이행 등 거래에 관한 기록 - 표시/광고에 관한 기록 : 6월 - 계약 또는 청약철회, 대금결제, 재화 등의 공급기록 : 5년 - 소비자 불만 또는 분쟁처리에 관한 기록 : 3년<br>
+              「통신비밀보호법」제41조에 따른 통신사실 확인자료 보관 - 가입자 전기통신일시, 개시/종료시간, 상대방 가입자번호, 사용도수, 발신기지국 위치추적자료 : 1년 - 컴퓨터통신, 인터넷 로그기록자료, 접속지 추적자료 : 3개월<br><br>          <div class="permission_text_num">마. 개인정보의 파기</div>
+              ① E-순환거버넌스는 개인정보 보유기간의 경과, 처리목적 달성 등 개인정 보가 불필요하게 되었을 때에는 지체없이 해당 개인정보를 파기합니다.<br>
+              ② 정보주체로부터 동의받은 개인정보 보유기간이 경과하거나 처리목적이 달성되었음에도 불구하고 다른 법령에 따라 개인정보를 계속 보존하여야 하는 경우에는, 해당 개인정보를 별도의 데이터베이스(DB)로 옮기거나 보관장소를 달리하여 보존합니다.
+            </div>
+          </div>
         </div>
-        <div class="row" id="pickup_info">
-          <table>
-            <tr>
-              <td class="col-2" style="border: 1px solid #c1baba; text-align: center; font-size: 20px;">
-                <div>접수자명</div>
-              </td>
-              <td class="col-10" style="border: 1px solid #c1baba; padding: 10px;">
-                <input type="text" name="pickup_name" placeholder="이름 입력" style="width: 300px; height: 40px; margin-left: 20px;">
-              </td>
-            </tr>
-            <tr>
-              <td class="col-2" style="border: 1px solid #c1baba; text-align: center; font-size: 20px;">
-                <div>전화번호</div>
-              </td>
-              <td class="col-10" style="border: 1px solid #c1baba; padding: 10px;">
-                <input type="text" name="pickup_phone" placeholder="전화번호 입력(010-0000-0000)" style="width: 300px; height: 40px; margin-left: 20px;">
-              </td>
-            </tr>
-            <tr>
-              <td class="col-2" style="border: 1px solid #c1baba; text-align: center; font-size: 20px;">
-                <div>배출 주소</div>
-              </td>
-              <td class="col-10" id="address_box" style="border: 1px solid #c1baba; padding: 30px;">
-                <input type="text" name="pickup_zip_code" id="sample4_postcode" placeholder="우편번호">
-                <input type="button" onclick="sample4_execDaumPostcode()" value="우편번호 찾기" style="width: 150px;"><br>
-                <input type="text" name="pickup_address1" id="sample4_roadAddress" placeholder="도로명주소">
-                <input type="text" name="pickup_address2" id="sample4_jibunAddress" placeholder="지번주소"><br>
-                <span id="guide" style="color:#999;display:none"></span>
-                <input type="text" name="pickup_address3" id="sample4_detailAddress" placeholder="상세주소">
-                <input type="text" name="pickup_address4" id="sample4_extraAddress" placeholder="참고항목">
-              </td>
-            </tr>
-            <tr>
-              <td class="col-2" style="border: 1px solid #c1baba; text-align: center; font-size: 20px;">
-                <div>주거 구분</div>
-              </td>
-              <td class="col-10" style="border: 1px solid #c1baba; padding: 10px;">
-                <div style="display:flex; margin-left: 20px;">
-                  <div>주거형태</div>
-                  <select name="pickup_house" title="주거형태 선택" style="margin-left: 10px; margin-right: 20px;">
-                    <option value>주거형태</option>
-                    <option value="HC01">단층주택</option>
-                    <option value="HC02">연립주택</option>
-                    <option value="HC03">아파트</option>
-                    <option value="HC04">빌딩</option>
-                  </select>
-                  <div>엘레베이터 유무</div>
-                  <select name="pickup_elevator" title="엘레베이터유무 선택" style="margin-left: 10px; margin-right: 20px;">
-                    <option value>유무 선택</option>
-                    <option value="Y">유</option>
-                    <option value="N">무</option>
-                  </select>
-                </div>
-              </td>
-            </tr>
-          </table>
+        <div class="container">
+          <div class="content_border"></div>
+        </div>
+        <div class="container">
+          <div class="content_title">
+            <div class="page_content_title">고객정보 입력</div>
+            <form class="radio_form">
+              <input type="radio" name="pickup_info" value="기존 고객정보" checked="checked" style="margin-right: 10px;" /> 기존 고객정보
+              <input type="radio" name="pickup_info" value="새로운 정보 입력" style="margin-right: 10px; margin-left: 20px;" /> 새로운 정보 입력
+            </form>
+          </div>
+          <div class="row" id="pickup_info">
+            <table>
+              <tr>
+                <td class="col-2" style="border: 1px solid #c1baba; text-align: center; font-size: 20px;">
+                  <span>접수자명</span>
+                  <span class="pickup_as">*</span>
+                </td>
+                <td class="col-10" style="border: 1px solid #c1baba; padding: 10px;">
+                  <input type="text" name="pickup_name" placeholder="이름 입력" style="width: 300px; height: 40px; margin-left: 20px;">
+                </td>
+              </tr>
+              <tr>
+                <td class="col-2" style="border: 1px solid #c1baba; text-align: center; font-size: 20px;">
+                  <span>전화번호</span>
+                  <span class="pickup_as">*</span>
+                </td>
+                <td class="col-10" style="border: 1px solid #c1baba; padding: 10px;">
+                  <input type="text" name="pickup_phone" placeholder="전화번호 입력(010-0000-0000)" style="width: 300px; height: 40px; margin-left: 20px;">
+                </td>
+              </tr>
+              <tr>
+                <td class="col-2" style="border: 1px solid #c1baba; text-align: center; font-size: 20px;">
+                  <span>배출 주소</span>
+                  <span class="pickup_as">*</span>
+                </td>
+                <td class="col-10" id="address_box" style="border: 1px solid #c1baba; padding: 30px;">
+                  <input type="text" name="pickup_zip_code" id="sample4_postcode" placeholder="우편번호">
+                  <input type="button" onclick="sample4_execDaumPostcode()" value="우편번호 찾기" style="width: 150px;"><br>
+                  <input type="text" name="pickup_address1" id="sample4_roadAddress" placeholder="도로명주소">
+                  <input type="text" name="pickup_address2" id="sample4_jibunAddress" placeholder="지번주소"><br>
+                  <span id="guide" style="color:#999;display:none"></span>
+                  <input type="text" name="pickup_address3" id="sample4_detailAddress" placeholder="상세주소">
+                  <input type="text" name="pickup_address4" id="sample4_extraAddress" placeholder="참고항목">
+                </td>
+              </tr>
+              <tr>
+                <td class="col-2" style="border: 1px solid #c1baba; text-align: center; font-size: 20px;">
+                  <div>주거 구분</div>
+                </td>
+                <td class="col-10" style="border: 1px solid #c1baba; padding: 10px;">
+                  <div style="display:flex; margin-left: 20px;">
+                    <div>주거형태</div>
+                    <select name="pickup_house" title="주거형태 선택" style="margin-left: 10px; margin-right: 20px;">
+                      <option value>주거형태</option>
+                      <option value="HC01">단층주택</option>
+                      <option value="HC02">연립주택</option>
+                      <option value="HC03">아파트</option>
+                      <option value="HC04">빌딩</option>
+                    </select>
+                    <div>엘레베이터 유무</div>
+                    <select name="pickup_elevator" title="엘레베이터유무 선택" style="margin-left: 10px; margin-right: 20px;">
+                      <option value>유무 선택</option>
+                      <option value="Y">유</option>
+                      <option value="N">무</option>
+                    </select>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td class="col-2" style="border: 1px solid #c1baba; text-align: center; font-size: 20px;">
+                  <span>배출 희망일</span>
+                  <span class="pickup_as">*</span>
+                </td>
+                <td class="col-10" style="border: 1px solid #c1baba; padding: 10px;">
+                  <div style="display:flex; margin-left: 20px;">
+                    <span>지정일: <input type="text" id="DatePicker"></span>
+                    <span id="day">(-)</span> 요일
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td class="col-2" style="border: 1px solid #c1baba; text-align: center; font-size: 20px;">
+                  <div>참고 사진</div>
+                </td>
+                <td class="col-10" style="border: 1px solid #c1baba; padding: 10px;">
+                  <div style="display:flex; margin-left: 20px;">
+                    <input name="pickup_photo" type="file" multiple />
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td class="col-2" style="border: 1px solid #c1baba; text-align: center; font-size: 20px;">
+                  <div>메모</div>
+                </td>
+                <td class="col-10" style="border: 1px solid #c1baba; padding: 10px;">
+                  <div style="display:flex; margin-left: 20px;">
+                      <textarea class="content_memo" name="pickup_memo"></textarea>
+                  </div>
+                </td>
+              </tr>
+            </table>
+          </div>
+        </div>
+        <div class="container">
+          <div class="pickup_submit">
+            <input type="button" class="btn btn-outline-success" value="저장하기">
+            <a href="/pickup2" class="btn btn-outline-success" >다음</a>
+          </div>
         </div>
       </div>
     </div>
