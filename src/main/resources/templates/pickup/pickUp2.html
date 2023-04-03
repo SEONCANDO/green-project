@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org" >
+
+<header th:replace="/fragment/header"></header>
+<link rel="stylesheet" href="/css/pickUp.css" type="text/css">
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css" integrity="sha512-10/jx2EXwxxWqCLX/hHth/vu2KY3jCF70dCQB8TSgNjbCVAC/8vai53GfMDrO2Emgwccf2pJqxct9ehpzG+MTw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<script src="/js/pickUp.js"></script>
+<body>
+  <div class="container-fluid">
+    <div class="content_container">
+      <div class="content1">
+        <img class="pickup-headerImg" src="/img/pickup/pickup_recycle.png" alt="픽업 상단 이미지">
+        <div class="container" id="content_header">
+          <div class="page_main_text">배출 신청</div>
+        </div>
+      </div>
+      <div class="container">
+        <div class="row" id="page_main_step">
+          <div class="col-3"></div>
+          <div class="col-2">
+            <div class="pickup_circle_none" id="page_main_step2"><i class="fa-regular fa-pen-to-square"></i></div>
+            <div class="pickup_circle_font">1단계<br>기본정보 입력</div>
+          </div>
+          <div class="col-2">
+            <div class="pickup_circle_sel"><i class="fa-solid fa-recycle"></i></div>
+            <div class="pickup_circle_font">2단계<br>배출품목 입력</div>
+          </div>
+          <div class="col-2">
+            <div class="pickup_circle_none"><i class="fa-solid fa-check"></i></div>
+            <div class="pickup_circle_font">3단계<br>예약 완료</div>
+          </div>
+          <div class="col-3"></div>
+        </div>
+      </div>
+      <div class="content2">
+        <div class="container">
+          <div class="row">
+            <div class="col-6">
+              <div class="pickup_recycle_img1">
+                <img class="pickup_selectImg" src="/img/pickup/washing-machine.png" alt="세탁기">
+              </div>
+            </div>
+            <div class="col-6">
+              <div class="row">
+                <table>
+                  <tr>
+                    <td class="col-2">
+                      <div class="pickPg2_category">카테고리</div>
+                    </td>
+                    <td class="col-9">
+                      <div class="pickup_recycle_img2">
+                        <input type="button" class="pickup_washing">
+                        <input type="button" class="pickup_refrigerator">
+                        <input type="button" class="pickup_television">
+                        <input type="button" class="pickup_airConditioner">
+                        <input type="button" class="pickup_computer">
+                        <input type="button" class="pickup_solar">
+                        <input type="button" class="pickup_etc">
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="col-2"></td>
+                    <td class="col-9">
+                      <div>
+
+                      </div>
+                    </td>
+                  </tr>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+<footer th:replace="/fragment/footer"></footer>
+</html>
