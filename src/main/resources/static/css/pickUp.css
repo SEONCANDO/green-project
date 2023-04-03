@@ -212,37 +212,37 @@
     height: 300px;
 }
 
-.pickup_washing {
+#pickup_washing {
     background: #fff url(../img/pickup/washing-machine.png) no-repeat center;
     background-size: 85%;
 }
 
-.pickup_refrigerator {
+#pickup_refrigerator {
     background: #fff url(../img/pickup/refrigerator.png) no-repeat center;
     background-size: 85%;
 }
 
-.pickup_television {
+#pickup_television {
     background: #fff url(../img/pickup/television.png) no-repeat center;
     background-size: 85%;
 }
 
-.pickup_airConditioner {
+#pickup_airConditioner {
     background: #fff url(../img/pickup/air-conditioner.png) no-repeat center;
     background-size: 85%;
 }
 
-.pickup_computer {
+#pickup_computer {
     background: #fff url(../img/pickup/computer.png) no-repeat center;
     background-size: 85%;
 }
 
-.pickup_solar {
+#pickup_solar {
     background: #fff url(../img/pickup/solar-cell.png) no-repeat center;
     background-size: 85%;
 }
 
-.pickup_etc {
+#pickup_etc {
     background: #fff url(../img/pickup/oven.png) no-repeat center;
     background-size: 85%;
 }
@@ -266,4 +266,16 @@
     border: 3px solid #57e16b;
 }
 
+.clicked_menu {
+    border: 3px solid #57e16b;
+}
 
+.pickup_recycle_btn2 {
+    background: #b888f7;
+    color: #ffffff;
+    font-weight: 500;
+}
+
+.pickup_recycle_btn2 > input:hover{
+    border: 3px solid #57e16b;
+}
