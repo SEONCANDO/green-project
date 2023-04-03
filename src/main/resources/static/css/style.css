@@ -20,10 +20,11 @@ html {
 /*    list-style: none;*/
 /*}*/
 
-section, div {
+section {
     display: block;
     margin: 0;
 }
+/* 민지 - div 뺌 */
 
 h1, .h1, h2, .h2, .fw-bold {
     font-weight: 700 !important;
@@ -325,4 +326,6 @@ h4{
     font-weight: 550;
     letter-spacing: -2px;
 }
+
+
 
