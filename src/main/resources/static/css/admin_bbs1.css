@@ -1,0 +1,21 @@
+#list1 {
+    display : flex;
+}
+
+#list1 > li {
+    list-style: none;
+}
+
+#list1 > li::after {
+    border-right: 1px solid black;
+}
+
+#list1 > li > a {
+    color: black;
+}
+
+table > > tr > td:nth-child(3) {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}

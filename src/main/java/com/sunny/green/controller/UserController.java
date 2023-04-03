@@ -23,8 +23,15 @@ public class UserController {
     private final UserDao ud;
 
     @GetMapping("/login")
-    public String login(){
-        return "user/login";
+    public String login(HttpSession session, Model model){
+        if(session.getAttribute("user") != null){
+            model.addAttribute("alert",  "이미 로그인이 되어있는 상황입니다");
+            model.addAttribute("url", "/index");
+        }
+        else {
+            return "user/login";
+        }
+        return "alert";
     }
 
     @PostMapping("/login")
@@ -42,13 +49,21 @@ public class UserController {
             model.addAttribute("alert", "로그인에 실패했습니다");
             model.addAttribute("url", "/login");
         }
+
         return "/alert";
     }
 
 
     @GetMapping("/join")
-    public String join(){
-        return "/user/join";
+    public String join(HttpSession session, Model model){
+        if(session.getAttribute("user") != null){
+            model.addAttribute("alert", "이미 로그인이 되어있는 상태입니다.");
+            model.addAttribute("url", "/index");
+        }
+        else{
+            return "/user/join";
+        }
+        return "/alert";
     }
 
     @PostMapping("/join")

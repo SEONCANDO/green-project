@@ -93,5 +93,4 @@ $.datepicker.setDefaults({
 // });
 
 
-
 // pickup page2 카테고리 버튼 이벤트
