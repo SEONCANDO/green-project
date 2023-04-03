@@ -10,20 +10,21 @@ html {
     height: 100%;
 }
 
-* {
-    text-size-adjust: none;
-    word-wrap: break-word;
-    word-break: break-all;
-    font-family: 'NanumGothic', sans-serif;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    list-style: none;
-}
+/** {*/
+/*    text-size-adjust: none;*/
+/*    word-wrap: break-word;*/
+/*    word-break: break-all;*/
+/*    font-family: 'NanumGothic', sans-serif;*/
+/*    white-space: nowrap;*/
+/*    text-overflow: ellipsis;*/
+/*    list-style: none;*/
+/*}*/
 
-section, div {
+section {
     display: block;
     margin: 0;
 }
+/* 민지 - div 뺌 */
 
 h1, .h1, h2, .h2, .fw-bold {
     font-weight: 700 !important;
@@ -181,8 +182,14 @@ h5, .h5, h6, .h6, .fw-semi-bold {
     padding-top: 350px;
 }
 
-.main_title{
+
+.main_title {
+    font-size: 40px;
+    font-weight: 700;
+    color: darkslategrey;
     text-align: center;
+    margin-bottom: 25px;
+    letter-spacing: -2px;
 }
 
 .main_subtitle {
@@ -241,17 +248,6 @@ button.btn1, .btn2 {
     transform: translateX(-50%);
 }
 
-.service .service_panel {
-    display: none;
-    background-color: #fff;
-    box-shadow: 0 7px 24px 0 rgba(0, 0, 0, 0.1);
-    border-radius: 25px;
-    padding-top: 52px;
-    text-align: center;
-    position: relative;
-    height: 700px;
-}
-
 .service .service_panel.active {
     display: block;
 }
@@ -264,10 +260,15 @@ button.btn1, .btn2 {
 /* 공지사항 */
 .notice_area {
     width: 100%;
+    padding-top: 80px;
+    padding-bottom: 245px;
+}
+/*.notice_area {
+    width: 100%;
     max-width: 1280px;
     margin: 10px auto 0;
     padding-bottom: 245px;
-}
+}*/
 
 .notice_head h3 {
     font-size: 20px;
@@ -297,6 +298,40 @@ button.btn1, .btn2 {
     font-weight: 500;
 }
 
+/*수거 과정*/
+h3{
+    font-size: 60px;
+    font-weight: 600;
+    color: darkgreen;
+}
+h4{
+    font-size: 20px;
+    font-weight: 600;
+    color: darkslategrey;
+}
+.h4-line{
+    margin-top: 33px;
+}
+.h4-line2{
+    margin-top: 20px;
+}
+.h3-img{
+    margin-top: 30px;
+}
+.btn-primary{
+    margin-top: 50px;
+    font-size: 18px;
+    font-weight: 500;
+    color: #fff;
+    background-color: #1a7940;
+
+    border: 1px solid #1a7940;
+}
+
+#callName {
+    font-size: 22px;
+    font-weight: 550;
+    letter-spacing: -2px;
 /* 오른쪽 이동 바*/
 #fp-nav {
     position: absolute;
