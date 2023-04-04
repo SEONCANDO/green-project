@@ -1,17 +1,30 @@
 @charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
 
-.content_container{
+
+/* 전체 컨테이너 (공통) */
+.container_content_all{
     margin-top: 100px;
     margin-bottom: 260px;
     height: 200vh;
 }
 
-
-.pickup-headerImg {
-    width: 100%;
+/* 메인 컨테이너 (공통) */
+.container_content {
+    margin-top: 25px;
 }
 
-.page_main_text{
+
+/* 상단 배너 이미지 (공통) */
+.img_header {
+    width: 100%;
+}
+.textDiv_header {
+    position: absolute;
+    left: 350px;
+    top: 125px;
+}
+.text_header{
     width: 200px;
     font-size: 45px;
     font-weight: bold;
@@ -19,291 +32,189 @@
     margin-top: 10px;
     margin-bottom: 20px;
     border-bottom: 2px solid #89db2f;
+    font-family: 'Noto Sans KR', sans-serif;
 }
 
-.checkbox_text {
+
+/* 페이지별 단계  (공통)*/
+.box_step {
+    margin-bottom: 60px;
+}
+/* 현재 step 원 */
+.circle_currentStep {
+    background: linear-gradient(45deg, Violet, Orange);
+    width: 100px;
+    height: 100px;
+    border-radius: 75px;
+    position: relative;
+}
+/* 현재 step 원 이미지 */
+.circle_currentStep > i {
+    font-size: 45px;
+    color: white;
+    margin-top: 27px;
+    margin-left: 30px;
+}
+/* 현재 step과 다음 step 연결선 */
+#line_stepConnect:after {
+    content: '';
+    width: 130px;
+    height: 2px;
+    background: #d3d3d3;
+    position: absolute;
+    top: 51px;
+    right: -125px;
+    z-index: -1;
+}
+/* 다음 step 원 */
+.circle_nextStep {
+    background: #dfdfdf;
+    width: 100px;
+    height: 100px;
+    border-radius: 75px;
+    position: relative;
+}
+/* 다음 step 원 이미지 */
+.circle_nextStep > i {
+    font-size: 45px;
+    color: #e9e8e8;
+    margin-top: 25px;
+    margin-left: 31px;
+}
+/* 두번째 step과 세번째 step 연결선 */
+#line_stepConnect2:after {
+    content: '';
+    width: 133px;
+    height: 2px;
+    background: #d3d3d3;
+    position: absolute;
+    top: 51px;
+    right: -122px;
+    z-index: -1;
+}
+/* step 하단 text */
+.text_step {
+    margin-top: 10px;
+    font-size: 17px;
+    text-align: center;
+    font-weight: bold;
+    width: 100px;
+}
+
+/* *****pickup page***** */
+
+/* 사용자 약관 box */
+.box_checkBox {
+    display: flex;
+}
+/* 사용자 약관 checkBox */
+#checkBox_colPersonInfo{
+    width: 20px;
+}
+/* 사용자 약관 text */
+#text_checkBox {
     font-size: 30px;
     margin-left: 10px;
     font-weight: 600;
     color: #272785;
 }
-
-.checkbox_all {
-    display: flex;
-}
-.permission_checkbox {
-    display: flex;
-}
-#chkbox{
-    width: 20px;
-}
-
-.permission_text{
-    height: 200px;
-    border: 1px solid #c1baba;
-    overflow: scroll;
-    color: black;
-    font-size: 13px;
-}
-.checkbox_text2 {
+#text_checkBox2 {
     color: red;
     display: flex;
     align-items: center;
     margin-left: 5px;
     font-weight: 600;
 }
-
-.permission_text_num {
+/* 사용자 약관 본문 */
+#text_permission{
+    height: 200px;
+    border: 1px solid #c1baba;
+    overflow: scroll;
+    color: black;
+    font-size: 13px;
+}
+/* 사용자 약관 번호 */
+.titleNum_permission {
     font-size: 23px;
     font-weight: 600;
 }
 
-.content_border {
+
+/* 약관과 본문 경계선 */
+.line_boundary {
     margin-top: 40px;
     border-bottom: 3px solid #cdc9c9;
 }
 
-.content_title{
+
+/* 개인정보 입력 title */
+#box_contentTitle{
     display: flex;
     margin-top: 30px;
     margin-left: 10px;
     margin-bottom: 10px;
 }
-
-.page_content_title {
+/* 개인정보 입력 title text */
+#page_content_title {
     font-size: 30px;
     color: #272785;
     font-weight: bold;
 }
+/* 개인정보 입력 radio box */
+#box_radio {
+    display: flex;
+    align-items: center;
+    margin-left: 25px;
+    font-size: 19px;
+    font-family: 'Noto Sans KR', sans-serif;
+}
 
-#address_box > input {
+
+/* 개인정보 입력 head text */
+.text_contentHeader {
+    font-size: 22px;
+    font-family: 'Noto Sans KR', sans-serif;
+}
+.text_requiredInput {
+    color: red;
+}
+
+
+/* 개인정보 주소 */
+#box_address > input {
     width: 450px;
     height: 40px;
     margin-bottom: 10px;
     margin-right: 10px;
 }
-#pickup_info {
-    color: black;
-}
 
-.radio_form {
-    display: flex;
-    align-items: center;
-    margin-left: 25px;
-    font-size: 17px;
-}
-
-#content_header {
-    position: absolute;
-    left: 350px;
-    top: 125px;
-}
-
-.content2 {
-    margin-top: 25px;
-}
-
-#container_one{
-    margin-bottom: 10px;
-}
-
+/* 개인정보 수거일 입력 */
 #DatePicker {
     background: #fff url(../img/pickup/date_icon.png) no-repeat center right 4px;
     background-size: 27px;
 }
-
-.content_memo {
-    width: 750px;
-    height: 200px;
-}
-
-.pickup_submit {
-    margin-top: 10px;
+/* 개인정보 수거 요일 */
+#text_insertDayOfWeek {
+    display: flex;
+    align-items: center;
     margin-left: 10px;
 }
-
-.pickup_submit > a {
-    margin-left: 10px;
-    width: 130px;
-    height: 63px;
-    font-size: 30px;
-}
-
-.pickup_submit > input {
-    width: 130px;
-    height: 63px;
-    font-size: 26px;
-}
-
-.pickup_as {
-    color: red;
-}
-
-.pickup_circle_sel {
-    background: #7460c1;
-    width: 130px;
-    height: 130px;
-    border-radius: 75px;
-    position: relative;
-}
-
-.pickup_circle_sel:after {
-    content: '';
-    width: 109px;
-    height: 2px;
-    background: #d3d3d3;
-    position: absolute;
-    top: 63px;
-    right: -100px;
-    z-index: -1;
-}
-
-.pickup_circle_none {
-    background: #dfdfdf;
-    width: 130px;
-    height: 130px;
-    border-radius: 75px;
-    position: relative;
-}
-
-#page_main_step2:after {
-    content: '';
-    width: 109px;
-    height: 2px;
-    background: #d3d3d3;
-    position: absolute;
-    top: 63px;
-    right: -100px;
-    z-index: -1;
-}
-
-.pickup_circle_sel > i {
-    font-size: 50px;
-    color: white;
-    margin-top: 35px;
-    margin-left: 44px;
-}
-
-.pickup_circle_none > i {
-    font-size: 50px;
-    color: #e9e8e8;
-    margin-top: 40px;
-    margin-left: 43px;
-}
-
-
-.pickup_circle_font {
-    margin-top: 10px;
+#text_dayOfWeek {
+    display: flex;
+    align-items: center;
     font-size: 20px;
-    text-align: center;
-    font-weight: bold;
-    width: 129px;
 }
 
-#pickup_step {
-    margin-left: 10px;
-}
-
-#page_main_step {
-    margin-top: 50px;
-    margin-bottom: 60px;
-}
-
-.pickup_selectImg{
-    width: 300px;
-    height: 300px;
-}
-
-#pickup_washing {
-    background: #fff url(../img/pickup/washing-machine.png) no-repeat center;
-    background-size: 85%;
-}
-
-#pickup_refrigerator {
-    background: #fff url(../img/pickup/refrigerator.png) no-repeat center;
-    background-size: 85%;
-}
-
-#pickup_television {
-    background: #fff url(../img/pickup/television.png) no-repeat center;
-    background-size: 85%;
-}
-
-#pickup_airConditioner {
-    background: #fff url(../img/pickup/air-conditioner.png) no-repeat center;
-    background-size: 85%;
-}
-
-#pickup_computer {
-    background: #fff url(../img/pickup/computer.png) no-repeat center;
-    background-size: 85%;
-}
-
-#pickup_solar {
-    background: #fff url(../img/pickup/solar-cell.png) no-repeat center;
-    background-size: 85%;
-}
-
-#pickup_etc {
-    background: #fff url(../img/pickup/oven.png) no-repeat center;
-    background-size: 85%;
-}
-
-.pickup_recycle_img1 {
-    display: flex;
-    justify-content: center;
-    margin-right: 90px;
-}
-
-.pickup_recycle_img2 > input {
-    width: 60px;
-    height: 60px;
-}
-
-.pickPg2_category {
-    font-weight: bold;
-}
-
-.pickup_recycle_img2 > input:hover {
-    border: 3px solid #57e16b;
-}
-
-.clicked_menu {
-    border: 3px solid #57e16b;
-}
-
-.pickup_recycle_btn2 {
-    background: #b888f7;
-    color: #ffffff;
-    font-weight: 500;
-}
-
-.pickup_recycle_btn2 > input:hover{
-    border: 3px solid #57e16b;
-}
-
-#day {
-    display: flex;
-    align-items: center;
-    margin-left: 10px;
-}
-
-#day_text {
-    display: flex;
-    align-items: center;
-}
-
+/* 개인정보 이미지 upload preview */
 #imagePreview {
-    width: 1300px;
     height: 120px;
     display: flex;
     gap: 10px;
 }
-
 #imagePreview > li > img{
     width: 150px;
 }
-
+/* 개인정보 이미지 upload preview 삭제버튼 */
 .delBtn {
     width: 20px;
     height: 20px;
@@ -319,7 +230,109 @@
     position: relative;
 }
 
-#img_list {
-    width: 150px;
-    height: 135px;
+/* 개인정보 메모 */
+.text_memo {
+    width: 750px;
+    height: 200px;
 }
+
+/* pickup page 저장 및 이동 */
+#box_pageMove {
+    margin-top: 10px;
+    margin-left: 10px;
+}
+/* page 이동 */
+.pickup_submit > a {
+    margin-left: 25px;
+    width: 130px;
+    height: 63px;
+    font-size: 30px;
+}
+/* page 저장 */
+.pickup_submit > input {
+    width: 130px;
+    height: 63px;
+    font-size: 26px;
+}
+
+
+/* *****pickup2 page***** */
+
+
+/* 선택 이미지 preview box */
+#box_recycle_preview {
+    display: flex;
+    justify-content: center;
+    margin-right: 90px;
+}
+/* 선택 이미지 preview */
+#img_recycle_preview{
+    width: 300px;
+    height: 300px;
+}
+
+/* 품목 1차 카테고리 버튼 */
+.box_recycleCategory > input {
+    width: 60px;
+    height: 60px;
+}
+/* 품목 1차 카테고리 버튼 호버 */
+.box_recycleCategory > input:hover {
+    border: 3px solid #57e16b;
+}
+
+/* 1차 카테고리 이미지 List */
+#img_washing {
+    background: #fff url(../img/pickup/washing-machine.png) no-repeat center;
+    background-size: 85%;
+}
+#img_refrigerator {
+    background: #fff url(../img/pickup/refrigerator.png) no-repeat center;
+    background-size: 85%;
+}
+#img_television {
+    background: #fff url(../img/pickup/television.png) no-repeat center;
+    background-size: 85%;
+}
+#img_airConditioner {
+    background: #fff url(../img/pickup/air-conditioner.png) no-repeat center;
+    background-size: 85%;
+}
+#img_computer {
+    background: #fff url(../img/pickup/computer.png) no-repeat center;
+    background-size: 85%;
+}
+#img_solar {
+    background: #fff url(../img/pickup/solar-cell.png) no-repeat center;
+    background-size: 85%;
+}
+#img_etc {
+    background: #fff url(../img/pickup/oven.png) no-repeat center;
+    background-size: 85%;
+}
+
+/* 카테고리 이미지 선택 효과 */
+.clicked_menu {
+    border: 3px solid #57e16b;
+}
+/* 2차 카테고리 버튼 */
+.btn_recycleCategory_2st {
+    background: #b888f7;
+    color: #ffffff;
+    font-weight: 500;
+}
+/* 2차 카테고리 버튼 hover */
+.btn_recycleCategory_2st > input:hover{
+    border: 3px solid #57e16b;
+}
+
+
+
+
+
+
+
+
+
+
+

@@ -1,3 +1,5 @@
+
+// 주소 검색기능
 function sample4_execDaumPostcode() {
     new daum.Postcode({
         oncomplete: function(data) {
@@ -53,11 +55,13 @@ function sample4_execDaumPostcode() {
     }).open();
 }
 
+// 요일 선택시 메소드 실행
 $(function() {
     $("#DatePicker").datepicker({
     });
 });
 
+// 요일 선택 포멧 설정
 $.datepicker.setDefaults({
     dateFormat: 'yy-mm-dd',
     prevText: '이전 달',
@@ -71,14 +75,14 @@ $.datepicker.setDefaults({
     yearSuffix: '년'
 });
 
-//pickup 1페이지 이미지 첨부
-const upload = document.querySelector('.pickup_imgUpload');
+// 이미지 첨부
+const upload = document.querySelector('#img_pickup_upload');
 upload.addEventListener('change', getImageFiles);
 
 function getImageFiles(e) {
     const uploadFiles = [];
     const files = e.currentTarget.files;
-    const imagePreview = document.querySelector('#imagePreview');
+    const imagePreview = document.querySelector('#img_pickup_preview');
     const docFrag = new DocumentFragment();
 
     if ([...files].length >= 7) {
@@ -106,7 +110,7 @@ function getImageFiles(e) {
     });
 }
 
-
+// 첨부 이미지 preview
 function createElement(e, file) {
     const delBtn = document.createElement("input");
     const li = document.createElement('li');
@@ -126,8 +130,6 @@ function createElement(e, file) {
             $(li).remove();
         })
     });
-
-
     return li;
 }
 
@@ -156,30 +158,5 @@ function createElement(e, file) {
 //     }
 // });
 
-// pickup page2 카테고리 버튼 이벤트
-$(document).ready(function(){
-    $(".pickup_recycle_btn").each(function(index) {
-        $(this).attr('menu-index', index);
-    }).click(function(){
-        // 클릭된 <div>의 menu-index 값을 index 변수에 할당한다
-        const index = $(this).attr('menu-index');
-        // 클릭한 <div>에 clicked_menu 클래스 추가
-        $('.pickup_recycle_btn[menu-index=' + index + ']').addClass('clicked_menu');
-        // 그 외 <div>는 clicked_menu 클래스 삭제
-        $('.pickup_recycle_btn[menu-index!=' + index + ']').removeClass('clicked_menu');
-    });
-});
 
-$(document).ready(function(){
-    $(".pickup_recycle_btn2").each(function(index2) {
-        $(this).attr('menu-index2', index2);
-    }).click(function(){
-        // 클릭된 <div>의 menu-index 값을 index 변수에 할당한다
-        const index2 = $(this).attr('menu-index2');
-        // 클릭한 <div>에 clicked_menu 클래스 추가
-        $('.pickup_recycle_btn2[menu-index2=' + index2 + ']').addClass('clicked_menu');
-        // 그 외 <div>는 clicked_menu 클래스 삭제
-        $('.pickup_recycle_btn2[menu-index2!=' + index2 + ']').removeClass('clicked_menu');
-    });
-});
 
