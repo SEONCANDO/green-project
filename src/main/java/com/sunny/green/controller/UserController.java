@@ -22,6 +22,10 @@ public class UserController {
 
     private final UserDao ud;
 
+    @GetMapping("/myPage")
+    public String myPage(){
+        return "myPage/myPage";
+    }
     @GetMapping("/login")
     public String login(HttpSession session, Model model){
         if(session.getAttribute("user") != null){
