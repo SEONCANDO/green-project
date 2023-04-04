@@ -4,14 +4,12 @@
 
 <header th:replace="/fragment/header"></header>
 <link rel="stylesheet" href="/css/pickUp.css" type="text/css">
-<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
-<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
-<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css" integrity="sha512-10/jx2EXwxxWqCLX/hHth/vu2KY3jCF70dCQB8TSgNjbCVAC/8vai53GfMDrO2Emgwccf2pJqxct9ehpzG+MTw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-<script src="/js/pickUp.js"></script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
 <body>
   <div class="container-fluid">
     <div class="content_container">
@@ -162,7 +160,8 @@
                 <td class="col-10" style="border: 1px solid #c1baba; padding: 10px;">
                   <div style="display:flex; margin-left: 20px;">
                     <span>지정일: <input type="text" id="DatePicker"></span>
-                    <span id="day">(-)</span> 요일
+                    <span id="day">(-)</span>
+                    <span id="day_text">요일</span>
                   </div>
                 </td>
               </tr>
@@ -172,7 +171,10 @@
                 </td>
                 <td class="col-10" style="border: 1px solid #c1baba; padding: 10px;">
                   <div style="display:flex; margin-left: 20px;">
-                    <input name="pickup_photo" type="file" multiple />
+                    <input name="pickup_photo" type="file" class="pickup_imgUpload" accept="image/*" required multiple />
+                  </div>
+                  <div>
+                    <ul id="imagePreview"></ul>
                   </div>
                 </td>
               </tr>
@@ -199,5 +201,10 @@
     </div>
   </div>
 </body>
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+<script src="/js/pickUp.js"></script>
 <footer th:replace="/fragment/footer"></footer>
 </html>

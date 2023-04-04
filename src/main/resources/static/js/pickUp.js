@@ -71,6 +71,70 @@ $.datepicker.setDefaults({
     yearSuffix: '년'
 });
 
+//pickup 1페이지 이미지 첨부
+const upload = document.querySelector('.pickup_imgUpload');
+upload.addEventListener('change', getImageFiles);
+
+function getImageFiles(e) {
+    const uploadFiles = [];
+    const files = e.currentTarget.files;
+    const imagePreview = document.querySelector('#imagePreview');
+    const docFrag = new DocumentFragment();
+
+    if ([...files].length >= 7) {
+        alert('이미지는 최대 6개 까지 업로드가 가능합니다.');
+        return;
+    }
+
+    // 파일 타입 검사
+    [...files].forEach(file => {
+        if (!file.type.match("image/.*")) {
+            alert('이미지 파일만 업로드가 가능합니다.');
+            return
+        }
+
+        // 파일 갯수 검사
+        if ([...files].length < 7) {
+            uploadFiles.push(file);
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                const preview = createElement(e, file);
+                imagePreview.appendChild(preview);
+            };
+            reader.readAsDataURL(file);
+        }
+    });
+}
+
+
+function createElement(e, file) {
+    const delBtn = document.createElement("input");
+    const li = document.createElement('li');
+    const img = document.createElement('img');
+
+    img.setAttribute('src', e.target.result);
+    img.setAttribute('data-file', file.name);
+    li.appendChild(img);
+    delBtn.className = 'delBtn';
+    delBtn.type = "button";
+    delBtn.value = "X";
+    li.id = "img_list";
+    li.appendChild(delBtn);
+
+    $(document).ready(function() {
+        $(delBtn).click(function () {
+            $(li).remove();
+        })
+    });
+
+
+    return li;
+}
+
+
+
+
+
 // $('#DatePicker').on('change', function(){
 //     var date = $(this).val();
 //     switch(new Date(date).getDay()){
@@ -118,3 +182,4 @@ $(document).ready(function(){
         $('.pickup_recycle_btn2[menu-index2!=' + index2 + ']').removeClass('clicked_menu');
     });
 });
+
