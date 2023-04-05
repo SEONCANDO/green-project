@@ -4,6 +4,7 @@
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="~{layout/layout.html}">
 <meta charset="UTF-8">
+
 <title> 그린토피아 </title>
 <div layout:fragment="content">
     <div class="visual_area visual_bg">
@@ -21,7 +22,89 @@
     border-color: orange;">예약 조회/변경
                         </button>
                     </div>
+
+                </div>
             </div>
+        </section>
+        <section class="notice_area">
+            <div class="wrap">
+                <div class="notice_head">
+                    <h2 class="main_title">공지사항</h2>
+                </div>
+                <ul class="notice_list">
+                    <li>
+                        <span>
+                            <a href="#">공지1</a>
+                        </span>
+                        <span class="date">2023-03-24</span>
+                    </li>
+                    <li>
+                        <span>
+                            <a href="#">공지2</a>
+                        </span>
+                        <span class="date">2023-03-24</span>
+                    </li>
+
+                    <li>
+                        <span>
+                            <a href="#">공지3</a>
+                        </span>
+                        <span class="date">2023-03-24</span>
+                    </li>
+                    <li>
+                        <span>
+                            <a href="#">공지4</a>
+                        </span>
+                        <span class="date">2023-03-24</span>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+
+        <section class="service">
+
+            <div class="container text-center">
+
+            <div class="p-5 mb-4 bg-light rounded-3">
+                <div class="container-fluid py-5">
+                    <h1 class="main_title">수거 과정</h1>
+                    <p class="participation_subtitle">수거 이렇게 이루어져요</p>
+
+                    <div class="row">
+                        <div class="col-sm"> <h3>01</h3> <br> <img class="h3-img" src="/img/join.png" style="width: 80px;"> <br>
+                            <h4 class="h4-line2">회원가입<br>로그인</h4>
+
+                        </div>
+                        <div class="col-sm"><h3>&gt;</h3></div>
+                        <div class="col-sm"><h3>02</h3> <br> <img class="h3-img" src="/img/rsv.png"  style="width: 80px;"><br>
+                            <h4 class="h4-line">예약하기</h4>
+                        </div>
+                        <div class="col-sm"><h3>&gt;</h3></div>
+                        <div class="col"> <h3>03</h3> <br> <img class="h3-img" src="/img/pickup.png" style="width: 80px;"><br>
+                         <h4 class="h4-line">방문수령</h4>
+                        </div>
+                        <div class="col-sm"><h3>&gt;</h3></div>
+                        <div class="col-sm"><h3>04</h3> <br> <img class="h3-img"  src="/img/greenPoint.png" style="width: 80px;"> <br>
+                        <h4 class="h4-line2">GreenPoint<br> 지급/적립</h4>
+                        </div>
+                        <div class="col-sm"><h3>&gt;</h3> </div>
+                        <div class="col-sm"><h3>05</h3> <br><img class="h3-img" src="/img/coupon.png" style="width: 80px;">  <br>
+                            <h4 class="h4-line2"> Ecoupon<br>교환하기 </h4>
+                        </div>
+                    </div>
+                    <div class="main-btn" >
+                    <button class="btn btn-primary btn-lg" type="button"> 자세히 보기 </button>
+                    </div>
+                </div>
+
+            </div>
+
+                
+
+        </div>
+
+
         </section>
     </div>
     <section class="notice_area">
@@ -57,22 +140,46 @@
             </ul>
         </div>
     </section>
-    <section class="service">
-        <div class="wrap">
-            <h2 class="main_title">수거 과정</h2>
-            <div class="service_panel participation active">
+<section class="service">
+
+    <div class="container text-center">
+
+        <div class="p-5 mb-4 bg-light rounded-3">
+            <div class="container-fluid py-5">
+                <h1 class="main_title">수거 과정</h1>
                 <p class="participation_subtitle">수거 이렇게 이루어져요</p>
-                <h3 class="service+title"></h3>
-                <ol class="participation_list">
-                    <li><span>01</span>회원가입</li>
-                    <li><span>02</span><a href="#" th:alt="화살표">실천항목별 참여설정 <br>&lt;매뉴얼게시판&gt;참고</a></li>
-                    <li><span>03</span>녹색생활 <br>실천활동</li>
-                    <li><span>04</span>포인트 <br>적립</li>
-                    <li><span>05</span>인센티브 <br>수령</li>
-                </ol>
-                <a href="#" class="service_more">신청하러 가기 &nbsp;→</a>
+
+                <div class="row">
+                    <div class="col-sm"> <h3>01</h3> <br> <img class="h3-img" src="/img/join.png" style="width: 80px;"> <br>
+                        <h4 class="h4-line2">회원가입<br>로그인</h4>
+
+                    </div>
+                    <div class="col-sm"><h3>&gt;</h3></div>
+                    <div class="col-sm"><h3>02</h3> <br> <img class="h3-img" src="/img/rsv.png"  style="width: 80px;"><br>
+                        <h4 class="h4-line">예약하기</h4>
+                    </div>
+                    <div class="col-sm"><h3>&gt;</h3></div>
+                    <div class="col"> <h3>03</h3> <br> <img class="h3-img" src="/img/pickup.png" style="width: 80px;"><br>
+                        <h4 class="h4-line">방문수령</h4>
+                    </div>
+                    <div class="col-sm"><h3>&gt;</h3></div>
+                    <div class="col-sm"><h3>04</h3> <br> <img class="h3-img"  src="/img/greenPoint.png" style="width: 80px;"> <br>
+                        <h4 class="h4-line2">GreenPoint<br> 지급/적립</h4>
+                    </div>
+                    <div class="col-sm"><h3>&gt;</h3> </div>
+                    <div class="col-sm"><h3>05</h3> <br><img class="h3-img" src="/img/coupon.png" style="width: 80px;">  <br>
+                        <h4 class="h4-line2"> Ecoupon<br>교환하기 </h4>
+                    </div>
+                </div>
+                <div class="main-btn" >
+                    <button class="btn btn-primary btn-lg" type="button"> 자세히 보기 </button>
+                </div>
             </div>
         </div>
+
+
+
+    </div>
     </section>
 </div>
 </html>
