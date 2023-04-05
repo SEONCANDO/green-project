@@ -1,12 +1,17 @@
 @charset "UTF-8";
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
-
+@font-face {
+    font-family: 'GmarketSansMedium';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
 
 /* 전체 컨테이너 (공통) */
 .container_content_all{
     margin-top: 100px;
     margin-bottom: 260px;
     height: 200vh;
+    font-family: 'GmarketSansMedium';
 }
 
 /* 메인 컨테이너 (공통) */
@@ -25,14 +30,12 @@
     top: 125px;
 }
 .text_header{
-    width: 200px;
+    width: 220px;
     font-size: 45px;
     font-weight: bold;
     color: black;
     margin-top: 10px;
-    margin-bottom: 20px;
     border-bottom: 2px solid #89db2f;
-    font-family: 'Noto Sans KR', sans-serif;
 }
 
 
@@ -95,7 +98,7 @@
 /* step 하단 text */
 .text_step {
     margin-top: 10px;
-    font-size: 17px;
+    font-size: 16px;
     text-align: center;
     font-weight: bold;
     width: 100px;
@@ -142,7 +145,8 @@
 
 /* 약관과 본문 경계선 */
 .line_boundary {
-    margin-top: 40px;
+    margin-top: 80px;
+    margin-bottom: 80px;
     border-bottom: 3px solid #cdc9c9;
 }
 
@@ -153,6 +157,11 @@
     margin-top: 30px;
     margin-left: 10px;
     margin-bottom: 10px;
+}
+#text_contentTitle{
+    font-size: 36px;
+    color: black;
+    font-weight: bold;
 }
 /* 개인정보 입력 title text */
 #page_content_title {
@@ -166,14 +175,12 @@
     align-items: center;
     margin-left: 25px;
     font-size: 19px;
-    font-family: 'Noto Sans KR', sans-serif;
 }
 
 
 /* 개인정보 입력 head text */
 .text_contentHeader {
     font-size: 22px;
-    font-family: 'Noto Sans KR', sans-serif;
 }
 .text_requiredInput {
     color: red;
@@ -206,12 +213,13 @@
 }
 
 /* 개인정보 이미지 upload preview */
-#imagePreview {
+#img_pickup_preview {
     height: 120px;
     display: flex;
     gap: 10px;
+    list-style: none;
 }
-#imagePreview > li > img{
+#img_pickup_preview > li > img{
     width: 150px;
 }
 /* 개인정보 이미지 upload preview 삭제버튼 */
@@ -238,26 +246,37 @@
 
 /* pickup page 저장 및 이동 */
 #box_pageMove {
-    margin-top: 10px;
+    margin-top: 20px;
     margin-left: 10px;
 }
-/* page 이동 */
-.pickup_submit > a {
-    margin-left: 25px;
-    width: 130px;
-    height: 63px;
-    font-size: 30px;
-}
 /* page 저장 */
-.pickup_submit > input {
-    width: 130px;
-    height: 63px;
-    font-size: 26px;
+#box_pageMove > input {
+    margin-right: 15px;
+    border-radius: 15px;
+    font-size: 29px;
+    width: 135px;
+    height: 55px;
+}
+/* page 이동 */
+#box_pageMove > a {
+    width: 100px;
+    height: 55px;
+    font-size: 29px;
+    border-radius: 15px;
 }
 
 
 /* *****pickup2 page***** */
 
+
+
+/* page2 title text */
+#text_page2Title {
+    margin-left: 85px;
+    font-size: 50px;
+    font-weight: bold;
+    color: black;
+}
 
 /* 선택 이미지 preview box */
 #box_recycle_preview {
@@ -267,14 +286,30 @@
 }
 /* 선택 이미지 preview */
 #img_recycle_preview{
-    width: 300px;
-    height: 300px;
+    width: 450px;
+    height: 450px;
+}
+
+/* 품목 카테고리 text */
+.font_category {
+    font-weight: bold;
+    font-size: 30px;
+    color: black;
+    text-align: center;
+}
+
+/* 품목 카테고리 기본 선택 text */
+#text_demandSelect {
+    font-size: 13px;
+    margin-left: 3px;
+    color: #9d9d9d;
 }
 
 /* 품목 1차 카테고리 버튼 */
 .box_recycleCategory > input {
-    width: 60px;
-    height: 60px;
+    width: 120px;
+    height: 120px;
+    margin: 8px;
 }
 /* 품목 1차 카테고리 버튼 호버 */
 .box_recycleCategory > input:hover {
@@ -317,9 +352,13 @@
 }
 /* 2차 카테고리 버튼 */
 .btn_recycleCategory_2st {
-    background: #b888f7;
-    color: #ffffff;
-    font-weight: 500;
+    background: linear-gradient(45deg, #fbff09, #8de795);
+    color: #000000;
+    font-weight: bold;
+    font-size: 25px;
+    width: 150px;
+    height: 75px;
+    margin: 6px;
 }
 /* 2차 카테고리 버튼 hover */
 .btn_recycleCategory_2st > input:hover{
