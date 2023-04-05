@@ -1,3 +1,5 @@
+
+// 주소 검색기능
 function sample4_execDaumPostcode() {
     new daum.Postcode({
         oncomplete: function(data) {
@@ -53,11 +55,13 @@ function sample4_execDaumPostcode() {
     }).open();
 }
 
+// 요일 선택시 메소드 실행
 $(function() {
     $("#DatePicker").datepicker({
     });
 });
 
+// 요일 선택 포멧 설정
 $.datepicker.setDefaults({
     dateFormat: 'yy-mm-dd',
     prevText: '이전 달',
@@ -70,6 +74,68 @@ $.datepicker.setDefaults({
     showMonthAfterYear: true,
     yearSuffix: '년'
 });
+
+// 이미지 첨부
+const upload = document.querySelector('#img_pickup_upload');
+upload.addEventListener('change', getImageFiles);
+
+function getImageFiles(e) {
+    const uploadFiles = [];
+    const files = e.currentTarget.files;
+    const imagePreview = document.querySelector('#img_pickup_preview');
+    const docFrag = new DocumentFragment();
+
+    if ([...files].length >= 7) {
+        alert('이미지는 최대 6개 까지 업로드가 가능합니다.');
+        return;
+    }
+
+    // 파일 타입 검사
+    [...files].forEach(file => {
+        if (!file.type.match("image/.*")) {
+            alert('이미지 파일만 업로드가 가능합니다.');
+            return
+        }
+
+        // 파일 갯수 검사
+        if ([...files].length < 7) {
+            uploadFiles.push(file);
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                const preview = createElement(e, file);
+                imagePreview.appendChild(preview);
+            };
+            reader.readAsDataURL(file);
+        }
+    });
+}
+
+// 첨부 이미지 preview
+function createElement(e, file) {
+    const delBtn = document.createElement("input");
+    const li = document.createElement('li');
+    const img = document.createElement('img');
+
+    img.setAttribute('src', e.target.result);
+    img.setAttribute('data-file', file.name);
+    li.appendChild(img);
+    delBtn.className = 'delBtn';
+    delBtn.type = "button";
+    delBtn.value = "X";
+    li.id = "img_list";
+    li.appendChild(delBtn);
+
+    $(document).ready(function() {
+        $(delBtn).click(function () {
+            $(li).remove();
+        })
+    });
+    return li;
+}
+
+
+
+
 
 // $('#DatePicker').on('change', function(){
 //     var date = $(this).val();
@@ -93,4 +159,4 @@ $.datepicker.setDefaults({
 // });
 
 
-// pickup page2 카테고리 버튼 이벤트
+
