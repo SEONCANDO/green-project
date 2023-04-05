@@ -4,97 +4,130 @@
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="~{layout/layout.html}">
 <head>
-  <meta charset="UTF-8">
-  <title> 로그인 </title>
-  <link rel="stylesheet" type="text/css" href="/css/myPage.css">
+    <meta charset="UTF-8">
+    <title> 로그인 </title>
+    <link rel="stylesheet" type="text/css" href="/css/myPage.css">
 </head>
 <body>
 <div layout:fragment="content">
 
     <div class="container" id="box1" style="margin-top: 120px; font-family: 'GmarketSansMedium';">
-      <div class="row" id="box2" style="height: 700px;">
+        <div class="row" id="box2" style="height: 850px;">
 
-           <!-- 시작 -->
-          <div class="col-md-3">
-            <div>
-                <img src="/img/유저.png" style="width: 40%;">
-            </div>
-            <div style="font-size: 25px; letter-spacing: -2px; margin-top: 10px;">
-                <span style="color: black; font-weight: 700;">[변경]test1</span>님
-                <a href="#"><img src="/img/right-arrow.png" style="width: 15px;"></a>
-            </div>
-              <div>
-                  <div class="container-fluid" style="margin-bottom: 15px;">
-                      <div id="userProfile" style="height: 10%;">
-                          <span>내 프로필</span>
-                      </div>
-                      <div style="height: 90%; border: 1px solid #e6e6e6;" id="profiles">
-                          <div>
-                              <img src="/img/myPage/user.png" style="width: 10%;">
-                              <span> test1</span>
-                          </div>
-                          <div>
-                              <img src="/img/myPage/id-card.png" style="width: 10%;">
-                              <span> 관리자</span>
-                          </div>
-                          <div>
-                              <img src="/img/myPage/mail.png" style="width: 10%;">
-                              <span> g@c.com</span>
-                          </div>
-                          <div>
-                              <img src="/img/myPage/phone-call.png" style="width: 10%";>
-                              <span> 01012345678</span>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-
-              <div id="greenPoint">
-                  <div style="margin-bottom: 10px;">
-                      <img src="/img/greenPoint.png" style="width: 30px; margin-left: 15px;">
-                      <span style="margin-left: 15px; color: black;">그린포인트</span>
-                      <span style="text-align: center; color: #2a722d; font-weight: 700;">150,500</span>
-                      <a href="#"><img src="/img/right-arrow.png" style="width: 15px;"></a>
-                  </div>
-              </div>
-
-              <div>
-                <button style="width: 175px; border-radius: 5px; background: white;">
-                    <a href="/logout" style="font-size: 30px; font-weight: 700; color: black;">
-                        로그아웃</a></button>
-              </div>
-          </div>
-
-          <!-- 본문 -->
-        <div class="col-md-9">
-
-            <div>
-                <p style="text-align: left; font-size: 25px; font-weight: 700; margin-left: 15px; margin-bottom: 7px; color: black;">
-                    나의 예약</p>
-            </div>
-            <div>
-                <div id="reservation">
+            <!-- 시작 -->
+            <div class="col-md-3">
+                <div>
+                    <img src="/img/유저.png" style="width: 40%;">
+                </div>
+                <div style="font-size: 25px; letter-spacing: -2px; margin-top: 10px;">
+                    <span style="color: black; font-weight: 700;">[변경]test1</span>님
+                    <a href="#"><img src="/img/right-arrow.png" style="width: 15px;"></a>
+                </div>
+                <div>
+                    <div class="container-fluid" style="margin-bottom: 15px;">
+                        <div id="userProfile" style="height: 10%;">
+                            <span>내 프로필</span>
+                        </div>
+                        <div style="height: 90%; border: 1px solid #e6e6e6;" id="profiles">
+                            <div>
+                                <img src="/img/myPage/user.png" style="width: 10%;">
+                                <span> test1</span>
+                            </div>
+                            <div>
+                                <img src="/img/myPage/id-card.png" style="width: 10%;">
+                                <span> 관리자</span>
+                            </div>
+                            <div>
+                                <img src="/img/myPage/mail.png" style="width: 10%;">
+                                <span> g@c.com</span>
+                            </div>
+                            <div>
+                                <img src="/img/myPage/phone-call.png" style="width: 10%" ;>
+                                <span> 01012345678</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
+                <div id="greenPoint">
+                    <div style="margin-bottom: 10px;">
+                        <img src="/img/greenPoint.png" style="width: 30px; margin-left: 15px;">
+                        <span style="margin-left: 15px; color: black;">그린포인트</span>
+                        <span style="text-align: center; color: #2a722d; font-weight: 700;">150,500</span>
+                        <a href="#"><img src="/img/right-arrow.png" style="width: 15px;"></a>
+                    </div>
+                </div>
 
-                <div style="margin-top: 15px;">
-                    <p style="font-weight: 700; font-size: 25px; color: black; text-align: left; margin-left: 15px;">나의 활동</p>
-                    <div class="container">
-                        <div class="row">
-                            <div class="col" style="border: 1px solid #e6e6e6; height: 300px;">
-                                <p>내가 쓴 글</p>
+                <div>
+                    <img src="/img/myPage/배너1.png" style="width: 95%;">
+                </div>
+                <div style="margin-top: 30px;">
+                    <button style="width: 175px; border-radius: 5px; background: white;">
+                        <a href="/logout" style="font-size: 30px; font-weight: 700; color: black;">
+                            로그아웃</a></button>
+                </div>
+                <div style="margin-top: 30px; text-align: end;">
+                    <a href="#" style="color: black;">회원탈퇴 하기</a>
+                </div>
+            </div>
+
+            <!-- 본문 -->
+            <div class="col-md-9">
+
+                <div>
+                    <p style="text-align: left; font-size: 25px; font-weight: 700; margin-left: 15px; margin-bottom: 7px; color: black;">
+                        나의 예약</p>
+                </div>
+                <div>
+                    <div id="reservation">
+                    </div>
+
+
+                    <div>
+                        <div class="container"
+                             style="border: 2px solid #e6e6e6; width: 97%; height: 120px; margin-left: 15px; margin-top: 15px;">
+                            <div class="row">
+                                <div class="col-md-3" style="margin-top: 3%;">
+                                    <img src="/img/myPage/profile.png" alt="" style="width:30%;">
+                                    <p><a href="#"
+                                          style="color: black; letter-spacing: -2px; font-size: 14px; font-weight: 700;">개인정보
+                                        수정</a></p>
+                                </div>
+                                <div class="col-md-3" style="margin-top: 3%;">
+                                    <img src="/img/greenPoint.png" style="width:30%">
+                                    <p><a href="#"
+                                          style="color: black; letter-spacing: -2px; font-size: 14px; font-weight: 700;">그린포인트</a></p>
+                                </div>
+                                <div class="col-md-3" style="margin-top: 3%;">
+
+                                </div>
+                                <div class="col-md-3" style="margin-top: 3%;">
+
+                                </div>
                             </div>
-                            <dic class="col" style="margin-left: 15px; border: 1px solid #e6e6e6; height: 300px;">
-                                <p>내가 쓴 댓글</p>
-                            </dic>
+                        </div>
+                    </div>
+
+
+                    <div style="margin-top: 15px;">
+                        <p style="font-weight: 700; font-size: 25px; color: black; text-align: left; margin-left: 15px;">
+                            나의 활동</p>
+                        <div class="container">
+                            <div class="row">
+                                <div class="col" style="border: 1px solid #e6e6e6; height: 300px;">
+                                    <p>내가 쓴 글</p>
+                                </div>
+                                <dic class="col" style="margin-left: 15px; border: 1px solid #e6e6e6; height: 300px;">
+                                    <p>내가 쓴 댓글</p>
+                                </dic>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
 
-      </div>
-  </div>
+        </div>
+    </div>
 
 </div>
 </body>
