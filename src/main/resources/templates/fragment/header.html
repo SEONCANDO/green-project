@@ -34,6 +34,7 @@
                         </div>
                         <!-- logo -->
 
+
                         <!-- menu start -->
                         <nav class="main-menu">
                             <ul>
@@ -58,6 +59,27 @@
                                 class="fa-solid fa-right-to-bracket fa-lg"></i></a>
                         <div class="mobile-menu"></div>
                         <!-- menu end -->
+
+    <!-- Navbar Start -->
+    <nav th:if="${session.user} != null" class="navbar navbar-expand-lg bg-white navbar-light sticky-top p-0">
+        <a href="index" class="navbar-brand d-flex align-items-center px-4 px-lg-5">
+            <img src="/img/그린토피아.png" style="height:40px;">
+        </a>
+        <span id="callName">[[${session.user.user_id}]]님 환영합니다</span>
+        <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse2">
+            <div class="navbar-nav ms-auto p-4 p-lg-0">
+                <a href="index" class="nav-item nav-link active">홈</a>
+                <a href="#" class="nav-item nav-link">소개</a>
+                <a href="/notice" class="nav-item nav-link">공지사항</a>
+                <a href="/board" class="nav-item nav-link">Q&A</a>
+                <div class="nav-item dropdown">
+                    <a href="/myPage" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">마이 페이지</a>
+                    <div class="dropdown-menu bg-light m-0">
+                        <a href="/logout" class="dropdown-item">로그아웃</a>
+
                     </div>
                 </div>
             </div>
