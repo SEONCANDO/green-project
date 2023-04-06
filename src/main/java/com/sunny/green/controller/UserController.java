@@ -109,4 +109,10 @@ public class UserController {
     public String modify(){
         return "/myPage/modify";
     }
+
+    //마이페이지 그린포인트 확인
+    @GetMapping("/greenPoint")
+    public String green() {
+        return "/myPage/greenPoint";
+    }
 }
