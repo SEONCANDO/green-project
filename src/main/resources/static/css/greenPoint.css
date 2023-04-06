@@ -27,3 +27,12 @@
 #box2 > .col-md-3 {
     border-right: 1px solid #e6e6e6;
 }
+
+
+/*여기서부터는 본문*/
+
+#greenBox {
+    width: 95%;
+    height: 500px;
+    border: 1px solid #e6e6e6;
+}

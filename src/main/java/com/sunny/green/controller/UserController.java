@@ -22,7 +22,7 @@ public class UserController {
 
     private final UserDao ud;
 
-    //마이페이지에 들어가는 매핑
+    //마이페이지 매핑
     @GetMapping("/myPage")
     public String myPage(){
         return "myPage/myPage";
@@ -106,8 +106,18 @@ public class UserController {
 
     // 마이페이지 개인정보 수정
     @GetMapping("/modify")
-    public String modify(){
-        return "/myPage/modify";
+    public String modify(HttpSession session, Model model){
+        if(session.getAttribute("user") == null){
+            model.addAttribute("alert", "로그인을 해주시기 바랍니다.");
+            model.addAttribute("url", "/login");
+        }
+        else{
+            UserVo user = (UserVo) session.getAttribute("user");
+            System.out.println("번호는 뭘까요? : " + user);
+            model.addAttribute("user", user);
+            return "/myPage/modify";
+        }
+        return "/alert";
     }
 
     //마이페이지 그린포인트 확인

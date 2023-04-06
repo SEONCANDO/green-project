@@ -15,7 +15,7 @@
 <div layout:fragment="content" style="text-align: left">
 
 
-        <div class="container pol1">
+        <div class="container pol1" th:object="${user}">
             <form action="/modify" method="post">
                 <div class="col" style="margin-top: 5%; color: black;">
                     <p style="font-size: 32px; font-weight: 700; letter-spacing: -2px; color: #0F4229;">개인정보 수정</p>
@@ -23,48 +23,48 @@
 
                 <div>
                     <img src="/img/join/user.png" style="width: 20px;">
-                    <input type="text" name="userId" placeholder="아이디를 입력해주세요" class="readOnly" style="width:45%; background: #e6e6e6;"
+                    <input type="text" name="userId" th:value="*{userId}" class="readOnly" style="width:45%; background: #e6e6e6;"
                            id="userId" readonly>
                     <span id="idCheckMessage" style="color:red; font-weight: 700; letter-spacing: -2px;"></span>
                 </div>
 
                 <div>
                     <img src="/img/join/password.png" style="width: 20px;">
-                    <input type="password" name="userPass" placeholder="비밀번호를 입력해주세요" class="put"
+                    <input type="password" name="userPass" th:value="*{userPass}" class="put"
                            style="width:45%; margin-top: 10px;">
                 </div>
 
                 <div>
                     <img src="/img/join/user.png" style="width: 20px;">
-                    <input type="text" name="userName" placeholder="이름을 입력해주세요" class="readOnly"
+                    <input type="text" name="userName" th:value="*{userName}" class="readOnly"
                            style="width: 45%; margin-top: 10px; background: #e6e6e6;" readonly>
                 </div>
 
                 <div>
                     <img src="/img/join/email.png" style="width: 20px;">
-                    <input type="email" name="userEmail" placeholder="이메일을 입력해주세요" class="put"
+                    <input type="email" name="userEmail" th:value="*{userEmail}" class="put"
                            style="width:45%; margin-top: 10px;">
                 </div>
 
                 <div>
                     <img src="/img/join/phone.png" style="width: 20px;">
-                    <input type="number" name="userPhone" placeholder="휴대폰 번호를 입력해주세요" class="put"
+                    <input type="number" name="userPhone" th:value="*{userPhone}" class="put"
                            style="width:45%; margin-top: 10px;">
                 </div>
 
                 <div>
                     <img src="/img/join/address.png" style="width: 20px;">
-                    <input type="text" name="zipCode" id="sample4_postcode" placeholder="우편번호" class="put"
+                    <input type="text" name="zipCode" id="sample4_postcode" th:value="*{zipCode}" class="put"
                            style="width:45%; margin-top: 10px;">
                     <input type="button" onclick="sample4_execDaumPostcode()" value="우편번호 찾기" id="button3"><br>
-                    <input type="text" name="address1" id="sample4_roadAddress" placeholder="도로명주소"
+                    <input type="text" name="address1" id="sample4_roadAddress" th:value="*{address1}"
                            style="margin-left:26px; width:45%; margin-top: 10px;" class="put">
-                    <input type="text" name="address2" id="sample4_jibunAddress" placeholder="지번주소" class="put"
+                    <input type="text" name="address2" id="sample4_jibunAddress" th:value="*{address2}" class="put"
                            style="width:45%"><br>
                     <span id="guide" style="color:#999;display:none"></span>
-                    <input type="text" name="address3" id="sample4_detailAddress" placeholder="상세주소" class="put"
+                    <input type="text" name="address3" id="sample4_detailAddress" th:value="*{address3}" class="put"
                            style="margin-left:26px; width:45%; margin-top: 10px;">
-                    <input type="text" name="address4" id="sample4_extraAddress" placeholder="참고항목" class="put"
+                    <input type="text" name="address4" id="sample4_extraAddress" th:value="*{address4}" class="put"
                            style="width: 45%;"><br>
 
                 </div>

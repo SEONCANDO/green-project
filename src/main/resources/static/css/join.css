@@ -1,5 +1,12 @@
 @charset "UTF-8";
 
+@font-face {
+    font-family: 'GmarketSansMedium';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
 #box1 {
     height: 650px;
 
@@ -29,9 +36,7 @@
 
 #p1, #p2{
     font-size: 30px;
-    font-weight: 1000;
     letter-spacing: -2px;
-    font-family: hygothic;
     color: white;
 }
 
@@ -41,10 +46,8 @@
 
 #p3, #p4 {
     font-size: 22px;
-    font-weight: bold;
-    letter-spacing: -4px;
+    letter-spacing: -2px;
     color: white;
-    font-family: hygothic;
 }
 
 #button1 {
