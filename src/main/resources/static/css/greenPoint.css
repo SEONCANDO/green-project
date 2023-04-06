@@ -7,6 +7,7 @@
     font-style: normal;
 }
 
+
 #box1 {
 
     box-shadow: 20px 16px 19px 0px rgba(0,0,0,0.72);
@@ -28,29 +29,10 @@
 }
 
 
-#userProfile {
-    background: linear-gradient(to right, #05c75d, #40c7cc);
-    color: white;
-}
+/*여기서부터는 본문*/
 
-#profiles > div > span {
-    color: black;
-}
-
-#profiles > div {
-    text-align: left;
-    margin-left: 10px;
-    border-bottom: 1px solid #e6e6e6;
-    margin-bottom: 10px;
-}
-
-#modify2, #modify3 {
-    color: white;
-    border: none;
-    background: #2a6a47;
-    font-weight: 400;
-    width: 100px;
-    height: 30px;
-    font-size: 20px;
-    border-radius: 10px;
+#greenBox {
+    width: 95%;
+    height: 500px;
+    border: 1px solid #e6e6e6;
 }

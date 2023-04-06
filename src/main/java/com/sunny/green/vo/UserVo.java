@@ -10,19 +10,19 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Builder
 public class UserVo {
-       private int userNumber;
+       private int user_number;
 
-       private String userId;
+       private String user_id;
 
-       private String userPass;
+       private String user_pass;
 
-       private String userName;
+       private String user_name;
 
-       private String userEmail;
+       private String user_email;
 
-       private int userPhone;
+       private String user_tel;
 
-       private int zipCode;
+       private int zip_code;
 
        private String address1;
 
@@ -32,7 +32,7 @@ public class UserVo {
 
        private String address4;
 
-       private int userPoint;
+       private int user_point;
 
 
 }
