@@ -350,11 +350,6 @@ h4 {
     border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 
-/*.row {
-    --bs-gutter-x: -18.5rem !important;
-}*/
-
-
 /* 오른쪽 이동 바*/
 #fp-nav {
     position: absolute;
