@@ -2,56 +2,82 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <meta charset="UTF-8">
-    <!-- Icon Font Stylesheet -->
-
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
-
-    <!-- Customized Bootstrap Stylesheet -->
-    <link href="/css/bootstrap.min.css" rel="stylesheet">
-
     <!-- Template Stylesheet -->
-    <link href="/css/style.css" rel="stylesheet">
+    <link href="/assets/css/main.css" rel="stylesheet">
     <script src="/js/top_btn.js"></script>
+    <title> footer </title>
 </head>
 <footer th:fragment="footerFragment">
-    <div class="container-fluid bg-dark text-light footer mt-4 py-4 wow fadeIn"
-         style="padding-left: 135px; visibility: visible;">
-        <div class="container py-4 ps-4">
-            <div class="row g-5">
-                <div class="col-lg-4 col-md-6">
-                    <h4 class="text-white mb-4">Our Office</h4>
-                    <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i>서울특별시 마포구 신촌로 176</p>
-                    <p class="mb-2"><i class="fa fa-phone-alt me-3"></i>+02 1234 5678</p>
-                    <p class="mb-2"><i class="fa fa-envelope me-3"></i>info@example.com</p>
-                    <div class="d-flex pt-2">
-                        <a class="btn btn-square btn-outline-light rounded-circle me-2" href=""><i
-                                class="fab fa-twitter"></i></a>
-                        <a class="btn btn-square btn-outline-light rounded-circle me-2" href=""><i
-                                class="fab fa-facebook-f"></i></a>
-                        <a class="btn btn-square btn-outline-light rounded-circle me-2" href=""><i
-                                class="fab fa-youtube"></i></a>
-                        <a class="btn btn-square btn-outline-light rounded-circle me-2" href=""><i
-                                class="fab fa-linkedin-in"></i></a>
+    <!-- footer -->
+    <div class="footer-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-6">
+                    <div class="footer-box get-in-touch">
+                        <h2 class="widget-title">주소</h2>
+                        <ul>
+                            <li>서울특별시 마포구 신촌로 176</li>
+                            <li>+02 1234 5678</li>
+                            <li>info@example.com</li>
+                        </ul>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-6">
-                    <h4 class="text-white mb-4">Services</h4>
-                    <a class="btn btn-link text-white" href="">수거예약</a>
-                    <a class="btn btn-link text-white" href="">수거규정</a>
-                    <a class="btn btn-link text-white" href="/board">게시판</a>
-                    <br/>
-                    <a class="btn btn-link text-white" href="/join">회원가입</a>
-                    <a class="btn btn-link text-white" href="">사업소개</a>
+                <div class="col-lg-3 col-md-6">
+                    <div class="footer-box about-widget">
+                        <h2 class="widget-title">1:1 문의</h2>
+                        <p>평일 : 09:00 ~ 18:00</p>
+                        <p>휴일 : 주말/공휴일</p>
+                    </div>
                 </div>
-                <div class="col-lg-4 col-md-5">
-                    <h4 class="text-white mb-4 btn-link" href="#">1:1문의</h4>
-                    <p class="mb-2">평일 : 09:00 ~ 18:00</p>
-                    <p class="mb-2">휴일 : 주말/공휴일</p>
+
+                <div class="col-lg-3 col-md-6">
+                    <div class="footer-box pages">
+                        <h2 class="widget-title">서비스</h2>
+                        <ul>
+                            <li><a href="/pickup">수거예약</a></li>
+                            <li><a href="about.html">포인트교환</a></li>
+                            <li><a href="/notice">공지사항</a></li>
+                            <li><a href="news.html">Q&A</a></li>
+                            <li><a href="/join">회원가입</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="footer-box subscribe">
+                        <h2 class="widget-title">구독</h2>
+                        <p>그린토피아 뉴스레터 구독하고 <br>
+                            새로운 소식을 받아보세요!</p>
+                        <form action="/">
+                            <label>
+                                <input type="email" placeholder="Email">
+                            </label>
+                            <button type="submit"><i class="fas fa-paper-plane"></i></button>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
+    <!-- end footer -->
     <button onclick="topFunction()" id="top_btn" title="Go to top">TOP</button>
 </footer>
+
+<!-- jquery -->
+<script src="/assets/js/jquery-1.11.3.min.js"></script>
+<!-- bootstrap -->
+<script src="/assets/bootstrap/js/bootstrap.min.js"></script>
+<!-- isotope -->
+<script src="/assets/js/jquery.isotope-3.0.6.min.js"></script>
+<!-- waypoints -->
+<script src="/assets/js/waypoints.js"></script>
+<!-- owl carousel -->
+<script src="/assets/js/owl.carousel.min.js"></script>
+<!-- magnific popup -->
+<script src="/assets/js/jquery.magnific-popup.min.js"></script>
+<!-- mean menu -->
+<script src="/assets/js/jquery.meanmenu.min.js"></script>
+<!-- sticker js -->
+<script src="/assets/js/sticker.js"></script>
+<!-- main js -->
+<script src="/assets/js/main.js"></script>
 </html>
