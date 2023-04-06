@@ -95,8 +95,8 @@ public class UserController {
     //회원가입시 아이디 중복 체크
     @PostMapping("/checkDuplicateId")
     @ResponseBody
-    public String checkDuplicateId(@RequestParam("userId") String userId) {
-        UserVo existingUser = ud.selectUserId(userId);
+    public String checkDuplicateId(@RequestParam("user_id") String userid) {
+        UserVo existingUser = ud.selectUserId(userid);
         if(existingUser != null) {
             return "exist";
         } else {

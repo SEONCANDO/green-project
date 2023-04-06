@@ -23,38 +23,38 @@
 
                 <div>
                     <img src="/img/join/user.png" style="width: 20px;">
-                    <input type="text" name="userId" th:value="*{userId}" class="readOnly" style="width:45%; background: #e6e6e6;"
+                    <input type="text" name="user_id" th:value="*{user_id}" class="readOnly" style="width:45%; background: #e6e6e6;"
                            id="userId" readonly>
                     <span id="idCheckMessage" style="color:red; font-weight: 700; letter-spacing: -2px;"></span>
                 </div>
 
                 <div>
                     <img src="/img/join/password.png" style="width: 20px;">
-                    <input type="password" name="userPass" th:value="*{userPass}" class="put"
+                    <input type="password" name="user_pass" th:value="*{user_pass}" class="put"
                            style="width:45%; margin-top: 10px;">
                 </div>
 
                 <div>
                     <img src="/img/join/user.png" style="width: 20px;">
-                    <input type="text" name="userName" th:value="*{userName}" class="readOnly"
+                    <input type="text" name="user_name" th:value="*{user_name}" class="readOnly"
                            style="width: 45%; margin-top: 10px; background: #e6e6e6;" readonly>
                 </div>
 
                 <div>
                     <img src="/img/join/email.png" style="width: 20px;">
-                    <input type="email" name="userEmail" th:value="*{userEmail}" class="put"
+                    <input type="email" name="user_email" th:value="*{user_email}" class="put"
                            style="width:45%; margin-top: 10px;">
                 </div>
 
                 <div>
                     <img src="/img/join/phone.png" style="width: 20px;">
-                    <input type="number" name="userPhone" th:value="*{userPhone}" class="put"
+                    <input type="number" name="userTel" th:value="*{user_tel}" class="put"
                            style="width:45%; margin-top: 10px;">
                 </div>
 
                 <div>
                     <img src="/img/join/address.png" style="width: 20px;">
-                    <input type="text" name="zipCode" id="sample4_postcode" th:value="*{zipCode}" class="put"
+                    <input type="text" name="zip_code" id="sample4_postcode" th:value="*{zip_code}" class="put"
                            style="width:45%; margin-top: 10px;">
                     <input type="button" onclick="sample4_execDaumPostcode()" value="우편번호 찾기" id="button3"><br>
                     <input type="text" name="address1" id="sample4_roadAddress" th:value="*{address1}"
