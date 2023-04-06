@@ -18,3 +18,17 @@
     document.body.scrollTop = 0; // For Safari
     document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
 }
+
+/* 스크롤 */
+    $(document).ready(function($) {
+
+        $(".scroll_move").click(function(event){
+
+            event.preventDefault();
+
+            $('html,body').animate({scrollTop:$(this.hash).offset().top}, 500);
+
+        });
+
+    });
+

@@ -40,3 +40,7 @@ table >  tr > td:nth-child(3) {
     font-weight: 700;
 
 }
+
+#searched1 {
+    border: 1px solid #e6e6e6;
+}

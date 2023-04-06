@@ -60,7 +60,7 @@
         $.ajax({
             url: "/checkDuplicateId",
             type: "POST",
-            data: { userId: userId },
+            data: { user_id: userId },
             success: function(response) {
                 if(response == "exist") {
                     $('#idCheckMessage').text("이미 사용중인 아이디입니다.");
