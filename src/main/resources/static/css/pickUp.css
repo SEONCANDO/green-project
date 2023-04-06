@@ -159,7 +159,7 @@
     margin-bottom: 10px;
 }
 #text_contentTitle{
-    font-size: 36px;
+    font-size: 32px;
     color: black;
     font-weight: bold;
 }
@@ -245,12 +245,14 @@
 }
 
 /* pickup page 저장 및 이동 */
-#box_pageMove {
-    margin-top: 20px;
+.box_pageMove {
+    margin-top: 50px;
     margin-left: 10px;
+    text-align: center;
 }
 /* page 저장 */
-#box_pageMove > input {
+.box_pageMove > input {
+    margin-left: 15px;
     margin-right: 15px;
     border-radius: 15px;
     font-size: 29px;
@@ -258,7 +260,7 @@
     height: 55px;
 }
 /* page 이동 */
-#box_pageMove > a {
+.box_pageMove > a {
     width: 100px;
     height: 55px;
     font-size: 29px;
@@ -271,23 +273,29 @@
 
 
 /* page2 title text */
-#text_page2Title {
-    margin-left: 85px;
-    font-size: 50px;
+.text_page2Title {
+    display: inherit;
+    width: 280px;
+    margin-left: 25px;
+    font-size: 38px;
     font-weight: bold;
     color: black;
+    border-bottom: 2px solid #e18323;
 }
 
 /* 선택 이미지 preview box */
 #box_recycle_preview {
+    width: 100%;
+    height: 100%;
     display: flex;
     justify-content: center;
+    align-items: center;
     margin-right: 90px;
 }
 /* 선택 이미지 preview */
 #img_recycle_preview{
-    width: 450px;
-    height: 450px;
+    width: 400px;
+    height: 400px;
 }
 
 /* 품목 카테고리 text */
@@ -300,8 +308,9 @@
 
 /* 품목 카테고리 기본 선택 text */
 #text_demandSelect {
-    font-size: 13px;
-    margin-left: 3px;
+    font-size: 15px;
+    margin-top: 11px;
+    margin-left: 7px;
     color: #9d9d9d;
 }
 
@@ -346,10 +355,23 @@
     background-size: 85%;
 }
 
-/* 카테고리 이미지 선택 효과 */
+/* 카테고리 이미지 선택 border 효과 */
 .clicked_menu {
     border: 3px solid #57e16b;
 }
+/* 카테고리 이미지 선택 check 효과 */
+.box_recycleCategory a.active:after {
+    display: block;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 21px;
+    height: 25px;
+    margin: -13.5px 0 0 -10.5px;
+    background: url(../img/pickup/category_checked.jpg) no-repeat center;
+    content: '';
+}
+
 /* 2차 카테고리 버튼 */
 .btn_recycleCategory_2st {
     background: linear-gradient(45deg, #fbff09, #8de795);
@@ -365,8 +387,55 @@
     border: 3px solid #57e16b;
 }
 
+/* 품목 선택 preview title */
+.text_cateSelectTitle {
+    font-size: 30px;
+    color: #767575;
+    margin-left: 25px;
+}
+/* 품목 선택 preview 세부 title */
+.text_cateSelectTitle2 {
+    text-align: center;
+    font-size: 30px;
+}
 
+.minus {
+    width: 30px;
+    height: 30px;
+    border-radius: 15px;
+    font-size: 40px;
+    padding: 0;
+    position: relative;
+}
+.count_category {
+    width: 55px;
+    height: 45px;
+    font-size: 25px;
+    text-align: center;
+}
+.plus {
+    width: 30px;
+    height: 30px;
+    border-radius: 15px;
+    font-size: 40px;
+    padding: 0;
+    position: relative;
+}
 
+.button_inputCategory_delete {
+    text-align: center;
+}
+
+.text_mainCategory_preview {
+    font-size: 23px;
+    text-align: center;
+    color: black;
+}
+.text_detailCategory_preview {
+    font-size: 23px;
+    text-align: center;
+    color: black;
+}
 
 
 

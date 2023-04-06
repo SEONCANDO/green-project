@@ -41,31 +41,41 @@
       <!--   메인 컨텐츠  -->
       <div class="container_content">
         <div class="container">
-          <span id="text_page2Title">배출품목 입력</span>
+          <span class="text_page2Title">배출품목 입력</span>
         </div>
-        <div class="container" style="margin-top: 75px; margin-bottom: 10px;">
+        <div class="container" style="margin-top: 35px; margin-bottom: 10px;">
           <div class="row">
-            <div class="col-5">
+            <div class="col-4" style="border: 2px solid #d5d2d2;">
               <!--   1차 카테고리 선택 이미지  -->
               <div id="box_recycle_preview">
                 <img id="img_recycle_preview" src="/img/pickup/washing-machine.png" alt="세탁기">
               </div>
             </div>
+            <div class="col-1"></div>
             <div class="col-7">
               <div class="row">
-                <table>
+                <table style="border: 2px solid #d5d2d2;">
                   <tr style="height: 150px;">
-                    <td class="col-2">
+                    <td class="col-3" style="border-bottom: 2px solid #d5d2d2; border-right: 2px solid #d5d2d2;">
                       <!--   1차 카테고리 헤더  -->
                       <div class="font_category" style="margin-top: 60px;">카테고리</div>
                     </td>
-                    <td class="col-1"></td>
-                    <td class="col-9">
+                    <td class="col-9" style="border-bottom: 2px solid #d5d2d2;">
                       <div id="text_demandSelect">카테고리를 선택해주세요</div>
-                      <div id="text_categorySelect"></div>
-                      <div id="text_categorySelect2"></div>
                       <!--   1차 카테고리 리스트  -->
-                      <div class="box_recycleCategory" style="margin-top: 10px;">
+                      <div class="box_recycleCategory" style="margin-top: 10px; margin-left: 6px;">
+                        <div class="btn_recycleCategory_1st">
+<!--                          <a>-->
+<!--                            <img src="/img/pickup/washing-machine.png" alt="세탁기" >-->
+<!--                          </a>-->
+                        </div>
+                        <div class="btn_recycleCategory_1st"></div>
+                        <div class="btn_recycleCategory_1st"></div>
+                        <div class="btn_recycleCategory_1st"></div>
+                        <div class="btn_recycleCategory_1st"></div>
+                        <div class="btn_recycleCategory_1st"></div>
+                        <div class="btn_recycleCategory_1st"></div>
+
                         <input type="button" class="btn_recycleCategory_1st" id="img_washing">
                         <input type="button" class="btn_recycleCategory_1st" id="img_refrigerator">
                         <input type="button" class="btn_recycleCategory_1st" id="img_television">
@@ -77,11 +87,10 @@
                     </td>
                   </tr>
                   <tr style="height: 150px;">
-                    <td class="col-2">
-                      <span class="font_category">상세 분류</span>
+                    <td class="col-3" style="border-right: 2px solid #d5d2d2;">
+                      <div class="font_category">상세 분류</div>
                     </td>
-                    <td class="col-1"></td>
-                    <td class="col-9">
+                    <td class="col-9" style="padding: 10px;">
                       <!--   2차 카테고리 리스트  -->
                       <div>
                         <input type="button" class="btn_recycleCategory_2st" value="일반세탁기">
@@ -103,6 +112,66 @@
             </div>
           </div>
         </div>
+        <!--  품목 선택과 preview 구분선  -->
+        <div class="container">
+          <div class="line_boundary"></div>
+        </div>
+        <!--  품목 선택 preview  -->
+          <div class="container">
+            <div>
+              <!--  품목 선택 preview title  -->
+              <span class="text_cateSelectTitle">선택한 품목</span>
+            </div>
+            <div class="row">
+              <!--  품목 선택 preview 세부 title  -->
+              <table style="border: 2px solid #d5d2d2; margin-top: 15px;">
+                <tr style="border-bottom: 2px solid #d5d2d2; height: 65px;">
+                  <td class="col-3" style="border-right: 2px solid #d5d2d2">
+                    <div class="text_cateSelectTitle2">대분류</div>
+                  </td>
+                  <td class="col-3" style="border-right: 2px solid #d5d2d2">
+                    <div class="text_cateSelectTitle2">소분류</div>
+                  </td>
+                  <td class="col-3" style="border-right: 2px solid #d5d2d2">
+                    <div class="text_cateSelectTitle2">수량</div>
+                  </td>
+                  <td class="col-3">
+                    <div class="text_cateSelectTitle2">삭제 여부</div>
+                  </td>
+                </tr>
+                <tr style="height: 65px;">
+                  <td class="col-3" style="border-right: 2px solid #d5d2d2">
+                    <div class="text_mainCategory_preview">세탁기</div>
+                  </td>
+                  <td class="col-3" style="border-right: 2px solid #d5d2d2">
+                    <div class="text_detailCategory_preview">일반 세탁기</div>
+                  </td>
+                  <td class="col-3" style="border-right: 2px solid #d5d2d2; text-align: center;">
+                    <button type="button" class="minus" onclick="fnCalcCnt('minus');">
+                      <div style="width: 100%; height: 100%; position: absolute; top: -14px;">-</div>
+                    </button>
+                    <input type="text" class="count_category" name="item_cnt" title="수량 입력" value="1" maxlength="1">
+                    <button type="button" class="plus" onclick="fnCalcCnt('plus');">
+                      <div style="width: 100%; height: 100%; position: absolute; top: -14px;">+</div>
+                    </button>
+                  </td>
+                  <td class="col-3">
+                    <div class="button_inputCategory_delete">
+                      <input type="button" value="X" style="color: red; border: none; font-size: 28px;">
+                    </div>
+                  </td>
+                </tr>
+              </table>
+            </div>
+          </div>
+          <!--   페이지 저장 및 이동  -->
+          <div class="container">
+            <div class="box_pageMove">
+              <a href="/pickup" class="btn btn-outline-success">이전</a>
+              <input type="button" class="btn btn-outline-success" value="저장하기">
+              <a href="/pickup3" class="btn btn-outline-success">다음</a>
+            </div>
+          </div>
       </div>
     </div>
   </div>
