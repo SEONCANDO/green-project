@@ -10,4 +10,9 @@ public class PickUpController {
     public String pickupPage() {
         return "pickup/pickUp";
     }
+
+    @GetMapping("/pickup2")
+    public String pickupPage2() {
+        return "pickup/pickUp2";
+    }
 }

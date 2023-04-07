@@ -1,3 +1,5 @@
+
+// 주소 검색기능
 function sample4_execDaumPostcode() {
     new daum.Postcode({
         oncomplete: function(data) {
@@ -52,3 +54,109 @@ function sample4_execDaumPostcode() {
         }
     }).open();
 }
+
+// 요일 선택시 메소드 실행
+$(function() {
+    $("#DatePicker").datepicker({
+    });
+});
+
+// 요일 선택 포멧 설정
+$.datepicker.setDefaults({
+    dateFormat: 'yy-mm-dd',
+    prevText: '이전 달',
+    nextText: '다음 달',
+    monthNames: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
+    monthNamesShort: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
+    dayNames: ['일', '월', '화', '수', '목', '금', '토'],
+    dayNamesShort: ['일', '월', '화', '수', '목', '금', '토'],
+    dayNamesMin: ['일', '월', '화', '수', '목', '금', '토'],
+    showMonthAfterYear: true,
+    yearSuffix: '년'
+});
+
+// 이미지 첨부
+const upload = document.querySelector('#img_pickup_upload');
+upload.addEventListener('change', getImageFiles);
+
+function getImageFiles(e) {
+    const uploadFiles = [];
+    const files = e.currentTarget.files;
+    const imagePreview = document.querySelector('#img_pickup_preview');
+    const docFrag = new DocumentFragment();
+
+    if ([...files].length >= 7) {
+        alert('이미지는 최대 6개 까지 업로드가 가능합니다.');
+        return;
+    }
+
+    // 파일 타입 검사
+    [...files].forEach(file => {
+        if (!file.type.match("image/.*")) {
+            alert('이미지 파일만 업로드가 가능합니다.');
+            return
+        }
+
+        // 파일 갯수 검사
+        if ([...files].length < 7) {
+            uploadFiles.push(file);
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                const preview = createElement(e, file);
+                imagePreview.appendChild(preview);
+            };
+            reader.readAsDataURL(file);
+        }
+    });
+}
+
+// 첨부 이미지 preview
+function createElement(e, file) {
+    const delBtn = document.createElement("input");
+    const li = document.createElement('li');
+    const img = document.createElement('img');
+
+    img.setAttribute('src', e.target.result);
+    img.setAttribute('data-file', file.name);
+    li.appendChild(img);
+    delBtn.className = 'delBtn';
+    delBtn.type = "button";
+    delBtn.value = "X";
+    li.id = "img_list";
+    li.appendChild(delBtn);
+
+    $(document).ready(function() {
+        $(delBtn).click(function () {
+            $(li).remove();
+        })
+    });
+    return li;
+}
+
+
+
+
+
+// $('#DatePicker').on('change', function(){
+//     var date = $(this).val();
+//     switch(new Date(date).getDay()){
+//         case 0 : $("#day").text('일'); break
+//         case 1 : $("#day").text('월'); break
+//         case 2 : $("#day").text('화'); break
+//         case 3 : $("#day").text('수'); break
+//         case 4 : $("#day").text('목'); break
+//         case 5 : $("#day").text('금'); break
+//         case 6 : $("#day").text('토'); break
+//
+//         // case 0 : $('#day').text('일'); $('[name=weekday]').val('일'); break
+//         // case 1 : $('#day').text('월'); $('[name=weekday]').val('월'); break
+//         // case 2 : $('#day').text('화'); $('[name=weekday]').val('화'); break
+//         // case 3 : $('#day').text('수'); $('[name=weekday]').val('수'); break
+//         // case 4 : $('#day').text('목'); $('[name=weekday]').val('목'); break
+//         // case 5 : $('#day').text('금'); $('[name=weekday]').val('금'); break
+//         // case 6 : $('#day').text('토'); $('[name=weekday]').val('토'); break
+//     }
+// });
+
+
+

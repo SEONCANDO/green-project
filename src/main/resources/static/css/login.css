@@ -1,4 +1,12 @@
 @charset "UTF-8";
+
+@font-face {
+    font-family: 'GmarketSansMedium';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
 .container {
     width: 500px;
 }
@@ -29,7 +37,7 @@
     border: none;
     margin-top: 30px;
     background: #faffbc;
-    width: 100%;
+    width: 90%;
     height:40px;
 
 }
@@ -38,7 +46,7 @@
     border: none;
     margin-top: 20px;
     background: #faffbc;
-    width: 100%;
+    width: 90%;
     height:40px;
 }
 
@@ -52,7 +60,7 @@
     border-radius: 12px;
     border: none;
     height: 40px;
-    background: #0F4229 !important;
+    background: #2a6a47 !important;
     color: white;
     font-weight: 700;
     font-size: 25px;
@@ -62,7 +70,6 @@
 #text1, #text2 {
     font-size: 35px;
     color: white;
-    font-weight: 700;
     letter-spacing: -4px;
 }
 
@@ -73,7 +80,6 @@
 #text3 {
     font-size: 25px;
     color: white;
-    font-weight: 700;
     letter-spacing: -3px;
 }
 

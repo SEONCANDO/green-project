@@ -54,3 +54,19 @@
         }
     }).open();
 }
+
+    function checkDuplicateId() {
+        let userId = $('#userId').val();
+        $.ajax({
+            url: "/checkDuplicateId",
+            type: "POST",
+            data: { user_id: userId },
+            success: function(response) {
+                if(response == "exist") {
+                    $('#idCheckMessage').text("이미 사용중인 아이디입니다.");
+                } else {
+                    $('#idCheckMessage').text("사용 가능한 아이디입니다.");
+                }
+            }
+        });
+    }
