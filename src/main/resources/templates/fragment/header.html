@@ -77,7 +77,6 @@
                             </a>
                         </div>
                         <!-- logo -->
-                        <span id="callName">[[${session.user.user_id}]]님 환영합니다</span>
                         <!-- menu start -->
                         <nav class="main-menu">
                             <ul>
@@ -89,9 +88,10 @@
                                 <li><a href="/notice">공지사항</a>
                                 </li>
                                 <li><a href="/board">Q&A</a></li>
+                                <li><a>[[${session.user.user_id}]]님 환영합니다</a></li>
                                 <li>
                                     <div class="header-icons">
-                                        <a class="user" href="/login"><i class="fa-solid fa-user fa-lg"></i></a>
+                                        <a class="user" href="/myPage"><i class="fa-solid fa-user fa-lg"></i></a>
                                         <a class="mobile-hide search-bar-icon" href="/logout"><i
                                                 class="fa-solid fa-right-to-bracket fa-lg"></i></a>
                                     </div>
@@ -106,5 +106,6 @@
             </div>
         </div>
     </div>
+
 </header>
 </html>
