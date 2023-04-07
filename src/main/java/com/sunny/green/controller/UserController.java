@@ -86,9 +86,15 @@ public class UserController {
     //로그아웃 기능
     @GetMapping("/logout")
     public String logout(HttpSession httpSession, Model mo){
-        httpSession.setAttribute("user", null);
-        mo.addAttribute("alert", "로그아웃 하셨습니다");
-        mo.addAttribute("url", "/index");
+        if(httpSession.getAttribute("user") == null ){
+            mo.addAttribute("alert", "로그인 먼저 해주시기 바랍니다");
+            mo.addAttribute("url", "/login");
+        }
+        else{
+            httpSession.setAttribute("user", null);
+            mo.addAttribute("alert", "로그아웃 하셨습니다");
+            mo.addAttribute("url", "/index");
+        }
         return "/alert";
     }
 

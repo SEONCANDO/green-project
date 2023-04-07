@@ -18,12 +18,16 @@
     margin-bottom: 30px;
     font-size: 40px;
     font-weight: bold;
+
+}
+
+.boardPage{
+    margin: 150px 300px 50px 300px;
 }
 
 .search-form {
     width: 50%;
-    margin: 0 auto;
-    margin-top: 1rem;
+    margin: 1rem auto 0;
 }
 
 .search-form input {
@@ -33,7 +37,6 @@
     display: block;
     width: 100%;
     padding: 1rem;
-    height: 100%;
     font-size: 1rem;
 }
 
