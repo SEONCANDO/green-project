@@ -7,15 +7,15 @@
 }
 
 
-* {
-    text-size-adjust: none;
-    word-wrap: break-word;
-    word-break: break-all;
-    font-family: 'NanumGothic', sans-serif;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    list-style: none;
-}
+/** {*/
+/*    text-size-adjust: none;*/
+/*    word-wrap: break-word;*/
+/*    word-break: break-all;*/
+/*    font-family: 'NanumGothic', sans-serif;*/
+/*    white-space: nowrap;*/
+/*    text-overflow: ellipsis;*/
+/*    list-style: none;*/
+/*}*/
 
 section {
     display: block;
