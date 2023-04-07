@@ -20,4 +20,9 @@ public class PickUpController {
     public String pickupPage3() {
         return "pickup/pickUp3";
     }
+
+    @GetMapping("/reservationBd")
+    public String reservationBd() {
+        return "/myPage/reservationBd";
+    }
 }

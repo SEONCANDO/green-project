@@ -16,4 +16,14 @@ public class BoardController {
         return "bbs/post";
     }
 
+
+    @GetMapping("/myWrite")
+    public String myWrite(){
+        return "/myPage/myWrite";
+    }
+
+    @GetMapping("/myComment")
+    public String myComment(){
+        return "/myPage/myComment";
+    }
 }
