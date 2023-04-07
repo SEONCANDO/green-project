@@ -1,3 +1,5 @@
+const checked = document.querySelector(".img_checked");
+
 
 // 카테고리 버튼 이벤트
 $(document).ready(function(){
