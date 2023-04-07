@@ -98,10 +98,12 @@
 /* step 하단 text */
 .text_step {
     margin-top: 10px;
-    font-size: 16px;
+
+    padding-right: 7px;
+    font-size: 17px;
     text-align: center;
     font-weight: bold;
-    width: 100px;
+    width: 115px;
 }
 
 /* *****pickup page***** */
