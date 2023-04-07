@@ -165,7 +165,7 @@ h6, .h6 {
 }
 
 p {
-    font-family: "Open Sans", sans-serif;
+    font-family: "NanumBarunGothic", sans-serif;
     font-weight: 400;
     font-size: 1rem;
     letter-spacing: 0.1px;
@@ -550,6 +550,7 @@ ul.navbar-nav li.nav-item a.nav-link, ul.navbar-nav li.nav-item.active a.nav-lin
     z-index: 999;
     width: 100%;
     padding: 25px 0;
+    background-color: darkgreen;
 }
 
 .top-header-area.white ul.navbar-nav li.nav-item a.nav-link, .top-header-area.white ul.navbar-nav li.nav-item.active a.nav-link {
@@ -1294,6 +1295,7 @@ a.mobile-show.search-bar-icon:hover {
 .hero-text p.subtitle {
     color: #f9b146;
     font-weight: 700;
+    font-family: NanumBarunGothic, serif;
     letter-spacing: 4px;
     font-size: 24px;
 }
@@ -1469,7 +1471,7 @@ div.owl-controls, .owl-controls div {
 }
 
 .product-image img {
-    width: 90%;
+    width: 50%;
     border-radius: 5px;
     margin-bottom: 20px;
 }
@@ -1481,21 +1483,14 @@ div.owl-controls, .owl-controls div {
 }
 
 p.product-price {
-    font-family: 'Poppins', sans-serif;
-    font-size: 30px;
-    font-weight: 700;
+    font-family: 'NanumBarunGothic', sans-serif;
+    font-size: 15px;
+    font-weight: 400;
     margin-bottom: 15px;
 }
 
-p.product-price span {
-    display: block;
-    opacity: 0.8;
-    font-size: 15px;
-    font-weight: 400;
-}
-
 a.cart-btn {
-    font-family: 'Poppins', sans-serif;
+    font-family: 'NanumBarunGothic', sans-serif;
     display: inline-block;
     background-color: #F28123;
     color: #fff;
@@ -1735,7 +1730,6 @@ p.testimonial-body {
 ---------------------------------------------------*/
 .service {
     background-color: #f8f8f8;
-    padding: 80px 0 80px;
 }
 
 .service h3 {
