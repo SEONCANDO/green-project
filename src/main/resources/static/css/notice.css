@@ -1,12 +1,29 @@
+@font-face {
+    font-family: 'GmarketSansMedium';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.notice-page{
+    font-family: 'GmarketSansMedium';
+    margin-left: 300px;
+    margin-right: 300px;
+}
+
 .notice{
     color: black;
     margin-top: 110px;
     margin-left: 20px;
     margin-bottom: 30px;
+
+    font-size: 40px;
+    font-weight: bold;
 }
 
 .noticePage{
     margin: 150px 300px 50px 300px;
+
 }
 
 .search-form {
@@ -78,10 +95,48 @@
     border-radius: 8px;
 }
 
-.footer {
-    width: 100%;
-    height: 300px; /* footer의 높이 */
+/*퀵메뉴*/
+#test_obj {
     position: absolute;
-    bottom: 0;
-    left: 0;
+    width: 95px;
+    height: 350px;
+    right: 50px;
+    border-radius: 15px;
+    top: 250px;
+    border: 3px solid #89db2f;
 }
+#test_obj div:nth-child(1){
+    border:2px solid #89db2f;
+    border-radius: 8px;
+    height: 20%;
+    width: 100%;
+
+}
+#test_obj div:nth-child(2){
+    border:2px solid #89db2f;
+    border-radius: 8px;
+    height: 20%;
+    width: 100%;
+}
+#test_obj div:nth-child(3){
+    border:2px solid #89db2f;
+    border-radius: 8px;
+    height: 20%;
+    width: 100%;
+}
+#test_obj div:nth-child(4){
+    border:2px solid #89db2f;
+    border-radius: 8px;
+    height: 20%;
+    width: 100%;
+}
+#test_obj div:nth-child(5){
+    border:2px solid #89db2f;
+    border-radius: 8px;
+    height: 20%;
+    width: 100%;
+}
+
+
+
+
