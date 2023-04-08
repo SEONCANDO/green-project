@@ -48,7 +48,7 @@ body {
 }
 
 body img {
-    max-width: 115%;
+    max-width: 100%;
     margin-top: 5px;
 }
 
@@ -165,7 +165,6 @@ h6, .h6 {
 }
 
 p {
-    font-family: "NanumBarunGothic", sans-serif;
     font-weight: 400;
     font-size: 1rem;
     letter-spacing: 0.1px;
@@ -649,7 +648,7 @@ ul.sub-menu li:last-child {
 }
 
 .mean-bar a.meanmenu-reveal {
-    background-color: #F28123;
+    background-color: rgba(26, 121, 64, 0.8);
 }
 
 .main-menu-wrap {

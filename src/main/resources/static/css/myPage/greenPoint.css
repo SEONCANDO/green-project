@@ -35,3 +35,38 @@
     width: 95%;
 
 }
+
+.table1 {
+    width: 100%;
+    border: 1px solid #e6e6e6;
+
+    margin-top: 10px;
+    table-layout: fixed;
+}
+
+.table1 > thead {
+    border-bottom: 1px solid black;
+    background: #f0eee7;
+}
+
+.table1 > tbody {
+    border-bottom: 1px solid #e6e6e6;
+}
+
+.table1 > tbody > tr > td {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+#print {
+    width: 85px;
+    height: 30px;
+    background-size: 30px 26px;
+    background-image: url(../../img/myPage/printer.png);
+    border: 1px solid #e6e6e6;
+    text-align: right;
+    background-position: left;
+    background-repeat: no-repeat;
+
+}
