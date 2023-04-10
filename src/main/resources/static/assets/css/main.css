@@ -471,9 +471,9 @@ a.boxed-btn, a.bordered-btn, a.cart-btn {
 .section-title h3:after {
     position: absolute;
     content: '';
-    left: 0px;
-    right: 0px;
-    bottom: 0px;
+    left: 0;
+    right: 0;
+    bottom: 0;
     width: 100px;
     height: 2px;
     background-color: #F28123;
@@ -760,7 +760,7 @@ ul.navbar-nav {
 
 span.close-btn {
     position: absolute;
-    right: 0%;
+    right: 0;
     color: #fff;
     top: 5%;
     cursor: pointer;
@@ -1130,7 +1130,7 @@ a.cart-btn {
 }
 
 a.cart-btn:hover {
-    background-color: #051922;
+    background-color: lightyellow;
     color: #F28123;
 }
 
@@ -1384,7 +1384,7 @@ div.owl-controls, .owl-controls div {
 }
 
 .list-box .content p {
-    margin-bottom: 0px;
+    margin-bottom: 0;
     opacity: 0.75;
 }
 
@@ -1459,15 +1459,16 @@ div.owl-controls, .owl-controls div {
     margin-bottom: 10px;
 }
 
-p.product-price {
+/*p.product-price {
     font-family: 'NanumBarunGothic', sans-serif;
     font-size: 15px;
     font-weight: 400;
     margin-bottom: 15px;
-}
+}*/
 
 a.cart-btn {
-    font-family: 'NanumBarunGothic', sans-serif;
+    font-family: 'GmarketSansMedium', sans-serif;
+    font-size: 17px;
     display: inline-block;
     background-color: #F28123;
     color: #fff;
@@ -1629,14 +1630,14 @@ p.testimonial-body {
     position: relative;
     background-color: #f5f5f5;
     background-size: cover;
-    padding: 110px 0px 115px;
+    padding: 110px 0 115px;
 }
 
 .shop-banner h3 {
     position: relative;
     font-size: 50px;
     line-height: 1.2em;
-    margin-bottom: 0px;
+    margin-bottom: 0;
 }
 
 .shop-banner .sale-percent {
@@ -1716,8 +1717,9 @@ p.testimonial-body {
 }
 
 .service h4 {
+    font-family: NanumBarunGothic, serif;
     font-size: 18px;
-    font-weight: 600;
+    font-weight: 700;
     color: darkslategrey;
     padding-top: 20px;
 }
@@ -1739,7 +1741,7 @@ p.testimonial-body {
 }
 
 .bg-light {
-    width: 1200px;
+    width: 1100px;
     background-color: #E8F5E9 !important;
     box-shadow: 0 7px 24px 0 rgba(0, 0, 0, 0.1);
 }
