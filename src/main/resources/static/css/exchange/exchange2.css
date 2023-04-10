@@ -7,8 +7,32 @@
     font-style: normal;
 }
 
-#products {
+.products {
     font-size: 30px;
     font-weight: 700;
     letter-spacing: -2px;
+}
+
+#button1 {
+    background: #ed2024;
+    width: 160px;
+    height: 45px;
+    border: none;
+    color: white;
+    font-weight: 600;
+    border-radius: 7px;
+    font-size: 15px;
+    font-family: "NanumBarunGothic", sans-serif;
+}
+
+#button2 {
+    margin-left: 2%;
+    background: #e6e6e6;
+    border: 1px solid #888;
+    width: 160px;
+    height: 45px;
+    font-weight: 600;
+    border-radius: 7px;
+    font-size: 15px;
+    font-family: "NanumBarunGothic", sans-serif;
 }
