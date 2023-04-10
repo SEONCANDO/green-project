@@ -16,8 +16,5 @@ public class MyController {
     public String index1(){
         return "/index";}
 
-    @GetMapping("/breakDown")
-    public String exchange(){
-        return "/myPage/breakDown";
-    }
+
 }

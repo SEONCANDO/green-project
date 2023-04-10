@@ -82,6 +82,10 @@ public class UserController {
         return "/index";
     }
 
+    @GetMapping("/breakDown")
+    public String exchange(){
+        return "/myPage/breakDown";
+    }
 
     //로그아웃 기능
     @GetMapping("/logout")
