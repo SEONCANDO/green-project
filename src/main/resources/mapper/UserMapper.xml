@@ -20,5 +20,16 @@
     <select id="selectAll" resultType="com.sunny.green.vo.UserVo">
         SELECT * FROM user;
     </select>
+
+    <!--보영-->
+    <update id="updateUser" parameterType="com.sunny.green.vo.UserVo">
+        UPDATE user SET user_id = #{user_id},user_pass=#{user_pass},
+                        user_name=#{user_name},user_email=#{user_email},
+                        user_tel=#{user_tel},zip_code=#{zip_code},
+                        address1=#{address1},address2=#{address2},
+                        address3=#{address3},address4=#{address4},
+                        user_point=#{user_point}
+        WHERE user_id = #{user_id}
+    </update>
 </mapper>
 
