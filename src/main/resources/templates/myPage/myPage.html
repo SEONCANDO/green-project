@@ -7,11 +7,12 @@
     <meta charset="UTF-8">
     <title> 로그인 </title>
     <link rel="stylesheet" type="text/css" href="/css/myPage.css">
+    <script src="/js/admin_bbs1.js"></script>
 </head>
 <body>
 <div layout:fragment="content">
 
-    <div class="container" id="box1" style="margin-top: 120px; font-family: 'GmarketSansMedium';">
+    <div class="container" id="box1" style="margin-top: 140px; margin-bottom:5%; font-family: 'GmarketSansMedium';">
         <div class="row" id="box2" style="height: 850px;">
 
             <!-- 시작 -->
@@ -89,19 +90,19 @@
                             <div class="row">
                                 <div class="col-md-3">
                                     <img src="/img/myPage/reserve.png" style="width: 27%;">
-                                    <p>1.예약완료</p>
+                                    <p style=" font-family: 'GmarketSansMedium';">1.예약완료</p>
                                 </div>
                                 <div class="col-md-3">
                                     <img src="/img/myPage/approved.png" style="width: 27%;">
-                                    <p>2.승인</p>
+                                    <p style=" font-family: 'GmarketSansMedium';">2.승인</p>
                                 </div>
                                 <div class="col-md-3">
                                     <img src="/img/myPage/pickup-car.png" style="width: 27%;">
-                                    <p>3.수거과정</p>
+                                    <p style=" font-family: 'GmarketSansMedium';">3.수거과정</p>
                                 </div>
                                 <div class="col-md-3">
                                     <img src="/img/myPage/finish.png" style="width: 27%;">
-                                    <p>4.수거완료</p>
+                                    <p style=" font-family: 'GmarketSansMedium';">4.수거완료</p>
                                 </div>
                             </div>
                         </div>
@@ -114,7 +115,7 @@
                                     <thead>
                                     <tr>
                                         <th style="width:10%;">
-                                            <input type="checkbox">
+                                            <input type="checkbox" class="checkbox_all">
                                         </th>
                                         <th style="width:10%;">예약번호</th>
                                         <th>날짜</th>
@@ -126,7 +127,7 @@
                                     <tbody>
                                     <tr>
                                         <td>
-                                            <input type="checkbox">
+                                            <input type="checkbox" class="checkbox_item">
                                         </td>
                                         <td>2</td>
                                         <td>2023-04-01</td>
@@ -164,9 +165,9 @@
                                     </p>
                                 </div>
                                 <div class="col-md-3" style="margin-top: 3%;">
-                                    <img src="/img/myPage/chat.png" style="width:30%">
-                                    <p><a href="#"
-                                          style="color: black; letter-spacing: -2px; font-size: 14px; font-weight: 700;">채팅내역</a>
+                                    <img src="/img/myPage/reserve1.png" style="width:30%">
+                                    <p><a href="/reservationBd"
+                                          style="color: black; letter-spacing: -2px; font-size: 14px; font-weight: 700;">예약내역</a>
                                     </p>
                                 </div>
                             </div>
@@ -182,7 +183,7 @@
                                 <div class="col po1" style="border: 1px solid #e6e6e6; height: 300px;">
                                     <div class="pol2" style="height: 7%; margin-top: 10px; color: black;">
                                         <span style="margin-left: 10px;">내가 쓴 글</span>
-                                        <span><a href="#"
+                                        <span><a href="/myWrite"
                                                  style="float: right; margin-right: 10px; font-size: 13px; color: black; padding-top: 6px;">더보기</a></span>
                                     </div>
                                     <div style="font-size: 13px;">
@@ -210,7 +211,7 @@
                                      style="margin-left: 15px; border: 1px solid #e6e6e6; height: 300px;">
                                     <div class="pol2" style="height: 7%; margin-top: 10px; color: black;">
                                         <span style="margin-left: 10px;">내가 쓴 댓글</span>
-                                        <span><a href="#"
+                                        <span><a href="/myComment"
                                                  style="float: right; margin-right: 10px; font-size: 13px; color: black; padding-top: 6px;">더보기</a></span>
                                     </div>
                                     <div style="font-size: 13px;">

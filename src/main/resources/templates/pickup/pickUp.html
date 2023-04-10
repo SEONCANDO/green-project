@@ -26,7 +26,7 @@
       <!--   페이지별 단계   -->
       <div class="container" style="margin-top: 55px;">
         <div class="row box_step">
-          <div class="col-3" style="margin-right: 55px;"></div>
+          <div class="col-3" style="margin-right: 2%;"></div>
           <div class="col-2">
             <div class="circle_currentStep" id="line_stepConnect"><i class="fa-regular fa-pen-to-square"></i></div>
             <div class="text_step">1단계<br>기본정보 입력</div>
@@ -55,7 +55,7 @@
         <!--   개인정보 동의 약관 내용  -->
         <div class="container">
           <div id="text_permission">
-            <div>
+            <div style="width: 92%; margin-left: 3%;">
               개인정보 수집 이용 등에 대한 사전 동의 개인정보보호를 위한 이용자 동의사항(자세한 내용은 “개인정보취급방침”을 확인하시기 바랍니다.)<br><br>
               <div class="titleNum_permission">가. 개인정보의 수집·이용 목적</div>
               ① 홈페이지 회원 가입 및 관리 회원 가입의사 확인<br>
@@ -97,18 +97,20 @@
         <div class="container">
           <!--   개인정보 입력 title -->
           <div id="box_contentTitle">
-            <div id="text_contentTitle">고객정보 입력</div>
+            <div style="margin-left: 2%">
+              <div id="text_contentTitle">고객정보 입력</div>
+            </div>
             <form id="box_radio">
               <input type="radio" name="pickup_info" value="기존 고객정보" checked="checked" style="margin-right: 10px;" /> 기존 고객정보
               <input type="radio" name="pickup_info" value="새로운 정보 입력" style="margin-right: 10px; margin-left: 20px;" /> 새로운 정보 입력
             </form>
           </div>
           <!--   개인정보 입력 본문  -->
-          <div class="row" style="color: black;">
+          <div class="row" style="color: black; width: 92%; margin-left: 5%;">
             <table>
               <!--   접수자명  -->
               <tr>
-                <td class="col-2" style="border: 1px solid #c1baba; text-align: center; font-size: 20px; padding: 30px;">
+                <td class="col-2" style="border: 1px solid #c1baba; text-align: center; font-size: 20px; padding: 28px;">
                   <span class="text_contentHeader">접수자명</span>
                   <span class="text_requiredInput">*</span>
                 </td>
@@ -118,7 +120,7 @@
               </tr>
               <!--   전화번호  -->
               <tr>
-                <td class="col-2" style="border: 1px solid #c1baba; text-align: center; font-size: 20px; padding: 30px;">
+                <td class="col-2" style="border: 1px solid #c1baba; text-align: center; font-size: 20px; padding: 28px;">
                   <span class="text_contentHeader">전화번호</span>
                   <span class="text_requiredInput">*</span>
                 </td>
@@ -128,11 +130,11 @@
               </tr>
               <!--   배출 주소  -->
               <tr>
-                <td class="col-2" style="border: 1px solid #c1baba; text-align: center; font-size: 20px; padding: 30px;">
+                <td class="col-2" style="border: 1px solid #c1baba; text-align: center; font-size: 20px;">
                   <span class="text_contentHeader">배출 주소</span>
                   <span class="text_requiredInput">*</span>
                 </td>
-                <td class="col-10" id="box_address" style="border: 1px solid #c1baba; padding: 30px;">
+                <td class="col-10 box_address" style="border: 1px solid #c1baba; padding: 30px;">
                   <input type="text" name="pickup_zip_code" id="sample4_postcode" placeholder="우편번호">
                   <input type="button" onclick="sample4_execDaumPostcode()" value="우편번호 찾기" style="width: 150px;"><br>
                   <input type="text" name="pickup_address1" id="sample4_roadAddress" placeholder="도로명주소">
@@ -168,8 +170,8 @@
               </tr>
               <!--   배출 희망일  -->
               <tr>
-                <td class="col-2" style="border: 1px solid #c1baba; text-align: center; font-size: 20px; padding: 30px;">
-                  <span class="text_contentHeader">배출 희망일</span>
+                <td class="col-2" style="border: 1px solid #c1baba; text-align: center; font-size: 20px; padding: 20px;">
+                  <span class="text_contentHeader">배출<br>희망일</span>
                   <span class="text_requiredInput">*</span>
                 </td>
                 <td class="col-10" style="border: 1px solid #c1baba; padding: 10px;">
@@ -182,7 +184,7 @@
               </tr>
               <!--   참고 사진  -->
               <tr>
-                <td class="col-2" style="border: 1px solid #c1baba; text-align: center; font-size: 20px; padding: 30px;">
+                <td class="col-2" style="border: 1px solid #c1baba; text-align: center; font-size: 20px;">
                   <div class="text_contentHeader">참고 사진</div>
                 </td>
                 <td class="col-10" style="border: 1px solid #c1baba; padding: 10px;">
@@ -196,11 +198,11 @@
               </tr>
               <!--   메모  -->
               <tr>
-                <td class="col-2" style="border: 1px solid #c1baba; text-align: center; font-size: 20px; padding: 30px;">
+                <td class="col-2" style="border: 1px solid #c1baba; text-align: center; font-size: 20px;">
                   <div class="text_contentHeader">메모</div>
                 </td>
-                <td class="col-10" style="border: 1px solid #c1baba; padding: 15px;">
-                  <div style="display:flex; margin-left: 20px;">
+                <td class="col-10" style="border: 1px solid #c1baba; padding: 30px;">
+                  <div style="display:flex;">
                       <textarea class="text_memo" name="pickup_memo"></textarea>
                   </div>
                 </td>
