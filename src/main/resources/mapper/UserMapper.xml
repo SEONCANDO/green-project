@@ -15,5 +15,10 @@
     <select id="selectUserId" resultType="com.sunny.green.vo.UserVo">
         select user_id from user where user_id = #{user_id}
     </select>
+
+    <!--보영-->
+    <select id="selectAll" resultType="com.sunny.green.vo.UserVo">
+        SELECT * FROM user;
+    </select>
 </mapper>
 

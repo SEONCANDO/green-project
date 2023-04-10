@@ -6,7 +6,9 @@
     font-weight: normal;
     font-style: normal;
 }
-
+#greenBox {
+    box-shadow: 20px 16px 19px 0px rgba(0,0,0,0.72);
+}
 
 .ticket {
     width: 100%;
@@ -16,13 +18,11 @@
 .ticketHead{
     background-color : #2a6a47;
     height: 50px;
-    border-radius: 15px 15px 0px 0px;
 }
 
 .ticketContent{
     background-color : #d5d6da;
     height: 150px;
-    border-radius: 0px 0px 15px 15px;
 }
 
 #boarding {
@@ -76,6 +76,6 @@
 }
 
 tbody tr td {
-    padding: 0 0 15px 25px;
+    padding: 0 0 5px 20px;
     vertical-align: middle;
 }

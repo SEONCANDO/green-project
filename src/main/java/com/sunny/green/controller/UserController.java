@@ -131,4 +131,5 @@ public class UserController {
     public String green() {
         return "/myPage/greenPoint";
     }
+    
 }
