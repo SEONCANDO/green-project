@@ -13,6 +13,6 @@ public class MemberController {
 
     @GetMapping("/member")
     public String member(){
-        return "member/member";
+        return "memberdetail";
     }
 }
