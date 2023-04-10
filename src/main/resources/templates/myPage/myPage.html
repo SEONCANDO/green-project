@@ -7,11 +7,12 @@
     <meta charset="UTF-8">
     <title> 로그인 </title>
     <link rel="stylesheet" type="text/css" href="/css/myPage.css">
+    <script src="/js/admin_bbs1.js"></script>
 </head>
 <body>
 <div layout:fragment="content">
 
-    <div class="container" id="box1" style="margin-top: 120px; font-family: 'GmarketSansMedium';">
+    <div class="container" id="box1" style="margin-top: 140px; margin-bottom:5%; font-family: 'GmarketSansMedium';">
         <div class="row" id="box2" style="height: 850px;">
 
             <!-- 시작 -->
@@ -21,7 +22,7 @@
                 </div>
                 <div style="font-size: 25px; letter-spacing: -2px; margin-top: 10px;">
                     <span style="color: black; font-weight: 700;">[변경]test1</span>님
-                    <a href="#"><img src="/img/right-arrow.png" style="width: 15px;"></a>
+                    <a href="/modify"><img src="/img/right-arrow.png" style="width: 15px;"></a>
                 </div>
                 <div>
                     <div class="container-fluid" style="margin-bottom: 15px;">
@@ -39,11 +40,11 @@
                             </div>
                             <div>
                                 <img src="/img/myPage/mail.png" style="width: 10%;">
-                                <span> g@c.com</span>
+                                <span> **@*.com</span>
                             </div>
                             <div>
                                 <img src="/img/myPage/phone-call.png" style="width: 10%" ;>
-                                <span> 01012345678</span>
+                                <span> 0101234****</span>
                             </div>
                         </div>
                     </div>
@@ -52,14 +53,17 @@
                 <div id="greenPoint">
                     <div style="margin-bottom: 10px;">
                         <img src="/img/greenPoint.png" style="width: 30px; margin-left: 15px;">
-                        <span style="margin-left: 15px; color: black;">그린포인트</span>
-                        <span style="text-align: center; color: #2a722d; font-weight: 700;">150,500</span>
-                        <a href="#"><img src="/img/right-arrow.png" style="width: 15px;"></a>
+                        <span style="margin-left: 5px; color: black;">그린포인트</span>
+                        <span style="text-align: center; color: #2a722d; font-weight: 700;">150,500p</span>
+                        <a href="/greenPoint"><img src="/img/right-arrow.png" style="width: 15px;"></a>
                     </div>
                 </div>
 
                 <div>
                     <img src="/img/myPage/배너1.png" style="width: 95%;">
+                </div>
+                <div>
+                    <img src="/img/myPage/배너2.png" style="width: 95%; margin-top: 15px;">
                 </div>
                 <div style="margin-top: 30px;">
                     <button style="width: 175px; border-radius: 5px; background: white;">
@@ -67,7 +71,7 @@
                             로그아웃</a></button>
                 </div>
                 <div style="margin-top: 30px; text-align: end;">
-                    <a href="#" style="color: black;">회원탈퇴 하기</a>
+                    <a href="#" style="color: black; font-size: 13px; letter-spacing: -1px;">회원탈퇴 하기</a>
                 </div>
             </div>
 
@@ -80,6 +84,61 @@
                 </div>
                 <div>
                     <div id="reservation">
+                        <!--네개의 과정-->
+                        <div class="container-fluid"
+                             style="height: 30%; border-bottom: 1px solid #e6e6e6; background: linear-gradient(to right, #05c75d, #40c7cc);">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <img src="/img/myPage/reserve.png" style="width: 27%;">
+                                    <p style=" font-family: 'GmarketSansMedium';">1.예약완료</p>
+                                </div>
+                                <div class="col-md-3">
+                                    <img src="/img/myPage/approved.png" style="width: 27%;">
+                                    <p style=" font-family: 'GmarketSansMedium';">2.승인</p>
+                                </div>
+                                <div class="col-md-3">
+                                    <img src="/img/myPage/pickup-car.png" style="width: 27%;">
+                                    <p style=" font-family: 'GmarketSansMedium';">3.수거과정</p>
+                                </div>
+                                <div class="col-md-3">
+                                    <img src="/img/myPage/finish.png" style="width: 27%;">
+                                    <p style=" font-family: 'GmarketSansMedium';">4.수거완료</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- 예약 내용-->
+                        <div style="height: 70%;">
+                            <div class="container">
+                                <span style="float: right; margin-right: 15px; margin-top: 5px;"><a href="#"
+                                                                                                    style="color: black; font-size: 14px;">더보기</a></span>
+                                <table id="table2">
+                                    <thead>
+                                    <tr>
+                                        <th style="width:10%;">
+                                            <input type="checkbox" class="checkbox_all">
+                                        </th>
+                                        <th style="width:10%;">예약번호</th>
+                                        <th>날짜</th>
+                                        <th>종류</th>
+                                        <th>포인트</th>
+                                        <th style="width: 20%;">예약상황</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td>
+                                            <input type="checkbox" class="checkbox_item">
+                                        </td>
+                                        <td>2</td>
+                                        <td>2023-04-01</td>
+                                        <td>가전</td>
+                                        <td>1300p</td>
+                                        <td>수거완료</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
                     </div>
 
 
@@ -88,21 +147,28 @@
                              style="border: 2px solid #e6e6e6; width: 97%; height: 120px; margin-left: 15px; margin-top: 15px;">
                             <div class="row">
                                 <div class="col-md-3" style="margin-top: 3%;">
-                                    <img src="/img/myPage/profile.png" alt="" style="width:30%;">
-                                    <p><a href="#"
+                                    <img src="/img/myPage/user1.png" alt="" style="width:30%;">
+                                    <p><a href="/modify"
                                           style="color: black; letter-spacing: -2px; font-size: 14px; font-weight: 700;">개인정보
                                         수정</a></p>
                                 </div>
                                 <div class="col-md-3" style="margin-top: 3%;">
                                     <img src="/img/greenPoint.png" style="width:30%">
-                                    <p><a href="#"
-                                          style="color: black; letter-spacing: -2px; font-size: 14px; font-weight: 700;">그린포인트</a></p>
+                                    <p><a href="/greenPoint"
+                                          style="color: black; letter-spacing: -2px; font-size: 14px; font-weight: 700;">그린포인트</a>
+                                    </p>
                                 </div>
                                 <div class="col-md-3" style="margin-top: 3%;">
-
+                                    <img src="/img/myPage/exchange.png" style="width:30%">
+                                    <p><a href="/breakDown"
+                                          style="color: black; letter-spacing: -2px; font-size: 14px; font-weight: 700;">교환</a>
+                                    </p>
                                 </div>
                                 <div class="col-md-3" style="margin-top: 3%;">
-
+                                    <img src="/img/myPage/reserve1.png" style="width:30%">
+                                    <p><a href="/reservationBd"
+                                          style="color: black; letter-spacing: -2px; font-size: 14px; font-weight: 700;">예약내역</a>
+                                    </p>
                                 </div>
                             </div>
                         </div>
@@ -114,11 +180,60 @@
                             나의 활동</p>
                         <div class="container">
                             <div class="row">
-                                <div class="col" style="border: 1px solid #e6e6e6; height: 300px;">
-                                    <p>내가 쓴 글</p>
+                                <div class="col po1" style="border: 1px solid #e6e6e6; height: 300px;">
+                                    <div class="pol2" style="height: 7%; margin-top: 10px; color: black;">
+                                        <span style="margin-left: 10px;">내가 쓴 글</span>
+                                        <span><a href="/myWrite"
+                                                 style="float: right; margin-right: 10px; font-size: 13px; color: black; padding-top: 6px;">더보기</a></span>
+                                    </div>
+                                    <div style="font-size: 13px;">
+                                        <table class="table1">
+                                            <thead>
+                                            <tr>
+                                                <th style="width: 10%;">번호</th>
+                                                <th>제목</th>
+                                                <th style="width: 20%;">작성자</th>
+                                                <th style="width: 20%;">작성일</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            <tr>
+                                                <td>1</td>
+                                                <td>파이팅55555555555555555555555555555555555555555555555555</td>
+                                                <td>test1</td>
+                                                <td>04-05</td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
                                 </div>
-                                <dic class="col" style="margin-left: 15px; border: 1px solid #e6e6e6; height: 300px;">
-                                    <p>내가 쓴 댓글</p>
+                                <dic class="col po1"
+                                     style="margin-left: 15px; border: 1px solid #e6e6e6; height: 300px;">
+                                    <div class="pol2" style="height: 7%; margin-top: 10px; color: black;">
+                                        <span style="margin-left: 10px;">내가 쓴 댓글</span>
+                                        <span><a href="/myComment"
+                                                 style="float: right; margin-right: 10px; font-size: 13px; color: black; padding-top: 6px;">더보기</a></span>
+                                    </div>
+                                    <div style="font-size: 13px;">
+                                        <table class="table1">
+                                            <thead>
+                                            <tr>
+                                                <th style="width: 10%;">번호</th>
+                                                <th>댓글</th>
+                                                <th style="width: 20%;">작성자</th>
+                                                <th style="width: 20%;">작성일</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            <tr>
+                                                <td>1</td>
+                                                <td>헉5555555555555555555555555555555555555555</td>
+                                                <td>test1</td>
+                                                <td>04-05</td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
                                 </dic>
                             </div>
                         </div>
