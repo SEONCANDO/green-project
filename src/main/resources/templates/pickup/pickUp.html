@@ -13,7 +13,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
 <body>
-  <div class="container-fluid">
+  <div class="container-fluid" style="padding: 0;">
     <!--    전체 컨테이너   -->
     <div class="container_content_all">
       <!--   상단 배너 이미지   -->
@@ -29,15 +29,15 @@
           <div class="col-3" style="margin-right: 2%;"></div>
           <div class="col-2">
             <div class="circle_currentStep" id="line_stepConnect"><i class="fa-regular fa-pen-to-square"></i></div>
-            <div class="text_step">1단계<br>기본정보 입력</div>
+            <div class="text_step">1단계<br><div style="font-family: NanumBarunGothic, serif;">기본정보 입력</div></div>
           </div>
           <div class="col-2">
             <div class="circle_nextStep" id="line_stepConnect2"><i class="fa-solid fa-recycle"></i></div>
-            <div class="text_step">2단계<br>배출품목 입력</div>
+            <div class="text_step">2단계<br><div style="font-family: NanumBarunGothic, serif;">배출품목 입력</div></div>
           </div>
           <div class="col-2">
             <div class="circle_nextStep"><i class="fa-solid fa-check"></i></div>
-            <div class="text_step">3단계<br>예약 완료</div>
+            <div class="text_step">3단계<br><div style="font-family: NanumBarunGothic, serif;">예약 완료</div></div>
           </div>
           <div class="col-3"></div>
         </div>
@@ -55,7 +55,7 @@
         <!--   개인정보 동의 약관 내용  -->
         <div class="container">
           <div id="text_permission">
-            <div style="width: 92%; margin-left: 3%;">
+            <div style="width: 92%; margin-left: 3%; font-family: NanumBarunGothic, serif;">
               개인정보 수집 이용 등에 대한 사전 동의 개인정보보호를 위한 이용자 동의사항(자세한 내용은 “개인정보취급방침”을 확인하시기 바랍니다.)<br><br>
               <div class="titleNum_permission">가. 개인정보의 수집·이용 목적</div>
               ① 홈페이지 회원 가입 및 관리 회원 가입의사 확인<br>
@@ -114,7 +114,7 @@
                   <span class="text_contentHeader">접수자명</span>
                   <span class="text_requiredInput">*</span>
                 </td>
-                <td class="col-10" style="border: 1px solid #c1baba; padding: 10px;">
+                <td class="col-10" style="border: 1px solid #c1baba; padding: 10px; font-family: NanumBarunGothic, serif;">
                   <input type="text" name="pickup_name" placeholder="이름 입력" style="width: 300px; height: 40px; margin-left: 20px;">
                 </td>
               </tr>
@@ -124,7 +124,7 @@
                   <span class="text_contentHeader">전화번호</span>
                   <span class="text_requiredInput">*</span>
                 </td>
-                <td class="col-10" style="border: 1px solid #c1baba; padding: 10px;">
+                <td class="col-10" style="border: 1px solid #c1baba; padding: 10px; font-family: NanumBarunGothic, serif;">
                   <input type="text" name="pickup_phone" placeholder="전화번호 입력(010-0000-0000)" style="width: 300px; height: 40px; margin-left: 20px;">
                 </td>
               </tr>
@@ -134,7 +134,7 @@
                   <span class="text_contentHeader">배출 주소</span>
                   <span class="text_requiredInput">*</span>
                 </td>
-                <td class="col-10 box_address" style="border: 1px solid #c1baba; padding: 30px;">
+                <td class="col-10 box_address" style="border: 1px solid #c1baba; padding: 30px; font-family: NanumBarunGothic, serif;">
                   <input type="text" name="pickup_zip_code" id="sample4_postcode" placeholder="우편번호">
                   <input type="button" onclick="sample4_execDaumPostcode()" value="우편번호 찾기" style="width: 150px;"><br>
                   <input type="text" name="pickup_address1" id="sample4_roadAddress" placeholder="도로명주소">
@@ -149,7 +149,7 @@
                 <td class="col-2" style="border: 1px solid #c1baba; text-align: center; font-size: 20px; padding: 30px;">
                   <div class="text_contentHeader">주거 구분</div>
                 </td>
-                <td class="col-10" style="border: 1px solid #c1baba; padding: 10px;">
+                <td class="col-10" style="border: 1px solid #c1baba; padding: 10px; font-family: NanumBarunGothic, serif;">
                   <div style="display:flex; margin-left: 20px;">
                     <div>주거형태</div>
                     <select name="pickup_house" title="주거형태 선택" style="margin-left: 10px; margin-right: 20px;">
@@ -174,7 +174,7 @@
                   <span class="text_contentHeader">배출<br>희망일</span>
                   <span class="text_requiredInput">*</span>
                 </td>
-                <td class="col-10" style="border: 1px solid #c1baba; padding: 10px;">
+                <td class="col-10" style="border: 1px solid #c1baba; padding: 10px; font-family: NanumBarunGothic, serif;">
                   <div style="display:flex; margin-left: 20px;">
                     <span style="font-size: 20px;">지정일: <input type="text" id="DatePicker"></span>
                     <span id="text_insertDayOfWeek">(-)</span>
@@ -187,7 +187,7 @@
                 <td class="col-2" style="border: 1px solid #c1baba; text-align: center; font-size: 20px;">
                   <div class="text_contentHeader">참고 사진</div>
                 </td>
-                <td class="col-10" style="border: 1px solid #c1baba; padding: 10px;">
+                <td class="col-10" style="border: 1px solid #c1baba; padding: 10px; font-family: NanumBarunGothic, serif;">
                   <div style="display:flex; margin-left: 20px;">
                     <input name="pickup_photo" type="file" id="img_pickup_upload" accept="image/*" required multiple />
                   </div>
@@ -201,7 +201,7 @@
                 <td class="col-2" style="border: 1px solid #c1baba; text-align: center; font-size: 20px;">
                   <div class="text_contentHeader">메모</div>
                 </td>
-                <td class="col-10" style="border: 1px solid #c1baba; padding: 30px;">
+                <td class="col-10" style="border: 1px solid #c1baba; padding: 30px; font-family: NanumBarunGothic, serif;">
                   <div style="display:flex;">
                       <textarea class="text_memo" name="pickup_memo"></textarea>
                   </div>

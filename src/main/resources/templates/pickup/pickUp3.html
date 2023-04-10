@@ -11,7 +11,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css" integrity="sha512-10/jx2EXwxxWqCLX/hHth/vu2KY3jCF70dCQB8TSgNjbCVAC/8vai53GfMDrO2Emgwccf2pJqxct9ehpzG+MTw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 <body>
-  <div class="container-fluid">
+  <div class="container-fluid" style="padding: 0;">
     <!--    전체 컨테이너   -->
     <div class="container_content_all">
       <!--   상단 배너 이미지   -->
@@ -27,15 +27,15 @@
           <div class="col-3" style="margin-right: 2%;"></div>
           <div class="col-2">
             <div class="circle_nextStep" id="line_stepConnect"><i class="fa-regular fa-pen-to-square"></i></div>
-            <div class="text_step">1단계<br>기본정보 입력</div>
+            <div class="text_step">1단계<br><div style="font-family: NanumBarunGothic, serif;">기본정보 입력</div></div>
           </div>
           <div class="col-2">
             <div class="circle_nextStep" id="line_stepConnect2"><i class="fa-solid fa-recycle"></i></div>
-            <div class="text_step">2단계<br>배출품목 입력</div>
+            <div class="text_step">2단계<br><div style="font-family: NanumBarunGothic, serif;">배출품목 입력</div></div>
           </div>
           <div class="col-2">
             <div class="circle_currentStep"><i class="fa-solid fa-check"></i></div>
-            <div class="text_step">3단계<br>예약 완료</div>
+            <div class="text_step">3단계<br><div style="font-family: NanumBarunGothic, serif;">예약 완료</div></div>
           </div>
           <div class="col-3"></div>
         </div>
@@ -63,13 +63,13 @@
                   </td>
                 </tr>
                 <tr style="height: 65px;">
-                  <td class="col-4" style="border-right: 2px solid #d5d2d2">
+                  <td class="col-4" style="border-right: 2px solid #d5d2d2; font-family: NanumBarunGothic, serif;">
                     <div class="text_mainCategory_preview">세탁기</div>
                   </td>
-                  <td class="col-4" style="border-right: 2px solid #d5d2d2">
+                  <td class="col-4" style="border-right: 2px solid #d5d2d2; font-family: NanumBarunGothic, serif;">
                     <div class="text_detailCategory_preview">일반 세탁기</div>
                   </td>
-                  <td class="col-4" style="border-right: 2px solid #d5d2d2; text-align: center; font-size: 25px; color: black;">
+                  <td class="col-4" style="border-right: 2px solid #d5d2d2; text-align: center; font-size: 25px; color: black; font-family: NanumBarunGothic, serif;">
                     <div>3</div>
                   </td>
                 </tr>
@@ -97,7 +97,7 @@
                     <span class="text_contentHeader">접수자명</span>
                     <span class="text_requiredInput">*</span>
                   </td>
-                  <td class="col-10" style="border: 1px solid #c1baba; padding: 10px;">
+                  <td class="col-10" style="border: 1px solid #c1baba; padding: 10px; font-family: NanumBarunGothic, serif;">
                     <input type="text" name="pickup_name" placeholder="그린 프로젝트" style="width: 300px; height: 40px; margin-left: 20px;" readonly>
                   </td>
                 </tr>
@@ -107,7 +107,7 @@
                     <span class="text_contentHeader">전화번호</span>
                     <span class="text_requiredInput">*</span>
                   </td>
-                  <td class="col-10" style="border: 1px solid #c1baba; padding: 10px;">
+                  <td class="col-10" style="border: 1px solid #c1baba; padding: 10px; font-family: NanumBarunGothic, serif;">
                     <input type="text" name="pickup_phone" placeholder="010-1234-5678" style="width: 300px; height: 40px; margin-left: 20px;" readonly>
                   </td>
                 </tr>
@@ -117,7 +117,7 @@
                     <span class="text_contentHeader">배출 주소</span>
                     <span class="text_requiredInput">*</span>
                   </td>
-                  <td class="col-10 box_address" style="border: 1px solid #c1baba; padding: 30px;">
+                  <td class="col-10 box_address" style="border: 1px solid #c1baba; padding: 30px; font-family: NanumBarunGothic, serif;">
                     <input type="text" name="pickup_zip_code" id="sample4_postcode" placeholder="345-678" readonly><br>
                     <input type="text" name="pickup_address1" id="sample4_roadAddress" placeholder="인천 도로명" readonly>
                     <input type="text" name="pickup_address2" id="sample4_jibunAddress" placeholder="인천 지번" readonly><br>
@@ -131,7 +131,7 @@
                   <td class="col-2" style="border: 1px solid #c1baba; text-align: center; font-size: 20px; padding: 30px;">
                     <div class="text_contentHeader">주거 구분</div>
                   </td>
-                  <td class="col-10" style="border: 1px solid #c1baba; padding: 10px;">
+                  <td class="col-10" style="border: 1px solid #c1baba; padding: 10px; font-family: NanumBarunGothic, serif;">
                     <div style="display:flex; margin-left: 20px;">
                       <div>주거형태</div>
                       <select name="pickup_house" title="주거형태 선택" style="margin-left: 10px; margin-right: 20px;">
@@ -150,7 +150,7 @@
                     <span class="text_contentHeader">배출<br>희망일</span>
                     <span class="text_requiredInput">*</span>
                   </td>
-                  <td class="col-10" style="border: 1px solid #c1baba; padding: 10px;">
+                  <td class="col-10" style="border: 1px solid #c1baba; padding: 10px; font-family: NanumBarunGothic, serif;">
                     <div style="display:flex; margin-left: 20px;">
                       <span style="font-size: 20px;">지정일: 2023-05-09</span>
                       <span id="text_insertDayOfWeek">화</span>
@@ -163,7 +163,7 @@
                   <td class="col-2" style="border: 1px solid #c1baba; text-align: center; font-size: 20px;">
                     <div class="text_contentHeader">참고 사진</div>
                   </td>
-                  <td class="col-10" style="border: 1px solid #c1baba; padding: 10px;">
+                  <td class="col-10" style="border: 1px solid #c1baba; padding: 10px; font-family: NanumBarunGothic, serif;">
                     <div>
                       <ul id="img_pickup_preview">
                         <img src="/img/pickup/computer.png" alt="예시">
@@ -176,7 +176,7 @@
                   <td class="col-2" style="border: 1px solid #c1baba; text-align: center; font-size: 20px;">
                     <div class="text_contentHeader">메모</div>
                   </td>
-                  <td class="col-10" style="border: 1px solid #c1baba; padding: 30px;">
+                  <td class="col-10" style="border: 1px solid #c1baba; padding: 30px; font-family: NanumBarunGothic, serif;">
                     <div style="display:flex;">
                       <textarea class="text_memo" name="pickup_memo" readonly>빨리 끝내버려 프로젝트</textarea>
                     </div>

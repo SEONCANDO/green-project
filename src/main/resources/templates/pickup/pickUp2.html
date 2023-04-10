@@ -11,7 +11,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css" integrity="sha512-10/jx2EXwxxWqCLX/hHth/vu2KY3jCF70dCQB8TSgNjbCVAC/8vai53GfMDrO2Emgwccf2pJqxct9ehpzG+MTw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 <body>
-  <div class="container-fluid">
+  <div class="container-fluid" style="padding: 0;">
     <!--    전체 컨테이너   -->
     <div class="container_content_all">
       <!--   상단 배너 이미지   -->
@@ -27,15 +27,15 @@
           <div class="col-3" style="margin-right: 2%;"></div>
           <div class="col-2">
             <div class="circle_nextStep" id="line_stepConnect"><i class="fa-regular fa-pen-to-square"></i></div>
-            <div class="text_step">1단계<br>기본정보 입력</div>
+            <div class="text_step">1단계<br><div style="font-family: NanumBarunGothic, serif;">기본정보 입력</div></div>
           </div>
           <div class="col-2">
             <div class="circle_currentStep" id="line_stepConnect2"><i class="fa-solid fa-recycle"></i></div>
-            <div class="text_step">2단계<br>배출품목 입력</div>
+            <div class="text_step">2단계<br><div style="font-family: NanumBarunGothic, serif;">배출품목 입력</div></div>
           </div>
           <div class="col-2">
             <div class="circle_nextStep"><i class="fa-solid fa-check"></i></div>
-            <div class="text_step">3단계<br>예약 완료</div>
+            <div class="text_step">3단계<br><div style="font-family: NanumBarunGothic, serif;">예약 완료</div></div>
           </div>
           <div class="col-3"></div>
         </div>
@@ -63,7 +63,7 @@
                       <!--   1차 카테고리 헤더  -->
                       <div class="font_category" style="margin-top: 60px;">카테고리</div>
                     </td>
-                    <td class="col-9" style="border-bottom: 2px solid #d5d2d2;">
+                    <td class="col-9" style="border-bottom: 2px solid #d5d2d2; font-family: NanumBarunGothic, serif;">
                       <div id="text_demandSelect">카테고리를 선택해주세요</div>
                       <!--   1차 카테고리 리스트  -->
                       <div class="box_recycleCategory" style="margin-top: 10px; margin-left: 6px;">
@@ -93,7 +93,7 @@
                     <td class="col-3" style="border-right: 2px solid #d5d2d2;">
                       <div class="font_category">상세 분류</div>
                     </td>
-                    <td class="col-9" style="padding: 10px;">
+                    <td class="col-9" style="padding: 10px; font-family: NanumBarunGothic, serif;">
                       <!--   2차 카테고리 리스트  -->
                       <div>
                         <input type="button" class="btn_recycleCategory_2st" value="일반세탁기">
@@ -143,13 +143,13 @@
                   </td>
                 </tr>
                 <tr style="height: 65px;">
-                  <td class="col-3" style="border-right: 2px solid #d5d2d2">
+                  <td class="col-3" style="border-right: 2px solid #d5d2d2; font-family: NanumBarunGothic, serif;">
                     <div class="text_mainCategory_preview">세탁기</div>
                   </td>
-                  <td class="col-3" style="border-right: 2px solid #d5d2d2">
+                  <td class="col-3" style="border-right: 2px solid #d5d2d2; font-family: NanumBarunGothic, serif;">
                     <div class="text_detailCategory_preview">일반 세탁기</div>
                   </td>
-                  <td class="col-3" style="border-right: 2px solid #d5d2d2; text-align: center;">
+                  <td class="col-3" style="border-right: 2px solid #d5d2d2; text-align: center; font-family: NanumBarunGothic, serif;">
                     <button type="button" class="minus" onclick="fnCalcCnt('minus');">
                       <div style="width: 100%; height: 100%; position: absolute; top: -20px;">-</div>
                     </button>

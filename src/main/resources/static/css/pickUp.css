@@ -96,12 +96,11 @@
 /* step 하단 text */
 .text_step {
     margin-top: 10px;
-
     padding-right: 7px;
-    font-size: 17px;
+    font-size: 16px;
     text-align: center;
     font-weight: bold;
-    width: 115px;
+    width: 110px;
 }
 
 /* *****pickup page***** */
@@ -179,6 +178,7 @@
     align-items: center;
     margin-left: 25px;
     font-size: 19px;
+    font-family: NanumBarunGothic, serif;
 }
 
 
