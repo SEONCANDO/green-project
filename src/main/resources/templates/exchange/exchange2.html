@@ -1,10 +1,68 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/layout.html}">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title> 교환 </title>
+    <link rel="stylesheet" href="/css/exchange/exchange2.css" type="text/css">
 </head>
 <body>
+<div layout:fragment="content">
 
+
+    <div class="container-fluid" id="box" style="margin-top: 113px; padding-left: 0px; padding-right: 0px; font-family: 'GmarketSansMedium',serif;">
+
+       <div class="container">
+           <div class="row">
+               <div class="col-md-5" style="margin-top: 2%;">
+                   <img src="/img/exchange/baskin_robbins_10000.jpg" alt="" style="width:100%;">
+               </div>
+               <div class="col-md-7" style="border-top: 3px solid black; margin-top: 2%;">
+                   <div>
+                       <span>배스킨라빈스</span>
+                       <p id="products">[배스킨라빈스31] 1만원권</p>
+                       <span>9,500p</span>
+                   </div>
+               </div>
+           </div>
+
+       </div>
+
+
+
+
+        <!-- logo carousel -->
+        <div class="logo-carousel-section" style="margin-top: 3%;">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="logo-carousel-inner">
+                            <div class="single-logo-item">
+                                <img src="/assets/img/company-logos/서울시로고.png" alt="">
+                            </div>
+                            <div class="single-logo-item">
+                                <img src="/assets/img/company-logos/환경부로고.png" alt="">
+                            </div>
+                            <div class="single-logo-item">
+                                <img src="/assets/img/company-logos/시민연대.png" alt="">
+                            </div>
+                            <div class="single-logo-item">
+                                <img src="/assets/img/company-logos/엘지전자.png" alt="">
+                            </div>
+                            <div class="single-logo-item">
+                                <img src="/assets/img/company-logos/삼성전자.png" alt="" style="margin-top: 8px;">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end logo carousel -->
+
+    </div>
+
+</div>
 </body>
 </html>

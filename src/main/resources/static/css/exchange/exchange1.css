@@ -14,3 +14,30 @@
     background-color: darkgreen;
     content: "";
 }
+
+.card:hover {
+    border: 2px solid dodgerblue;
+}
+
+table {
+    width: 100%;
+    border-top: 1px solid green;
+    text-align: center;
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: -2px;
+}
+
+table > thead > tr {
+    height: 50px;
+    border-bottom: 1px solid #e6e6e6;
+}
+
+table > tbody > tr {
+    height: 50px;
+    border-bottom: 1px solid #e6e6e6;
+}
+
+table > tbody > tr > td {
+    color: gray;
+}

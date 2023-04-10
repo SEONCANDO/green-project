@@ -15,4 +15,9 @@ public class ExchangeController {
     public String exchange1(){
         return "/exchange/exchange1";
     }
+
+    @GetMapping("/exchange2")
+    public String exchange(){
+        return "/exchange/exchange2";
+    }
 }
