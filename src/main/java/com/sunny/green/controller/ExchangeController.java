@@ -24,4 +24,10 @@ public class ExchangeController {
 
         return "/exchange/exchange2";
     }
+
+    @GetMapping("/exchange3")
+    public String exchange3(HttpSession httpSession, Model mo){
+
+        return "/exchange/exchange3";
+    }
 }

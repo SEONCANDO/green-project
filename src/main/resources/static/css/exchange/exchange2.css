@@ -83,3 +83,13 @@
     border-bottom: 1px solid #e6e6e6;
     height: 35px;
 }
+
+.kop {
+    position: relative;
+}
+
+#kop2 {
+    position: absolute;
+    left: 85px;
+    top: 235px;
+}
