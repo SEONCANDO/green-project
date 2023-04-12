@@ -77,9 +77,13 @@ public class UserController {
 
     //회원가입 기능
     @PostMapping("/join")
-    public String join1(UserVo user, BindingResult bindingResult){
-        ud.joinUser(user);
-        return "/index";
+    public String join1(UserVo user, Model model){
+
+        if(ud.joinUser(user) != 0){
+            model.addAttribute("alert", "회원가입이 완료되었습니다.");
+            model.addAttribute("url", "/index");
+        }
+        return "/alert";
     }
 
     @GetMapping("/breakDown")
