@@ -25,15 +25,16 @@
 }
 .textDiv_header {
     position: absolute;
-    left: 443px;
-    top: 179px;
+    left: 492px;
+    top: 177px;
 }
 .text_header{
     width: 220px;
     font-size: 47px;
     font-weight: bold;
     margin-top: 10px;
-    border-bottom: 2px solid #89db2f;
+    color: #3c3535;
+    border-bottom: 2px solid #d7aa45;
 }
 
 
@@ -113,7 +114,8 @@
 }
 /* 사용자 약관 checkBox */
 #checkBox_colPersonInfo{
-    width: 20px;
+    width: 19px;
+    height: 19px;
 }
 /* 사용자 약관 text */
 #text_checkBox {
