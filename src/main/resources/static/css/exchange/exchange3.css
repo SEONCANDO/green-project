@@ -139,6 +139,7 @@ tbody tr td {
     width: 100%;
     text-align: center;
     font-weight: 700;
+    font-size: 16px;
 }
 #table2 > thead {
     background: #e6e6e6;
@@ -148,6 +149,7 @@ tbody tr td {
     width: 100%;
     letter-spacing: -1px;
     font-weight: 700;
+    font-size: 16px;
 }
 #table3 > tbody> tr> td{
     padding: 0px;
