@@ -12,15 +12,72 @@
 <div layout:fragment="content">
 
 
-    <div class="container-fluid" id="box" style="margin-top: 113px; padding-left: 0px; padding-right: 0px; font-family: 'NanumBarunGothic', sans-serif;">
+    <div class="container-fluid" id="box"
+         style="margin-top: 113px; padding-left: 0px; padding-right: 0px; font-family: 'NanumBarunGothic', sans-serif;">
 
         <div class="container" style="padding-top: 25px;">
 
-            <div id="text1">
-                <p>결제 완료</p>
+            <div class="text1">
+                <p>교환 결제 완료</p>
             </div>
 
-            <div class="boxes"></div>
+            <div style="border-top: 2px solid dodgerblue; border-bottom: 1px solid #e6e6e6; margin-bottom: 3%;">
+                <div class="container rol" style="margin-top: 2%; margin-bottom: 2%;">
+                    <p style="margin-bottom: 0px;">교환이 성공적으로 <span style="color: dodgerblue;">완료</span>되었습니다</p>
+                    <p style="font-size: 16px; color: #888; letter-spacing: -2px;">주문번호 : 1</p>
+                    <div>
+                        <button id="mysuccess1">마이페이지</button>
+                        <button id="mysuccess2">QNA게시판</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="boxes">
+                <div class="text1" style="margin-top: 2%;">
+                    <p>결제 내역</p>
+                </div>
+                <table id="table2">
+                    <thead>
+                    <tr style="border-top: 2px solid black;">
+                        <td>상품구분</td>
+                        <td>상품명</td>
+                        <td>수량</td>
+                        <td>포인트</td>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td style="padding:0;">모바일 상품권</td>
+                        <td style="padding: 0;">올리브영 1만원권</td>
+                        <td style="padding: 0;">1</td>
+                        <td style="padding: 0; color: red;">10,000p</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div style="margin-top:2%; margin-bottom: 2%;">
+                <table id="table3">
+                    <tbody>
+                    <tr>
+                        <td style="width: 20%; padding-left: 10px; border-right:1px solid #888; background: #e6e6e6;">회원아이디</td>
+                        <td style="padding-left: 10px;">tes1</td>
+                    </tr>
+                    <tr>
+                        <td style="width: 20%; padding-left: 10px; border-right:1px solid #888; background: #e6e6e6;">회원이름</td>
+                        <td style="padding-left: 10px;">관리자</td>
+                    </tr>
+                    <tr>
+                        <td style="width: 20%; padding-left: 10px; border-right:1px solid #888; background: #e6e6e6;">교환일자</td>
+                        <td style="padding-left: 10px;">2023-04-13</td>
+                    </tr>
+                    <tr>
+                        <td style="width: 20%; padding-left: 10px; border-right:1px solid #888; background: #e6e6e6;">이메일</td>
+                        <td style="padding-left: 10px;">d@c.com</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
 
 
             <!-- -->
@@ -31,15 +88,16 @@
                         <div class="ticketHead">
                             <div class="row">
                                 <div class="col" id="boarding">
-                                    교환번호 : 1 (4A5OG09T)
+                                    교환번호 : 1 (Z493KDOR3)
                                 </div>
 
                             </div>
                         </div>
                         <div class="ticketContent">
                             <div class="row">
-                                <div class="col-3 arrive" style="margin-top: 5px; padding-right: 0px; border-right: 1px solid black;">
-                                    <img src="/img/exchange/baskin_robbins_10000.png" alt="" style="width: 65%;">
+                                <div class="col-3 arrive"
+                                     style="margin-top: 5px; padding-right: 0px; border-right: 1px solid black;">
+                                    <img src="/img/exchange/올리브영.png" alt="" style="width: 65%;">
                                 </div>
                                 <div class="col-7" style="margin-top: 5px;">
                                     <table>
@@ -48,16 +106,16 @@
                                             <td>교환 물품</td>
                                             <td>교환 일자</td>
                                         </tr>
-                                        <tr style="font-weight: 700;">
+                                        <tr style="font-weight: 700; font-size: 17px; letter-spacing: -2px;">
                                             <td>test1</td>
-                                            <td>배스킨 라빈스</td>
+                                            <td>올리브영 1만원권</td>
                                             <td>2023-02-24</td>
                                         <tr style="color: gray; letter-spacing:-1px; font-size: 20px;">
                                             <td>사용 그린포인트</td>
                                             <td>잔액 그린포인트</td>
                                             <td>발급 여부</td>
                                         </tr>
-                                        <tr style="font-weight: 700;">
+                                        <tr style="font-weight: 700; font-size: 17px; letter-spacing: -2px;">
                                             <td style="color: dodgerblue;">1,600</td>
                                             <td style="color: dodgerblue;">18,650</td>
                                             <td style="color: dodgerblue; text-align: center;">Y</td>
