@@ -22,7 +22,7 @@ public class UserVo {
 
        private String user_tel;
 
-       private int zip_code;
+       private String zip_code;
 
        private String address1;
 

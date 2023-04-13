@@ -549,7 +549,6 @@ ul.navbar-nav li.nav-item a.nav-link, ul.navbar-nav li.nav-item.active a.nav-lin
     z-index: 999;
     width: 100%;
     padding: 25px 0;
-    background-color: darkgreen;
 }
 
 .top-header-area.white ul.navbar-nav li.nav-item a.nav-link, .top-header-area.white ul.navbar-nav li.nav-item.active a.nav-link {
@@ -577,7 +576,7 @@ nav.main-menu ul li {
 }
 
 nav.main-menu ul li a {
-    color: #fff;
+    color: black;
     font-size: 18px;
     font-family: 'GmarketSansMedium', serif;
     display: block;
@@ -744,7 +743,7 @@ nav.main-menu li a {
 }
 
 .sticky-wrapper.is-sticky .top-header-area {
-    background-color: darkgreen;
+    background-color: #2a5a;
     padding: 15px 0;
 }
 
