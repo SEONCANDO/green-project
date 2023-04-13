@@ -2,6 +2,7 @@ package com.sunny.green.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
 public class PickUpController {
@@ -13,6 +14,11 @@ public class PickUpController {
 
     @GetMapping("/pickup2")
     public String pickupPage2() {
+        return "pickup/pickUp2";
+    }
+
+    @PostMapping("/pickup2")
+    public String pickup2() {
         return "pickup/pickUp2";
     }
 
