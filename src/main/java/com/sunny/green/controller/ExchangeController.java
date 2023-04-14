@@ -1,6 +1,8 @@
 package com.sunny.green.controller;
 
+import com.sunny.green.dao.AdminDao;
 import com.sunny.green.dao.UserDao;
+import com.sunny.green.vo.ProductVo;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,7 +14,7 @@ import java.util.Random;
 @Controller
 @RequiredArgsConstructor
 public class ExchangeController {
-
+    private final AdminDao ad;
     private final UserDao ud;
 
     @GetMapping("/exchange")
@@ -29,7 +31,9 @@ public class ExchangeController {
 
     @GetMapping("/exchange2")
     public String exchange(HttpSession httpSession, Model mo){
-
+        ProductVo pro = ad.selectPro();
+        mo.addAttribute("pro", pro);
+        System.out.println(pro);
         return "/exchange/exchange2";
     }
 
@@ -53,4 +57,6 @@ public class ExchangeController {
 //        mo.addAttribute("reservation", reservationId);
         return "/exchange/exchange3";
     }
+
+
 }

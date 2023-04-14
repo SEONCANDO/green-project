@@ -17,6 +17,7 @@ public class ProductVo {
 
     private String pro_content;
 
+    private String pro_from;
     private String pro_img;
 
     private int pro_point;

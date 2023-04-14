@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{/layout/layout2.html}">
+
+<head>
+    <meta charset="UTF-8">
+    <title> 관리자페이지 </title>
+    <script src = "/js/ckeditor/ckeditor.js"></script>
+    <script type="text/javascript">
+        window.addEventListener('load', function() {
+            CKEDITOR.replace('editor');
+        });
+    </script>
+</head>
+<body>
+
+    <div layout:fragment="admin_content">
+        <form action="/product3" method="post">
+        <div>
+            <p>물품 제목</p>
+            <input type="text" name="pro_name">
+
+        </div>
+        <div>
+            <p>물품 내용</p>
+            <textarea id="editor" name="pro_content"></textarea>
+        </div>
+        <div>
+
+            <p>지불 포인트</p>
+            <input type="number" name="pro_point">
+        </div>
+        <div>
+            <p>지급처</p>
+            <input tpye="text" name="pro_from">
+        </div>
+
+        <div>
+            <input type="submit" value="등록">
+        </div>
+        </form>
+    </div>
+
+</body>
+</html>
