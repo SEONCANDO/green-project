@@ -8,6 +8,7 @@
     <title> 로그인 </title>
     <link rel="stylesheet" type="text/css" href="/css/myPage.css">
     <script src="/js/admin_bbs1.js"></script>
+    <script src="/js/myPage.js"></script>
 </head>
 <body>
 <div layout:fragment="content">
@@ -71,7 +72,7 @@
                             로그아웃</a></button>
                 </div>
                 <div style="margin-top: 30px; text-align: end;">
-                    <a href="#" style="color: black; font-size: 13px; letter-spacing: -1px;">회원탈퇴 하기</a>
+                    <a id="delete" th:href="@{delete(user_id=${user.user_id})}" style="color: black; font-size: 13px; letter-spacing: -1px;">회원탈퇴 하기</a>
                 </div>
             </div>
 

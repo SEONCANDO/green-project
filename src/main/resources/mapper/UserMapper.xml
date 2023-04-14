@@ -25,6 +25,10 @@
         , address1 = #{address1}, address2 = #{address2}, address3 = #{address3}, address4 = #{address4} where user_id = #{user_id}
     </update>
 
+    <delete id="deleteId">
+        delete from user where user_id = #{user_id}
+    </delete>
+
 
     <!--보영-->
     <select id="selectAll" resultType="com.sunny.green.vo.UserVo">

@@ -31,7 +31,8 @@ public class UserController {
         }
         else {
             UserVo userDB = (UserVo) session.getAttribute("user");
-            mo.addAttribute("user", userDB);
+            UserVo user = ud.selectAll1(userDB.getUser_id());
+            mo.addAttribute("user", user);
             return "myPage/myPage";
         }
 
@@ -185,6 +186,17 @@ public class UserController {
         }
 
         return "/alert";
+    }
+
+    @GetMapping("/delete")
+    public String delete(HttpSession session, String user_id){
+        UserVo userDB = (UserVo) session.getAttribute("user");
+        user_id = userDB.getUser_id();
+        System.out.println(user_id);
+        int delete = ud.deleteId(user_id);
+        System.out.println(delete);
+        session.setAttribute("user", null);
+        return "redirect:/index";
     }
     
 }
