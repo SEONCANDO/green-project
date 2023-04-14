@@ -21,5 +21,5 @@ public class ExchangeVo {
 
     private Timestamp ex_date;
 
-    private String ex_uuid_num;
+    private String ex_confirm;
 }

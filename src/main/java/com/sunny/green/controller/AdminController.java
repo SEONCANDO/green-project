@@ -1,14 +1,11 @@
 package com.sunny.green.controller;
 
-import com.sunny.green.dao.AdminDao;
 import com.sunny.green.dao.UserDao;
-import com.sunny.green.vo.ProductVo;
 import com.sunny.green.vo.UserVo;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 
@@ -20,7 +17,6 @@ import java.util.List;
 public class AdminController {
 
      private final UserDao ud;
-     private final AdminDao ad;
     //보영
 //    private UserService userService;
 
@@ -77,29 +73,5 @@ public class AdminController {
     @GetMapping("/admin/bbs2")
     public String bbs2(){
         return "/admin/admin_bbs2";
-    }
-
-    @GetMapping("/admin/product1")
-    public String pro1(){
-        return "/admin/admin_product1";
-    }
-
-    @GetMapping("/admin/product2")
-    public String pro2(){
-        return "/admin/admin_product2";
-    }
-
-    @GetMapping("/admin/product3")
-    public String pro3(){
-
-
-        return "/admin/admin_product3";
-    }
-
-    @PostMapping("/admin/product3")
-    public String pro4(ProductVo productVo){
-
-        ad.insertPro(productVo);
-        return "/admin/admin_product3";
     }
 }
