@@ -8,9 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-
 import java.util.List;
-
 
 @Controller
 @RequiredArgsConstructor
@@ -41,7 +39,7 @@ public class AdminController {
         return "/admin/admin_user1";
     }
 
-    //보영(회원조회)
+    //보영
     @GetMapping("/admin/user2")
     public String getUserList(Model model){
 
@@ -51,19 +49,6 @@ public class AdminController {
 
         return "/admin/admin_user2";
     }
-  //보영(회원정보수정페이지)
-    @RequestMapping("/admin/userDetail")
-        public String userUpdate(){
-        return"/admin/admin_user3";
-    }
-
-    //보영(회원정보수정)
-    @RequestMapping("/updateUser")
-    public String updateUser(UserVo user){
-        ud.updateUser(user);
-        return "redirect:/admin_user2";
-    }
-
 
     @GetMapping("/admin/bbs1")
     public String bbs1(){

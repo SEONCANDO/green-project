@@ -2,7 +2,6 @@ package com.sunny.green.dao;
 
 import com.sunny.green.vo.UserVo;
 import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.session.SqlSession;
 
 import java.util.List;
 
@@ -14,8 +13,6 @@ public interface UserDao {
     public UserVo selectUser(UserVo user);
     public UserVo selectUserId(String userId);
 
-
-    //보영(회원조회)
     public UserVo selectAll1(String userid);
 
     public int updateUser(UserVo user);
@@ -24,8 +21,4 @@ public interface UserDao {
 
     //보영
     public List<UserVo> selectAll();
-
-    //보영(회원정보수정)
-    public void updateUser(UserVo user);
-
 }

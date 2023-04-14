@@ -21,6 +21,7 @@
         <div class="col-lg-3 col-md-3 col-sm-12 p-0">
           <label for="search-type" hidden>검색 유형</label>
           <select class="form-control" id="search-type" name="searchType">
+            <option>회원번호</option>
             <option>회원명</option>
             <option>아이디</option>
             <option>주소</option>
@@ -57,12 +58,11 @@
         <th scope="col">주소2</th>
         <th scope="col">주소3</th>
         <th scope="col">주소4</th>
-        <th scope="col">포인트</th>
       </tr>
       </thead>
       <tbody>
       <tr th:each="list : ${userVoList}">
-        <td><a href="/admin/userDetail" th:href="@{/admin/userDetail/(user_id=${list.user_id})}" th:text="${list.user_id}"></a></td>
+        <td th:text="*{list.user_id}"></td>
         <td th:text="${list.user_pass}">2</td>
         <td th:text="${list.user_name}">3</td>
         <td th:text="${list.user_tel}">4</td>
@@ -72,11 +72,9 @@
         <td th:text="${list.address2}">8</td>
         <td th:text="${list.address3}">9</td>
         <td th:text="${list.address4}">0</td>
-        <td th:text="${list.user_point}">0</td>
       </tr>
       </tbody>
     </table>
-
   </div>
 
   <div class="row">
