@@ -24,8 +24,19 @@ public class UserController {
 
     //마이페이지 매핑
     @GetMapping("/myPage")
-    public String myPage(){
-        return "myPage/myPage";
+    public String myPage(HttpSession session, Model mo){
+        if(session.getAttribute("user") == null){
+            mo.addAttribute("alert", "로그인 먼저 진행해주시기 바랍니다");
+            mo.addAttribute("url", "/login");
+        }
+        else {
+            UserVo userDB = (UserVo) session.getAttribute("user");
+            UserVo user = ud.selectAll1(userDB.getUser_id());
+            mo.addAttribute("user", user);
+            return "myPage/myPage";
+        }
+
+        return "/alert";
     }
 
     //로그인 창에 들어갈때 쓰는 매핑
@@ -87,8 +98,18 @@ public class UserController {
     }
 
     @GetMapping("/breakDown")
-    public String exchange(){
-        return "/myPage/breakDown";
+    public String exchange(HttpSession session, Model mo){
+        if(session.getAttribute("user") == null){
+            mo.addAttribute("alert", "로그인 먼저 진행해주시기 바랍니다");
+            mo.addAttribute("url", "/login");
+        }
+        else {
+            UserVo userDB = (UserVo) session.getAttribute("user");
+            mo.addAttribute("user", userDB);
+            return "/myPage/breakDown";
+        }
+
+        return "/alert";
     }
 
     //로그아웃 기능
@@ -127,17 +148,55 @@ public class UserController {
         }
         else{
             UserVo user = (UserVo) session.getAttribute("user");
-            System.out.println("번호는 뭘까요? : " + user);
-            model.addAttribute("user", user);
+            UserVo user1 = ud.selectAll1(user.getUser_id());
+            System.out.println("번호는 뭘까요? : " + user1);
+            model.addAttribute("user", user1);
             return "/myPage/modify";
         }
         return "/alert";
     }
 
+    @PostMapping("/modify")
+    public String modify1(UserVo user, Model mo){
+        int update = ud.updateUser(user);
+        if(update == 1){
+            System.out.println(update);
+            mo.addAttribute("alert", "정보가 수정되었습니다");
+            mo.addAttribute("url", "/myPage");
+        }
+        else {
+            mo.addAttribute("alert", "정보 수정에 실패했습니다");
+            mo.addAttribute("url","/index");
+        }
+
+        return "alert";
+    }
+
     //마이페이지 그린포인트 확인
     @GetMapping("/greenPoint")
-    public String green() {
-        return "/myPage/greenPoint";
+    public String green(HttpSession session, Model mo) {
+        if(session.getAttribute("user") == null){
+            mo.addAttribute("alert", "로그인 먼저 진행해주시기 바랍니다");
+            mo.addAttribute("url", "/login");
+        }
+        else {
+            UserVo userDB = (UserVo) session.getAttribute("user");
+            mo.addAttribute("user", userDB);
+            return "/myPage/greenPoint";
+        }
+
+        return "/alert";
+    }
+
+    @GetMapping("/delete")
+    public String delete(HttpSession session, String user_id){
+        UserVo userDB = (UserVo) session.getAttribute("user");
+        user_id = userDB.getUser_id();
+        System.out.println(user_id);
+        int delete = ud.deleteId(user_id);
+        System.out.println(delete);
+        session.setAttribute("user", null);
+        return "redirect:/index";
     }
     
 }
