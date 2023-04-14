@@ -13,6 +13,10 @@ public interface UserDao {
     public UserVo selectUser(UserVo user);
     public UserVo selectUserId(String userId);
 
+    public UserVo selectAll1(String userid);
+
+    public int updateUser(UserVo user);
+
     //보영
     public List<UserVo> selectAll();
 }

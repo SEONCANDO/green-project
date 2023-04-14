@@ -10,8 +10,6 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Builder
 public class UserVo {
-       private int user_number;
-
        private String user_id;
 
        private String user_pass;

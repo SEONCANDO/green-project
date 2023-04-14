@@ -147,11 +147,28 @@ public class UserController {
         }
         else{
             UserVo user = (UserVo) session.getAttribute("user");
-            System.out.println("번호는 뭘까요? : " + user);
-            model.addAttribute("user", user);
+            UserVo user1 = ud.selectAll1(user.getUser_id());
+            System.out.println("번호는 뭘까요? : " + user1);
+            model.addAttribute("user", user1);
             return "/myPage/modify";
         }
         return "/alert";
+    }
+
+    @PostMapping("/modify")
+    public String modify1(UserVo user, Model mo){
+        int update = ud.updateUser(user);
+        if(update == 1){
+            System.out.println(update);
+            mo.addAttribute("alert", "정보가 수정되었습니다");
+            mo.addAttribute("url", "/myPage");
+        }
+        else {
+            mo.addAttribute("alert", "정보 수정에 실패했습니다");
+            mo.addAttribute("url","/index");
+        }
+
+        return "alert";
     }
 
     //마이페이지 그린포인트 확인
