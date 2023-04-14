@@ -545,8 +545,6 @@ ul.navbar-nav li.nav-item a.nav-link, ul.navbar-nav li.nav-item.active a.nav-lin
 }
 
 .top-header-area {
-    position: absolute;
-    z-index: 999;
     width: 100%;
     padding: 25px 0;
 }
@@ -584,11 +582,9 @@ nav.main-menu ul li a {
 }
 
 nav.main-menu ul > li {
-    position: relative;
 }
 
 nav.main-menu ul ul.sub-menu {
-    position: absolute;
     background-color: #fff;
     width: 220px;
     padding: 15px 15px;
@@ -596,9 +592,6 @@ nav.main-menu ul ul.sub-menu {
     left: 0;
     top: 50px;
     border-radius: 3px;
-    -webkit-transition: 0.3s;
-    -o-transition: 0.3s;
-    transition: 0.3s;
     opacity: 0;
     visibility: hidden;
     -webkit-box-shadow: 0 0 20px #555555;
@@ -719,15 +712,10 @@ nav.main-menu li:hover > a {
 }
 
 nav.main-menu li a {
-    -webkit-transition: 0.3s;
-    -o-transition: 0.3s;
-    transition: 0.3s;
 }
 
 .top-header-area .header-icons a {
-    -webkit-transition: 0.3s;
-    -o-transition: 0.3s;
-    transition: 0.3s;
+
 }
 
 .top-header-area .header-icons a:hover {
@@ -748,9 +736,6 @@ nav.main-menu li a {
 }
 
 .top-header-area {
-    -webkit-transition: 0.3s;
-    -o-transition: 0.3s;
-    transition: 0.3s;
 }
 
 ul.navbar-nav {

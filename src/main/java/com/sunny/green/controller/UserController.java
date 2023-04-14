@@ -24,8 +24,18 @@ public class UserController {
 
     //마이페이지 매핑
     @GetMapping("/myPage")
-    public String myPage(){
-        return "myPage/myPage";
+    public String myPage(HttpSession session, Model mo){
+        if(session.getAttribute("user") == null){
+            mo.addAttribute("alert", "로그인 먼저 진행해주시기 바랍니다");
+            mo.addAttribute("url", "/login");
+        }
+        else {
+            UserVo userDB = (UserVo) session.getAttribute("user");
+            mo.addAttribute("user", userDB);
+            return "myPage/myPage";
+        }
+
+        return "/alert";
     }
 
     //로그인 창에 들어갈때 쓰는 매핑
@@ -87,8 +97,18 @@ public class UserController {
     }
 
     @GetMapping("/breakDown")
-    public String exchange(){
-        return "/myPage/breakDown";
+    public String exchange(HttpSession session, Model mo){
+        if(session.getAttribute("user") == null){
+            mo.addAttribute("alert", "로그인 먼저 진행해주시기 바랍니다");
+            mo.addAttribute("url", "/login");
+        }
+        else {
+            UserVo userDB = (UserVo) session.getAttribute("user");
+            mo.addAttribute("user", userDB);
+            return "/myPage/breakDown";
+        }
+
+        return "/alert";
     }
 
     //로그아웃 기능
@@ -136,8 +156,18 @@ public class UserController {
 
     //마이페이지 그린포인트 확인
     @GetMapping("/greenPoint")
-    public String green() {
-        return "/myPage/greenPoint";
+    public String green(HttpSession session, Model mo) {
+        if(session.getAttribute("user") == null){
+            mo.addAttribute("alert", "로그인 먼저 진행해주시기 바랍니다");
+            mo.addAttribute("url", "/login");
+        }
+        else {
+            UserVo userDB = (UserVo) session.getAttribute("user");
+            mo.addAttribute("user", userDB);
+            return "/myPage/greenPoint";
+        }
+
+        return "/alert";
     }
     
 }

@@ -16,8 +16,15 @@ public class ExchangeController {
     private final UserDao ud;
 
     @GetMapping("/exchange")
-    public String exchange1(){
-        return "/exchange/exchange1";
+    public String exchange1(HttpSession session, Model mo){
+        if(session.getAttribute("user") == null){
+            mo.addAttribute("alert", "로그인을 먼저 해주시기 바랍니다");
+            mo.addAttribute("url", "/login");
+        }
+        else{
+            return "/exchange/exchange1";
+        }
+        return "/alert";
     }
 
     @GetMapping("/exchange2")

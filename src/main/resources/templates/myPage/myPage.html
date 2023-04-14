@@ -21,7 +21,7 @@
                     <img src="/img/유저.png" style="width: 40%;">
                 </div>
                 <div style="font-size: 25px; letter-spacing: -2px; margin-top: 10px;">
-                    <span style="color: black; font-weight: 700;">[변경]test1</span>님
+                    <span style="color: black; font-weight: 700;">[[${user.user_id}]]</span>님
                     <a href="/modify"><img src="/img/right-arrow.png" style="width: 15px;"></a>
                 </div>
                 <div>
@@ -32,19 +32,19 @@
                         <div style="height: 90%; border: 1px solid #e6e6e6;" id="profiles">
                             <div>
                                 <img src="/img/myPage/user.png" style="width: 10%;">
-                                <span> test1</span>
+                                <span> [[${user.user_id}]]</span>
                             </div>
                             <div>
                                 <img src="/img/myPage/id-card.png" style="width: 10%;">
-                                <span> 관리자</span>
+                                <span> [[${user.user_name}]]</span>
                             </div>
                             <div>
                                 <img src="/img/myPage/mail.png" style="width: 10%;">
-                                <span> **@*.com</span>
+                                <span> [[${user.user_email}]]</span>
                             </div>
                             <div>
                                 <img src="/img/myPage/phone-call.png" style="width: 10%" ;>
-                                <span> 0101234****</span>
+                                <span>  [[${user.user_tel.substring(0,7)}]]****</span>
                             </div>
                         </div>
                     </div>
@@ -109,8 +109,7 @@
                         <!-- 예약 내용-->
                         <div style="height: 70%;">
                             <div class="container">
-                                <span style="float: right; margin-right: 15px; margin-top: 5px;"><a href="#"
-                                                                                                    style="color: black; font-size: 14px;">더보기</a></span>
+                                <span style="float: right; margin-right: 15px; margin-top: 5px;"><a href="#" style="color: black; font-size: 14px;">더보기</a></span>
                                 <table id="table2">
                                     <thead>
                                     <tr>
