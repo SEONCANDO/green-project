@@ -1,3 +1,12 @@
+// jQuery 불러오기
+$(function loadJQuery() {
+    var oScript = document.createElement("script");
+    oScript.type = "text/javascript";
+    oScript.charset = "utf-8";
+    oScript.src = "http://code.jquery.com/jquery-1.6.2.min.js";
+    document.getElementsByTagName("head")[0].appendChild(oScript);
+})
+
 
 // 주소 검색기능
 jQuery.noConflict(
@@ -189,5 +198,23 @@ function chBox() {
 //     }
 // });
 
+
+
+// 입력정보 저장
+function pickupSave() {
+    const user_id = $("#text_pickupId").val();
+    console.log(user_id);
+    $.ajax({
+        url:"pickup2",
+        type:"post",
+        data:{"user_id":user_id},
+        success: function() {
+            console.log(data);
+        },
+        error: function() {
+            alert('error')
+        }
+    })
+}
 
 
