@@ -11,4 +11,6 @@
     <select id="selectPro" resultType="com.sunny.green.vo.ProductVo">
         select * from product where pro_num = 1
     </select>
+
+
 </mapper>
