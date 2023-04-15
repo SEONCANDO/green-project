@@ -4,16 +4,22 @@
                 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.sunny.green.dao.AdminDao">
 
+    <!-- 상품등록 -->
     <insert id="insertPro" useGeneratedKeys="true" keyProperty="pro_num">
         insert into product(pro_name, pro_content, pro_point, pro_from) values (#{pro_name}, #{pro_content}, #{pro_point}, #{pro_from})
     </insert>
 
-    <select id="selectPro" resultType="com.sunny.green.vo.ProductVo">
-        select * from product where pro_num = 1
-    </select>
-
+    <!-- 상품등록 시 이미지 같이 등록 -->
     <insert id="insertProImg" useGeneratedKeys="true" keyProperty="pro_img_no">
         insert into pro_img(pro_num ,pro_img_save_name, pro_img_path)
         values (#{pro_num}, #{pro_img_save_name}, #{pro_img_path})
     </insert>
+
+    <select id="selectProAll" resultType="com.sunny.green.vo.ProductVo">
+        select * from product
+    </select>
+
+    <select id="selectPro" resultType="com.sunny.green.vo.ProductVo">
+        select * from product where pro_num = #{pro_num}
+    </select>
 </mapper>

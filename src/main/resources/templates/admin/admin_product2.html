@@ -12,6 +12,30 @@
 <body>
 <div layout:fragment="admin_content">
 
+
+    <div class="container">
+      <table th:object="${product}">
+          <tbody>
+            <tr>
+                <td>상품명</td>
+                <td th:utext="${product.pro_name}">1</td>
+            </tr>
+            <tr>
+                <td>상품내용</td>
+                <td th:utext="${product.pro_content}">2</td>
+            </tr>
+            <tr>
+                <td>지불포인트</td>
+                <td th:utext="${product.pro_point}">3</td>
+            </tr>
+            <tr>
+                <td>지급처</td>
+                <td th:utext="${product.pro_from}">4</td>
+            </tr>
+          </tbody>
+      </table>
+    </div>
+
 </div>
 
 </body>

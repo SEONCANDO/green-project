@@ -30,8 +30,8 @@ public class ExchangeController {
     }
 
     @GetMapping("/exchange2")
-    public String exchange(HttpSession httpSession, Model mo){
-        ProductVo pro = ad.selectPro();
+    public String exchange(HttpSession httpSession, Model mo, int pro_num){
+        ProductVo pro = ad.selectPro(pro_num);
         mo.addAttribute("pro", pro);
         System.out.println(pro);
         return "/exchange/exchange2";

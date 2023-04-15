@@ -75,17 +75,23 @@ public class AdminController {
         return "/admin/admin_bbs2";
     }
 
-    @GetMapping("/admin/product1")
-    public String pro1(){
+    @GetMapping("admin/product1")
+    public String pro1(Model mo){
+        List<ProductVo> product = ad.selectProAll();
+        mo.addAttribute("product", product);
+        System.out.println("번호" + product);
         return "/admin/admin_product1";
     }
 
-    @GetMapping("/admin/product2")
-    public String pro2(){
+    @GetMapping("admin/product2")
+    public String pro2(Model mo, ProductVo vo){
+        ProductVo product = ad.selectPro(vo.getPro_num());
+        mo.addAttribute("product", product);
+        System.out.println(product);
         return "/admin/admin_product2";
     }
 
-    @GetMapping("/admin/product3")
+    @GetMapping("admin/product3")
     public String pro3(){
 
 

@@ -30,6 +30,9 @@
     </delete>
 
 
+
+
+
     <!--보영-->
     <select id="selectAll" resultType="com.sunny.green.vo.UserVo">
         SELECT * FROM user;
