@@ -2,16 +2,27 @@ package com.sunny.green.controller;
 
 import com.sunny.green.dao.AdminDao;
 import com.sunny.green.dao.UserDao;
+import com.sunny.green.vo.ProImgVo;
 import com.sunny.green.vo.ProductVo;
 import com.sunny.green.vo.UserVo;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
+import java.util.UUID;
 
 @Controller
 @RequiredArgsConstructor
@@ -81,10 +92,35 @@ public class AdminController {
         return "/admin/admin_product3";
     }
 
+    @Transactional
     @PostMapping("/product3")
-    public String pro4(ProductVo productVo){
-
+    public String pro4(ProductVo productVo, @RequestParam("image") MultipartFile imageFile){
+        String fileName = imageFile.getOriginalFilename(); // 파일 이름 추출
+        String uploadPath = "src/main/resources/static/img/product/"; // 업로드 디렉토리 경로
+        String filePath = uploadPath + fileName; // 저장될 파일 경로
+        String uuid = UUID.randomUUID().toString();
+        String realPath = uploadPath + uuid + fileName;
+        String saveFile = uuid + fileName;
+        System.out.println(fileName);
+        System.out.println(filePath);
+        System.out.println(realPath);
         ad.insertPro(productVo);
-        return "/admin/admin_product3";
+        String str = String.valueOf(productVo);
+        System.out.println(str);
+
+        try (OutputStream os = new FileOutputStream(realPath)) {
+            os.write(imageFile.getBytes());
+
+            ProImgVo proImgVo = ProImgVo.builder()
+                    .pro_num(productVo.getPro_num())
+                    .pro_img_save_name(saveFile)
+                    .pro_img_path(realPath)
+                    .build();
+            ad.insertProImg(proImgVo);
+        } catch (IOException e) {
+            // 파일 저장 실패 시 예외 처리
+            e.printStackTrace();
+        }
+        return "redirect:/index";
     }
 }
