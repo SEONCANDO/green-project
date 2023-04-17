@@ -9,6 +9,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link link rel="stylesheet" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" type="text/css">
 <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+<link rel="stylesheet" type="text/css" href="https://npmcdn.com/flatpickr/dist/themes/material_orange.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 
 <body>
   <div class="container-fluid" style="padding: 0;">
@@ -116,8 +120,8 @@
                   <span class="text_requiredInput">*</span>
                 </td>
                 <td class="col-10" style="border: 1px solid #c1baba; padding: 10px; font-family: NanumBarunGothic, serif;">
-                  <input type="text" id="text_pickupId" name="user_id" th:value="${session.user.user_id}" style="display: none">
-                  <input type="text" name="pickup_name" placeholder="이름 입력" th:value="${session.user.user_name}" style="width: 300px; height: 40px; margin-left: 20px;">
+                  <input type="text" id="pickup_userID" th:value="${session.user.user_id}" style="display: none">
+                  <input type="text" id="pickup_name" placeholder="이름 입력" th:value="${session.user.user_name}" style="width: 300px; height: 40px; margin-left: 20px;">
                 </td>
               </tr>
               <!--   전화번호  -->
@@ -127,7 +131,7 @@
                   <span class="text_requiredInput">*</span>
                 </td>
                 <td class="col-10" style="border: 1px solid #c1baba; padding: 10px; font-family: NanumBarunGothic, serif;">
-                  <input type="text" name="pickup_phone" placeholder="전화번호 입력(010-0000-0000)" th:value="${session.user.user_tel}" style="width: 300px; height: 40px; margin-left: 20px;">
+                  <input type="text" id="pickup_tel" placeholder="전화번호 입력(- 제외)" th:value="${session.user.user_tel}" style="width: 300px; height: 40px; margin-left: 20px; font-size: 20px;">
                 </td>
               </tr>
               <!--   배출 주소  -->
@@ -136,13 +140,13 @@
                   <span class="text_contentHeader">배출 주소</span>
                   <span class="text_requiredInput">*</span>
                 </td>
-                <td class="col-10 box_address" style="border: 1px solid #c1baba; padding: 30px; font-family: NanumBarunGothic, serif;">
-                  <input type="text" name="pickup_zip_code" placeholder="우편번호" th:value="${session.user.zip_code}"><br>
-                  <input type="text" name="pickup_address1" placeholder="도로명주소" th:value="${session.user.address1}">
-                  <input type="text" name="pickup_address2" placeholder="지번주소" th:value="${session.user.address2}"><br>
+                <td class="col-10 box_address" style="border: 1px solid #c1baba; padding: 30px; font-family: NanumBarunGothic, serif; font-size: 16px;">
+                  <input type="text" id="pickup_zip_code" placeholder="우편번호" th:value="${session.user.zip_code}"><br>
+                  <input type="text" id="pickup_address1" placeholder="도로명주소" th:value="${session.user.address1}">
+                  <input type="text" id="pickup_address2" placeholder="지번주소" th:value="${session.user.address2}"><br>
                   <span style="color:#999;display:none"></span>
-                  <input type="text" name="pickup_address3" placeholder="상세주소" th:value="${session.user.address3}">
-                  <input type="text" name="pickup_address4" placeholder="참고항목" th:value="${session.user.address4}">
+                  <input type="text" id="pickup_address3" placeholder="상세주소" th:value="${session.user.address3}">
+                  <input type="text" id="pickup_address4" placeholder="참고항목" th:value="${session.user.address4}">
                 </td>
               </tr>
               <!--   주거 구분  -->
@@ -151,17 +155,17 @@
                   <div class="text_contentHeader">주거 구분</div>
                 </td>
                 <td class="col-10" style="border: 1px solid #c1baba; padding: 10px; font-family: NanumBarunGothic, serif;">
-                  <div style="display:flex; margin-left: 20px;">
+                  <div style="display:flex; margin-left: 20px; font-size: 18px;">
                     <div>주거형태</div>
-                    <select name="pickup_house" title="주거형태 선택" style="margin-left: 10px; margin-right: 20px;">
+                    <select id="pickup_house" title="주거형태 선택" style="margin-left: 10px; margin-right: 20px;">
                       <option value>주거형태</option>
-                      <option value="HC01">단층주택</option>
-                      <option value="HC02">연립주택</option>
-                      <option value="HC03">아파트</option>
-                      <option value="HC04">빌딩</option>
+                      <option value="1">단층주택</option>
+                      <option value="2">연립주택</option>
+                      <option value="3">아파트</option>
+                      <option value="4">빌딩</option>
                     </select>
                     <div>엘레베이터 유무</div>
-                    <select name="pickup_elevator" title="엘레베이터유무 선택" style="margin-left: 10px; margin-right: 20px;">
+                    <select id="pickup_elevator" title="엘레베이터유무 선택" style="margin-left: 10px; margin-right: 20px;">
                       <option value>유무 선택</option>
                       <option value="Y">유</option>
                       <option value="N">무</option>
@@ -177,7 +181,9 @@
                 </td>
                 <td class="col-10" style="border: 1px solid #c1baba; padding: 10px; font-family: NanumBarunGothic, serif;">
                   <div style="display:flex; margin-left: 20px;">
-                    <span style="font-size: 20px;">지정일: <input type="text" id="DatePicker" name="pickup_day"/></span>
+                    <span style="font-size: 20px;">지정일:
+                      <input type="text" id="myDateInput">
+                    </span>
                     <span id="text_insertDayOfWeek">(-)</span>
                     <span id="text_dayOfWeek">요일</span>
                   </div>
@@ -318,8 +324,8 @@
         <div class="container">
           <div class="box_pageMove">
             <input type="button" class="btn btn-outline-success" value="저장하기" onclick="pickupSave()">
-<!--              <input type="submit" class="btn btn-outline-success" value="다음" onclick="return chBox()">-->
-            <a href="/pickup2" class="btn btn-outline-success">다음</a>
+            <input type="button" class="btn btn-outline-success" value="다음" onclick="return chBox()">
+<!--            <a href="/pickup2" class="btn btn-outline-success">다음</a>-->
           </div>
         </div>
       </div>

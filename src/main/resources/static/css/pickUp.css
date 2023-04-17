@@ -211,6 +211,7 @@
     display: flex;
     align-items: center;
     margin-left: 10px;
+    font-size: 20px;
 }
 #text_dayOfWeek {
     display: flex;

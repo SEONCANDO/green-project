@@ -67,33 +67,27 @@ jQuery.noConflict(
 )
 
 
-// 요일 선택시 메소드 실행
-$(function() {
-    $("#DatePicker").datepicker({
-    });
+// flatpicker 요일 지정하기
+flatpickr("#myDateInput", {
+    disable: [
+        // 주말 제외 (토, 일)
+        function(date) {
+            // return true to disable
+            return (date.getDay() === 0 || date.getDay() === 6);
+        }
+    ],
+    dateFormat: "Y-m-d" // 날짜 형식 설정
 });
 
-// $(document).ready(function() {
-//     // Your code here
-//     $("#DatePicker").datepicker();
-// });
+// myDateInput의 값이 변경되었을 때 처리할 함수
+document.getElementById("myDateInput").addEventListener("change", function() {
+    var dateInput = document.getElementById("myDateInput").value; // myDateInput의 값 가져오기
+    var date = new Date(dateInput); // 입력된 날짜를 JavaScript의 Date 객체로 변환
+    var daysOfWeek = ["일", "월", "화", "수", "목", "금", "토"]; // 요일 배열
+    var dayOfWeek = daysOfWeek[date.getDay()]; // Date 객체에서 요일 값을 가져와서 배열에서 해당 요일을 찾음
+    document.getElementById("text_insertDayOfWeek").textContent = "(" + dayOfWeek + ")"; // 요일 값을 text_insertDayOfWeek에 출력
+});
 
-
-
-
-// 요일 선택 포멧 설정
-// $.datepicker.setDefaults({
-//     dateFormat: 'yy-mm-dd',
-//     prevText: '이전 달',
-//     nextText: '다음 달',
-//     monthNames: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
-//     monthNamesShort: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
-//     dayNames: ['일', '월', '화', '수', '목', '금', '토'],
-//     dayNamesShort: ['일', '월', '화', '수', '목', '금', '토'],
-//     dayNamesMin: ['일', '월', '화', '수', '목', '금', '토'],
-//     showMonthAfterYear: true,
-//     yearSuffix: '년'
-// });
 
 // 이미지 첨부
 const upload = document.querySelector('#img_pickup_upload');
@@ -177,44 +171,41 @@ function chBox() {
 
 
 
-// $('#DatePicker').on('change', function(){
-//     var date = $(this).val();
-//     switch(new Date(date).getDay()){
-//         case 0 : $("#day").text('일'); break
-//         case 1 : $("#day").text('월'); break
-//         case 2 : $("#day").text('화'); break
-//         case 3 : $("#day").text('수'); break
-//         case 4 : $("#day").text('목'); break
-//         case 5 : $("#day").text('금'); break
-//         case 6 : $("#day").text('토'); break
-//
-//         // case 0 : $('#day').text('일'); $('[name=weekday]').val('일'); break
-//         // case 1 : $('#day').text('월'); $('[name=weekday]').val('월'); break
-//         // case 2 : $('#day').text('화'); $('[name=weekday]').val('화'); break
-//         // case 3 : $('#day').text('수'); $('[name=weekday]').val('수'); break
-//         // case 4 : $('#day').text('목'); $('[name=weekday]').val('목'); break
-//         // case 5 : $('#day').text('금'); $('[name=weekday]').val('금'); break
-//         // case 6 : $('#day').text('토'); $('[name=weekday]').val('토'); break
-//     }
-// });
-
-
-
 // 입력정보 저장
 function pickupSave() {
-    const user_id = $("#text_pickupId").val();
-    console.log(user_id);
+    const user_id = $("#pickup_userID").val();
+    const pu_name = $("#pickup_name").val();
+    const pu_tel = $("#pickup_tel").val();
+    const pu_zip = $("#pickup_zip_code").val();
+    const pu_address1 = $("#pickup_address1").val();
+    const pu_address2 = $("#pickup_address2").val();
+    const pu_address3 = $("#pickup_address3").val();
+    const pu_address4 = $("#pickup_address4").val();
+    const house_no = $("#pickup_house").val();
+    const pu_elevator = $("#pickup_elevator").val();
+    const pu_day = $("#myDateInput").val();
+    let pu_img;
+    if ($("#img_pickup_upload").val() != null) {
+        pu_img = "Y";
+    } else {
+        pu_img = "N";
+    }
+    const text_memo = $(".text_memo").val();
+
     $.ajax({
-        url:"pickup2",
+        url:"pickupSave.do",
         type:"post",
-        data:{"user_id":user_id},
-        success: function() {
-            console.log(data);
-        },
+        data:{"user_id":user_id, "pu_name":pu_name, "pu_tel":pu_tel,
+        "pu_zip":pu_zip,"pu_address1":pu_address1,"pu_address2":pu_address2,
+        "pu_address3":pu_address3,"pu_address4":pu_address4,"house_no":house_no,"pu_elevator":pu_elevator,
+        "pu_day":pu_day, "pu_img":pu_img, "text_memo":text_memo},
+        success: "",
         error: function() {
             alert('error')
         }
     })
 }
+
+
 
 
