@@ -13,8 +13,17 @@
             LIMIT 0, 3;
     </select>
 
-
+    <!-- 특정 상품의 정보를 보기 위한 클릭  -->
     <select id="selectProOne" resultType="com.sunny.green.vo.ProductWithImgVo">
         select p.*, pi.* from product p join pro_img pi on p.pro_num = pi.pro_num where p.pro_num = #{pro_num}
+    </select>
+
+    <insert id="insertExchange" useGeneratedKeys="true" keyProperty="ex_num">
+        insert into exchange(pro_num, user_id, user_point, pay_point, remain_point, ex_uuid_num)
+        values(#{pro_num}, #{user_id}, #{user_point}, #{pay_point}, #{remain_point}, #{ex_uuid_num})
+    </insert>
+
+    <select id="selectExchangeOne" resultType="com.sunny.green.vo.ExchangeVo">
+        select * from exchange where ex_num = #{ex_num};
     </select>
 </mapper>

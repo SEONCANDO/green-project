@@ -19,7 +19,22 @@ public class ExchangeVo {
 
     private String user_id;
 
+    private int user_point;
+
+    private int pay_point;
+
+    private int remain_point;
     private Timestamp ex_date;
 
     private String ex_uuid_num;
+
+    private UserVo userVo;
+
+    public UserVo getUserVo() {
+        return userVo;
+    }
+
+    public void setUserVo(UserVo userVo) {
+        this.userVo = userVo;
+    }
 }

@@ -19,6 +19,8 @@ public interface UserDao {
 
     public int deleteId(String userId);
 
+    public int updatePoint(UserVo vo);
+
     //보영
     public List<UserVo> selectAll();
 }
