@@ -1,14 +1,18 @@
 package com.sunny.green.controller;
 
 import com.sunny.green.dao.AdminDao;
+import com.sunny.green.dao.ExchangeDao;
 import com.sunny.green.dao.UserDao;
+import com.sunny.green.vo.ProImgVo;
 import com.sunny.green.vo.ProductVo;
+import com.sunny.green.vo.ProductWithImgVo;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import javax.servlet.http.HttpSession;
+import java.util.List;
 import java.util.Random;
 
 @Controller
@@ -16,6 +20,7 @@ import java.util.Random;
 public class ExchangeController {
     private final AdminDao ad;
     private final UserDao ud;
+    private final ExchangeDao ed;
 
     @GetMapping("/exchange")
     public String exchange1(HttpSession session, Model mo){
@@ -24,14 +29,16 @@ public class ExchangeController {
             mo.addAttribute("url", "/login");
         }
         else{
+            List<ProductWithImgVo> pv = ed.selectProductAll();
+            mo.addAttribute("pv", pv);
             return "/exchange/exchange1";
         }
         return "/alert";
     }
 
     @GetMapping("/exchange2")
-    public String exchange(HttpSession httpSession, Model mo, int pro_num){
-        ProductVo pro = ad.selectPro(pro_num);
+    public String exchange(HttpSession httpSession, Model mo, ProductWithImgVo productWithImgVo){
+        ProductWithImgVo pro = ed.selectProOne(productWithImgVo.getPro_num());
         mo.addAttribute("pro", pro);
         System.out.println(pro);
         return "/exchange/exchange2";

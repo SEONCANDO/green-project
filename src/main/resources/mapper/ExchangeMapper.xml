@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sunny.green.dao.ExchangeDao">
+
+    <!-- 상품과 상품 이미지를 조인한 결과를 반환하는 쿼리 -->
+    <select id="selectProductAll" resultType="com.sunny.green.vo.ProductWithImgVo">
+        SELECT p.*, pi.pro_img_save_name, pi.pro_img_path
+        FROM product p
+                 JOIN pro_img pi ON p.pro_num = pi.pro_num
+        ORDER BY p.pro_num DESC
+            LIMIT 0, 3;
+    </select>
+
+
+    <select id="selectProOne" resultType="com.sunny.green.vo.ProductWithImgVo">
+        select p.*, pi.* from product p join pro_img pi on p.pro_num = pi.pro_num where p.pro_num = #{pro_num}
+    </select>
+</mapper>

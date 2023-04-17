@@ -5,11 +5,13 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class ProductVo {
+public class ProductWithImgVo {
 
     private int pro_num;
 
@@ -18,20 +20,14 @@ public class ProductVo {
     private String pro_content;
 
     private String pro_from;
-    private String pro_img;
 
     private int pro_point;
 
     private String user_id;
 
+    private int pro_img_no;
 
-    private ProImgVo proImgVo;
+    private String pro_img_save_name;
 
-    public ProImgVo getProImgVo() {
-        return proImgVo;
-    }
-
-    public void setProImgVo(ProImgVo proImgVo) {
-        this.proImgVo = proImgVo;
-    }
+    private String pro_img_path;
 }
