@@ -12,6 +12,8 @@ public interface AdminDao {
 
     public ProductVo selectPro(int proNum);
 
+    public ProImgVo selectImg(int proNum);
+
     public int insertProImg(ProImgVo proImgVo);
 
     public List<ProductVo> selectProAll();

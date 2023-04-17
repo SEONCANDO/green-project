@@ -79,15 +79,15 @@ public class AdminController {
     public String pro1(Model mo){
         List<ProductVo> product = ad.selectProAll();
         mo.addAttribute("product", product);
-        System.out.println("번호" + product);
         return "/admin/admin_product1";
     }
 
     @GetMapping("admin/product2")
-    public String pro2(Model mo, ProductVo vo){
+    public String pro2(Model mo, ProductVo vo, ProImgVo iv){
         ProductVo product = ad.selectPro(vo.getPro_num());
+        ProImgVo proImgVo = ad.selectImg(iv.getPro_num());
         mo.addAttribute("product", product);
-        System.out.println(product);
+        mo.addAttribute("proImgVo", proImgVo);
         return "/admin/admin_product2";
     }
 
@@ -102,8 +102,6 @@ public class AdminController {
     public String deletePro(int pro_num){
         int otr = ad.deletePro_img(pro_num);
         int str = ad.deletePro(pro_num);
-        System.out.println("삭제됨?" +otr);
-        System.out.println("삭제됨?" + str);
         return "redirect:/admin";
     }
 
@@ -117,7 +115,6 @@ public class AdminController {
     @PostMapping("/updatePro")
     public String pro6(ProductVo productVo){
         int str = ad.updatePro(productVo);
-        System.out.println("변경됨?" + str);
         return "redirect:/admin/product1";
     }
 
@@ -151,6 +148,6 @@ public class AdminController {
             // 파일 저장 실패 시 예외 처리
             e.printStackTrace();
         }
-        return "redirect:/index";
+        return "redirect:/admin";
     }
 }
