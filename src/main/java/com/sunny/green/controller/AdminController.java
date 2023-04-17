@@ -98,6 +98,30 @@ public class AdminController {
         return "/admin/admin_product3";
     }
 
+    @GetMapping("admin/deletePro")
+    public String deletePro(int pro_num){
+        int otr = ad.deletePro_img(pro_num);
+        int str = ad.deletePro(pro_num);
+        System.out.println("삭제됨?" +otr);
+        System.out.println("삭제됨?" + str);
+        return "redirect:/admin";
+    }
+
+    @GetMapping("admin/product4")
+    public String pro5(ProductVo productVo, Model mo){
+        ProductVo pro = ad.selectPro(productVo.getPro_num());
+        mo.addAttribute("pro", pro);
+        return "/admin/admin_product4";
+    }
+
+    @PostMapping("/updatePro")
+    public String pro6(ProductVo productVo){
+        int str = ad.updatePro(productVo);
+        System.out.println("변경됨?" + str);
+        return "redirect:/admin/product1";
+    }
+
+
     @Transactional
     @PostMapping("/product3")
     public String pro4(ProductVo productVo, @RequestParam("image") MultipartFile imageFile){

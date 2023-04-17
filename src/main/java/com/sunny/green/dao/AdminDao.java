@@ -15,4 +15,10 @@ public interface AdminDao {
     public int insertProImg(ProImgVo proImgVo);
 
     public List<ProductVo> selectProAll();
+
+    public int deletePro(int pro_num);
+
+    public int deletePro_img(int pro_num);
+
+    public int updatePro(ProductVo productVo);
 }

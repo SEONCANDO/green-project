@@ -36,7 +36,27 @@
       </table>
     </div>
 
+    <div>
+        <button><a th:href="@{product4(pro_num=${product.pro_num})}">수정</a></button>
+    </div>
+    <div>
+        <button><a id="deletePro" th:href="@{deletePro(pro_num=${product.pro_num})}">삭제</a></button>
+    </div>
 </div>
+<script>
+    document.addEventListener("DOMContentLoaded", function(){
+      const deletePro = document.querySelector("#deletePro");
 
+      deletePro.addEventListener("click", function(e){
+          if(!confirm('삭제하시겠습니까?')){
+              e.defaultPrevented;
+              alert("삭제가 취소되었습니다");
+          }
+          else{
+              alert("삭제되었습니다");
+          }
+      });
+    });
+</script>
 </body>
 </html>
