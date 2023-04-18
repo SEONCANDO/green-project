@@ -13,7 +13,8 @@
 <body>
 <div layout:fragment="content">
 
-    <div class="container" id="box1" style="margin-top: 140px; margin-bottom:5%; font-family: 'NanumBarunGothic', sans-serif; font-weight:700;">
+    <div class="container" id="box1"
+         style="margin-top: 140px; margin-bottom:5%; font-family: 'NanumBarunGothic', sans-serif; font-weight:700;">
         <div class="row" id="box2" style="height: 850px;">
 
             <!-- 시작 -->
@@ -55,7 +56,7 @@
                     <div style="margin-bottom: 10px;">
                         <img src="/img/greenPoint.png" style="width: 30px; margin-left: 15px;">
                         <span style="margin-left: 5px; color: black;">그린포인트</span>
-                        <span style="text-align: center; color: #2a722d; font-weight: 700;">150,500p</span>
+                        <span style="text-align: center; color: #2a722d; font-weight: 700;">[[${user.user_point}]]p</span>
                         <a href="/greenPoint"><img src="/img/right-arrow.png" style="width: 15px;"></a>
                     </div>
                 </div>
@@ -72,7 +73,8 @@
                             로그아웃</a></button>
                 </div>
                 <div style="margin-top: 30px; text-align: end;">
-                    <a id="delete" th:href="@{delete(user_id=${user.user_id})}" style="color: black; font-size: 13px; letter-spacing: -1px;">회원탈퇴 하기</a>
+                    <a id="delete" th:href="@{delete(user_id=${user.user_id})}"
+                       style="color: black; font-size: 13px; letter-spacing: -1px;">회원탈퇴 하기</a>
                 </div>
             </div>
 
@@ -110,7 +112,8 @@
                         <!-- 예약 내용-->
                         <div style="height: 70%;">
                             <div class="container">
-                                <span style="float: right; margin-right: 15px; margin-top: 5px;"><a href="#" style="color: black; font-size: 14px;">더보기</a></span>
+                                <span style="float: right; margin-right: 15px; margin-top: 5px;"><a href="#"
+                                                                                                    style="color: black; font-size: 14px;">더보기</a></span>
                                 <table id="table2">
                                     <thead>
                                     <tr>
@@ -160,7 +163,7 @@
                                 </div>
                                 <div class="col-md-3" style="margin-top: 3%;">
                                     <img src="/img/myPage/exchange.png" style="width:30%">
-                                    <p><a href="/breakDown"
+                                    <p><a th:href="@{/breakDown(user_id=${session.user.user_id})}"
                                           style="color: black; letter-spacing: -2px; font-size: 14px; font-weight: 700;">교환</a>
                                     </p>
                                 </div>

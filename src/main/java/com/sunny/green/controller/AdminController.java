@@ -20,8 +20,12 @@ import java.util.List;
 @RequiredArgsConstructor
 public class AdminController {
 
-    @Autowired
-    private UserService userService;
+
+    private final UserDao ud;
+    private final AdminDao ad;
+    //보영
+//    private UserService userService;
+
 
 
     private final UserDao ud;
@@ -29,9 +33,18 @@ public class AdminController {
 
 
     @GetMapping("/admin")
-    public String admin1(){
+
+    public String admin(){
+        return "admin/admin_login";
+    }
+
+    @GetMapping("/admin/main")
+    public String admin1() {
+
         return "admin/admin_main";
     }
+
+
 
     @GetMapping("/admin/reservation")
     public String adminRe() {
@@ -39,15 +52,19 @@ public class AdminController {
     }
 
     @GetMapping("/admin/user1")
-    public String adminUs1(){
+    public String adminUs1() {
         return "/admin/admin_user1";
     }
 
     //보영 (회원 목록 조회)
     @GetMapping("/admin/user2")
-    public String getUserList(Model model){
-        List<UserVo> user = ud.selectAll();
-        model.addAttribute("user",user);
+
+    public String getUserList(Model model) {
+
+        List<UserVo> userVoList = ud.selectAll();
+
+        model.addAttribute("userVoList", userVoList);
+
         return "/admin/admin_user2";
     }
     // 보영 (회원정보상세)
@@ -82,35 +99,72 @@ public class AdminController {
 
 
     @GetMapping("/admin/bbs1")
-    public String bbs1(){
+    public String bbs1() {
         return "/admin/admin_bbs1";
     }
 
     @GetMapping("/admin/bbs2")
-    public String bbs2(){
+    public String bbs2() {
         return "/admin/admin_bbs2";
     }
 
-    @GetMapping("/admin/product1")
-    public String pro1(){
+
+    @GetMapping("admin/product1")
+    public String pro1(Model mo) {
+        List<ProductVo> product = ad.selectProAll();
+        mo.addAttribute("product", product);
         return "/admin/admin_product1";
     }
 
-    @GetMapping("/admin/product2")
-    public String pro2(){
+    @GetMapping("admin/product2")
+    public String pro2(Model mo, ProductVo vo, ProImgVo iv) {
+        ProductVo product = ad.selectPro(vo.getPro_num());
+        ProImgVo proImgVo = ad.selectImg(iv.getPro_num());
+        mo.addAttribute("product", product);
+        mo.addAttribute("proImgVo", proImgVo);
         return "/admin/admin_product2";
     }
 
-    @GetMapping("/admin/product3")
-    public String pro3(){
+    @GetMapping("admin/product3")
+    public String pro3() {
 
 
         return "/admin/admin_product3";
     }
 
-    @PostMapping("/product3")
-    public String pro4(ProductVo productVo){
+    @GetMapping("admin/deletePro")
+    public String deletePro(int pro_num) {
+        int otr = ad.deletePro_img(pro_num);
+        int str = ad.deletePro(pro_num);
+        return "redirect:/admin";
+    }
 
+    @GetMapping("admin/product4")
+    public String pro5(ProductVo productVo, Model mo) {
+        ProductVo pro = ad.selectPro(productVo.getPro_num());
+        mo.addAttribute("pro", pro);
+        return "/admin/admin_product4";
+    }
+
+    @PostMapping("/updatePro")
+    public String pro6(ProductVo productVo) {
+        int str = ad.updatePro(productVo);
+        return "redirect:/admin/product1";
+    }
+
+
+    @Transactional
+    @PostMapping("/product3")
+    public String pro4(ProductVo productVo, @RequestParam("image") MultipartFile imageFile) {
+        String fileName = imageFile.getOriginalFilename(); // 파일 이름 추출
+        String uploadPath = "src/main/resources/static/img/product/"; // 업로드 디렉토리 경로
+        String filePath = uploadPath + fileName; // 저장될 파일 경로
+        String uuid = UUID.randomUUID().toString();
+        String realPath = uploadPath + uuid + fileName;
+        String saveFile = uuid + fileName;
+        System.out.println(fileName);
+        System.out.println(filePath);
+        System.out.println(realPath);
         ad.insertPro(productVo);
         return "/admin/admin_product3";
     }
