@@ -6,7 +6,7 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class PickupSaveVo {
+public class PickupAddressVo {
     private String user_id;
 
     private String pu_name;
@@ -23,13 +23,4 @@ public class PickupSaveVo {
 
     private String pu_address4;
 
-    private int house_no;
-
-    private String pu_elevator;
-
-    private String pu_day;
-
-    private String pu_img;
-
-    private String text_memo;
 }

@@ -147,22 +147,16 @@ function createElement(e, file) {
     return li;
 }
 
-
-let result = '';
-
-// 약관 동의 체크값
-function getCheckboxValue() {
-    if($("#checkBox_colPersonInfo").prop("checked")) {
-        result = $("#checkBox_colPersonInfo").val(1);
-        console.log(result);
-    }
-}
+let saveVal = null;
 
 // 다음페이지 이동시, 입력값 빈칸 확인
 function chBox() {
-    if (result == null) {
-        alert("약관에 동의해주세요");
+    if ($("#checkBox_colPersonInfo").is(":checked") === false) {
         $("#checkBox_colPersonInfo").focus();
+        alert("약관에 동의해주세요");
+        return false;
+    } else if (saveVal == null) {
+        alert("저장을 먼저 해주세요");
         return false;
     } else {
         return true;
@@ -171,7 +165,7 @@ function chBox() {
 
 
 
-// 입력정보 저장
+// pickup 첫번째 페이지 입력정보 저장
 function pickupSave() {
     const user_id = $("#pickup_userID").val();
     const pu_name = $("#pickup_name").val();
@@ -192,18 +186,45 @@ function pickupSave() {
     }
     const text_memo = $(".text_memo").val();
 
-    $.ajax({
-        url:"pickupSave.do",
-        type:"post",
-        data:{"user_id":user_id, "pu_name":pu_name, "pu_tel":pu_tel,
-        "pu_zip":pu_zip,"pu_address1":pu_address1,"pu_address2":pu_address2,
-        "pu_address3":pu_address3,"pu_address4":pu_address4,"house_no":house_no,"pu_elevator":pu_elevator,
-        "pu_day":pu_day, "pu_img":pu_img, "text_memo":text_memo},
-        success: "",
-        error: function() {
-            alert('error')
-        }
-    })
+    console.log("지정일>>>>>>>>>>"+pu_day);
+
+    // 필수정보 입력 확인
+    if (pu_name === "" | pu_tel === "" | pu_zip === "" | pu_address1 === "" | pu_address2 === "" |
+        pu_address3 === "" | pu_address4 === "" || pu_day === "") {
+        alert("필수 정보를 입력해주세요")
+        return false;
+    }
+
+    // 세션 스토리지에 임시 저장
+    sessionStorage.setItem("user_id", user_id);
+    sessionStorage.setItem("pu_name", pu_name);
+    sessionStorage.setItem("pu_tel", pu_tel);
+    sessionStorage.setItem("pu_zip", pu_zip);
+    sessionStorage.setItem("pu_address1", pu_address1);
+    sessionStorage.setItem("pu_address2", pu_address2);
+    sessionStorage.setItem("pu_address3", pu_address3);
+    sessionStorage.setItem("pu_address4", pu_address4);
+    sessionStorage.setItem("house_no", house_no);
+    sessionStorage.setItem("pu_elevator", pu_elevator);
+    sessionStorage.setItem("pu_day", pu_day);
+    sessionStorage.setItem("pu_img", pu_img);
+    sessionStorage.setItem("text_memo", text_memo);
+
+    saveVal = "저장";
+    alert("임시 저장되었습니다")
+
+    // $.ajax({
+    //     url:"pickupSave.do",
+    //     type:"post",
+    //     data:{"user_id":user_id, "pu_name":pu_name, "pu_tel":pu_tel,
+    //     "pu_zip":pu_zip,"pu_address1":pu_address1,"pu_address2":pu_address2,
+    //     "pu_address3":pu_address3,"pu_address4":pu_address4,"house_no":house_no,"pu_elevator":pu_elevator,
+    //     "pu_day":pu_day, "pu_img":pu_img, "text_memo":text_memo},
+    //     success: "",
+    //     error: function() {
+    //         alert('error')
+    //     }
+    // })
 }
 
 

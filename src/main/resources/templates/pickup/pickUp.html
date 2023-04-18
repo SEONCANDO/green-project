@@ -50,9 +50,9 @@
         <div class="container" style="margin-bottom: 10px;">
           <div class="box_checkBox">
             <div style="display:flex; align-items: center;">
-              <input id="checkBox_colPersonInfo" type="checkbox" name="permission_check" value="개인정보 제공 동의" onclick="getCheckboxValue()">
+              <input id="checkBox_colPersonInfo" type="checkbox" name="permission_check"/>
             </div>
-            <div id="text_checkBox">개인정보 제공 동의</div>
+            <label id="text_checkBox" for="checkBox_colPersonInfo">개인정보 제공 동의</label>
             <div id="text_checkBox2">(필수)</div>
           </div>
         </div>
@@ -324,7 +324,9 @@
         <div class="container">
           <div class="box_pageMove">
             <input type="button" class="btn btn-outline-success" value="저장하기" onclick="pickupSave()">
-            <input type="button" class="btn btn-outline-success" value="다음" onclick="return chBox()">
+            <form type="get" action="/pickup2">
+              <input type="submit" class="btn btn-outline-success" value="다음" onclick="return chBox()">
+            </form>
 <!--            <a href="/pickup2" class="btn btn-outline-success">다음</a>-->
           </div>
         </div>
