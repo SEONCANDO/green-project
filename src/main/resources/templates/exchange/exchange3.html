@@ -48,7 +48,7 @@
                     <tbody>
                     <tr>
                         <td style="padding:0;">모바일 상품권</td>
-                        <td style="padding: 0;">올리브영 1만원권</td>
+                        <td style="padding: 0;">[[${ev.pro_name}]]</td>
                         <td style="padding: 0;">1</td>
                         <td style="padding: 0; color: red;" >[[${ev.pay_point}]]p</td>
                     </tr>
@@ -65,7 +65,7 @@
                     </tr>
                     <tr>
                         <td style="width: 10%; padding-left: 10px; border-right:1px solid #888; background: #e6e6e6;">회원이름</td>
-                        <td style="padding-left: 10px;" th:utext="${session.user.user_name}">관리자</td>
+                        <td style="padding-left: 10px;" th:utext="${ev.user_name}">관리자</td>
                     </tr>
                     <tr>
                         <td style="width: 10%; padding-left: 10px; border-right:1px solid #888; background: #e6e6e6;">교환일자</td>
@@ -73,7 +73,7 @@
                     </tr>
                     <tr>
                         <td style="width: 10%; padding-left: 10px; border-right:1px solid #888; background: #e6e6e6;">이메일</td>
-                        <td style="padding-left: 10px;" th:utext="${session.user.user_email}">d@c.com</td>
+                        <td style="padding-left: 10px;" th:utext="${ev.user_email}">d@c.com</td>
                     </tr>
                     <tr>
                         <td style="width: 10%; padding-left: 10px; border-right:1px solid #888; background: #e6e6e6;">발급여부</td>
@@ -101,7 +101,7 @@
                             <div class="row">
                                 <div class="col-3 arrive"
                                      style="margin-top: 5px; padding-right: 0px; border-right: 1px solid black;">
-                                    <img src="/img/exchange/올리브영.png" alt="" style="width: 65%;">
+                                    <img th:src="@{/img/product/__${ev.pro_img_save_name}__}" alt="" style="width: 65%;">
                                 </div>
                                 <div class="col-7" style="margin-top: 5px;">
                                     <table>
@@ -111,8 +111,8 @@
                                             <td>교환 일자</td>
                                         </tr>
                                         <tr style="font-weight: 700; font-size: 17px; letter-spacing: -2px;">
-                                            <td>test1</td>
-                                            <td>올리브영 1만원권</td>
+                                            <td th:utext="${ev.user_id}">1</td>
+                                            <td th:utext="${ev.pro_name}">올리브영 1만원권</td>
                                             <td>2023-02-24</td>
                                         <tr style="color: gray; letter-spacing:-1px; font-size: 20px;">
                                             <td>사용 그린포인트</td>

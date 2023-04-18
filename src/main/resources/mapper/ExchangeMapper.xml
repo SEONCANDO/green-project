@@ -19,8 +19,8 @@
     </select>
 
     <insert id="insertExchange" useGeneratedKeys="true" keyProperty="ex_num">
-        insert into exchange(pro_num, user_id, user_point, pay_point, remain_point, ex_uuid_num)
-        values(#{pro_num}, #{user_id}, #{user_point}, #{pay_point}, #{remain_point}, #{ex_uuid_num})
+        insert into exchange(pro_num, user_id, user_name, user_email , pro_name , pro_img_save_name ,user_point, pay_point, remain_point, ex_uuid_num)
+        values(#{pro_num}, #{user_id}, #{user_name}, #{user_email} , #{pro_name} , #{pro_img_save_name} ,#{user_point}, #{pay_point}, #{remain_point}, #{ex_uuid_num})
     </insert>
 
     <select id="selectExchangeOne" resultType="com.sunny.green.vo.ExchangeVo">
