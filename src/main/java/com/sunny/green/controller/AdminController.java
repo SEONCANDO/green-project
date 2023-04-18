@@ -31,11 +31,7 @@ public class AdminController {
 
     private final UserDao ud;
     private final AdminDao ad;
-
-    private final UserService userService;
-    //보영
-//    private UserService userService;
-
+    private UserService userService;
 
     @GetMapping("/admin")
     public String admin(){
@@ -65,17 +61,18 @@ public class AdminController {
 
     public String getUserList(Model model) {
 
-        List<UserVo> userVoList = ud.selectAll();
+        List<UserVo> user = ud.selectAll();
 
-        model.addAttribute("userVoList", userVoList);
+        model.addAttribute("user", user);
 
         return "/admin/admin_user2";
     }
     // 보영 (회원정보상세)
-    @GetMapping("/admin/modify/{user_id}")
-    public String userDetail(Model model,@PathVariable("user_id") String user_id){
-        UserVo user = userService.getUserInfo(user_id);
+    @GetMapping("/admin/modify")
+    public String userDetail(Model model, UserVo userVo){
+        UserVo user = ud.selectAll1(userVo.getUser_id());
         model.addAttribute("user", user);
+        System.out.println(user);
         return "admin/admin_user3";
     }
     // 보영 (회원정보수정)

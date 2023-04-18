@@ -14,8 +14,8 @@ public class UserService {
     @Autowired
     private UserDao userDao;
 
-    public UserVo getUserInfo(String userId) {
-        return userDao.selectAll1(userId);
+    public UserVo getUserInfo(String user_id) {
+        return userDao.selectAll1(user_id);
     }
 
     public void updateUser(UserVo user) {
