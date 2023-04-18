@@ -40,9 +40,17 @@ public class AdminController {
 
 
     @GetMapping("/admin")
+    public String admin(){
+        return "admin/admin_login";
+    }
+
+    @GetMapping("/admin/main")
     public String admin1() {
+
         return "admin/admin_main";
     }
+
+
 
     @GetMapping("/admin/reservation")
     public String adminRe() {
