@@ -18,13 +18,13 @@
       <p style="font-size: 26px; font-weight: 700; letter-spacing: -2px; color: #0F4229;">내 교환 내역</p>
       <div>
 
-        <div id="greenBox">
+        <div id="greenBox" th:each="list : ${ex}">
           <form action="" method="post">
             <div class="ticket">
             <div class="ticketHead">
               <div class="row">
                 <div class="col" id="boarding">
-                  교환번호 : 1 (4A5OG09T)
+                  교환번호 : [[${list.ex_num}]] ([[${list.ex_uuid_num}]])
                 </div>
 
               </div>
@@ -32,7 +32,7 @@
             <div class="ticketContent">
               <div class="row">
                 <div class="col-3 arrive" style="margin-top: 5px; padding-right: 0px; border-right: 1px solid black;">
-                  <img src="/img/exchange/baskin_robbins_10000.png" alt="" style="width: 65%;">
+                  <img th:src="@{/img/product/__${list.pro_img_save_name}__}" alt="" style="width: 65%;">
                 </div>
                 <div class="col-7" style="margin-top: 5px;">
                   <table>
@@ -42,8 +42,8 @@
                       <td>교환 일자</td>
                     </tr>
                     <tr style="font-weight: 700;">
-                      <td>test1</td>
-                      <td>배스킨 라빈스</td>
+                      <td th:utext="${list.user_id}">test1</td>
+                      <td th:utext="${list.user_name}">배스킨 라빈스</td>
                       <td>2023-02-24</td>
                     <tr style="color: gray; letter-spacing:-1px; font-size: 20px;">
                       <td>사용 그린포인트</td>
@@ -51,8 +51,8 @@
                       <td>발급 여부</td>
                     </tr>
                     <tr style="font-weight: 700;">
-                      <td style="color: dodgerblue;">1,600</td>
-                      <td style="color: dodgerblue;">18,650</td>
+                      <td style="color: dodgerblue;" th:utext="${list.pay_point}">1,600</td>
+                      <td style="color: dodgerblue;" th:utext="${list.remain_point}">18,650</td>
                       <td style="color: dodgerblue; text-align: center;">Y</td>
                     </tr>
                   </table>

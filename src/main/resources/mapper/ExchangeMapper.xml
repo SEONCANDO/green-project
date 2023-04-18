@@ -26,4 +26,8 @@
     <select id="selectExchangeOne" resultType="com.sunny.green.vo.ExchangeVo">
         select * from exchange where ex_num = #{ex_num};
     </select>
+
+    <select id="selectExchangeId" resultType="com.sunny.green.vo.ExchangeVo">
+        select * from exchange where user_id = #{user_id} order by user_id desc limit 0,2;
+    </select>
 </mapper>

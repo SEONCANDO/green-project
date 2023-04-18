@@ -1,6 +1,9 @@
 package com.sunny.green.controller;
 
+import com.sunny.green.dao.AdminDao;
+import com.sunny.green.dao.ExchangeDao;
 import com.sunny.green.dao.UserDao;
+import com.sunny.green.vo.ExchangeVo;
 import com.sunny.green.vo.UserVo;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -21,6 +24,8 @@ import java.util.List;
 public class UserController {
 
     private final UserDao ud;
+    private final AdminDao ad;
+    private final ExchangeDao ed;
 
     //마이페이지 매핑
     @GetMapping("/myPage")
@@ -106,6 +111,8 @@ public class UserController {
         else {
             UserVo userDB = (UserVo) session.getAttribute("user");
             mo.addAttribute("user", userDB);
+            List<ExchangeVo> ex = ed.selectExchangeId(userDB.getUser_id());
+            mo.addAttribute("ex", ex);
             return "/myPage/breakDown";
         }
 
