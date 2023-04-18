@@ -2,13 +2,17 @@ package com.sunny.green.controller;
 
 
 import com.sunny.green.dao.PickupDao;
+import com.sunny.green.dao.UserDao;
 import com.sunny.green.vo.PickupAddressVo;
 import com.sunny.green.vo.PickupInfoVo;
 
+import com.sunny.green.vo.UserVo;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpSession;
 
@@ -18,8 +22,9 @@ public class PickUpController {
 
 
     PickupDao pickupDao;
+    UserDao ud;
 
-
+    // 예약 첫번째 페이징
     @GetMapping("/pickup")
     public String pickupPage(HttpSession session, Model model) {
         if(session.getAttribute("user") != null) {
@@ -31,24 +36,31 @@ public class PickUpController {
         }
     }
 
+    //
+    @PostMapping("pickupSave.do")
+    public void pickupSave(@RequestParam PickupAddressVo pav, @RequestParam PickupInfoVo piv, HttpSession session, Model model) {
+        session.setAttribute("pav", pav);
+        session.setAttribute("piv", piv);
+        System.out.println("pav>>>>>>>>>>>>>"+pav);
+        System.out.println("piv>>>>>>>>>>>>>"+piv);
+
+//        PickupAddressVo pav1 = (PickupAddressVo) session.getAttribute("user");
+//        System.out.println("저장된 값 :" + pav1);
+//        piv.setUser_id(pav1.getUser_id());
+//        if (pickupDao.pickupAddressSave(pav1) != 0
+//                && pickupDao.pickupInfoSave(piv) != 0) {
+//            model.addAttribute("alert", "예약되었습니다");
+//        };
+    }
+
+    // 예약 두번째 페이징
     @GetMapping("/pickup2")
     public String pickupPage2() {
         return "pickup/pickUp2";
     }
 
-    @GetMapping("/pickupSave")
-    public String pickupSave(HttpSession session, Model model, PickupInfoVo piv) {
-        PickupAddressVo pav1 = (PickupAddressVo) session.getAttribute("user");
-        System.out.println(pav1.getUser_id());
-        piv.setUser_id(pav1.getUser_id());
-        if (pickupDao.pickupInfoSave(pav1) != 0
-                && pickupDao.pickupInfoSave2(piv) != 0) {
-            model.addAttribute("alert", "예약되었습니다");
-        };
 
-        return "/index";
-    }
-
+    // 예약 세번째 페이징
     @GetMapping("/pickup3")
     public String pickupPage3() {
         return "pickup/pickUp3";

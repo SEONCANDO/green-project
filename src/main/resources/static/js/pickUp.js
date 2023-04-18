@@ -167,6 +167,9 @@ function chBox() {
 
 // pickup 첫번째 페이지 입력정보 저장
 function pickupSave() {
+
+
+
     const user_id = $("#pickup_userID").val();
     const pu_name = $("#pickup_name").val();
     const pu_tel = $("#pickup_tel").val();
@@ -193,36 +196,38 @@ function pickupSave() {
         return false;
     }
 
-    // 세션 스토리지에 임시 저장
-    sessionStorage.setItem("user_id", user_id);
-    sessionStorage.setItem("pu_address_name", pu_name);
-    sessionStorage.setItem("pu_address_tel", pu_tel);
-    sessionStorage.setItem("pu_address_zip", pu_zip);
-    sessionStorage.setItem("pu_address1", pu_address1);
-    sessionStorage.setItem("pu_address2", pu_address2);
-    sessionStorage.setItem("pu_address3", pu_address3);
-    sessionStorage.setItem("pu_address4", pu_address4);
-    sessionStorage.setItem("house_no", house_no);
-    sessionStorage.setItem("pu_elevator", pu_elevator);
-    sessionStorage.setItem("pu_day", pu_day);
-    sessionStorage.setItem("pu_img", pu_img);
-    sessionStorage.setItem("pu_memo", text_memo);
+    $.ajax({
+        url:"pickupSave.do",
+        type:"post",
+        data:{"user_id":user_id, "pu_address_name":pu_name, "pu_address_tel":pu_tel,
+            "pu_address_zip":pu_zip,"pu_address1":pu_address1,"pu_address2":pu_address2,
+            "pu_address3":pu_address3,"pu_address4":pu_address4,"house_no":house_no,"pu_elevator":pu_elevator,
+            "pu_day":pu_day, "pu_img":pu_img, "pu_memo":text_memo},
+        success: saveVal = "저장",
+        error: function() {
+            alert('error')
+        }
+    })
 
-    saveVal = "저장";
+    // 세션 스토리지에 임시 저장
+    // sessionStorage.setItem("pickupAddress", user_id);
+    // sessionStorage.setItem("pickupAddress", pu_name);
+    // sessionStorage.setItem("pickupAddress", pu_tel);
+    // sessionStorage.setItem("pickupAddress", pu_zip);
+    // sessionStorage.setItem("pickupAddress", pu_address1);
+    // sessionStorage.setItem("pickupAddress", pu_address2);
+    // sessionStorage.setItem("pickupAddress", pu_address3);
+    // sessionStorage.setItem("pickupAddress", pu_address4);
+    // sessionStorage.setItem("pickupInfo", house_no);
+    // sessionStorage.setItem("pickupInfo", pu_elevator);
+    // sessionStorage.setItem("pickupInfo", pu_day);
+    // sessionStorage.setItem("pickupInfo", pu_img);
+    // sessionStorage.setItem("pickupInfo", text_memo);
+
+
     alert("임시 저장되었습니다")
 
-    // $.ajax({
-    //     url:"pickupSave.do",
-    //     type:"post",
-    //     data:{"user_id":user_id, "pu_name":pu_name, "pu_tel":pu_tel,
-    //     "pu_zip":pu_zip,"pu_address1":pu_address1,"pu_address2":pu_address2,
-    //     "pu_address3":pu_address3,"pu_address4":pu_address4,"house_no":house_no,"pu_elevator":pu_elevator,
-    //     "pu_day":pu_day, "pu_img":pu_img, "text_memo":text_memo},
-    //     success: "",
-    //     error: function() {
-    //         alert('error')
-    //     }
-    // })
+
 }
 
 
