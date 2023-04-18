@@ -63,7 +63,7 @@
       </thead>
       <tbody>
       <tr th:each="list: ${user}">
-        <td><a th:href="@{/admin/modify/{user_id}(user_id=${list.user_id})}" th:text="${list.user_id}"></a></td>
+        <td><a th:href="@{/admin/modify(user_id=${list.user_id})}" th:text="${list.user_id}"></a></td>
         <td th:text="${list.user_pass}">2</td>
         <td th:text="${list.user_name}">3</td>
         <td th:text="${list.user_email}">4</td>
