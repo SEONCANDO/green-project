@@ -46,15 +46,15 @@
             </div>
             <div>
               <img src="/img/myPage/id-card.png" style="width: 10%;">
-              <span> 관리자</span>
+              <span> [[${session.user.user_name}]]</span>
             </div>
             <div>
               <img src="/img/myPage/mail.png" style="width: 10%;">
-              <span> **@*.com</span>
+              <span> [[${session.user.user_email}]]</span>
             </div>
             <div>
               <img src="/img/myPage/phone-call.png" style="width: 10%" ;>
-              <span> 0101234****</span>
+              <span> [[${session.user.user_tel.substring(0,7)}]]****</span>
             </div>
           </div>
         </div>
@@ -64,7 +64,7 @@
         <div style="margin-bottom: 10px;">
           <img src="/img/greenPoint.png" style="width: 30px; margin-left: 15px;">
           <span style="margin-left: 5px; color: black;">그린포인트</span>
-          <span style="text-align: center; color: #2a722d; font-weight: 700;">150,500p</span>
+          <span style="text-align: center; color: #2a722d; font-weight: 700;">[[${session.user.user_point}]]p</span>
           <a href="/greenPoint"><img src="/img/right-arrow.png" style="width: 15px;"></a>
         </div>
       </div>
