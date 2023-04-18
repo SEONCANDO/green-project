@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 
-    <meta charset="UTF-8">
-    <!-- Template Stylesheet -->
-    <link href="/assets/css/main.css" rel="stylesheet">
-    <script src="/js/top_btn.js"></script>
-    <title> footer </title>
+<meta charset="UTF-8">
+<!-- Template Stylesheet -->
+<link href="/assets/css/main.css" rel="stylesheet">
+<script src="/js/top_btn.js"></script>
+<title> footer </title>
+
 </head>
 <footer th:fragment="footerFragment">
     <!-- footer -->
@@ -48,7 +49,7 @@
                         <p>그린토피아 뉴스레터 구독하고 <br>
                             새로운 소식을 받아보세요!</p>
                         <form action="/">
-                                <input type="email" placeholder="Email">
+                            <input type="email" placeholder="Email">
                             <button type="submit"><i class="fas fa-paper-plane"></i></button>
                         </form>
                     </div>
@@ -58,6 +59,14 @@
     </div>
     <!-- end footer -->
     <button onclick="topFunction()" id="top_btn" title="Go to top">TOP</button>
+    <a href="javascript:openDetail('http://pf.kakao.com/_xaHuLxj/chat')" class="enter_chat"
+       data-toggle="tooltip" data-placement="top" title="카카오톡 상담">
+        <img src="/img/카카오톡-로고-3.png" id="chat_btn">
+    </a>
+<!--    <a href="javascript:openDetail('/chat?id=guest')" class="enter_chat"
+       data-toggle="tooltip" data-placement="top" title="Go Live Chat!">
+        <i class="fa-solid fa-comments fa-2xl"></i>
+    </a>-->
 </footer>
 
 <!-- jquery -->
