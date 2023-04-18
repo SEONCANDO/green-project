@@ -50,7 +50,7 @@
                         <td style="padding:0;">모바일 상품권</td>
                         <td style="padding: 0;">[[${ev.pro_name}]]</td>
                         <td style="padding: 0;">1</td>
-                        <td style="padding: 0; color: red;" >[[${ev.pay_point}]]p</td>
+                        <td style="padding: 0; color: red;">[[${ev.pay_point}]]p</td>
                     </tr>
                     </tbody>
                 </table>
@@ -60,23 +60,33 @@
                 <table id="table3">
                     <tbody>
                     <tr>
-                        <td style="width: 10%; padding-left: 10px; border-right:1px solid #888; background: #e6e6e6;">회원아이디</td>
+                        <td style="width: 10%; padding-left: 10px; border-right:1px solid #888; background: #e6e6e6;">
+                            회원아이디
+                        </td>
                         <td style="padding-left: 10px;" th:utext="${ev.user_id}">test1</td>
                     </tr>
                     <tr>
-                        <td style="width: 10%; padding-left: 10px; border-right:1px solid #888; background: #e6e6e6;">회원이름</td>
+                        <td style="width: 10%; padding-left: 10px; border-right:1px solid #888; background: #e6e6e6;">
+                            회원이름
+                        </td>
                         <td style="padding-left: 10px;" th:utext="${ev.user_name}">관리자</td>
                     </tr>
                     <tr>
-                        <td style="width: 10%; padding-left: 10px; border-right:1px solid #888; background: #e6e6e6;">교환일자</td>
+                        <td style="width: 10%; padding-left: 10px; border-right:1px solid #888; background: #e6e6e6;">
+                            교환일자
+                        </td>
                         <td style="padding-left: 10px;" th:utext="${ev.ex_date}">2023-04-13</td>
                     </tr>
                     <tr>
-                        <td style="width: 10%; padding-left: 10px; border-right:1px solid #888; background: #e6e6e6;">이메일</td>
+                        <td style="width: 10%; padding-left: 10px; border-right:1px solid #888; background: #e6e6e6;">
+                            이메일
+                        </td>
                         <td style="padding-left: 10px;" th:utext="${ev.user_email}">d@c.com</td>
                     </tr>
                     <tr>
-                        <td style="width: 10%; padding-left: 10px; border-right:1px solid #888; background: #e6e6e6;">발급여부</td>
+                        <td style="width: 10%; padding-left: 10px; border-right:1px solid #888; background: #e6e6e6;">
+                            발급여부
+                        </td>
                         <td style="padding-left: 10px;">Y</td>
                     </tr>
                     </tbody>
@@ -101,7 +111,8 @@
                             <div class="row">
                                 <div class="col-3 arrive"
                                      style="margin-top: 5px; padding-right: 0px; border-right: 1px solid black;">
-                                    <img th:src="@{/img/product/__${ev.pro_img_save_name}__}" alt="" style="width: 65%;">
+                                    <img th:src="@{/img/product/__${ev.pro_img_save_name}__}" alt=""
+                                         style="width: 65%;">
                                 </div>
                                 <div class="col-7" style="margin-top: 5px;">
                                     <table style="width:100%;">
