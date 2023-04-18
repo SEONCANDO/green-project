@@ -186,20 +186,18 @@ function pickupSave() {
     }
     const text_memo = $(".text_memo").val();
 
-    console.log("지정일>>>>>>>>>>"+pu_day);
-
     // 필수정보 입력 확인
-    if (pu_name === "" | pu_tel === "" | pu_zip === "" | pu_address1 === "" | pu_address2 === "" |
-        pu_address3 === "" | pu_address4 === "" || pu_day === "") {
+    if (pu_name === "" || pu_tel === "" || pu_zip === "" || pu_address1 === "" || pu_address2 === "" ||
+        pu_address3 === "" || pu_address4 === "" || pu_day === "") {
         alert("필수 정보를 입력해주세요")
         return false;
     }
 
     // 세션 스토리지에 임시 저장
     sessionStorage.setItem("user_id", user_id);
-    sessionStorage.setItem("pu_name", pu_name);
-    sessionStorage.setItem("pu_tel", pu_tel);
-    sessionStorage.setItem("pu_zip", pu_zip);
+    sessionStorage.setItem("pu_address_name", pu_name);
+    sessionStorage.setItem("pu_address_tel", pu_tel);
+    sessionStorage.setItem("pu_address_zip", pu_zip);
     sessionStorage.setItem("pu_address1", pu_address1);
     sessionStorage.setItem("pu_address2", pu_address2);
     sessionStorage.setItem("pu_address3", pu_address3);
@@ -208,7 +206,7 @@ function pickupSave() {
     sessionStorage.setItem("pu_elevator", pu_elevator);
     sessionStorage.setItem("pu_day", pu_day);
     sessionStorage.setItem("pu_img", pu_img);
-    sessionStorage.setItem("text_memo", text_memo);
+    sessionStorage.setItem("pu_memo", text_memo);
 
     saveVal = "저장";
     alert("임시 저장되었습니다")

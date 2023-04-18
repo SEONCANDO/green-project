@@ -83,9 +83,9 @@
                         <input type="button" class="btn_recycleCategory_1st" id="img_refrigerator">
                         <input type="button" class="btn_recycleCategory_1st" id="img_television">
                         <input type="button" class="btn_recycleCategory_1st" id="img_airConditioner">
-                        <input type="button" class="btn_recycleCategory_1st" id="img_computer">
                         <input type="button" class="btn_recycleCategory_1st" id="img_solar">
                         <input type="button" class="btn_recycleCategory_1st" id="img_etc">
+                        <input type="button" class="btn_recycleCategory_1st" id="img_computer">
                       </div>
                     </td>
                   </tr>
@@ -147,7 +147,7 @@
                     <div class="text_mainCategory_preview">세탁기</div>
                   </td>
                   <td class="col-3" style="border-right: 2px solid #d5d2d2; font-family: NanumBarunGothic, serif;">
-                    <div class="text_detailCategory_preview">일반 세탁기</div>
+                    <div class="text_detailCategory_preview" id="category_no">일반 세탁기</div>
                   </td>
                   <td class="col-3" style="border-right: 2px solid #d5d2d2; text-align: center; font-family: NanumBarunGothic, serif;">
                     <button type="button" class="minus" onclick="fnCalcCnt('minus');">
@@ -171,7 +171,7 @@
           <div class="container">
             <div class="box_pageMove">
               <a href="/pickup" class="btn btn-outline-success">이전</a>
-              <input type="button" class="btn btn-outline-success" value="저장하기">
+              <input type="button" class="btn btn-outline-success" value="저장하기" onclick="pickupSave2()">
               <a href="/pickup3" class="btn btn-outline-success">다음</a>
             </div>
           </div>

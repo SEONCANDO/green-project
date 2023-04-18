@@ -10,6 +10,9 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Builder
 public class PickupInfoVo {
+    private int pu_address_no;
+
+    private String user_id;
 
     private int house_no;
 

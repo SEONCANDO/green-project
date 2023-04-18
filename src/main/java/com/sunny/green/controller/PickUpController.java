@@ -7,12 +7,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpSession;
 
 @Controller
 public class PickUpController {
+
+    PickupDao pickupDao;
 
     @GetMapping("/pickup")
     public String pickupPage(HttpSession session, Model model) {
@@ -30,30 +31,17 @@ public class PickUpController {
         return "pickup/pickUp2";
     }
 
-    @PostMapping("pickupSave.do")
-    public void pickupSave(HttpSession session,
-            @RequestParam("user_id")String user_id, @RequestParam("pu_name")String pu_name, @RequestParam("pu_tel")String pu_tel,
-            @RequestParam("pu_zip")int pu_zip, @RequestParam("pu_address1")String pu_address1, @RequestParam("pu_address2")String pu_address2,
-            @RequestParam("pu_address3")String pu_address3, @RequestParam("pu_address4")String pu_address4, @RequestParam("house_no")int house_no,
-            @RequestParam("pu_elevator")String pu_elevator, @RequestParam("pu_day")String pu_day, @RequestParam("pu_img")String pu_img,
-            @RequestParam("text_memo")String text_memo) {
+    @GetMapping("/pickupSave")
+    public String pickupSave(HttpSession session, Model model, PickupInfoVo piv) {
+        PickupAddressVo pav1 = (PickupAddressVo) session.getAttribute("user");
+        System.out.println(pav1.getUser_id());
+        piv.setUser_id(pav1.getUser_id());
+        if (pickupDao.pickupInfoSave(pav1) != 0
+                && pickupDao.pickupInfoSave2(piv) != 0) {
+            model.addAttribute("alert", "예약되었습니다");
+        };
 
-        session.setAttribute("user_id", user_id);
-        session.setAttribute("pu_name", pu_name);
-        session.setAttribute("pu_tel", pu_tel);
-        session.setAttribute("pu_zip", pu_zip);
-        session.setAttribute("pu_address1", pu_address1);
-        session.setAttribute("pu_address2", pu_address2);
-        session.setAttribute("pu_address3", pu_address3);
-        session.setAttribute("pu_address4", pu_address4);
-        session.setAttribute("house_no", house_no);
-        session.setAttribute("pu_elevator", pu_elevator);
-        session.setAttribute("pu_day", pu_day);
-        session.setAttribute("pu_img", pu_img);
-        session.setAttribute("text_memo", text_memo);
-
-        String userid = (String) session.getAttribute(user_id);
-        System.out.println(userid);
+        return "/index";
     }
 
     @GetMapping("/pickup3")
