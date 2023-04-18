@@ -5,6 +5,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.sql.Date;
 import java.sql.Timestamp;
 
 @Data
@@ -30,7 +31,7 @@ public class ExchangeVo {
     private int pay_point;
 
     private int remain_point;
-    private Timestamp ex_date;
+    private Date ex_date;
 
     private String ex_uuid_num;
 
