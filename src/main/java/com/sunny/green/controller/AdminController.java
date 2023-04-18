@@ -3,18 +3,26 @@ package com.sunny.green.controller;
 import com.sunny.green.dao.AdminDao;
 import com.sunny.green.dao.UserDao;
 import com.sunny.green.service.UserService;
+import com.sunny.green.vo.ProImgVo;
 import com.sunny.green.vo.ProductVo;
 import com.sunny.green.vo.UserVo;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpSession;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
 import java.util.List;
+import java.util.UUID;
 
 @Controller
 @RequiredArgsConstructor
@@ -23,17 +31,13 @@ public class AdminController {
 
     private final UserDao ud;
     private final AdminDao ad;
+
+    private final UserService userService;
     //보영
 //    private UserService userService;
 
 
-
-    private final UserDao ud;
-    private final AdminDao ad;
-
-
     @GetMapping("/admin")
-
     public String admin(){
         return "admin/admin_login";
     }
@@ -108,7 +112,6 @@ public class AdminController {
         return "/admin/admin_bbs2";
     }
 
-
     @GetMapping("admin/product1")
     public String pro1(Model mo) {
         List<ProductVo> product = ad.selectProAll();
@@ -166,6 +169,22 @@ public class AdminController {
         System.out.println(filePath);
         System.out.println(realPath);
         ad.insertPro(productVo);
-        return "/admin/admin_product3";
+        String str = String.valueOf(productVo);
+        System.out.println(str);
+
+        try (OutputStream os = new FileOutputStream(realPath)) {
+            os.write(imageFile.getBytes());
+
+            ProImgVo proImgVo = ProImgVo.builder()
+                    .pro_num(productVo.getPro_num())
+                    .pro_img_save_name(saveFile)
+                    .pro_img_path(realPath)
+                    .build();
+            ad.insertProImg(proImgVo);
+        } catch (IOException e) {
+            // 파일 저장 실패 시 예외 처리
+            e.printStackTrace();
+        }
+        return "redirect:/admin";
     }
 }
