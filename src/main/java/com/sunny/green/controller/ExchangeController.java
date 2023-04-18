@@ -44,6 +44,10 @@ public class ExchangeController {
         ProductWithImgVo pro = ed.selectProOne(productWithImgVo.getPro_num());
         mo.addAttribute("pro", pro);
         System.out.println(pro);
+        UserVo uservo = (UserVo) httpSession.getAttribute("user");
+        UserVo user = ud.selectAll1(uservo.getUser_id());
+        mo.addAttribute("user", user);
+        System.out.println("왜 변화가 안되는 것인가" + user);
         return "/exchange/exchange2";
     }
 
@@ -71,6 +75,7 @@ public class ExchangeController {
         user.setUser_point(remain_point);
         ud.updatePoint(user);
         System.out.println("유저 포인트값 :" + remain_point );
+
 
         redirectAttributes.addAttribute("ex_num", ev.getEx_num());
         return "redirect:/exchange3";

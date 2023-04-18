@@ -131,7 +131,7 @@
 
     <!-- Modal -->
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-         aria-hidden="true">
+         aria-hidden="true" th:object="${user}">
         <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
             <div class="modal-content">
 
@@ -160,10 +160,10 @@
                                 <div class="col-md-7">
 
                                     <div>
-                                    <input type="hidden" name="user_id" th:value="${session.user.user_id}">
+                                    <input type="hidden" name="user_id" th:value="${user.user_id}">
                                     <input type="hidden" name="pro_num" th:value="${pro.pro_num}">
-                                    <input type="hidden" name="user_name" th:value="${session.user.user_name}">
-                                    <input type="hidden" name="user_email" th:value="${session.user.user_email}">
+                                    <input type="hidden" name="user_name" th:value="${user.user_name}">
+                                    <input type="hidden" name="user_email" th:value="${user.user_email}">
                                     <input type="hidden" name="pro_name" th:value="${pro.pro_name}">
                                     <input type="hidden" name="pro_img_save_name" th:value="${pro.pro_img_save_name}">
                                     </div>
@@ -189,12 +189,12 @@
                                             <tr>
                                                 <td style="color: #888;">유저 아이디
                                                 </td>
-                                                <td name="user_id" th:value="${session.user.user_id}" th:utext="${session.user.user_id}"></td>
+                                                <td name="user_id" th:value="${user.user_id}" th:utext="${user.user_id}"></td>
                                             </tr>
 
                                             <tr>
                                                 <td style="color: #888;">현재 포인트</td>
-                                                <td><input type="text" name="user_point" th:value="${session.user.user_point}" readonly style="background: #e6e6e6; border:none;"></td>
+                                                <td><input type="text" name="user_point" th:value="${user.user_point}" readonly style="background: #e6e6e6; border:none;"></td>
                                             </tr>
 
                                             <tr>
@@ -204,7 +204,7 @@
 
                                             <tr style="border-bottom: 2px solid black;">
                                                 <td style="color: #888;">잔여 포인트</td>
-                                                <td><input type="text" name="remain_point" th:value="${session.user.user_point} - ${pro.pro_point}" readonly style="background: #e6e6e6; border:none;"></td>
+                                                <td><input type="text" name="remain_point" th:value="${user.user_point} - ${pro.pro_point}" readonly style="background: #e6e6e6; border:none;"></td>
                                             </tr>
 
                                             </tbody>
