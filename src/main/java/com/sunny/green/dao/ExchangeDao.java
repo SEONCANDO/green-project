@@ -15,8 +15,6 @@ public interface ExchangeDao {
 
     public int insertExchange(ExchangeVo exchangeVo);
 
-    public int updateExchangePoint(ExchangeVo exchangeVo);
-
     public ExchangeVo selectExchangeOne(int ex_num);
 
     public List<ExchangeVo> selectExchangeId(String user_id);

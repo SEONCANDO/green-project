@@ -13,7 +13,8 @@
 <body>
 <div layout:fragment="content">
 
-    <div class="container" id="box1" style="margin-top: 140px; margin-bottom:5%; font-family: 'NanumBarunGothic', sans-serif; font-weight:700;">
+    <div class="container" id="box1"
+         style="margin-top: 140px; margin-bottom:5%; font-family: 'NanumBarunGothic', sans-serif; font-weight:700;">
         <div class="row" id="box2" style="height: 850px;">
 
             <!-- 시작 -->
@@ -72,7 +73,8 @@
                             로그아웃</a></button>
                 </div>
                 <div style="margin-top: 30px; text-align: end;">
-                    <a id="delete" th:href="@{delete(user_id=${user.user_id})}" style="color: black; font-size: 13px; letter-spacing: -1px;">회원탈퇴 하기</a>
+                    <a id="delete" th:href="@{delete(user_id=${user.user_id})}"
+                       style="color: black; font-size: 13px; letter-spacing: -1px;">회원탈퇴 하기</a>
                 </div>
             </div>
 
@@ -110,7 +112,8 @@
                         <!-- 예약 내용-->
                         <div style="height: 70%;">
                             <div class="container">
-                                <span style="float: right; margin-right: 15px; margin-top: 5px;"><a href="#" style="color: black; font-size: 14px;">더보기</a></span>
+                                <span style="float: right; margin-right: 15px; margin-top: 5px;"><a href="#"
+                                                                                                    style="color: black; font-size: 14px;">더보기</a></span>
                                 <table id="table2">
                                     <thead>
                                     <tr>

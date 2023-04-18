@@ -26,12 +26,11 @@ public class ExchangeController {
     private final ExchangeDao ed;
 
     @GetMapping("/exchange")
-    public String exchange1(HttpSession session, Model mo){
-        if(session.getAttribute("user") == null){
+    public String exchange1(HttpSession session, Model mo) {
+        if (session.getAttribute("user") == null) {
             mo.addAttribute("alert", "로그인을 먼저 해주시기 바랍니다");
             mo.addAttribute("url", "/login");
-        }
-        else{
+        } else {
             List<ProductWithImgVo> pv = ed.selectProductAll();
             mo.addAttribute("pv", pv);
             return "/exchange/exchange1";
@@ -40,7 +39,7 @@ public class ExchangeController {
     }
 
     @GetMapping("/exchange2")
-    public String exchange(HttpSession httpSession, Model mo, ProductWithImgVo productWithImgVo){
+    public String exchange(HttpSession httpSession, Model mo, ProductWithImgVo productWithImgVo) {
         ProductWithImgVo pro = ed.selectProOne(productWithImgVo.getPro_num());
         mo.addAttribute("pro", pro);
         System.out.println(pro);
@@ -52,7 +51,7 @@ public class ExchangeController {
     }
 
     @PostMapping("/exchange")
-    public String exchange(ExchangeVo ev, UserVo user, RedirectAttributes redirectAttributes){
+    public String exchange(ExchangeVo ev, UserVo user, RedirectAttributes redirectAttributes) {
         String chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"; // 예약번호로 사용할 문자열
 
         int length = 8; // 예약번호의 길이
@@ -74,7 +73,7 @@ public class ExchangeController {
         int remain_point = ev.getRemain_point();
         user.setUser_point(remain_point);
         ud.updatePoint(user);
-        System.out.println("유저 포인트값 :" + remain_point );
+        System.out.println("유저 포인트값 :" + remain_point);
 
 
         redirectAttributes.addAttribute("ex_num", ev.getEx_num());
@@ -82,7 +81,7 @@ public class ExchangeController {
     }
 
     @GetMapping("/exchange3")
-    public String exchange3(Model mo, @RequestParam("ex_num") int ex_num){
+    public String exchange3(Model mo, @RequestParam("ex_num") int ex_num) {
         ExchangeVo ev = ed.selectExchangeOne(ex_num);
         mo.addAttribute("ev", ev);
         return "/exchange/exchange3";

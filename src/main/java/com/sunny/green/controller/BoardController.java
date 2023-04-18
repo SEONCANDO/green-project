@@ -33,13 +33,12 @@ public class BoardController {
 
 
     @GetMapping("/myWrite")
-    public String myWrite(HttpSession session, Model model){
+    public String myWrite(HttpSession session, Model model) {
 
-        if(session.getAttribute("user") == null){
+        if (session.getAttribute("user") == null) {
             model.addAttribute("alert", "로그인을 해주시기 바랍니다.");
             model.addAttribute("url", "/login");
-        }
-        else{
+        } else {
             UserVo user = (UserVo) session.getAttribute("user");
             UserVo user1 = ud.selectAll1(user.getUser_id());
             System.out.println("번호는 뭘까요? : " + user1);
@@ -51,13 +50,12 @@ public class BoardController {
     }
 
     @GetMapping("/myComment")
-    public String myComment(HttpSession session, Model model){
+    public String myComment(HttpSession session, Model model) {
 
-        if(session.getAttribute("user") == null){
+        if (session.getAttribute("user") == null) {
             model.addAttribute("alert", "로그인을 해주시기 바랍니다.");
             model.addAttribute("url", "/login");
-        }
-        else{
+        } else {
             UserVo user = (UserVo) session.getAttribute("user");
             UserVo user1 = ud.selectAll1(user.getUser_id());
             System.out.println("번호는 뭘까요? : " + user1);
