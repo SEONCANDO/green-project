@@ -31,7 +31,7 @@
         <img src="/img/유저.png" style="width: 40%;">
       </div>
       <div style="font-size: 25px; letter-spacing: -2px; margin-top: 10px;">
-        <span style="color: black; font-weight: 700;">[[${session.user.user_id}]]</span>님
+        <span style="color: black; font-weight: 700;">[[${user.user_id}]]</span>님
         <a href="/modify"><img src="/img/right-arrow.png" style="width: 15px;"></a>
       </div>
       <div>
@@ -42,19 +42,19 @@
           <div style="height: 90%; border: 1px solid #e6e6e6;" id="profiles">
             <div>
               <img src="/img/myPage/user.png" style="width: 10%;">
-              <span> [[${session.user.user_id}]]</span>
+              <span> [[${user.user_id}]]</span>
             </div>
             <div>
               <img src="/img/myPage/id-card.png" style="width: 10%;">
-              <span> [[${session.user.user_name}]]</span>
+              <span> [[${user.user_name}]]</span>
             </div>
             <div>
               <img src="/img/myPage/mail.png" style="width: 10%;">
-              <span> [[${session.user.user_email}]]</span>
+              <span> [[${user.user_email}]]</span>
             </div>
             <div>
               <img src="/img/myPage/phone-call.png" style="width: 10%" ;>
-              <span> [[${session.user.user_tel.substring(0,7)}]]****</span>
+              <span> [[${user.user_tel.substring(0,7)}]]****</span>
             </div>
           </div>
         </div>
@@ -64,7 +64,7 @@
         <div style="margin-bottom: 10px;">
           <img src="/img/greenPoint.png" style="width: 30px; margin-left: 15px;">
           <span style="margin-left: 5px; color: black;">그린포인트</span>
-          <span style="text-align: center; color: #2a722d; font-weight: 700;">[[${session.user.user_point}]]p</span>
+          <span style="text-align: center; color: #2a722d; font-weight: 700;">[[${user.user_point}]]p</span>
           <a href="/greenPoint"><img src="/img/right-arrow.png" style="width: 15px;"></a>
         </div>
       </div>

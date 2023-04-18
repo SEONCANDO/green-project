@@ -158,6 +158,7 @@ public class UserController {
             UserVo user1 = ud.selectAll1(user.getUser_id());
             System.out.println("번호는 뭘까요? : " + user1);
             model.addAttribute("user", user1);
+            model.addAttribute("aaa", "bbb");
             return "/myPage/modify";
         }
         return "/alert";
@@ -188,7 +189,8 @@ public class UserController {
         }
         else {
             UserVo userDB = (UserVo) session.getAttribute("user");
-            mo.addAttribute("user", userDB);
+            UserVo user1 = ud.selectAll1(userDB.getUser_id());
+            mo.addAttribute("user", user1);
             return "/myPage/greenPoint";
         }
 
