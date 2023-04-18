@@ -18,11 +18,13 @@
         select p.*, pi.* from product p join pro_img pi on p.pro_num = pi.pro_num where p.pro_num = #{pro_num}
     </select>
 
+<!--    교환 내역 저장-->
     <insert id="insertExchange" useGeneratedKeys="true" keyProperty="ex_num">
         insert into exchange(pro_num, user_id, user_name, user_email , pro_name , pro_img_save_name ,user_point, pay_point, remain_point, ex_uuid_num)
         values(#{pro_num}, #{user_id}, #{user_name}, #{user_email} , #{pro_name} , #{pro_img_save_name} ,#{user_point}, #{pay_point}, #{remain_point}, #{ex_uuid_num})
     </insert>
 
+<!--  교환 내역 불러오기  -->
     <select id="selectExchangeOne" resultType="com.sunny.green.vo.ExchangeVo">
         select * from exchange where ex_num = #{ex_num};
     </select>
