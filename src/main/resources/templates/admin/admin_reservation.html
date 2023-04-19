@@ -7,11 +7,215 @@
 <head>
     <meta charset="UTF-8">
     <title> 관리자페이지 </title>
-
-
 </head>
 <body>
 <div layout:fragment="admin_content">
+
+    <div>
+        <br>
+        <h1>포인트/예약 관리</h1>
+        <br>
+    </div>
+
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item active" aria-current="page">예약자 현황</li>
+            <li class="breadcrumb-item"><a href="#">포인트 결제내역 조회</a></li>
+            <li class="breadcrumb-item"><a href="#"> e-cupon 등록 및 수정 </a></li>
+
+        </ol>
+    </nav>
+    <br>
+    <div>
+        <form class="row g-3 needs-validation" novalidate>
+            <div class="col">
+                <select class="form-select" id="validationCustom04" required>
+                    <option selected disabled value="">검색유형</option>
+                    <option value="1">날짜별</option>
+                    <option>예약번호</option>
+                    <option>예약자명</option>
+                    <option>회원아이디</option>
+                    <option>픽업주소</option>
+                </select>
+                <div class="invalid-feedback">
+                    Please select a valid state.
+                </div>
+            </div>
+            <div class="col">
+                <input type="text" class="form-control" id="validationCustom05" required>
+                <div class="invalid-feedback">
+                    검색어를 입력하세요
+                </div>
+            </div>
+            <div class="col">
+                <button class="btn btn-primary" type="submit">검색</button>
+            </div>
+        </form>
+    </div>
+    <br>
+
+
+    <!--   rsLisr table-->
+    <div class="admin_rsList">
+        <table class="table caption-top">
+            <thead>
+            <!-- 테이블 상단------------------->
+            <tr>
+                <th scope="col">선택</th>
+                <th scope="col">예약번호</th>
+                <th scope="col">접수날짜</th>
+                <th scope="col">픽업장소</th>
+                <th scope="col">픽업날짜</th>
+                <th scope="col">회원아이디</th>
+                <th scope="col">전화번호</th>
+                <th scope="col">누적포인트</th>
+                <th scope="col">포인트내용</th>
+                <th scope="col">지급포인트</th>
+                <th scope="col">지급상태</th>
+                <th scope="col">버튼</th>
+            </tr>
+            </thead>
+            <!--   받아오는 데이터 값 ------------------->
+            <tbody>
+            <tr>
+                <th scope="row">
+                <td>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="">
+                    </div>
+                </td>
+                </th>
+                <td>데이터</td>
+                <td>데이터</td>
+                <td>데이터</td>
+                <td>데이터</td>
+                <td>데이터</td>
+                <td>데이터</td>
+                <td>데이터</td>
+                <td>데이터</td>
+                <td>
+                    <select class="form-select" id="" required>
+                        <option selected disabled value="">승인대기중</option>
+                        <option>예약완료</option>
+                        <option>예약취소</option>
+                    </select>
+                </td>
+                <td>
+                    <button class="" type="submit">삭제</button>
+                </td>
+            </tr>
+
+            <tr>
+                <th scope="row">
+                <td>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="">
+                    </div>
+                </td>
+                </th>
+                <td>데이터</td>
+                <td>데이터</td>
+                <td>데이터</td>
+                <td>데이터</td>
+                <td>데이터</td>
+                <td>데이터</td>
+                <td>데이터</td>
+                <td>데이터</td>
+                <td>
+                    <select class="form-select" required>
+                        <option selected disabled value="">승인대기중</option>
+                        <option>예약완료</option>
+                        <option>예약취소</option>
+                    </select>
+                </td>
+                <td>
+                    <button class="" type="submit">삭제</button>
+                </td>
+            </tr>
+
+            <tr>
+                <th scope="row">
+                <td>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="">
+                    </div>
+                </td>
+                </th>
+                <td>데이터</td>
+                <td>데이터</td>
+                <td>데이터</td>
+                <td>데이터</td>
+                <td>데이터</td>
+                <td>데이터</td>
+                <td>데이터</td>
+                <td>데이터</td>
+                <td>
+                    <select class="form-select" required>
+                        <option selected disabled value="">승인대기중</option>
+                        <option>예약완료</option>
+                        <option>예약취소</option>
+                    </select>
+                </td>
+                <td>
+                    <button class="" type="submit">삭제</button>
+                </td>
+            </tr>
+
+            <tr>
+                <th scope="row">
+                <td>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="">
+                    </div>
+                </td>
+                </th>
+                <td>데이터</td>
+                <td>데이터</td>
+                <td>데이터</td>
+                <td>데이터</td>
+                <td>데이터</td>
+                <td>데이터</td>
+                <td>데이터</td>
+                <td>데이터</td>
+                <td>
+                    <select class="form-select" required>
+                        <option selected disabled value="">승인대기중</option>
+                        <option>예약완료</option>
+                        <option>예약취소</option>
+                    </select>
+                </td>
+                <td>
+                    <button class="" type="submit">삭제</button>
+                </td>
+            </tr>
+
+
+            </tbody>
+        </table>
+
+
+        <!----- 페이징 ----->
+        <nav aria-label="Page navigation example">
+            <ul class="pagination justify-content-center">
+                <li class="page-item">
+                    <a class="page-link" href="#" aria-label="Next">
+                        <span aria-hidden="true">&raquo;</span>
+                    </a>
+                </li>
+                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                <li class="page-item">
+                    <a class="page-link" href="#" aria-label="Next">
+                        <span aria-hidden="true">&raquo;</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+
+        </table>
+
+    </div>
 
 </div>
 
