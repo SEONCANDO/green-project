@@ -24,17 +24,8 @@ import javax.servlet.http.HttpSession;
 @Controller
 @RequiredArgsConstructor
 public class BoardController {
+
     private final BbsDao bd;
-
-    public BoardController(BbsDao bd) {
-        this.bd = bd;
-    }
-
-
-    @GetMapping("/board") // Q&A 목록
-    public String index(Model model) {
-        List<BbsVo> bbsVoList = bd.selectBoardAll();
-        model.addAttribute("bbsVoList", bbsVoList);
 
     private final UserDao ud;
 
@@ -42,13 +33,15 @@ public class BoardController {
 
     private final AdminDao ad;
 
-    @GetMapping("/board") //Q&A
-    public String index() {
+    @GetMapping("/board") // Q&A 목록
+    public String index(Model model) {
+        List<BbsVo> bbsVoList = bd.selectBoardAll();
+        model.addAttribute("bbsVoList", bbsVoList);
 
         return "bbs/boardList";
     }
 
-    @GetMapping ("/post") // Q&A 글작성 폼
+    @GetMapping("/post") // Q&A 글작성 폼
     public String post(UserVo user, HttpSession session, Model model) {
         UserVo userVo = (UserVo) session.getAttribute("user");
         model.addAttribute("user", userVo);
@@ -75,7 +68,7 @@ public class BoardController {
     }
 
     @GetMapping("/updateBoard")
-    public String updateBoard(BbsVo bbsVo, Model model){
+    public String updateBoard(BbsVo bbsVo, Model model) {
         bd.updateBoard(bbsVo);
         List<BbsVo> board = bd.selectBoardAll();
         model.addAttribute("board", board);
@@ -83,11 +76,10 @@ public class BoardController {
     }
 
     @GetMapping("/deleteBoard")
-    public String deleteBoard(BbsVo bbsVo){
+    public String deleteBoard(BbsVo bbsVo) {
         bd.deleteBoard(bbsVo);
         return "redirect:bbs/board";
     }
-
 
 
     @GetMapping("/myWrite")
@@ -124,3 +116,4 @@ public class BoardController {
         return "/alert";
     }
 }
+
