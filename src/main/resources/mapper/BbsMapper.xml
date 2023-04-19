@@ -14,9 +14,21 @@
         insert into board(board_num, board_title, user_id, board_content, board_date) values (#{board_num}, #{board_title}, #{user_id}, #{board_content}, NOW())
     </insert>
 
-    <select id="selectBoard" resultType="com.sunny.green.vo.BbsVo">
-        select * from product where board_num = #{board_num}
+    <select id="selectBoardNum" resultType="com.sunny.green.vo.BbsVo">
+        select * from board where board_num = #{board_num}
     </select>
+
+    <update id="updateBoard" parameterType="com.sunny.green.vo.BbsVo">
+        update board
+        set board_title =#{board_title}, board_content=#{board_content}
+        where board_num=#{board_num};
+    </update>
+
+    <delete id="deleteBoard" parameterType="com.sunny.green.vo.BbsVo">
+        delete
+        from board
+        where board_num=#{board_num};
+    </delete>
 
 </mapper>
 
