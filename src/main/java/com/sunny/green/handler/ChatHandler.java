@@ -29,13 +29,11 @@ public class ChatHandler extends TextWebSocketHandler {
                 sess.sendMessage(message);
             }
         }
-
-/*        String payload = message.getPayload();
-        System.out.println("payload: " + payload);
-
-        TextMessage greeting = new TextMessage("안녕하세요, 그린토피아입니다.");
+/*
+        String payload = message.getPayload();
+        System.out.println("payload " + payload);
+        TextMessage greeting = new TextMessage("안녕하세요, 그린토피아입니다. 무엇을 도와드릴까요?");
         session.sendMessage(greeting);*/
-        String user_id = (String) session.getAttributes().get("user_id");
     }
 
     //연결, 클라이언트(session) 접속시 호출되는 메서드
