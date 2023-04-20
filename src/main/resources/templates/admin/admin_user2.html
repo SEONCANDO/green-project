@@ -16,21 +16,21 @@
 
 
 
-
+    <form action="freeList" method="post">
     <div class="row no-gutters" style="margin-bottom: 20px; margin-left: 10px">
       <div class="col-lg-3 col-md-3 col-sm-12 p-0">
         <label for="search-type" hidden>검색 유형</label>
         <select class="form-control" id="search-type" name="searchType">
-          <option>회원명</option>
-          <option>아이디</option>
-          <option>주소</option>
-          <option>전화번호</option>
+          <option value="name">회원명</option>
+          <option value="id">아이디</option>
+          <option value="address">주소</option>
+          <option value="tel">전화번호</option>
         </select>
       </div>
       <div class="col-lg-8 col-md-6 col-sm-12 p-0">
         <label for="search-value" hidden>검색어</label>
         <input type="text" placeholder="검색어..." class="form-control" id="search-value"
-               name="searchValue">
+               name="searchName">
       </div>
       <div class="col-lg-1 col-md-3 col-sm-12 p-0">
         <button type="submit" class="btn btn-base">
@@ -44,6 +44,7 @@
         </button>
       </div>
     </div>
+    </form>
     <table class="table table-success table-striped">
       <thead>
       <tr>
