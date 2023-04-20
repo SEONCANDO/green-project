@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.http.HttpSession;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
@@ -85,15 +86,11 @@ public class AdminController {
         return "alert";
     }
 
-    @GetMapping("/admin/delete")
-    public String deleteUser(String user_id,HttpSession session){
-        UserVo userDB = (UserVo)session.getAttribute("user");
-        user_id = userDB.getUser_id();
-        System.out.println(user_id);
-
+    @GetMapping("admin/delete")
+    public String deleteUser(@RequestParam("user_id") String user_id){
+        System.out.println("번호 :" + user_id);
         int deleteUser = ud.deleteId(user_id);
         System.out.println(deleteUser);
-        session.setAttribute("user",null);
         return "redirect:/admin/user2";
     }
 
