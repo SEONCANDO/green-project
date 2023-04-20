@@ -1,9 +1,6 @@
 package com.sunny.green.controller;
 
-import com.sunny.green.dao.AdminDao;
-import com.sunny.green.dao.ExchangeDao;
 import com.sunny.green.dao.UserDao;
-import com.sunny.green.vo.ExchangeVo;
 import com.sunny.green.vo.UserVo;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -24,32 +21,21 @@ import java.util.List;
 public class UserController {
 
     private final UserDao ud;
-    private final AdminDao ad;
-    private final ExchangeDao ed;
 
     //마이페이지 매핑
     @GetMapping("/myPage")
-    public String myPage(HttpSession session, Model mo) {
-        if (session.getAttribute("user") == null) {
-            mo.addAttribute("alert", "로그인 먼저 진행해주시기 바랍니다");
-            mo.addAttribute("url", "/login");
-        } else {
-            UserVo userDB = (UserVo) session.getAttribute("user");
-            UserVo user = ud.selectAll1(userDB.getUser_id());
-            mo.addAttribute("user", user);
-            return "myPage/myPage";
-        }
-
-        return "/alert";
+    public String myPage(){
+        return "myPage/myPage";
     }
 
     //로그인 창에 들어갈때 쓰는 매핑
     @GetMapping("/login")
-    public String login(HttpSession session, Model model) {
-        if (session.getAttribute("user") != null) {
-            model.addAttribute("alert", "이미 로그인이 되어있는 상황입니다");
+    public String login(HttpSession session, Model model){
+        if(session.getAttribute("user") != null){
+            model.addAttribute("alert",  "이미 로그인이 되어있는 상황입니다");
             model.addAttribute("url", "/index");
-        } else {
+        }
+        else {
             return "user/login";
         }
         return "alert";
@@ -57,11 +43,11 @@ public class UserController {
 
     //로그인 할 때 나타나는 post매핑
     @PostMapping("/login")
-    public String login1(UserVo user, HttpSession session, Model model) {
+    public String login1(UserVo user, HttpSession session, Model model){
         UserVo userDB = ud.selectUser(user);
         System.out.println(userDB);
 
-        if (userDB != null) {
+        if(userDB != null){
             System.out.println(userDB);
             session.setAttribute("user", userDB);
             model.addAttribute("alert", "로그인이 성공했습니다");
@@ -78,11 +64,12 @@ public class UserController {
 
     //회원가입 들어가는 매핑
     @GetMapping("/join")
-    public String join(HttpSession session, Model model) {
-        if (session.getAttribute("user") != null) {
+    public String join(HttpSession session, Model model){
+        if(session.getAttribute("user") != null){
             model.addAttribute("alert", "이미 로그인이 되어있는 상태입니다.");
             model.addAttribute("url", "/index");
-        } else {
+        }
+        else{
             return "/user/join";
         }
         return "/alert";
@@ -90,38 +77,20 @@ public class UserController {
 
     //회원가입 기능
     @PostMapping("/join")
-    public String join1(UserVo user, Model model) {
-
-        if (ud.joinUser(user) != 0) {
-            model.addAttribute("alert", "회원가입이 완료되었습니다.");
-            model.addAttribute("url", "/index");
-        }
-        return "/alert";
+    public String join1(UserVo user, BindingResult bindingResult){
+        ud.joinUser(user);
+        return "/index";
     }
 
-    @GetMapping("/breakDown")
-    public String exchange(HttpSession session, Model mo) {
-        if (session.getAttribute("user") == null) {
-            mo.addAttribute("alert", "로그인 먼저 진행해주시기 바랍니다");
-            mo.addAttribute("url", "/login");
-        } else {
-            UserVo userDB = (UserVo) session.getAttribute("user");
-            mo.addAttribute("user", userDB);
-            List<ExchangeVo> ex = ed.selectExchangeId(userDB.getUser_id());
-            mo.addAttribute("ex", ex);
-            return "/myPage/breakDown";
-        }
-
-        return "/alert";
-    }
 
     //로그아웃 기능
     @GetMapping("/logout")
-    public String logout(HttpSession httpSession, Model mo) {
-        if (httpSession.getAttribute("user") == null) {
+    public String logout(HttpSession httpSession, Model mo){
+        if(httpSession.getAttribute("user") == null ){
             mo.addAttribute("alert", "로그인 먼저 해주시기 바랍니다");
             mo.addAttribute("url", "/login");
-        } else {
+        }
+        else{
             httpSession.setAttribute("user", null);
             mo.addAttribute("alert", "로그아웃 하셨습니다");
             mo.addAttribute("url", "/index");
@@ -134,7 +103,7 @@ public class UserController {
     @ResponseBody
     public String checkDuplicateId(@RequestParam("user_id") String userid) {
         UserVo existingUser = ud.selectUserId(userid);
-        if (existingUser != null) {
+        if(existingUser != null) {
             return "exist";
         } else {
             return "not exist";
@@ -143,61 +112,23 @@ public class UserController {
 
     // 마이페이지 개인정보 수정
     @GetMapping("/modify")
-    public String modify(HttpSession session, Model model) {
-        if (session.getAttribute("user") == null) {
+    public String modify(HttpSession session, Model model){
+        if(session.getAttribute("user") == null){
             model.addAttribute("alert", "로그인을 해주시기 바랍니다.");
             model.addAttribute("url", "/login");
-        } else {
+        }
+        else{
             UserVo user = (UserVo) session.getAttribute("user");
-            UserVo user1 = ud.selectAll1(user.getUser_id());
-            System.out.println("번호는 뭘까요? : " + user1);
-            model.addAttribute("user", user1);
-            model.addAttribute("aaa", "bbb");
+            System.out.println("번호는 뭘까요? : " + user);
+            model.addAttribute("user", user);
             return "/myPage/modify";
         }
         return "/alert";
     }
 
-    @PostMapping("/modify")
-    public String modify1(UserVo user, Model mo) {
-        int update = ud.updateUser(user);
-        if (update == 1) {
-            System.out.println(update);
-            mo.addAttribute("alert", "정보가 수정되었습니다");
-            mo.addAttribute("url", "/myPage");
-        } else {
-            mo.addAttribute("alert", "정보 수정에 실패했습니다");
-            mo.addAttribute("url", "/index");
-        }
-
-        return "alert";
-    }
-
     //마이페이지 그린포인트 확인
     @GetMapping("/greenPoint")
-    public String green(HttpSession session, Model mo) {
-        if (session.getAttribute("user") == null) {
-            mo.addAttribute("alert", "로그인 먼저 진행해주시기 바랍니다");
-            mo.addAttribute("url", "/login");
-        } else {
-            UserVo userDB = (UserVo) session.getAttribute("user");
-            UserVo user1 = ud.selectAll1(userDB.getUser_id());
-            mo.addAttribute("user", user1);
-            return "/myPage/greenPoint";
-        }
-
-        return "/alert";
+    public String green() {
+        return "/myPage/greenPoint";
     }
-
-    @GetMapping("/delete")
-    public String delete(HttpSession session, String user_id) {
-        UserVo userDB = (UserVo) session.getAttribute("user");
-        user_id = userDB.getUser_id();
-        System.out.println(user_id);
-        int delete = ud.deleteId(user_id);
-        System.out.println(delete);
-        session.setAttribute("user", null);
-        return "redirect:/index";
-    }
-
 }

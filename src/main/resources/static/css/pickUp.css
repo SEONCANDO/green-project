@@ -9,7 +9,7 @@
 /* 전체 컨테이너 (공통) */
 .container_content_all{
     margin-top: 100px;
-    margin-bottom: 70px;
+    margin-bottom: 260px;
     font-family: 'GmarketSansMedium';
 }
 
@@ -25,16 +25,16 @@
 }
 .textDiv_header {
     position: absolute;
-    left: 492px;
-    top: 177px;
+    left: 350px;
+    top: 125px;
 }
 .text_header{
     width: 220px;
-    font-size: 47px;
+    font-size: 45px;
     font-weight: bold;
+    color: black;
     margin-top: 10px;
-    color: #3c3535;
-    border-bottom: 2px solid #d7aa45;
+    border-bottom: 2px solid #89db2f;
 }
 
 
@@ -97,11 +97,12 @@
 /* step 하단 text */
 .text_step {
     margin-top: 10px;
+
     padding-right: 7px;
-    font-size: 16px;
+    font-size: 17px;
     text-align: center;
     font-weight: bold;
-    width: 110px;
+    width: 115px;
 }
 
 /* *****pickup page***** */
@@ -109,13 +110,10 @@
 /* 사용자 약관 box */
 .box_checkBox {
     display: flex;
-    width: 92%;
-    margin-left: 5%;
 }
 /* 사용자 약관 checkBox */
 #checkBox_colPersonInfo{
-    width: 19px;
-    height: 19px;
+    width: 20px;
 }
 /* 사용자 약관 text */
 #text_checkBox {
@@ -138,8 +136,6 @@
     overflow: scroll;
     color: black;
     font-size: 13px;
-    width: 92%;
-    margin-left: 4%;
 }
 /* 사용자 약관 번호 */
 .titleNum_permission {
@@ -160,8 +156,8 @@
 #box_contentTitle{
     display: flex;
     margin-top: 30px;
+    margin-left: 10px;
     margin-bottom: 10px;
-    margin-left: 4%;
 }
 #text_contentTitle{
     font-size: 32px;
@@ -180,7 +176,6 @@
     align-items: center;
     margin-left: 25px;
     font-size: 19px;
-    font-family: NanumBarunGothic, serif;
 }
 
 
@@ -194,8 +189,8 @@
 
 
 /* 개인정보 주소 */
-.box_address > input {
-    width: 45%;
+#box_address > input {
+    width: 450px;
     height: 40px;
     margin-bottom: 10px;
     margin-right: 10px;
@@ -211,7 +206,6 @@
     display: flex;
     align-items: center;
     margin-left: 10px;
-    font-size: 20px;
 }
 #text_dayOfWeek {
     display: flex;
@@ -253,7 +247,8 @@
 
 /* pickup page 저장 및 이동 */
 .box_pageMove {
-    margin-top: 6%;
+    margin-top: 50px;
+    margin-left: 10px;
     text-align: center;
 }
 /* page 저장 */
@@ -300,8 +295,8 @@
 }
 /* 선택 이미지 preview */
 #img_recycle_preview{
-    width: 350px;
-    height: 350px;
+    width: 400px;
+    height: 400px;
 }
 
 /* 품목 카테고리 text */
@@ -322,8 +317,8 @@
 
 /* 품목 1차 카테고리 버튼 */
 .box_recycleCategory > input {
-    width: 95px;
-    height: 95px;
+    width: 120px;
+    height: 120px;
     margin: 8px;
 }
 /* 품목 1차 카테고리 버튼 호버 */
@@ -383,9 +378,9 @@
     background: linear-gradient(45deg, #fbff09, #8de795);
     color: #000000;
     font-weight: bold;
-    font-size: 17px;
-    width: 106px;
-    height: 61px;
+    font-size: 25px;
+    width: 150px;
+    height: 75px;
     margin: 6px;
 }
 /* 2차 카테고리 버튼 hover */
