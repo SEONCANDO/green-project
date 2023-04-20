@@ -48,7 +48,7 @@ body {
 }
 
 body img {
-    max-width: 115%;
+    max-width: 100%;
     margin-top: 5px;
 }
 
@@ -165,7 +165,6 @@ h6, .h6 {
 }
 
 p {
-    font-family: "NanumBarunGothic", sans-serif;
     font-weight: 400;
     font-size: 1rem;
     letter-spacing: 0.1px;
@@ -472,9 +471,9 @@ a.boxed-btn, a.bordered-btn, a.cart-btn {
 .section-title h3:after {
     position: absolute;
     content: '';
-    left: 0px;
-    right: 0px;
-    bottom: 0px;
+    left: 0;
+    right: 0;
+    bottom: 0;
     width: 100px;
     height: 2px;
     background-color: #F28123;
@@ -546,11 +545,8 @@ ul.navbar-nav li.nav-item a.nav-link, ul.navbar-nav li.nav-item.active a.nav-lin
 }
 
 .top-header-area {
-    position: absolute;
-    z-index: 999;
     width: 100%;
     padding: 25px 0;
-    background-color: darkgreen;
 }
 
 .top-header-area.white ul.navbar-nav li.nav-item a.nav-link, .top-header-area.white ul.navbar-nav li.nav-item.active a.nav-link {
@@ -578,7 +574,7 @@ nav.main-menu ul li {
 }
 
 nav.main-menu ul li a {
-    color: #fff;
+    color: black;
     font-size: 18px;
     font-family: 'GmarketSansMedium', serif;
     display: block;
@@ -586,11 +582,9 @@ nav.main-menu ul li a {
 }
 
 nav.main-menu ul > li {
-    position: relative;
 }
 
 nav.main-menu ul ul.sub-menu {
-    position: absolute;
     background-color: #fff;
     width: 220px;
     padding: 15px 15px;
@@ -598,9 +592,6 @@ nav.main-menu ul ul.sub-menu {
     left: 0;
     top: 50px;
     border-radius: 3px;
-    -webkit-transition: 0.3s;
-    -o-transition: 0.3s;
-    transition: 0.3s;
     opacity: 0;
     visibility: hidden;
     -webkit-box-shadow: 0 0 20px #555555;
@@ -649,7 +640,7 @@ ul.sub-menu li:last-child {
 }
 
 .mean-bar a.meanmenu-reveal {
-    background-color: #F28123;
+    background-color: rgba(26, 121, 64, 0.8);
 }
 
 .main-menu-wrap {
@@ -721,15 +712,10 @@ nav.main-menu li:hover > a {
 }
 
 nav.main-menu li a {
-    -webkit-transition: 0.3s;
-    -o-transition: 0.3s;
-    transition: 0.3s;
 }
 
 .top-header-area .header-icons a {
-    -webkit-transition: 0.3s;
-    -o-transition: 0.3s;
-    transition: 0.3s;
+
 }
 
 .top-header-area .header-icons a:hover {
@@ -745,14 +731,11 @@ nav.main-menu li a {
 }
 
 .sticky-wrapper.is-sticky .top-header-area {
-    background-color: darkgreen;
+    background-color: #2a5a;
     padding: 15px 0;
 }
 
 .top-header-area {
-    -webkit-transition: 0.3s;
-    -o-transition: 0.3s;
-    transition: 0.3s;
 }
 
 ul.navbar-nav {
@@ -761,7 +744,7 @@ ul.navbar-nav {
 
 span.close-btn {
     position: absolute;
-    right: 0%;
+    right: 0;
     color: #fff;
     top: 5%;
     cursor: pointer;
@@ -888,6 +871,23 @@ h2.widget-title:after {
     font-weight: 900;
     color: #F28123;
 }
+
+.enter_chat{
+    position: fixed !important;
+    right: 27px !important;
+    bottom: 82px !important;
+    z-index: 100 !important;
+}
+
+#chat_btn {
+    width: 70px !important;
+    height: 70px !important;
+}
+
+/*.fa-comments:hover {
+    color: orange !important;
+
+}*/
 
 /* -----------------------------------------------------------------------------
 
@@ -1131,7 +1131,7 @@ a.cart-btn {
 }
 
 a.cart-btn:hover {
-    background-color: #051922;
+    background-color: lightyellow;
     color: #F28123;
 }
 
@@ -1385,7 +1385,7 @@ div.owl-controls, .owl-controls div {
 }
 
 .list-box .content p {
-    margin-bottom: 0px;
+    margin-bottom: 0;
     opacity: 0.75;
 }
 
@@ -1460,15 +1460,16 @@ div.owl-controls, .owl-controls div {
     margin-bottom: 10px;
 }
 
-p.product-price {
+/*p.product-price {
     font-family: 'NanumBarunGothic', sans-serif;
     font-size: 15px;
     font-weight: 400;
     margin-bottom: 15px;
-}
+}*/
 
 a.cart-btn {
-    font-family: 'NanumBarunGothic', sans-serif;
+    font-family: 'GmarketSansMedium', sans-serif;
+    font-size: 17px;
     display: inline-block;
     background-color: #F28123;
     color: #fff;
@@ -1628,16 +1629,17 @@ p.testimonial-body {
 ----------------------------------------------------------------------------- */
 .shop-banner {
     position: relative;
-    background-color: #f5f5f5;
+    background-image: url("../img/event.png");
     background-size: cover;
-    padding: 110px 0px 115px;
+    width: 100%;
+    height: 600px;
 }
 
 .shop-banner h3 {
     position: relative;
     font-size: 50px;
     line-height: 1.2em;
-    margin-bottom: 0px;
+    margin-bottom: 0;
 }
 
 .shop-banner .sale-percent {
@@ -1656,6 +1658,12 @@ p.testimonial-body {
     text-align: center;
     margin-right: 10px;
     display: inline-block;
+}
+
+#find_btn {
+    position: absolute;
+    top: 450px;
+    left: 800px;
 }
 
 /*--------------------------------------------------
@@ -1717,8 +1725,9 @@ p.testimonial-body {
 }
 
 .service h4 {
+    font-family: NanumBarunGothic, serif;
     font-size: 18px;
-    font-weight: 600;
+    font-weight: 700;
     color: darkslategrey;
     padding-top: 20px;
 }
@@ -1740,7 +1749,7 @@ p.testimonial-body {
 }
 
 .bg-light {
-    width: 1200px;
+    width: 1100px;
     background-color: #E8F5E9 !important;
     box-shadow: 0 7px 24px 0 rgba(0, 0, 0, 0.1);
 }
