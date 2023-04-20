@@ -2,25 +2,115 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>채팅</title>
+    <link rel="stylesheet" href="/css/chat.css">
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 </head>
 <body>
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                ...
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
-            </div>
+
+<div class="chat_container">
+    <header>
+        <h1>채팅</h1>
+    </header>
+    <ul id="msg_box" class="messages"></ul>
+        <div id="input_container">
+            <div id="input" contenteditable="true">내용을 입력해주세요.</div>
+            <button id="sendBtn">전송</button>
         </div>
-    </div>
 </div>
+
+<script th:inline="javascript">
+    // jQuery 로드 확인
+    console.log($);
+
+    const user_name = [[${user_name}]];
+
+    $(function () {
+        const websocket = new WebSocket("ws://localhost:8080/ws/chat");
+
+        websocket.onmessage = onMessage;
+        websocket.onopen = onOpen;
+        websocket.onclose = onClose;
+
+        // 전송 버튼 클릭 시
+        $("#sendBtn").click(function() {
+            send();
+        });
+
+        // 엔터 키 입력 시
+        $("#input").keypress(function(event) {
+            if (event.keyCode == 13) {
+                send();
+            }
+        });
+
+        function send() {
+            console.log(user_name + ":" + $("#input").text());
+            if ($("#input").text() !== "") {
+                websocket.send(user_name + ":" + $("#input").text());
+                $("#input").text('');
+            }
+        }
+
+        function onClose(evt) {
+            let str = user_name + ": 님이 퇴장했습니다."
+            websocket.send(str);
+        }
+
+        function onOpen(evt) {
+            let str = user_name + ": 님이 입장했습니다."
+            websocket.send(str);
+        }
+
+        function onMessage(msg) {
+            let data = msg.data;
+            let user_name = null; // 데이터를 보낸 사람
+            let message = null;
+            let arr = data.split(":");
+
+            // 테스트 용도
+            for (let i = 0; i < arr.length; i++) {
+                console.log('arr[' + i + ']: ' + arr[i]);
+            }
+
+            let cur_session = user_name;
+
+            // 현재 세션에 로그인 한 사람
+            console.log("cur_session : " + user_name);
+
+            // 웹소켓에서 받은 데이터를 : 로 구분해서 나눈 후 파싱
+            user_name = arr[0].trim();
+            if (arr[1] === undefined) {
+                message = '';
+            } else {
+                message = arr[1].trim(); // trim은 공백을 없애줌
+            }
+
+            if (message === " 님이 입장하셨습니다.") {
+                message = user_name + "님이 입장하셨습니다.";
+            }
+            if (message === undefined) {
+                message = "채팅이 종료되었습니다.";
+            }
+            if (user_name === cur_session) {
+                let str = "<li class='other'>";
+                str += message;
+                str += "</li>";
+                $("#msg_box").append(str);
+            } else {
+                let str = "<li class='self'>";
+                str += message;
+                str += "</li>";
+                $("#msg_box").append(str);
+            }
+        }
+    })
+</script>
 </body>
+<style>
+    .text-box div:nth-child(n+1) {
+        display: none;
+    }
+</style>
 </html>
