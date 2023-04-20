@@ -7,6 +7,7 @@ import com.sunny.green.vo.ProImgVo;
 import com.sunny.green.vo.ProductVo;
 import com.sunny.green.vo.UserVo;
 import lombok.RequiredArgsConstructor;
+import org.apache.catalina.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
@@ -86,18 +87,17 @@ public class AdminController {
         return "alert";
     }
 
-//    @GetMapping("/admin/delete")
-//    public String deleteUser(HttpSession session, String user_id){
-//        UserVo userDB = (UserVo) session.getAttribute("user");
-//        user_id = userDB.getUser_id();
-//        System.out.println(user_id);
-//        int delete = ud.deleteId(user_id);
-//        System.out.println(delete);
-//        session.setAttribute("user", null);
-//        return "redirect:/index";
-//    }
+    @GetMapping("/admin/delete")
+    public String deleteUser(String user_id,HttpSession session){
+        UserVo userDB = (UserVo)session.getAttribute("user");
+        user_id = userDB.getUser_id();
+        System.out.println(user_id);
 
-
+        int deleteUser = ud.deleteId(user_id);
+        System.out.println(deleteUser);
+        session.setAttribute("user",null);
+        return "redirect:/admin/user2";
+    }
 
     @GetMapping("/admin/bbs1")
     public String bbs1() {
