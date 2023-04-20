@@ -872,6 +872,18 @@ h2.widget-title:after {
     color: #F28123;
 }
 
+.enter_chat{
+    position: fixed !important;
+    right: 27px !important;
+    bottom: 82px !important;
+    z-index: 100 !important;
+}
+
+#chat_btn {
+    width: 70px !important;
+    height: 70px !important;
+}
+
 /* -----------------------------------------------------------------------------
 
 # Hover Styles

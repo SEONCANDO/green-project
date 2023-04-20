@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 
 import java.sql.Date;
 import java.sql.Timestamp;
+import java.util.TimeZone;
 
 @Data
 @AllArgsConstructor
@@ -31,7 +32,7 @@ public class ExchangeVo {
     private int pay_point;
 
     private int remain_point;
-    private Date ex_date;
+    private Timestamp ex_date;
 
     private String ex_uuid_num;
 
