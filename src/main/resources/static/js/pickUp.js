@@ -147,20 +147,56 @@ function createElement(e, file) {
     return li;
 }
 
-let saveVal = null;
 
 // 다음페이지 이동시, 입력값 빈칸 확인
 function chBox() {
-    if ($("#checkBox_colPersonInfo").is(":checked") === false) {
+    // 예약정보 값 불러오기
+    const pu_name = $("#pickup_name").val();
+    const pu_tel = $("#pickup_tel").val();
+    const pu_zip = $("#pickup_zip_code").val();
+    const pu_address1 = $("#pickup_address1").val();
+    const pu_address2 = $("#pickup_address2").val();
+    const pu_address3 = $("#pickup_address3").val();
+    const pu_address4 = $("#pickup_address4").val();
+    const pu_day = $("#myDateInput").val();
+    let pu_img;
+    // 이미지 유무 확인 후 Y,N 입력
+    if ($("#img_pickup_upload")[0].files.length > 0) {
+        pu_img = "Y";
+    } else {
+        pu_img = "N";
+    }
+    const user_id = $("#pickup_userID").val();
+    const house_no = $("#pickup_house").val();
+    const pu_elevator = $("#pickup_elevator").val();
+    const text_memo = $(".text_memo").val();
+
+    const param = {"user_id": user_id, "pu_address_name": pu_name, "pu_address_tel": pu_tel,
+        "pu_address_zip": pu_zip, "pu_address1": pu_address1, "pu_address2": pu_address2,
+        "pu_address3": pu_address3, "pu_address4": pu_address4, "house_no": house_no, "pu_elevator": pu_elevator,
+        "pu_day": pu_day, "pu_img": pu_img, "pu_memo": text_memo };
+
+    // 필수정보 입력 확인
+    if (pu_name === "" || pu_tel === "" || pu_zip === "" || pu_address1 === "" || pu_address2 === "" ||
+        pu_address3 === "" || pu_address4 === "" || pu_day === "") {
+        alert("필수 정보를 입력해주세요")
+        return false;
+    } else if ($("#checkBox_colPersonInfo").is(":checked") === false) {
         $("#checkBox_colPersonInfo").focus();
         alert("약관에 동의해주세요");
         return false;
-    } else if (saveVal == null) {
-        alert("저장을 먼저 해주세요");
-        return false;
     } else {
-        return true;
+        $.ajax({
+            url:"pickupSave.do",
+            type:"post",
+            data: param,
+            success: "",
+            error: function() {
+                alert('error')
+            }
+        })
     }
+
 }
 
 
@@ -170,44 +206,11 @@ function pickupSave() {
 
 
 
-    const user_id = $("#pickup_userID").val();
-    const pu_name = $("#pickup_name").val();
-    const pu_tel = $("#pickup_tel").val();
-    const pu_zip = $("#pickup_zip_code").val();
-    const pu_address1 = $("#pickup_address1").val();
-    const pu_address2 = $("#pickup_address2").val();
-    const pu_address3 = $("#pickup_address3").val();
-    const pu_address4 = $("#pickup_address4").val();
-    const house_no = $("#pickup_house").val();
-    const pu_elevator = $("#pickup_elevator").val();
-    const pu_day = $("#myDateInput").val();
-    let pu_img;
-    if ($("#img_pickup_upload").val() != null) {
-        pu_img = "Y";
-    } else {
-        pu_img = "N";
-    }
-    const text_memo = $(".text_memo").val();
 
-    // 필수정보 입력 확인
-    if (pu_name === "" || pu_tel === "" || pu_zip === "" || pu_address1 === "" || pu_address2 === "" ||
-        pu_address3 === "" || pu_address4 === "" || pu_day === "") {
-        alert("필수 정보를 입력해주세요")
-        return false;
-    }
 
-    $.ajax({
-        url:"pickupSave.do",
-        type:"post",
-        data:{"user_id":user_id, "pu_address_name":pu_name, "pu_address_tel":pu_tel,
-            "pu_address_zip":pu_zip,"pu_address1":pu_address1,"pu_address2":pu_address2,
-            "pu_address3":pu_address3,"pu_address4":pu_address4,"house_no":house_no,"pu_elevator":pu_elevator,
-            "pu_day":pu_day, "pu_img":pu_img, "pu_memo":text_memo},
-        success: saveVal = "저장",
-        error: function() {
-            alert('error')
-        }
-    })
+
+
+
 
     // 세션 스토리지에 임시 저장
     // sessionStorage.setItem("pickupAddress", user_id);

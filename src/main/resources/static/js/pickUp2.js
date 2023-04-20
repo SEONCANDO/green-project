@@ -1,4 +1,6 @@
 
+
+
 // 카테고리 버튼 이벤트
 $(document).ready(function(){
     $(".btn_recycleCategory_1st").each(function(index) {

@@ -19,4 +19,8 @@
         Insert into pickup_img(pu_no, pu_img_origin_name, pu_img_save_name, pu_img_path)
         values (#{pu_no}, #{pu_img_origin_name}, #{pu_img_save_name}, #{pu_img_path})
     </insert>
+
+    <select id="pickupSave" resultType="com.sunny.green.vo.PickupPageVo">
+        select pa.user_id, pa.pu_address_name, pa.pu_address_tel, pa.pu_address_zip, pa.pu_address1, pa.pu_address2, pa.pu_address3, pa.pu_address4, pi.pu_date, pi.pu_elevator, pi.pu_day, pi.pu_img, pi.pu_memo from pickup_address pa, pickup_info pi
+    </select>
 </mapper>

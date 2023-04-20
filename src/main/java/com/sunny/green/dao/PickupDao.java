@@ -3,6 +3,7 @@ package com.sunny.green.dao;
 import com.sunny.green.vo.PickupAddressVo;
 import com.sunny.green.vo.PickupImgVo;
 import com.sunny.green.vo.PickupInfoVo;
+import com.sunny.green.vo.PickupPageVo;
 import org.apache.ibatis.annotations.Mapper;
 
 @Mapper
@@ -12,5 +13,6 @@ public interface PickupDao {
     public int pickupInfoSave(PickupInfoVo pickupInfoVo);
     public int pickupCategorySave(PickupImgVo pickupImgVo);
     public int pickupImgSave(PickupImgVo pickupImgVo);
+    public void pickupSave(PickupPageVo pickupPageVo);
 
 }
