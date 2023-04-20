@@ -90,11 +90,12 @@ public class UserController {
 
     //회원가입 기능
     @PostMapping("/join")
-    public String join1(UserVo user, Model model) {
+    public String join1(UserVo user, Model model, HttpSession session) {
 
         if (ud.joinUser(user) != 0) {
             model.addAttribute("alert", "회원가입이 완료되었습니다.");
             model.addAttribute("url", "/index");
+            session.setAttribute("user", user);
         }
         return "/alert";
     }
