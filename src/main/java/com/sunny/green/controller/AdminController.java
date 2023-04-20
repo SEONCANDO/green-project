@@ -28,7 +28,6 @@ public class AdminController {
 
     private final UserDao ud;
     private final AdminDao ad;
-    private UserService userService;
 
     @GetMapping("/admin")
     public String admin(){

@@ -68,7 +68,7 @@ public class UserController {
             model.addAttribute("url", "/index");
         } else {
             System.out.println("실패했습니다");
-            model.addAttribute("alert", "로그인에 실패했습니다");
+            model.addAttribute("alert", "아이디/비밀번호가 일치하지 않습니다");
             model.addAttribute("url", "/login");
         }
 
@@ -80,7 +80,7 @@ public class UserController {
     @GetMapping("/join")
     public String join(HttpSession session, Model model) {
         if (session.getAttribute("user") != null) {
-            model.addAttribute("alert", "이미 로그인이 되어있는 상태입니다.");
+            model.addAttribute("alert", "이미 로그인이 되어있는 상태입니다");
             model.addAttribute("url", "/index");
         } else {
             return "/user/join";
@@ -167,7 +167,7 @@ public class UserController {
             mo.addAttribute("alert", "정보가 수정되었습니다");
             mo.addAttribute("url", "/myPage");
         } else {
-            mo.addAttribute("alert", "정보 수정에 실패했습니다");
+            mo.addAttribute("alert", "정보 수정값을 등록하는데 오류가 있습니다");
             mo.addAttribute("url", "/index");
         }
 
@@ -201,4 +201,13 @@ public class UserController {
         return "redirect:/index";
     }
 
+
+//    @GetMapping("testGuest")
+//    public String user1(){
+//        for(int i = 100; i < 250; i++){
+//            UserVo user = UserVo.builder().user_id("test"+i).user_pass("1234").user_email("d@c.com").user_name("관리자"+i).user_tel("01012345678").build();
+//            ud.joinUser(user);
+//        }
+//        return "테스트 계정에 대한 내용";
+//    }
 }
