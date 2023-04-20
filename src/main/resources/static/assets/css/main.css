@@ -889,6 +889,19 @@ h2.widget-title:after {
     color: #F28123;
 }
 
+
+.enter_chat{
+    position: fixed !important;
+    right: 27px !important;
+    bottom: 82px !important;
+    z-index: 100 !important;
+}
+
+#chat_btn {
+    width: 70px !important;
+    height: 70px !important;
+}
+
 /* -----------------------------------------------------------------------------
 
 # Hover Styles
@@ -1759,7 +1772,7 @@ p.testimonial-body {
     cursor: pointer; /* Add a mouse pointer on hover */
     padding: 15px; /* Some padding */
     border-radius: 10px; /* Rounded corners */
-    font-size: 18px; /* Increase font size */
+    font-size: 18px; /* Increase font size */ 
     font-weight: 600;
 }
 

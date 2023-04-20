@@ -2,31 +2,43 @@ package com.sunny.green.controller;
 
 import com.sunny.green.dao.BbsDao;
 import com.sunny.green.vo.BbsVo;
-import com.sunny.green.vo.UserVo;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.servlet.http.HttpSession;
 import java.util.List;
 
 
+import javax.servlet.http.HttpSession;
+
 @Controller
+@RequiredArgsConstructor
 public class BoardController {
     private final BbsDao bd;
+
 
     public BoardController(BbsDao bd) {
         this.bd = bd;
     }
 
+    private final UserDao ud;
+
+    private final ExchangeDao ed;
+
+    private final AdminDao ad;
+
+
     @GetMapping("/board") // Q&A 목록
     public String index(Model model) {
         List<BbsVo> bbsVoList = bd.selectBoardAll();
         model.addAttribute("bbsVoList", bbsVoList);
-        return "bbs/boardList";
+                return "bbs/boardList";
     }
 
-    @GetMapping ("/post") // Q&A 글작성 폼
+    @GetMapping("/post") // Q&A 글작성 폼
     public String post(UserVo user, HttpSession session, Model model) {
         UserVo userVo = (UserVo) session.getAttribute("user");
         model.addAttribute("user", userVo);
@@ -52,7 +64,7 @@ public class BoardController {
     }
 
     @GetMapping("/updateBoard")
-    public String updateBoard(BbsVo bbsVo, Model model){
+    public String updateBoard(BbsVo bbsVo, Model model) {
         bd.updateBoard(bbsVo);
         List<BbsVo> board = bd.selectBoardAll();
         model.addAttribute("board", board);
@@ -60,10 +72,42 @@ public class BoardController {
     }
 
     @GetMapping("/deleteBoard")
-    public String deleteBoard(BbsVo bbsVo){
+    public String deleteBoard(BbsVo bbsVo) {
         bd.deleteBoard(bbsVo);
         return "redirect:bbs/board";
     }
 
+        @GetMapping("/myWrite")
+    public String myWrite(HttpSession session, Model model) {
 
+        if (session.getAttribute("user") == null) {
+            model.addAttribute("alert", "로그인을 해주시기 바랍니다.");
+            model.addAttribute("url", "/login");
+        } else {
+            UserVo user = (UserVo) session.getAttribute("user");
+            UserVo user1 = ud.selectAll1(user.getUser_id());
+            System.out.println("번호는 뭘까요? : " + user1);
+            model.addAttribute("user", user1);
+
+            return "/myPage/myWrite";
+        }
+        return "/alert";
+    }
+
+    @GetMapping("/myComment")
+    public String myComment(HttpSession session, Model model) {
+
+        if (session.getAttribute("user") == null) {
+            model.addAttribute("alert", "로그인을 해주시기 바랍니다.");
+            model.addAttribute("url", "/login");
+        } else {
+            UserVo user = (UserVo) session.getAttribute("user");
+            UserVo user1 = ud.selectAll1(user.getUser_id());
+            System.out.println("번호는 뭘까요? : " + user1);
+            model.addAttribute("user", user1);
+
+            return "/myPage/myComment";
+        }
+        return "/alert";
+    }
 }
