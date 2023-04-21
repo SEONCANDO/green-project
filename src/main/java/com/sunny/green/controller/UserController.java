@@ -212,4 +212,9 @@ public class UserController {
 //        }
 //        return "테스트 계정에 대한 내용";
 //    }
+
+    @GetMapping("/info")
+    public String info(){
+        return "info";
+    }
 }
