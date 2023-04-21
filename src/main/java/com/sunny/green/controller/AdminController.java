@@ -62,10 +62,7 @@ public class AdminController {
 
 
     //보영 (회원 목록 조회)
-    @ResponseBody
     @GetMapping("/admin/user2")
-
-
     public String getUserList(Model model) {
 
         List<UserVo> user = ud.selectAll();
@@ -92,18 +89,6 @@ public class AdminController {
 
         return "alert";
     }
-
-//    @GetMapping("/admin/delete")
-//    public String deleteUser(HttpSession session, String user_id){
-//        UserVo userDB = (UserVo) session.getAttribute("user");
-//        user_id = userDB.getUser_id();
-//        System.out.println(user_id);
-//        int delete = ud.deleteId(user_id);
-//        System.out.println(delete);
-//        session.setAttribute("user", null);
-//        return "redirect:/index";
-//    }
-
 
 
     @GetMapping("/admin/bbs1")
@@ -192,22 +177,34 @@ public class AdminController {
         return "redirect:/admin";
     }
 
-    // 민지 admin_rs 목록 부르는 부분 --------
+    //    페이징 데이터 ajax로 넘기는거
+    @RequestMapping("/pagination")
     @ResponseBody
-    @GetMapping("/")
-    public String pickupList(Model model) {
-
-        List<PickupSaveVo> rslist = ad.rsList();
-
-        model.addAttribute("rslist", rslist);
-
-        return "/admin/admin_reservation";
+    public List<UserVo> getUserData() {
+        List<UserVo> userList = ud.selectAll();
+        return userList;
     }
+
+
 
 //    @ResponseBody
 //    @GetMapping("/search")
 //    public String select(){
 //        return "null"
 //    }
+
+
+//    // 민지 admin_rs 목록 부르는 부분 --------
+//    @ResponseBody
+//    @GetMapping("/")
+//    public String pickupList(Model model) {
+//
+//        List<PickupSaveVo> rslist = ad.rsList();
+//
+//        model.addAttribute("rslist", rslist);
+//
+//        return "/admin/admin_reservation";
+//    }
+
 }
 
