@@ -24,7 +24,10 @@
     // jQuery 로드 확인
     console.log($);
 
-    const user_name = [[${session.user.user_name}]];
+    //const는 상수 선언, 변경이 불가하다
+    let cur_session = [[${session.user.user_name}]];
+
+    let user_name= cur_session;
 
     $(function () {
         const websocket = new WebSocket("ws://localhost:8080/ws/chat");
@@ -55,16 +58,13 @@
 
         function onOpen(evt) {
             let str = user_name + ": 님이 입장했습니다."
-            cur_session = user_name
             websocket.send(str);
         }
 
         function onClose(evt) {
-            let str = cur_session + ": 님이 퇴장했습니다."
+            let str = user_name + ": 님이 퇴장했습니다."
             websocket.send(str);
         }
-
-        let cur_session = user_name;
 
         function onMessage(msg) {
             let data = msg.data;
@@ -72,8 +72,7 @@
             let message = null;
             let arr = data.split(":");
 
-            // 테스트 용도
-            for (let i = 0; i < arr.length; i++) {
+            for (var i = 0; i < arr.length; i++) {
                 console.log('arr[' + i + ']: ' + arr[i]);
             }
 
@@ -82,28 +81,31 @@
 
             // 웹소켓에서 받은 데이터를 : 로 구분해서 나눈 후 파싱
             user_name = arr[0].trim();
+
             if (arr[1] === undefined) {
                 message = '';
             } else {
                 message = arr[1].trim(); // trim은 공백을 없애줌
             }
 
-            if (message === " 님이 입장하셨습니다.") {
-                message = user_name + "님이 입장하셨습니다.";
+            if (message == "님이 입장했습니다.") {
+                message = user_name + "님이 입장했습니다.";
             }
 
-            if (message === undefined) {
+            if (message == undefined) {
                 message = "채팅이 종료되었습니다.";
             }
 
-            if (user_name === cur_session) {
-                let str = "<li class='other'>";
+            if (cur_session && user_name === cur_session) {
+                // 현재 세션의 사용자가 보낸 메시지인 경우
+                let str = "<li class='self'>";
                 str += message;
                 str += "</li>";
                 $("#msg_box").append(str);
             }
             else {
-                let str = "<li class='self'>";
+                // 다른 사용자가 보낸 메시지인 경우
+                let str = "<li class='other'>";
                 str += message;
                 str += "</li>";
                 $("#msg_box").append(str);

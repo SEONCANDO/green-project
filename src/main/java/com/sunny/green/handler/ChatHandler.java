@@ -6,6 +6,7 @@ import org.springframework.web.socket.TextMessage;
 import org.springframework.web.socket.WebSocketSession;
 import org.springframework.web.socket.handler.TextWebSocketHandler;
 
+import javax.websocket.OnOpen;
 import java.util.*;
 
 @Component
@@ -29,8 +30,8 @@ public class ChatHandler extends TextWebSocketHandler {
                 sess.sendMessage(message);
             }
         }
-/*
-        String payload = message.getPayload();
+
+/*       String payload = message.getPayload();
         System.out.println("payload " + payload);
         TextMessage greeting = new TextMessage("안녕하세요, 그린토피아입니다. 무엇을 도와드릴까요?");
         session.sendMessage(greeting);*/
