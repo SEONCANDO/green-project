@@ -2,7 +2,6 @@ package com.sunny.green.config;
 
 import com.sunny.green.handler.ChatHandler;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.socket.config.annotation.EnableWebSocket;
 import org.springframework.web.socket.config.annotation.WebSocketConfigurer;
@@ -18,5 +17,5 @@ public class WebSocketConfig implements WebSocketConfigurer {
     @Override
     public void registerWebSocketHandlers(WebSocketHandlerRegistry registry) {
         registry.addHandler(chatHandler, "/ws/chat").setAllowedOrigins("*").addInterceptors(new HttpSessionHandshakeInterceptor());
-    }
+    } //"/ws/chat"은 웹소켓의 endpoint를 의미함
 }

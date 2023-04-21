@@ -4,6 +4,7 @@ import com.sunny.green.dao.AdminDao;
 import com.sunny.green.dao.ExchangeDao;
 import com.sunny.green.dao.UserDao;
 import com.sunny.green.vo.ExchangeVo;
+import com.sunny.green.vo.MailVo;
 import com.sunny.green.vo.UserVo;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.mail.MessagingException;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import java.util.List;
@@ -68,7 +70,7 @@ public class UserController {
             model.addAttribute("url", "/index");
         } else {
             System.out.println("실패했습니다");
-            model.addAttribute("alert", "로그인에 실패했습니다");
+            model.addAttribute("alert", "아이디/비밀번호가 일치하지 않습니다");
             model.addAttribute("url", "/login");
         }
 
@@ -80,7 +82,7 @@ public class UserController {
     @GetMapping("/join")
     public String join(HttpSession session, Model model) {
         if (session.getAttribute("user") != null) {
-            model.addAttribute("alert", "이미 로그인이 되어있는 상태입니다.");
+            model.addAttribute("alert", "이미 로그인이 되어있는 상태입니다");
             model.addAttribute("url", "/index");
         } else {
             return "/user/join";
@@ -90,11 +92,12 @@ public class UserController {
 
     //회원가입 기능
     @PostMapping("/join")
-    public String join1(UserVo user, Model model) {
+    public String join1(UserVo user, Model model, HttpSession session) {
 
         if (ud.joinUser(user) != 0) {
             model.addAttribute("alert", "회원가입이 완료되었습니다.");
             model.addAttribute("url", "/index");
+            session.setAttribute("user", user);
         }
         return "/alert";
     }
@@ -159,17 +162,17 @@ public class UserController {
     }
 
     @PostMapping("/modify")
-    public String modify1(UserVo user, Model mo) {
+    public String modify1(UserVo user, Model mo)  {
         int update = ud.updateUser(user);
         if (update == 1) {
             System.out.println(update);
             mo.addAttribute("alert", "정보가 수정되었습니다");
             mo.addAttribute("url", "/myPage");
+
         } else {
-            mo.addAttribute("alert", "정보 수정에 실패했습니다");
+            mo.addAttribute("alert", "정보 수정값을 등록하는데 오류가 있습니다");
             mo.addAttribute("url", "/index");
         }
-
         return "alert";
     }
 
@@ -200,4 +203,13 @@ public class UserController {
         return "redirect:/index";
     }
 
+
+//    @GetMapping("testGuest")
+//    public String user1(){
+//        for(int i = 100; i < 250; i++){
+//            UserVo user = UserVo.builder().user_id("test"+i).user_pass("1234").user_email("d@c.com").user_name("관리자"+i).user_tel("01012345678").build();
+//            ud.joinUser(user);
+//        }
+//        return "테스트 계정에 대한 내용";
+//    }
 }

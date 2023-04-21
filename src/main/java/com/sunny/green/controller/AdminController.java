@@ -9,14 +9,16 @@ import com.sunny.green.vo.ProImgVo;
 import com.sunny.green.vo.ProductVo;
 import com.sunny.green.vo.UserVo;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
+
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
-import javax.servlet.http.HttpSession;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
@@ -31,7 +33,9 @@ public class AdminController {
     private final UserDao ud;
     private final AdminDao ad;
 
+
     private UserService userService;
+
 
     @GetMapping("/admin")
     public String admin(){
