@@ -166,18 +166,13 @@ public class UserController {
     }
 
     @PostMapping("/modify")
-    public String modify1(UserVo user, Model mo, MailVo mv) throws MessagingException {
+    public String modify1(UserVo user, Model mo)  {
         int update = ud.updateUser(user);
         if (update == 1) {
             System.out.println(update);
             mo.addAttribute("alert", "정보가 수정되었습니다");
             mo.addAttribute("url", "/myPage");
-            MailVo mailVo = new MailVo();
-            mailVo.setMail_receiver(user.getUser_email());
-            mailVo.setMail_title("개인정보 수정 내역입니다");
-            mailVo.setMail_content(user.getUser_name()+" 회원님께서 변경해주신 값들은 그것들이며 현재 이동규님의 정보값은 " + user + "입니다");
-            ms.successMail(mailVo);
-            System.out.println("메일단 : " +mailVo);
+
         } else {
             mo.addAttribute("alert", "정보 수정값을 등록하는데 오류가 있습니다");
             mo.addAttribute("url", "/index");
