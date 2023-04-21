@@ -18,6 +18,7 @@
 //
 //    private final JavaMailSender javaMailSender;
 //
+
 //    public void successMail(MailVo mailVo) throws MessagingException {
 //        MimeMessage mimeMessage = javaMailSender.createMimeMessage();
 //        MimeMessageHelper mimeMessageHelper = new MimeMessageHelper(mimeMessage, true, "UTF-8");
