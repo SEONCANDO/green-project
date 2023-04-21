@@ -70,5 +70,86 @@
         SELECT *
         FROM user;
     </select>
+
+    <!-- 게시글 수 조회 -->
+    <select id="count" parameterType="com.sunny.green.vo.UserVo" resultType="int">
+        SELECT
+        COUNT(*)
+        FROM
+        user;
+        <include refid="conditions" />
+    </select>
+
+    <!-- 게시글 리스트 조회 -->
+    <select id="findAll" parameterType="com.study.paging.CommonParams" resultMap="BoardResultMap">
+        SELECT
+        user_id    = #{user_id}
+        , user_pass  = #{user_pass}
+        , user_name  = #{user_name}
+        , user_email = #{user_email}
+        , user_tel   = #{user_tel}
+        , zip_code   = #{zip_code}
+        , address1   = #{address1}
+        , address2   = #{address2}
+        , address3   = #{address3}
+        FROM
+        user;
+        <include refid="conditions" />
+        LIMIT #{pagination.limitStart}, #{recordPerPage}
+    </select>
+
+<!--  민지(userAdmin_Pagination) -->
+    <!-- SELECT 결과 Map -->
+    <resultMap id="ResultMap" type="com.sunny.green.vo.UserVo">
+        <result property="user_id"      column="user_id" />
+        <result property="user_pass"    column="user_pass" />
+        <result property="user_name"    column="user_name" />
+        <result property="user_email"   column="user_email" />
+        <result property="user_tel"     column="user_tel" />
+        <result property="zip_code"     column="zip_code" />
+        <result property="address1"     column="address1" />
+        <result property="address2"     column="address2" />
+        <result property="address3"     column="address3" />
+    </resultMap>
+
+    <!-- WHERE 조건 -->
+    <sql id="conditions">
+        <where>
+            delete_yn = 'N'
+            <if test="keyword != null and keyword.equals('') == false">
+                <choose>
+                    <when test="searchType == null or searchType.equals('')">
+                        AND (
+                        user_name LIKE CONCAT('%', #{keyword}, '%')
+                        OR user_id LIKE CONCAT('%', #{keyword}, '%')
+                        OR address1 LIKE CONCAT('%', #{keyword}, '%')
+                        OR user_tel LIKE CONCAT('%', #{keyword}, '%')
+                        )
+                    </when>
+
+                    <otherwise>
+                        <choose>
+                            <when test="searchType.equals('user_name')">
+                                AND user_name LIKE CONCAT('%', #{keyword}, '%')
+                            </when>
+
+                            <when test="searchType.equals('user_id')">
+                                AND user_id LIKE CONCAT('%', #{keyword}, '%')
+                            </when>
+
+                            <when test="searchType.equals('address1')">
+                                AND address1 LIKE CONCAT('%', #{keyword}, '%')
+                            </when>
+                            <when test="searchType.equals('user_tel')">
+                                AND user_tel LIKE CONCAT('%', #{keyword}, '%')
+                            </when>
+                        </choose>
+                    </otherwise>
+                </choose>
+            </if>
+        </where>
+    </sql>
+
+
 </mapper>
 

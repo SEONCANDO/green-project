@@ -60,4 +60,9 @@
             pro_from    = #{pro_from}
         where pro_num = ${pro_num}
     </update>
+
+    <!--   admin_rs 에서 모든 예약자정보를 가져옴 -->
+    <select id="rsList" resultType="com.sunny.green.vo.PickupSaveVo">
+        SELECT * FROM pickup_info AS i JOIN pickup_address AS a ON i.user_id = a.user_id;
+    </select>
 </mapper>
