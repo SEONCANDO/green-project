@@ -3,7 +3,9 @@ package com.sunny.green.controller;
 import com.sunny.green.dao.AdminDao;
 import com.sunny.green.dao.ExchangeDao;
 import com.sunny.green.dao.UserDao;
+
 import com.sunny.green.vo.ExchangeVo;
+
 import com.sunny.green.vo.ProductWithImgVo;
 import com.sunny.green.vo.UserVo;
 import lombok.RequiredArgsConstructor;
@@ -24,6 +26,7 @@ public class ExchangeController {
     private final AdminDao ad;
     private final UserDao ud;
     private final ExchangeDao ed;
+    
 
     @GetMapping("/exchange")
     public String exchange1(HttpSession session, Model mo) {
@@ -75,6 +78,12 @@ public class ExchangeController {
         ud.updatePoint(user);
         System.out.println("유저 포인트값 :" + remain_point);
 
+//        MailVo mailVo = new MailVo();
+//        mailVo.setMail_receiver(ev.getUser_email());
+//        mailVo.setMail_title("교환 정보 내역입니다");
+//        mailVo.setMail_content(ev.getUser_name() +" 회원님께서 변경해주신 값들은 그것들이며 현재 이동규님의 정보값은 " + ev + "정보들 입니다");
+//        ms.successMail(mailVo);
+//        System.out.println("메일단 : " +mailVo);
 
         redirectAttributes.addAttribute("ex_num", ev.getEx_num());
         return "redirect:/exchange3";
@@ -82,6 +91,8 @@ public class ExchangeController {
 
     @GetMapping("/exchange3")
     public String exchange3(Model mo, @RequestParam("ex_num") int ex_num) {
+
+
         ExchangeVo ev = ed.selectExchangeOne(ex_num);
         mo.addAttribute("ev", ev);
         return "/exchange/exchange3";
