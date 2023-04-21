@@ -3,9 +3,9 @@ package com.sunny.green.controller;
 import com.sunny.green.dao.AdminDao;
 import com.sunny.green.dao.ExchangeDao;
 import com.sunny.green.dao.UserDao;
-import com.sunny.green.service.MailServiceImp;
+
 import com.sunny.green.vo.ExchangeVo;
-import com.sunny.green.vo.MailVo;
+
 import com.sunny.green.vo.ProductWithImgVo;
 import com.sunny.green.vo.UserVo;
 import lombok.RequiredArgsConstructor;
@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import javax.mail.MessagingException;
 import javax.servlet.http.HttpSession;
 import java.util.List;
 import java.util.Random;
@@ -27,8 +26,7 @@ public class ExchangeController {
     private final AdminDao ad;
     private final UserDao ud;
     private final ExchangeDao ed;
-
-    private final MailServiceImp ms;
+    
 
     @GetMapping("/exchange")
     public String exchange1(HttpSession session, Model mo) {
@@ -56,7 +54,7 @@ public class ExchangeController {
     }
 
     @PostMapping("/exchange")
-    public String exchange(ExchangeVo ev, UserVo user, RedirectAttributes redirectAttributes) throws MessagingException {
+    public String exchange(ExchangeVo ev, UserVo user, RedirectAttributes redirectAttributes) {
         String chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"; // 예약번호로 사용할 문자열
 
         int length = 8; // 예약번호의 길이

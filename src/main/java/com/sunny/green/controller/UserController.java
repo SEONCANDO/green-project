@@ -3,8 +3,6 @@ package com.sunny.green.controller;
 import com.sunny.green.dao.AdminDao;
 import com.sunny.green.dao.ExchangeDao;
 import com.sunny.green.dao.UserDao;
-import com.sunny.green.service.MailService;
-import com.sunny.green.service.MailServiceImp;
 import com.sunny.green.vo.ExchangeVo;
 import com.sunny.green.vo.MailVo;
 import com.sunny.green.vo.UserVo;
@@ -30,8 +28,6 @@ public class UserController {
     private final UserDao ud;
     private final AdminDao ad;
     private final ExchangeDao ed;
-
-    private final MailServiceImp ms;
 
     //마이페이지 매핑
     @GetMapping("/myPage")
