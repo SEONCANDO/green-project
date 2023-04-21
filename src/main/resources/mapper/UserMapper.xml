@@ -70,36 +70,6 @@
         SELECT *
         FROM user;
     </select>
-
-    <!-- 게시글 수 조회 -->
-    <select id="count" parameterType="com.sunny.green.vo.UserVo" resultType="int">
-        SELECT
-        COUNT(*)
-        FROM
-        user;
-        <include refid="conditions" />
-    </select>
-
-    <!-- 게시글 리스트 조회 -->
-    <select id="findAll" parameterType="com.study.paging.CommonParams" resultMap="BoardResultMap">
-        SELECT
-        user_id    = #{user_id}
-        , user_pass  = #{user_pass}
-        , user_name  = #{user_name}
-        , user_email = #{user_email}
-        , user_tel   = #{user_tel}
-        , zip_code   = #{zip_code}
-        , address1   = #{address1}
-        , address2   = #{address2}
-        , address3   = #{address3}
-        FROM
-        user;
-        <include refid="conditions" />
-        LIMIT #{pagination.limitStart}, #{recordPerPage}
-    </select>
-
-
-
-
+    
 </mapper>
 
