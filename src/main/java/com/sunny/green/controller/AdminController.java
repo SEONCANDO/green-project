@@ -4,10 +4,7 @@ import com.sunny.green.dao.AdminDao;
 import com.sunny.green.dao.PickupDao;
 import com.sunny.green.dao.UserDao;
 import com.sunny.green.service.UserService;
-import com.sunny.green.vo.PickupSaveVo;
-import com.sunny.green.vo.ProImgVo;
-import com.sunny.green.vo.ProductVo;
-import com.sunny.green.vo.UserVo;
+import com.sunny.green.vo.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
@@ -19,6 +16,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.http.HttpSession;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
@@ -42,6 +40,27 @@ public class AdminController {
         return "admin/admin_login";
     }
 
+    @PostMapping("/admin")
+    public String admin2(AdminVo av, Model mo, HttpSession session){
+        AdminVo adminVo = ad.selectAdmin(av);
+        if(adminVo != null) {
+            if (adminVo.getAdmin_role() == 1) {
+                mo.addAttribute("alert", "관리자용 로그인에 성공했습니다");
+                mo.addAttribute("url", "/admin/main");
+                session.setAttribute("admin", adminVo);
+                System.out.println(session.getAttribute("admin"));
+            } else {
+                mo.addAttribute("alert", "아이디와 비밀번호를 다시 확인하십시오");
+                mo.addAttribute("url", "/admin");
+            }
+        return "alert";
+        } else{
+            mo.addAttribute("alert", "관리자용 아이디가 존재하지 않습니다");
+            mo.addAttribute("url", "/index");
+        }
+        return "alert";
+    }
+
     @GetMapping("/admin/main")
     public String admin1() {
 
@@ -62,16 +81,10 @@ public class AdminController {
 
 
     //보영 (회원 목록 조회)
-    @ResponseBody
     @GetMapping("/admin/user2")
-
-
     public String getUserList(Model model) {
-
         List<UserVo> user = ud.selectAll();
-
         model.addAttribute("user", user);
-
         return "/admin/admin_user2";
     }
     // 보영 (회원정보상세)

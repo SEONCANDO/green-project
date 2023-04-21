@@ -1,5 +1,6 @@
 package com.sunny.green.dao;
 
+import com.sunny.green.vo.AdminVo;
 import com.sunny.green.vo.PickupSaveVo;
 import com.sunny.green.vo.ProImgVo;
 import com.sunny.green.vo.ProductVo;
@@ -27,4 +28,8 @@ public interface AdminDao {
 
     // rslist
     public List<PickupSaveVo> rsList();
+
+    public int insertAdmin(AdminVo vo);
+
+    public AdminVo selectAdmin(AdminVo vo);
 }

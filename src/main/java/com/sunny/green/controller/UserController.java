@@ -3,6 +3,7 @@ package com.sunny.green.controller;
 import com.sunny.green.dao.AdminDao;
 import com.sunny.green.dao.ExchangeDao;
 import com.sunny.green.dao.UserDao;
+import com.sunny.green.vo.AdminVo;
 import com.sunny.green.vo.ExchangeVo;
 import com.sunny.green.vo.MailVo;
 import com.sunny.green.vo.UserVo;
@@ -95,6 +96,12 @@ public class UserController {
     public String join1(UserVo user, Model model, HttpSession session) {
 
         if (ud.joinUser(user) != 0) {
+            AdminVo adminVo = new AdminVo();
+            adminVo.setAdmin_id(user.getUser_id());
+            adminVo.setAdmin_pass(user.getUser_pass());
+            adminVo.setUser_id(user.getUser_id());
+            adminVo.setUser_pass(user.getUser_pass());
+            ad.insertAdmin(adminVo);
             model.addAttribute("alert", "회원가입이 완료되었습니다.");
             model.addAttribute("url", "/index");
             session.setAttribute("user", user);

@@ -5,3 +5,15 @@
     -webkit-box-shadow: 20px 16px 19px 0px rgba(0,0,0,0.72);
     -moz-box-shadow: 20px 16px 19px 0px rgba(0,0,0,0.72);
 }
+
+#boxes1 {
+
+}
+
+#boxes1:before{
+    position: absolute;
+    width: 35px;
+    height: 2px;
+    background-color: darkgreen;
+    content: "";
+}
