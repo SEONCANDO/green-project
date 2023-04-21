@@ -192,22 +192,6 @@ public class AdminController {
         return "redirect:/admin";
     }
 
-    // 민지 admin_rs 목록 부르는 부분 --------
-    @ResponseBody
-    @GetMapping("/")
-    public String pickupList(Model model) {
-
-        List<PickupSaveVo> rslist = ad.rsList();
-
-        model.addAttribute("rslist", rslist);
-
-        return "/admin/admin_reservation";
-    }
-
-//    @ResponseBody
-//    @GetMapping("/search")
-//    public String select(){
-//        return "null"
-//    }
+    
 }
 
