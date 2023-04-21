@@ -1,8 +1,10 @@
 package com.sunny.green.controller;
 
 import com.sunny.green.dao.AdminDao;
+import com.sunny.green.dao.PickupDao;
 import com.sunny.green.dao.UserDao;
 import com.sunny.green.service.UserService;
+import com.sunny.green.vo.PickupSaveVo;
 import com.sunny.green.vo.ProImgVo;
 import com.sunny.green.vo.ProductVo;
 import com.sunny.green.vo.UserVo;
@@ -11,10 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpSession;
@@ -31,6 +30,7 @@ public class AdminController {
 
     private final UserDao ud;
     private final AdminDao ad;
+
     private UserService userService;
 
     @GetMapping("/admin")
@@ -56,8 +56,11 @@ public class AdminController {
         return "/admin/admin_user1";
     }
 
+
     //보영 (회원 목록 조회)
+    @ResponseBody
     @GetMapping("/admin/user2")
+
 
     public String getUserList(Model model) {
 
@@ -184,4 +187,23 @@ public class AdminController {
         }
         return "redirect:/admin";
     }
+
+    // 민지 admin_rs 목록 부르는 부분 --------
+    @ResponseBody
+    @GetMapping("/")
+    public String pickupList(Model model) {
+
+        List<PickupSaveVo> rslist = ad.rsList();
+
+        model.addAttribute("rslist", rslist);
+
+        return "/admin/admin_reservation";
+    }
+
+//    @ResponseBody
+//    @GetMapping("/search")
+//    public String select(){
+//        return "null"
+//    }
 }
+
