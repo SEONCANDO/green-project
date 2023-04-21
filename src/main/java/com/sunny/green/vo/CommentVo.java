@@ -11,11 +11,10 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class BbsVo {
-    private int board_num;
-    private String board_title;
-    private String board_content;
+public class CommentVo {
+    private int com_num;
+    private String com_content;
+    private LocalDateTime com_date;
     private String user_id;
-    private LocalDateTime board_date;
-    private String comment_exist;
+    private int board_num;
 }

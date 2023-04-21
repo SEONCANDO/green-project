@@ -11,9 +11,10 @@ public interface BbsDao {
     public int insertBoard(BbsVo bbsVo);
 
     public List<BbsVo> selectBoardAll();
-    public List<BbsVo> selectBoardNum();
 
-    void updateBoard(BbsVo bbsVo);
-    void deleteBoard(BbsVo bbsVo);
+    public BbsVo selectBoard(int boardNum);
 
+    public int updateBoard(BbsVo bbs);
+
+    public int deleteBoard(int board_num);
 }
