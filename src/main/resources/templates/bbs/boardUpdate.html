@@ -6,7 +6,12 @@
 <meta charset="UTF-8">
 <link href="/css/board.css" rel="stylesheet">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-
+<head>
+  <meta charset="UTF-8">
+  <title>게시글 업데이트</title>
+  <script src="/js/ckeditor/ckeditor.js"></script>
+  <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+</head>
 
 <body>
 <div layout:fragment="content" style="padding-bottom: 50px; padding-top: 120px;">
@@ -38,6 +43,9 @@
           <td><textarea id="editor" th:value="${bbs.board_content}" th:utext="${bbs.board_content}"
                         name="board_content"></textarea></td>
         </tr>
+        <script>
+          CKEDITOR.replace('editor');
+        </script>
         </tbody>
       </table>
       <div style="text-align: center;">
