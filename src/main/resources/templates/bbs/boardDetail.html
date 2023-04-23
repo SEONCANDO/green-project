@@ -33,7 +33,7 @@
                         <th class="col-md-4" th:utext="${bbs.board_num}"
                             style="border-bottom: 2px solid #888; border-top: 2px solid black;"></th>
                         <th class="col-md-2">등록일</th>
-                        <td class="col-md-4" th:utext="${#temporals.format(bbs.board_date, 'yyyy-MM-dd HH:mm')}"
+                        <th class="col-md-4" th:utext="${#temporals.format(bbs.board_date, 'yyyy-MM-dd HH:mm')}"
                             style="border-bottom: 2px solid #888; border-top: 2px solid black;">
                         </th>
 
@@ -72,25 +72,34 @@
             </div>
 
 
-            <div class="row boxes1" style="float: right; margin-right: 5%;"
-                 th:if="${bbs.user_id} == ${session.user.user_id}">
-                <div>
-                    <a class="btn" role="button"
+            <div class="boxes1" style="float: right; margin-right: 5%;"
+                 th:if="${session.user} != null">
+                <div th:if="${session.user.user_id} == ${bbs.user_id}" class="row" style="flex-wrap: inherit;">
+                    <a class="btn col-md-4" role="button"
                        style="background: #2a6a47; color: white; font-weight: 700; border: none; width: 70px;"
                        href="/board">목록</a>
-                    <a class="btn" id="write-article1"
+                    <a class="btn col-md-4"
                        style="background: #2a6a47; color: white; font-weight: 700; border: none; margin-left: 2%;  width: 70px;"
                        th:href="@{/updateBoard1(board_num=${bbs.board_num})}">수정</a>
 
-                    <a class="btn" id="write-article2"
+                    <a class="btn col-md-4"
                        th:href="@{deleteBoard(board_num=${bbs.board_num})}"
                        style="background: #2a6a47; color: white; font-weight: 700; border: none; margin-left: 2%;  width: 70px;">삭제</a>
 
                 </div>
             </div>
 
+            <div class="boxes1" style="float: right; margin-right: 5%;"
+                 th:if="${session.user} != null">
+                <div th:if="${session.user.user_id} != ${bbs.user_id}">
+                    <a class="btn" role="button"
+                       style="background: #2a6a47; color: white; font-weight: 700; border: none; width: 70px;"
+                       href="/board">목록</a>
+                </div>
+            </div>
 
-            <div class="row boxes1" style="float: right; margin-right: 5%;"
+
+            <div class="boxes1" style="float: right; margin-right: 5%;"
                  th:if="${session.user} == null">
                 <div>
                     <a class="btn" role="button"
@@ -98,6 +107,9 @@
                        href="/board">목록</a>
                 </div>
             </div>
+
+
+
 
             </table>
         </div>
