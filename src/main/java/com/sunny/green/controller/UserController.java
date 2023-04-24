@@ -175,14 +175,14 @@ public class UserController {
     }
 
 
-//    @GetMapping("testGuest")
-//    public String user1(){
-//        for(int i = 100; i < 250; i++){
-//            UserVo user = UserVo.builder().user_id("test"+i).user_pass("1234").user_email("d@c.com").user_name("관리자"+i).user_tel("01012345678").build();
-//            ud.joinUser(user);
-//        }
-//        return "테스트 계정에 대한 내용";
-//    }
+    @GetMapping("testGuest")
+    public String user1(){
+        for(int i = 100; i < 250; i++){
+            UserVo user = UserVo.builder().user_id("test"+i).user_pass("1234").user_email("d@c.com").user_name("관리자"+i).user_tel("01012345678").build();
+            ud.joinUser(user);
+        }
+        return "테스트 계정에 대한 내용";
+    }
 
     @GetMapping("/info")
     public String info(){

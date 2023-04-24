@@ -34,8 +34,15 @@ public class BoardController {
     public String boardPost(UserVo user, HttpSession session, Model model) {
         UserVo userVo = (UserVo) session.getAttribute("user");
         model.addAttribute("user", userVo);
+        if(userVo == null){
+            model.addAttribute("alert","로그인이 되지 않았습니다");
+            model.addAttribute("url","/login");
+        }
+        else{
+            return "bbs/boardPost";
+        }
         System.out.println("밸류값" + userVo);
-        return "bbs/boardPost";
+        return "alert";
     }
 
     // Q&A 글작성
@@ -51,17 +58,20 @@ public class BoardController {
 
     // Q&A 글 상세조회
     @GetMapping("/boardDetail")
-    public String boardDetail(Model model, BbsVo bbsVo) {
+    public String boardDetail(Model model, BbsVo bbsVo, HttpSession session) {
         BbsVo bbs = bd.selectBoard(bbsVo.getBoard_num());
         model.addAttribute("bbs", bbs);
+        System.out.println(bbs);
+        session.getAttribute("user");
         return "bbs/boardDetail";
     }
 
     // Q&A 글 수정/삭제 폼
     @GetMapping("/updateBoard1")
-    public String updateBoard1(BbsVo bbsVo, Model model, int board_num) {
+    public String updateBoard1(BbsVo bbsVo, Model model, int board_num, HttpSession session1) {
         BbsVo bbs = bd.selectBoard(bbsVo.getBoard_num());
         model.addAttribute("bbs", bbs);
+
         return "bbs/boardUpdate";
     }
 

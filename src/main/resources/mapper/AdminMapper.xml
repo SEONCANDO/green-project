@@ -74,4 +74,9 @@
     <select id="selectAdmin" resultType="com.sunny.green.vo.AdminVo">
         select * from admin where admin_id = #{admin_id} and admin_pass = #{admin_pass}
     </select>
+
+    <!-- 공지사항 -->
+    <select id="selectAdmin2" resultType="com.sunny.green.vo.AdminVo">
+        select * from admin where user_id = #{user_id}
+    </select>
 </mapper>

@@ -1,7 +1,8 @@
 package com.sunny.green.controller;
 
-import com.sunny.green.dao.NoticeDao;
-import com.sunny.green.vo.NoticeVo;
+import com.sunny.green.dao.AdminDao;
+import com.sunny.green.dao.BbsDao;
+import com.sunny.green.vo.AdminVo;
 import com.sunny.green.vo.UserVo;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -13,16 +14,16 @@ import org.springframework.web.bind.annotation.PostMapping;
 import javax.servlet.http.HttpSession;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 @Controller
 @RequiredArgsConstructor
 public class NoticeController {
-    private final NoticeDao nd;
 
-    //공지사항 목록
+    private final AdminDao ad;
     @GetMapping("/notice")
-    public String index(Model model) {
-        List<NoticeVo> notice = nd.selectNoticeAll();
-        model.addAttribute("notice", notice);
+    public String index(Model model, HttpSession session, UserVo uservo) {
+        uservo = (UserVo) session.getAttribute("user");
         return "bbs/noticeList";
     }
 
