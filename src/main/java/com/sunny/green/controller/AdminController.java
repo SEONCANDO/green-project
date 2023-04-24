@@ -45,17 +45,17 @@ public class AdminController {
         AdminVo adminVo = ad.selectAdmin(av);
         if(adminVo != null) {
             if (adminVo.getAdmin_role() == 1) {
-                mo.addAttribute("alert", "관리자용 로그인에 성공했습니다");
+                mo.addAttribute("alert", "관리자용 로그인에 성공했습니다.");
                 mo.addAttribute("url", "/admin/main");
                 session.setAttribute("admin", adminVo);
                 System.out.println(session.getAttribute("admin"));
             } else {
-                mo.addAttribute("alert", "아이디와 비밀번호를 다시 확인하십시오");
+                mo.addAttribute("alert", "아이디/비밀번호가 일치하지 않습니다.");
                 mo.addAttribute("url", "/admin");
             }
         return "alert";
         } else{
-            mo.addAttribute("alert", "관리자용 아이디가 존재하지 않습니다");
+            mo.addAttribute("alert", "관리자용 아이디가 존재하지 않습니다.");
             mo.addAttribute("url", "/index");
         }
         return "alert";
