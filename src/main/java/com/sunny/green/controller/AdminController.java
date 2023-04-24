@@ -29,16 +29,11 @@ import java.util.UUID;
 @RequiredArgsConstructor
 public class AdminController {
 
-
-
     private final UserDao ud;
     private final AdminDao ad;
 
 
     private UserService userService;
-
-
-
 
 
     @PostMapping("/admin")
@@ -67,7 +62,6 @@ public class AdminController {
 
         return "admin/admin_main";
     }
-
 
 
     @GetMapping("/admin/reservation")
