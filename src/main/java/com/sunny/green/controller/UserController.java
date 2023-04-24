@@ -2,6 +2,7 @@ package com.sunny.green.controller;
 
 import com.sunny.green.dao.AdminDao;
 import com.sunny.green.dao.ExchangeDao;
+import com.sunny.green.dao.MailDao;
 import com.sunny.green.dao.UserDao;
 import com.sunny.green.vo.AdminVo;
 import com.sunny.green.vo.ExchangeVo;
@@ -29,6 +30,10 @@ public class UserController {
     private final UserDao ud;
     private final AdminDao ad;
     private final ExchangeDao ed;
+
+//    private final MailService ms;
+
+    private final MailDao md;
 
     //마이페이지 매핑
     @GetMapping("/myPage")
@@ -169,7 +174,7 @@ public class UserController {
     }
 
     @PostMapping("/modify")
-    public String modify1(UserVo user, Model mo)  {
+    public String modify1(UserVo user, Model mo){
         int update = ud.updateUser(user);
         if (update == 1) {
             System.out.println(update);
