@@ -205,38 +205,5 @@ function chBox() {
 
 
 
-// pickup 첫번째 페이지 입력정보 저장
-function pickupSave() {
-
-
-
-
-
-
-
-
-
-    // 세션 스토리지에 임시 저장
-    // sessionStorage.setItem("pickupAddress", user_id);
-    // sessionStorage.setItem("pickupAddress", pu_name);
-    // sessionStorage.setItem("pickupAddress", pu_tel);
-    // sessionStorage.setItem("pickupAddress", pu_zip);
-    // sessionStorage.setItem("pickupAddress", pu_address1);
-    // sessionStorage.setItem("pickupAddress", pu_address2);
-    // sessionStorage.setItem("pickupAddress", pu_address3);
-    // sessionStorage.setItem("pickupAddress", pu_address4);
-    // sessionStorage.setItem("pickupInfo", house_no);
-    // sessionStorage.setItem("pickupInfo", pu_elevator);
-    // sessionStorage.setItem("pickupInfo", pu_day);
-    // sessionStorage.setItem("pickupInfo", pu_img);
-    // sessionStorage.setItem("pickupInfo", text_memo);
-
-
-    alert("임시 저장되었습니다")
-
-
-}
-
-
 
 
