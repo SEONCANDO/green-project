@@ -70,5 +70,6 @@
         SELECT *
         FROM user;
     </select>
+
 </mapper>
 

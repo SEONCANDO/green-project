@@ -9,10 +9,15 @@ import org.apache.ibatis.annotations.Mapper;
 @Mapper
 public interface PickupDao {
 
+
     public int pickupAddressSave(PickupAddressVo pickupAddressVo);
     public int pickupInfoSave(PickupInfoVo pickupInfoVo);
     public int pickupCategorySave(PickupImgVo pickupImgVo);
     public int pickupImgSave(PickupImgVo pickupImgVo);
     public void pickupSave(PickupPageVo pickupPageVo);
+    
+    public PickupSaveVo pageOneSave();
+
+
 
 }

@@ -731,8 +731,11 @@ nav.main-menu li a {
 }
 
 .sticky-wrapper.is-sticky .top-header-area {
-    background-color: #2a5a;
+    background-color: white;
     padding: 15px 0;
+    box-shadow: 1px 13px 17px 2px rgba(0,0,0,0.7);
+    -webkit-box-shadow: 1px 13px 17px 2px rgba(0,0,0,0.7);
+    -moz-box-shadow: 1px 13px 17px 2px rgba(0,0,0,0.7);
 }
 
 .top-header-area {
@@ -1365,6 +1368,8 @@ div.owl-controls, .owl-controls div {
 ----------------------------------------------------------------------------- */
 .list-section {
     background-color: #f5f5f5;
+    padding-bottom: 40px;
+    padding-top: 40px;
 }
 
 .list-box {
@@ -1758,12 +1763,12 @@ p.testimonial-body {
     z-index: 9999; /* Make sure it does not overlap */
     border: none; /* Remove borders */
     outline: none; /* Remove outline */
-    background-color: orange; /* Set a background color */
-    color: white; /* Text color */
+    background: white;
+    color: black; /* Text color */
     cursor: pointer; /* Add a mouse pointer on hover */
     padding: 15px; /* Some padding */
     border-radius: 10px; /* Rounded corners */
-    font-size: 18px; /* Increase font size */
+    font-size: 11px; /* Increase font size */
     font-weight: 600;
 }
 
