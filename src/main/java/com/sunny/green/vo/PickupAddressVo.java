@@ -7,13 +7,15 @@ import lombok.*;
 @NoArgsConstructor
 @Builder
 public class PickupAddressVo {
+    private int pu_address_no;
+
     private String user_id;
 
-    private String pu_name;
+    private String pu_address_name;
 
-    private String pu_tel;
+    private String pu_address_tel;
 
-    private int pu_zip;
+    private int pu_address_zip;
 
     private String pu_address1;
 

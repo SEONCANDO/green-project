@@ -4,9 +4,7 @@ package com.sunny.green.controller;
 import com.sunny.green.dao.PickupDao;
 import com.sunny.green.dao.UserDao;
 import com.sunny.green.vo.PickupAddressVo;
-import com.sunny.green.vo.PickupInfoVo;
 
-import com.sunny.green.vo.PickupPageVo;
 import com.sunny.green.vo.UserVo;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -36,9 +34,12 @@ public class PickUpController {
 
     // 예약 첫번째 페이지 입력값 전달
     @PostMapping("pickupSave.do")
-    public String pickupSave(PickupPageVo param) {
-        pickupDao.pickupSave(param);
-        return "pickup/pickUp2";
+    public void pickupSave(PickupAddressVo address, HttpSession session) {
+        session.setAttribute("address", address);
+        PickupAddressVo addressSave = (PickupAddressVo) session.getAttribute("address");
+        System.out.println(">>>>>>>>>>>>>>"+addressSave);
+        int addressNo = pickupDao.pickupAddressSave(addressSave);
+        System.out.println(">>>>>>>>>>>>>>"+addressNo);
     }
 
 //    @PostMapping("pickupSave.do")
@@ -69,6 +70,16 @@ public class PickUpController {
     @GetMapping("/pickup3")
     public String pickupPage3() {
         return "pickup/pickUp3";
+    }
+
+    @GetMapping("/pickupSave")
+    public String pickupSave(HttpSession session) {
+        PickupAddressVo address = (PickupAddressVo) session.getAttribute("address");
+        System.out.println(">>>>>>>>>>>>>>"+address);
+        pickupDao.pickupAddressSave(address);
+
+        System.out.println(">>>>>>>>>>>>>>"+pickupDao.pickupAddressSave(address));
+        return "/index";
     }
 
     @GetMapping("/reservationBd")

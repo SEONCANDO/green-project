@@ -14,9 +14,9 @@ public interface PickupDao {
     public int pickupInfoSave(PickupInfoVo pickupInfoVo);
     public int pickupCategorySave(PickupImgVo pickupImgVo);
     public int pickupImgSave(PickupImgVo pickupImgVo);
-    public void pickupSave(PickupPageVo pickupPageVo);
+    public PickupDao pickupSave(PickupPageVo pickupPageVo);
     
-    public PickupSaveVo pageOneSave();
+    public PickupPageVo pageOneSave();
 
 
 

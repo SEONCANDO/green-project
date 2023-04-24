@@ -171,10 +171,12 @@ function chBox() {
     const pu_elevator = $("#pickup_elevator").val();
     const text_memo = $(".text_memo").val();
 
-    const param = {"user_id": user_id, "pu_address_name": pu_name, "pu_address_tel": pu_tel,
+    const address = {"user_id": user_id, "pu_address_name": pu_name, "pu_address_tel": pu_tel,
         "pu_address_zip": pu_zip, "pu_address1": pu_address1, "pu_address2": pu_address2,
-        "pu_address3": pu_address3, "pu_address4": pu_address4, "house_no": house_no, "pu_elevator": pu_elevator,
-        "pu_day": pu_day, "pu_img": pu_img, "pu_memo": text_memo };
+        "pu_address3": pu_address3, "pu_address4": pu_address4};
+
+    const info = {"user_id": user_id, "house_no": house_no, "pu_elevator": pu_elevator,
+        "pu_day": pu_day, "pu_img": pu_img, "text_memo": text_memo};
 
     // 필수정보 입력 확인
     if (pu_name === "" || pu_tel === "" || pu_zip === "" || pu_address1 === "" || pu_address2 === "" ||
@@ -189,8 +191,8 @@ function chBox() {
         $.ajax({
             url:"pickupSave.do",
             type:"post",
-            data: param,
-            success: "",
+            data: address,
+            success: location="/pickup2",
             error: function() {
                 alert('error')
             }
@@ -198,6 +200,8 @@ function chBox() {
     }
 
 }
+
+
 
 
 
