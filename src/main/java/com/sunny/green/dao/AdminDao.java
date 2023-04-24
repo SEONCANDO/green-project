@@ -32,4 +32,6 @@ public interface AdminDao {
     public int insertAdmin(AdminVo vo);
 
     public AdminVo selectAdmin(AdminVo vo);
+
+    public AdminVo selectAdmin2(String user_id);
 }

@@ -1,5 +1,6 @@
 package com.sunny.green.dao;
 
+import com.sunny.green.vo.AdminVo;
 import com.sunny.green.vo.BbsVo;
 import org.apache.ibatis.annotations.Mapper;
 

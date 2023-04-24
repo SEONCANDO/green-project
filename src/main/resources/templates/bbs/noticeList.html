@@ -55,19 +55,21 @@
                     <thead>
                     <tr style="background: #e6e6e6; font-weight: 700;">
                         <td class="col-md-2">No</td>
-                        <td class="col-md-4" >제목</td>
-                        <td class="col-md-3" >작성자</td>
+                        <td class="col-md-4">제목</td>
+                        <td class="col-md-3">작성자</td>
                         <td class="col-md-3">작성일</td>
                     </tr>
                     </thead>
                     <tbody>
                     <tr th:each="list : ${bbs}">
                         <td>
-                            <a th:href="@{boardDetail(board_num=${list.board_num})}" th:text="${list.board_num}" style="color:black;">
+                            <a th:href="@{boardDetail(board_num=${list.board_num})}" th:text="${list.board_num}"
+                               style="color:black;">
                             </a>
                         </td>
                         <td style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">
-                            <a th:href="@{boardDetail(board_num=${list.board_num})}" th:text="${list.board_title}" style="display: inline-block; max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"></a>
+                            <a th:href="@{boardDetail(board_num=${list.board_num})}" th:text="${list.board_title}"
+                               style="display: inline-block; max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"></a>
                         </td>
                         <td th:text="${list.user_id}"></td>
                         <td th:text="${#temporals.format(list.board_date, 'yyyy-MM-dd HH:mm')}"></td>
@@ -77,15 +79,14 @@
                 </table>
             </div>
 
-            <div class="container">
-                <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                    <a class="btn btn-primary me-md-2" role="button" id="write-article"
-                       style="background: #2a6a47; color: white; font-weight: 700; border: none;" href="/boardPost">글쓰기</a>
+            <div class="container" th:if="${session.user != null}">
+                <div th:if="${admin != null and admin.admin_role == 1}">
+                    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                        <a class="btn btn-primary me-md-2" role="button" id="write-article"
+                           style="background: #2a6a47; color: white; font-weight: 700; border: none;" href="/boardPost">글쓰기</a>
+                    </div>
                 </div>
             </div>
-
-            </table>
-        </div>
 
 
         <div class="container">
