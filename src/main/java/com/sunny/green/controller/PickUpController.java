@@ -17,8 +17,8 @@ import javax.servlet.http.HttpSession;
 @RequiredArgsConstructor
 public class PickUpController {
 
-    PickupDao pickupDao;
-    UserDao ud;
+    private final PickupDao pickupDao;
+    private final UserDao ud;
 
     // 예약 첫번째 페이징
     @GetMapping("/pickup")
@@ -35,11 +35,13 @@ public class PickUpController {
     // 예약 첫번째 페이지 입력값 전달
     @PostMapping("pickupSave.do")
     public void pickupSave(PickupAddressVo address, HttpSession session) {
-        session.setAttribute("address", address);
-        PickupAddressVo addressSave = (PickupAddressVo) session.getAttribute("address");
-        System.out.println(">>>>>>>>>>>>>>"+addressSave);
-        int addressNo = pickupDao.pickupAddressSave(addressSave);
-        System.out.println(">>>>>>>>>>>>>>"+addressNo);
+//        session.setAttribute("address", address);
+//        PickupAddressVo addressSave = (PickupAddressVo) session.getAttribute("address");
+//        System.out.println(">>>>>>>>>>>>>>"+addressSave);
+        int successVal = pickupDao.pickupAddressSave(address);
+        if(successVal==1) {
+            System.out.println(">>>>>>>>>>>>>>"+address.getPu_address_no());
+        }
     }
 
 //    @PostMapping("pickupSave.do")
