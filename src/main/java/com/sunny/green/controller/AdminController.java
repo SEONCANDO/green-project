@@ -4,10 +4,7 @@ import com.sunny.green.dao.AdminDao;
 import com.sunny.green.dao.PickupDao;
 import com.sunny.green.dao.UserDao;
 import com.sunny.green.service.UserService;
-import com.sunny.green.vo.PickupSaveVo;
-import com.sunny.green.vo.ProImgVo;
-import com.sunny.green.vo.ProductVo;
-import com.sunny.green.vo.UserVo;
+import com.sunny.green.vo.*;
 import lombok.RequiredArgsConstructor;
 import org.apache.catalina.User;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,21 +17,23 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpSession;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
-import java.util.List;
-import java.util.UUID;
+import java.util.*;
 
 @Controller
 @RequiredArgsConstructor
 public class AdminController {
 
 
+
     private final UserDao ud;
     private final AdminDao ad;
+    private final PageVo pv;
 
 
     private UserService userService;
@@ -65,18 +64,19 @@ public class AdminController {
 
 
     //보영 (회원 목록 조회)
-    @ResponseBody
+
     @GetMapping("/admin/user2")
-
-
     public String getUserList(Model model) {
-
         List<UserVo> user = ud.selectAll();
-
         model.addAttribute("user", user);
-
-        return "/admin/admin_user2";
+        return "admin/admin_user2";
     }
+
+    //회원검색
+
+
+
+
     // 보영 (회원정보상세)
     @GetMapping("/admin/modify")
     public String userDetail(Model model, UserVo userVo){
@@ -189,18 +189,18 @@ public class AdminController {
         }
         return "redirect:/admin";
     }
-
-    // 민지 admin_rs 목록 부르는 부분 --------
-    @ResponseBody
-    @GetMapping("/")
-    public String pickupList(Model model) {
-
-        List<PickupSaveVo> rslist = ad.rsList();
-
-        model.addAttribute("rslist", rslist);
-
-        return "/admin/admin_reservation";
-    }
+//
+//    // 민지 admin_rs 목록 부르는 부분 --------
+//    @ResponseBody
+//    @GetMapping("/")
+//    public String pickupList(Model model) {
+//
+//        List<PickupSaveVo> rslist = ad.rsList();
+//
+//        model.addAttribute("rslist", rslist);
+//
+//        return "/admin/admin_reservation";
+//    }
 
 //    @ResponseBody
 //    @GetMapping("/search")

@@ -23,4 +23,5 @@ public interface UserDao {
 
     //보영
     public List<UserVo> selectAll();
+
 }

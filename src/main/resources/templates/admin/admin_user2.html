@@ -8,6 +8,10 @@
   <meta charset="UTF-8">
   <title> 관리자페이지 </title>
 
+  <script>
+
+  </script>
+
 </head>
 
 <body>
@@ -17,25 +21,26 @@
     <h2>회원관리</h2>
 
     <div id="result" th:text="${result}"> ajax test </div>
-
-    <form action="freeList" method="post">
+<!--검색처리-->
+    <form action="/admin/search" class="search-form" method="get">
+    <div class="search_box">
     <div class="row no-gutters" style="margin-bottom: 20px; margin-left: 10px">
       <div class="col-lg-3 col-md-3 col-sm-12 p-0">
-        <label for="search-type" hidden>검색 유형</label>
-        <select class="form-control" id="search-type" name="searchType">
-          <option value="name">회원명</option>
-          <option value="id">아이디</option>
-          <option value="address">주소</option>
-          <option value="tel">전화번호</option>
+        <label for="searchType" hidden>검색 유형</label>
+        <select class="search-option" id="searchType" name="searchType">
+          <option value="user_name" >회원명</option>
+          <option value="user_id" >아이디</option>
+          <option value="address1">주소</option>
+          <option value="user_tel">전화번호</option>
         </select>
       </div>
       <div class="col-lg-8 col-md-6 col-sm-12 p-0">
-        <label for="search-value" hidden>검색어</label>
-        <input type="text" placeholder="검색어..." class="form-control" id="search-value"
-               name="searchName">
+        <label for="keyword" hidden>검색어</label>
+        <input type="text" placeholder="검색어..." class="form-control" id="keyword"
+               name="keyword">
       </div>
       <div class="col-lg-1 col-md-3 col-sm-12 p-0">
-        <button class="btn btn-base" onclick="loadDocArray()">
+        <button type="button" class="btn btn-base">
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                stroke-linecap="round" stroke-linejoin="round"
@@ -46,9 +51,11 @@
         </button>
       </div>
     </div>
-      <input type="hidden" name="pageNum" value="1">
-      <input type="hidden" name="amount" value="10">
+    </div>
     </form>
+    <!--검색처리-->
+
+
     <table class="table table-success table-striped">
       <thead>
       <tr>
@@ -101,6 +108,7 @@
       </li>
     </ul>
   </nav>
+  <!----- 페이징 ----->
 </div>
 </body>
 </html>
