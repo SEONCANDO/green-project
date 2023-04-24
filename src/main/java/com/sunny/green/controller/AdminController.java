@@ -44,6 +44,27 @@ public class AdminController {
         return "admin/admin_login";
     }
 
+    @PostMapping("/admin")
+    public String admin2(AdminVo av, Model mo, HttpSession session){
+        AdminVo adminVo = ad.selectAdmin(av);
+        if(adminVo != null) {
+            if (adminVo.getAdmin_role() == 1) {
+                mo.addAttribute("alert", "관리자용 로그인에 성공했습니다");
+                mo.addAttribute("url", "/admin/main");
+                session.setAttribute("admin", adminVo);
+                System.out.println(session.getAttribute("admin"));
+            } else {
+                mo.addAttribute("alert", "아이디와 비밀번호를 다시 확인하십시오");
+                mo.addAttribute("url", "/admin");
+            }
+        return "alert";
+        } else{
+            mo.addAttribute("alert", "관리자용 아이디가 존재하지 않습니다");
+            mo.addAttribute("url", "/index");
+        }
+        return "alert";
+    }
+
     @GetMapping("/admin/main")
     public String admin1() {
 
@@ -64,7 +85,6 @@ public class AdminController {
 
 
     //보영 (회원 목록 조회)
-
     @GetMapping("/admin/user2")
     public String getUserList(Model model) {
         List<UserVo> user = ud.selectAll();
@@ -189,23 +209,7 @@ public class AdminController {
         }
         return "redirect:/admin";
     }
-//
-//    // 민지 admin_rs 목록 부르는 부분 --------
-//    @ResponseBody
-//    @GetMapping("/")
-//    public String pickupList(Model model) {
-//
-//        List<PickupSaveVo> rslist = ad.rsList();
-//
-//        model.addAttribute("rslist", rslist);
-//
-//        return "/admin/admin_reservation";
-//    }
 
-//    @ResponseBody
-//    @GetMapping("/search")
-//    public String select(){
-//        return "null"
-//    }
 }
+
 
