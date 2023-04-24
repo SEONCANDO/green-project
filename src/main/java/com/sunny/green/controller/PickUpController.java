@@ -1,14 +1,15 @@
 package com.sunny.green.controller;
 
+
+import com.sunny.green.dao.PickupDao;
 import com.sunny.green.dao.UserDao;
-import com.sunny.green.vo.PickupSaveVo;
+import com.sunny.green.vo.PickupAddressVo;
+
 import com.sunny.green.vo.UserVo;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
 
@@ -16,9 +17,10 @@ import javax.servlet.http.HttpSession;
 @RequiredArgsConstructor
 public class PickUpController {
 
-    private final UserDao ud;
-    PickupSaveVo pickupSaveVo = new PickupSaveVo();
+    PickupDao pickupDao;
+    UserDao ud;
 
+    // 예약 첫번째 페이징
     @GetMapping("/pickup")
     public String pickupPage(HttpSession session, Model model) {
         if(session.getAttribute("user") != null) {
@@ -30,39 +32,54 @@ public class PickUpController {
         }
     }
 
+    // 예약 첫번째 페이지 입력값 전달
+    @PostMapping("pickupSave.do")
+    public void pickupSave(PickupAddressVo address, HttpSession session) {
+        session.setAttribute("address", address);
+        PickupAddressVo addressSave = (PickupAddressVo) session.getAttribute("address");
+        System.out.println(">>>>>>>>>>>>>>"+addressSave);
+        int addressNo = pickupDao.pickupAddressSave(addressSave);
+        System.out.println(">>>>>>>>>>>>>>"+addressNo);
+    }
+
+//    @PostMapping("pickupSave.do")
+//    public void pickupSave(@RequestParam PickupAddressVo pav, @RequestParam PickupInfoVo piv, HttpSession session, Model model) {
+//        session.setAttribute("pav", pav);
+//        session.setAttribute("piv", piv);
+//        System.out.println("pav>>>>>>>>>>>>>"+pav);
+//        System.out.println("piv>>>>>>>>>>>>>"+piv);
+
+//        PickupAddressVo pav1 = (PickupAddressVo) session.getAttribute("user");
+//        System.out.println("저장된 값 :" + pav1);
+//        piv.setUser_id(pav1.getUser_id());
+//        if (pickupDao.pickupAddressSave(pav1) != 0
+//                && pickupDao.pickupInfoSave(piv) != 0) {
+//            model.addAttribute("alert", "예약되었습니다");
+//        };
+//    }
+
+    // 예약 두번째 페이징
     @GetMapping("/pickup2")
     public String pickupPage2() {
+
         return "pickup/pickUp2";
     }
 
-    @PostMapping("pickupSave.do")
-    public void pickupSave(
-            @RequestParam("user_id")String user_id, @RequestParam("pu_name")String pu_name, @RequestParam("pu_tel")String pu_tel,
-            @RequestParam("pu_zip")int pu_zip, @RequestParam("pu_address1")String pu_address1, @RequestParam("pu_address2")String pu_address2,
-            @RequestParam("pu_address3")String pu_address3, @RequestParam("pu_address4")String pu_address4, @RequestParam("house_no")int house_no,
-            @RequestParam("pu_elevator")String pu_elevator, @RequestParam("pu_day")String pu_day, @RequestParam("pu_img")String pu_img,
-            @RequestParam("text_memo")String text_memo) {
-        System.out.println(user_id);
-        pickupSaveVo.setUser_id(user_id);
-        pickupSaveVo.setPu_name(pu_name);
-        pickupSaveVo.setPu_tel(pu_tel);
-        pickupSaveVo.setPu_zip(pu_zip);
-        pickupSaveVo.setPu_address1(pu_address1);
-        pickupSaveVo.setPu_address2(pu_address2);
-        pickupSaveVo.setPu_address3(pu_address3);
-        pickupSaveVo.setPu_address4(pu_address4);
-        pickupSaveVo.setHouse_no(house_no);
-        pickupSaveVo.setPu_elevator(pu_elevator);
-        pickupSaveVo.setPu_day(pu_day);
-        pickupSaveVo.setPu_img(pu_img);
-        pickupSaveVo.setText_memo(text_memo);
 
-        System.out.println(pickupSaveVo);
-    }
-
+    // 예약 세번째 페이징
     @GetMapping("/pickup3")
     public String pickupPage3() {
         return "pickup/pickUp3";
+    }
+
+    @GetMapping("/pickupSave")
+    public String pickupSave(HttpSession session) {
+        PickupAddressVo address = (PickupAddressVo) session.getAttribute("address");
+        System.out.println(">>>>>>>>>>>>>>"+address);
+        pickupDao.pickupAddressSave(address);
+
+        System.out.println(">>>>>>>>>>>>>>"+pickupDao.pickupAddressSave(address));
+        return "/index";
     }
 
     @GetMapping("/reservationBd")
