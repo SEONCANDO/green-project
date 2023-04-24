@@ -18,3 +18,19 @@
     content: "";
     bottom: 51%;
 }
+
+.boxes2:before{
+    position: absolute;
+    width: 35px;
+    height: 3px;
+    background-color: darkgreen;
+    content: "";
+}
+
+#boxes3:before{
+    position: absolute;
+    width: 35px;
+    height: 3px;
+    background-color: darkgreen;
+    content: "";
+}
