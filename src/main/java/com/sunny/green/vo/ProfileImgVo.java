@@ -9,20 +9,13 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class PickupInfoVo {
-    private int pu_no;
+public class ProfileImgVo {
 
-    private int pu_address_no;
+    private int profile_num;
 
     private String user_id;
 
-    private int house_no;
+    private String img_save_name;
 
-    private String pu_elevator;
-
-    private String pu_day;
-
-    private String pu_img;
-
-    private String text_memo;
+    private String img_path;
 }

@@ -5,6 +5,7 @@ import com.sunny.green.dao.PickupDao;
 import com.sunny.green.dao.UserDao;
 import com.sunny.green.vo.PickupAddressVo;
 
+import com.sunny.green.vo.PickupInfoVo;
 import com.sunny.green.vo.UserVo;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -12,13 +13,15 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
+import java.util.Objects;
 
 @Controller
 @RequiredArgsConstructor
 public class PickUpController {
 
-    PickupDao pickupDao;
-    UserDao ud;
+    private final PickupDao pickupDao;
+    private final UserDao ud;
+
 
     // 예약 첫번째 페이징
     @GetMapping("/pickup")
@@ -34,29 +37,17 @@ public class PickUpController {
 
     // 예약 첫번째 페이지 입력값 전달
     @PostMapping("pickupSave.do")
-    public void pickupSave(PickupAddressVo address, HttpSession session) {
+    public void pickupPageSave(PickupAddressVo address, PickupInfoVo info, HttpSession session) {
+        System.out.println("address>>>>>>>>>>>"+address);
+        System.out.println("info>>>>>>>>>>>"+info);
         session.setAttribute("address", address);
-        PickupAddressVo addressSave = (PickupAddressVo) session.getAttribute("address");
-        System.out.println(">>>>>>>>>>>>>>"+addressSave);
-        int addressNo = pickupDao.pickupAddressSave(addressSave);
-        System.out.println(">>>>>>>>>>>>>>"+addressNo);
+        session.setAttribute("info", info);
+        PickupAddressVo address2 = (PickupAddressVo) session.getAttribute("address");
+        PickupInfoVo info2 = (PickupInfoVo) session.getAttribute("info");
+        System.out.println("address2>>>>>>>>>>>"+address2);
+        System.out.println("info2>>>>>>>>>>>"+info2);
     }
 
-//    @PostMapping("pickupSave.do")
-//    public void pickupSave(@RequestParam PickupAddressVo pav, @RequestParam PickupInfoVo piv, HttpSession session, Model model) {
-//        session.setAttribute("pav", pav);
-//        session.setAttribute("piv", piv);
-//        System.out.println("pav>>>>>>>>>>>>>"+pav);
-//        System.out.println("piv>>>>>>>>>>>>>"+piv);
-
-//        PickupAddressVo pav1 = (PickupAddressVo) session.getAttribute("user");
-//        System.out.println("저장된 값 :" + pav1);
-//        piv.setUser_id(pav1.getUser_id());
-//        if (pickupDao.pickupAddressSave(pav1) != 0
-//                && pickupDao.pickupInfoSave(piv) != 0) {
-//            model.addAttribute("alert", "예약되었습니다");
-//        };
-//    }
 
     // 예약 두번째 페이징
     @GetMapping("/pickup2")
@@ -72,14 +63,24 @@ public class PickUpController {
         return "pickup/pickUp3";
     }
 
-    @GetMapping("/pickupSave")
-    public String pickupSave(HttpSession session) {
+    @GetMapping("pickupRealSave.do")
+    public void pickupRealSave(HttpSession session) {
         PickupAddressVo address = (PickupAddressVo) session.getAttribute("address");
-        System.out.println(">>>>>>>>>>>>>>"+address);
-        pickupDao.pickupAddressSave(address);
-
-        System.out.println(">>>>>>>>>>>>>>"+pickupDao.pickupAddressSave(address));
-        return "/index";
+        PickupInfoVo info = (PickupInfoVo) session.getAttribute("info");
+        int successVal = pickupDao.pickupAddressSave(address);
+        if(successVal==1) {
+            int addressNo = address.getPu_address_no();
+            info.setPu_address_no(addressNo);
+            System.out.println("info>>>>>>>>>>>"+info);
+            int successVal2 = pickupDao.pickupInfoSave(info);
+            if(successVal2==1) {
+                int infoNo = info.getPu_no();
+                String imgVal = info.getPu_img();
+                if(Objects.equals(imgVal, "Y")) {
+                    System.out.println("성공>>>>>>>");
+                }
+            }
+        }
     }
 
     @GetMapping("/reservationBd")

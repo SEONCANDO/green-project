@@ -169,14 +169,27 @@ function chBox() {
     const user_id = $("#pickup_userID").val();
     const house_no = $("#pickup_house").val();
     const pu_elevator = $("#pickup_elevator").val();
-    const text_memo = $(".text_memo").val();
+    const pu_memo = $(".text_memo").val();
 
-    const address = {"user_id": user_id, "pu_address_name": pu_name, "pu_address_tel": pu_tel,
-        "pu_address_zip": pu_zip, "pu_address1": pu_address1, "pu_address2": pu_address2,
-        "pu_address3": pu_address3, "pu_address4": pu_address4};
+    let address = {
+        "user_id": user_id,
+        "pu_address_name": pu_name,
+        "pu_address_tel": pu_tel,
+        "pu_address_zip": pu_zip,
+        "pu_address1": pu_address1,
+        "pu_address2": pu_address2,
+        "pu_address3": pu_address3,
+        "pu_address4": pu_address4
+    };
 
-    const info = {"user_id": user_id, "house_no": house_no, "pu_elevator": pu_elevator,
-        "pu_day": pu_day, "pu_img": pu_img, "text_memo": text_memo};
+   let info = {
+        "user_id": user_id,
+        "house_no": house_no,
+        "pu_elevator": pu_elevator,
+        "pu_day": pu_day,
+        "pu_img": pu_img,
+        "pu_memo": pu_memo
+    };
 
     // 필수정보 입력 확인
     if (pu_name === "" || pu_tel === "" || pu_zip === "" || pu_address1 === "" || pu_address2 === "" ||
@@ -191,10 +204,14 @@ function chBox() {
         $.ajax({
             url:"pickupSave.do",
             type:"post",
-            data: address,
-            success: location="/pickup2",
-            error: function() {
-                alert('error')
+            dataType: JSON,
+            data: {"address": address,
+                    "info": JSON.stringify(info)},
+            success: function() {
+                location.href = "/pickup2";
+            },
+            error: function(xhr, status, error) {
+                alert("오류가 발생했습니다.\n" + error);
             }
         })
     }
@@ -203,39 +220,6 @@ function chBox() {
 
 
 
-
-
-// pickup 첫번째 페이지 입력정보 저장
-function pickupSave() {
-
-
-
-
-
-
-
-
-
-    // 세션 스토리지에 임시 저장
-    // sessionStorage.setItem("pickupAddress", user_id);
-    // sessionStorage.setItem("pickupAddress", pu_name);
-    // sessionStorage.setItem("pickupAddress", pu_tel);
-    // sessionStorage.setItem("pickupAddress", pu_zip);
-    // sessionStorage.setItem("pickupAddress", pu_address1);
-    // sessionStorage.setItem("pickupAddress", pu_address2);
-    // sessionStorage.setItem("pickupAddress", pu_address3);
-    // sessionStorage.setItem("pickupAddress", pu_address4);
-    // sessionStorage.setItem("pickupInfo", house_no);
-    // sessionStorage.setItem("pickupInfo", pu_elevator);
-    // sessionStorage.setItem("pickupInfo", pu_day);
-    // sessionStorage.setItem("pickupInfo", pu_img);
-    // sessionStorage.setItem("pickupInfo", text_memo);
-
-
-    alert("임시 저장되었습니다")
-
-
-}
 
 
 

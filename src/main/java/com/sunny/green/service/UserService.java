@@ -1,10 +1,10 @@
 package com.sunny.green.service;
 
 import com.sunny.green.vo.UserVo;
+import org.springframework.stereotype.Service;
 
-import java.util.List;
-import java.util.Map;
-
+@Service
 public interface UserService {
 
+    public UserVo kakaoUser(String code);
 }

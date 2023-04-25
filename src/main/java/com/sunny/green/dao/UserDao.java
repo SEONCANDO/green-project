@@ -5,7 +5,6 @@ import com.sunny.green.vo.UserVo;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
-import java.util.Map;
 
 @Mapper
 public interface UserDao {
@@ -28,5 +27,7 @@ public interface UserDao {
     public List<UserVo> selectAll();
 
     List<UserVo> selectAll2(PageVo search, String searchType, String keyword);
+
+/*   public List<UserVo> selectAll2(PageVo pageVo);*/
 
 }

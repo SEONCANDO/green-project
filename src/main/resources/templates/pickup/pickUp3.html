@@ -41,7 +41,6 @@
         </div>
       </div>
       <!--   메인 컨텐츠  -->
-<!--      <form type="post" action="/pickupSave">-->
         <div class="container_content">
           <div class="container">
             <div style="width: 92%; margin-left: 3%;">
@@ -99,7 +98,7 @@
                   <span class="text_requiredInput">*</span>
                 </td>
                 <td class="col-10" style="border: 1px solid #c1baba; padding: 10px; font-family: NanumBarunGothic, serif;">
-                  <input id="username" type="text" name="pickup_name" th:value="${session.address.pu_name}" style="width: 300px; height: 40px; margin-left: 20px;" readonly>
+                  <input id="username" type="text" name="pickup_name" th:value="${session.address.pu_address_name}" style="width: 300px; height: 40px; margin-left: 20px;" readonly>
                 </td>
               </tr>
               <!--   전화번호  -->
@@ -109,7 +108,7 @@
                   <span class="text_requiredInput">*</span>
                 </td>
                 <td class="col-10" style="border: 1px solid #c1baba; padding: 10px; font-family: NanumBarunGothic, serif;">
-                  <input type="text" name="pickup_phone" th:value="${session.address.pu_tel}" style="width: 300px; height: 40px; margin-left: 20px;" readonly>
+                  <input type="text" name="pickup_phone" th:value="${session.address.pu_address_tel}" style="width: 300px; height: 40px; margin-left: 20px;" readonly>
                 </td>
               </tr>
               <!--   배출 주소  -->
@@ -119,7 +118,7 @@
                   <span class="text_requiredInput">*</span>
                 </td>
                 <td class="col-10 box_address" style="border: 1px solid #c1baba; padding: 30px; font-family: NanumBarunGothic, serif;">
-                  <input type="text" name="pickup_zip_code" id="sample4_postcode" th:value="${session.address.pu_zip}" placeholder="${session.pu_zip}" readonly><br>
+                  <input type="text" name="pickup_zip_code" id="sample4_postcode" th:value="${session.address.pu_address_zip}" placeholder="${session.pu_zip}" readonly><br>
                   <input type="text" name="pickup_address1" id="sample4_roadAddress" th:value="${session.address.pu_address1}" placeholder="${session.pu_address1}" readonly>
                   <input type="text" name="pickup_address2" id="sample4_jibunAddress" th:value="${session.address.pu_address2}" placeholder="${session.pu_address2}" readonly><br>
                   <span id="guide" style="color:#999;display:none"></span>
@@ -189,10 +188,9 @@
           <div class="box_pageMove">
             <a href="/pickup2" class="btn btn-outline-success">이전</a>
 <!--            <input type="submit" class="btn btn-outline-success" value="제출하기">-->
-            <a href="/pickupSave">제출하기</a>
+            <input type="button" onclick="pickupReservation()" value="제출하기">
           </div>
         </div>
-<!--      </form>-->
     </div>
   </div>
 </body>

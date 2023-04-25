@@ -19,9 +19,11 @@
 
             <!-- 시작 -->
             <div class="col-md-3">
-                <div>
-                    <img src="/img/유저.png" style="width: 40%;">
+                <div style=" width: 101px; height: 101px; margin-left: 30%; display: flex; flex-direction: column; align-items: center;">
+                    <img src="/img/유저.png" style="width: 100%; border-radius: 60%;" data-toggle="modal" data-target="#exampleModal">
+                    <input type="file" id="profile_img" style="display: none;">
                 </div>
+
                 <div style="font-size: 25px; letter-spacing: -2px; margin-top: 10px;">
                     <span style="color: black; font-weight: 700;">[[${user.user_id}]]</span>님
                     <a href="/modify"><img src="/img/right-arrow.png" style="width: 15px;"></a>
@@ -119,7 +121,7 @@
                                     <tr>
                                         <th style="width:10%;">
                                             <input type="checkbox" class="checkbox_all"
-                                            style="margin-top: 7px;">
+                                                   style="margin-top: 7px;">
                                         </th>
                                         <th style="width:10%;">예약번호</th>
                                         <th>날짜</th>
@@ -246,6 +248,38 @@
             </div>
 
         </div>
+    </div>
+
+    <!-- modal -->
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <form action="uploadProfileImg" method="post" enctype="multipart/form-data">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title fs-5" id="exampleModalLabel">프로필 사진 변경</h3>
+                    <div style="text-align: right;">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="modal-body" style="border-radius: 60%;">
+                    <img src="/img/유저.png" id="file_img" onclick="document.getElementById('Profile_image').click()">
+                    <input type="file" id="Profile_image" style="display: none; width: 100%;" accept="image/*">
+                </div>
+                <div class="modal-footer">
+                    <div style="text-align: right;">
+                        <input type="submit" value="변경하기">
+                        <button type="button" class="btn btn-primary" data-dismiss="modal" id="button4">
+                            취소
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </form>
     </div>
 
 </div>

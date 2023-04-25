@@ -4,7 +4,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.sunny.green.dao.PickupDao">
     <!--  pickup Address에 값 입력  -->
-    <insert id="pickupAddressSave" useGeneratedKeys="true" keyProperty="pu_address_no">
+    <insert id="pickupAddressSave"  useGeneratedKeys="true" keyProperty="pu_address_no">
         Insert into pickup_address(user_id, pu_address_name, pu_address_tel, pu_address_zip, pu_address1, pu_address2, pu_address3, pu_address4)
         values (#{user_id}, #{pu_address_name}, #{pu_address_tel}, #{pu_address_zip}, #{pu_address1}, #{pu_address2}, #{pu_address3},#{pu_address4})
         <selectKey keyProperty="pu_address_no" resultType="int" order="AFTER">
@@ -14,6 +14,9 @@
     <insert id="pickupInfoSave" useGeneratedKeys="true" keyProperty="pu_no">
         Insert into pickup_info(pu_address_no, user_id, house_no, pu_elevator, pu_day, pu_img, pu_memo)
         values (#{pu_address_no}, #{user_id}, #{house_no}, #{pu_elevator}, #{pu_day}, #{pu_img}, #{pu_memo})
+        <selectKey keyProperty="pu_no" resultType="int" order="AFTER">
+            SELECT LAST_INSERT_ID();
+        </selectKey>
     </insert>
     <insert id="pickupCategorySave">
         Insert into pickup_category(pu_no, category_no, pu_category_count)
@@ -24,7 +27,4 @@
         values (#{pu_no}, #{pu_img_origin_name}, #{pu_img_save_name}, #{pu_img_path})
     </insert>
 
-    <select id="pickupSave" resultType="com.sunny.green.vo.PickupPageVo">
-        insert into pa.user_id, pa.pu_address_name, pa.pu_address_tel, pa.pu_address_zip, pa.pu_address1, pa.pu_address2, pa.pu_address3, pa.pu_address4, pi.pu_date, pi.pu_elevator, pi.pu_day, pi.pu_img, pi.pu_memo from pickup_address pa, pickup_info pi
-    </select>
 </mapper>
