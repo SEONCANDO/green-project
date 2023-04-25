@@ -16,7 +16,7 @@ public interface UserDao {
 
     public UserVo selectUserId(String userId);
 
-    public UserVo selectAll1(String userid);
+    public UserVo selectAll1(String userId);
 
     public int updateUser(UserVo user);
 
@@ -26,7 +26,7 @@ public interface UserDao {
 
     //보영
     public List<UserVo> selectAll();
-/*    public List<UserVo> selectAll2(PageVo pageVo);*/
 
     List<UserVo> selectAll2(PageVo search, String searchType, String keyword);
+
 }

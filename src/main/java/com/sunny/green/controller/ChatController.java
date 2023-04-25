@@ -15,10 +15,6 @@ public class ChatController {
 
     private final UserDao ud;
 
- /*       @GetMapping("/chat")
-        public String chat(){
-            return "chat/chat";
-        }*/
     @GetMapping("/chat")
     public String chat(HttpSession session, Model model) {
         if (session.getAttribute("user") == null) {
@@ -31,6 +27,6 @@ public class ChatController {
 
             return "chat/chat";
         }
-        return "/alert";
+        return "alert";
     }
 }

@@ -491,6 +491,7 @@ a.boxed-btn, a.bordered-btn, a.cart-btn {
 }
 
 .section-title {
+    margin-top: 40px;
     margin-bottom: 80px;
 }
 
@@ -540,6 +541,14 @@ a.boxed-btn, a.bordered-btn, a.cart-btn {
 # Header Styles
 
 ----------------------------------------------------------------------------- */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 999;
+}
+
 ul.navbar-nav li.nav-item a.nav-link, ul.navbar-nav li.nav-item.active a.nav-link {
     color: #051922;
 }
@@ -574,7 +583,7 @@ nav.main-menu ul li {
 }
 
 nav.main-menu ul li a {
-    color: black;
+    color: white;
     font-size: 18px;
     font-family: 'GmarketSansMedium', serif;
     display: block;
@@ -585,7 +594,6 @@ nav.main-menu ul > li {
 }
 
 nav.main-menu ul ul.sub-menu {
-    background-color: #fff;
     width: 220px;
     padding: 15px 15px;
     margin: 0;
@@ -703,7 +711,11 @@ nav.main-menu ul ul.sub-menu li a {
     font-weight: 600;
 }
 
-nav.main-menu ul li.current-list-item > a {
+/*nav.main-menu ul li.current-list-item > a {
+    color: #F28123;
+}*/
+
+.top-header-area .main-menu.active {
     color: #F28123;
 }
 
@@ -731,7 +743,6 @@ nav.main-menu li a {
 }
 
 .sticky-wrapper.is-sticky .top-header-area {
-    background-color: white;
     padding: 15px 0;
     box-shadow: 1px 13px 17px 2px rgba(0,0,0,0.7);
     -webkit-box-shadow: 1px 13px 17px 2px rgba(0,0,0,0.7);
@@ -877,14 +888,22 @@ h2.widget-title:after {
 
 .enter_chat{
     position: fixed !important;
-    right: 27px !important;
-    bottom: 82px !important;
+    right: 29px !important;
+    bottom: 76px !important;
     z-index: 100 !important;
 }
 
 #chat_btn {
-    width: 70px !important;
-    height: 70px !important;
+    width: 60px !important;
+    height: 60px !important;
+}
+
+.live_chat {
+    color: orange;
+    position: fixed !important;
+    right: 45px !important;
+    bottom: 145px !important;
+    z-index: 100 !important;
 }
 
 /* -----------------------------------------------------------------------------
@@ -1246,7 +1265,7 @@ a.mobile-show.search-bar-icon:hover {
 
 ----------------------------------------------------------------------------- */
 .hero-bg {
-    background-image: url(../img/main_banner.jpg);
+    background-image: url(../img/bg_01.jpg);
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
