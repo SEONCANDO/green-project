@@ -39,7 +39,7 @@ public class UserController {
     @GetMapping("/myPage")
     public String myPage(HttpSession session, Model mo) {
         if (session.getAttribute("user") == null) {
-            mo.addAttribute("alert", "로그인 먼저 진행해주시기 바랍니다");
+            mo.addAttribute("alert", "로그인이 필요한 페이지입니다.");
             mo.addAttribute("url", "/login");
         } else {
             UserVo userDB = (UserVo) session.getAttribute("user");
@@ -55,7 +55,7 @@ public class UserController {
     @GetMapping("/login")
     public String login(HttpSession session, Model model) {
         if (session.getAttribute("user") != null) {
-            model.addAttribute("alert", "이미 로그인이 되어있는 상황입니다");
+            model.addAttribute("alert", "이미 로그인이 된 상태입니다.");
             model.addAttribute("url", "/index");
         } else {
             return "user/login";
@@ -72,7 +72,7 @@ public class UserController {
         if (userDB != null) {
             System.out.println(userDB);
             session.setAttribute("user", userDB);
-            model.addAttribute("alert", "로그인이 성공했습니다");
+            model.addAttribute("alert", "로그인에 성공했습니다.");
             model.addAttribute("url", "/index");
         } else {
             System.out.println("실패했습니다");
@@ -88,7 +88,7 @@ public class UserController {
     @GetMapping("/join")
     public String join(HttpSession session, Model model) {
         if (session.getAttribute("user") != null) {
-            model.addAttribute("alert", "이미 로그인이 되어있는 상태입니다");
+            model.addAttribute("alert", "이미 로그인이 된 상태입니다.");
             model.addAttribute("url", "/index");
         } else {
             return "/user/join";
@@ -117,7 +117,7 @@ public class UserController {
     @GetMapping("/breakDown")
     public String exchange(HttpSession session, Model mo) {
         if (session.getAttribute("user") == null) {
-            mo.addAttribute("alert", "로그인 먼저 진행해주시기 바랍니다");
+            mo.addAttribute("alert", "로그인이 필요한 페이지입니다.");
             mo.addAttribute("url", "/login");
         } else {
             UserVo userDB = (UserVo) session.getAttribute("user");
@@ -134,11 +134,11 @@ public class UserController {
     @GetMapping("/logout")
     public String logout(HttpSession httpSession, Model mo) {
         if (httpSession.getAttribute("user") == null) {
-            mo.addAttribute("alert", "로그인 먼저 해주시기 바랍니다");
+            mo.addAttribute("alert", "로그인이 필요한 페이지입니다.");
             mo.addAttribute("url", "/login");
         } else {
             httpSession.setAttribute("user", null);
-            mo.addAttribute("alert", "로그아웃 하셨습니다");
+            mo.addAttribute("alert", "로그아웃되었습니다.");
             mo.addAttribute("url", "/index");
         }
         return "/alert";
@@ -160,7 +160,7 @@ public class UserController {
     @GetMapping("/modify")
     public String modify(HttpSession session, Model model) {
         if (session.getAttribute("user") == null) {
-            model.addAttribute("alert", "로그인을 해주시기 바랍니다.");
+            model.addAttribute("alert", "로그인이 필요한 페이지입니다.");
             model.addAttribute("url", "/login");
         } else {
             UserVo user = (UserVo) session.getAttribute("user");
@@ -182,7 +182,7 @@ public class UserController {
             mo.addAttribute("url", "/myPage");
 
         } else {
-            mo.addAttribute("alert", "정보 수정값을 등록하는데 오류가 있습니다");
+            mo.addAttribute("alert", "정보를 수정하는데 오류가 있습니다");
             mo.addAttribute("url", "/index");
         }
         return "alert";
@@ -192,7 +192,7 @@ public class UserController {
     @GetMapping("/greenPoint")
     public String green(HttpSession session, Model mo) {
         if (session.getAttribute("user") == null) {
-            mo.addAttribute("alert", "로그인 먼저 진행해주시기 바랍니다");
+            mo.addAttribute("alert", "로그인이 필요한 페이지입니다.");
             mo.addAttribute("url", "/login");
         } else {
             UserVo userDB = (UserVo) session.getAttribute("user");
