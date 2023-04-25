@@ -72,30 +72,20 @@
 
     <select id="selectAll2" resultType="com.sunny.green.vo.UserVo">
         SELECT *
-        FROM user;
-        <trim prefix="WHERE" prefixOverrides="AND|OR">
-
+        FROM user
+        <where>
             <if test="searchType=='user_name' and keyword != null and keyword != '' ">
-
                 AND user_name like CONCAT('%', #{keyword}, '%')
-
             </if>
-
             <if test="searchType=='user_id' and keyword != null and keyword != '' ">
-
                 AND user_id like CONCAT('%', #{keyword}, '%')
-
             </if>
-
             <if test="searchType=='user_tel' and keyword != null and keyword != '' ">
-
                 AND user_tel like CONCAT('%', #{keyword}, '%')
-
             </if>
-
-        </trim>
-
+        </where>
     </select>
+
 
 </mapper>
 

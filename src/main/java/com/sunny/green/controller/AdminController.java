@@ -83,27 +83,25 @@ public class AdminController {
         return "/admin/admin_user1";
     }
 
-
-   // 보영 (회원 목록 조회)
-    @GetMapping("/admin/user2")
+    //회원목록
+    @GetMapping("/admin/userList")
     public String getUserList(Model model) {
         List<UserVo> user = ud.selectAll();
         model.addAttribute("user", user);
         return "admin/admin_user2";
     }
 
-    //보영 (회원 검색)
-    @GetMapping("/admin/user2/search")
-
-    public String getUserList(Model model, PageVo search, @RequestParam(required = false, defaultValue = "user_name") String searchType
-
-            , @RequestParam(required = false) String keyword) throws Exception {
-
-        List<UserVo> user = ud.selectAll2(search);
-
+    //회원검색
+    @GetMapping("/admin/user2")
+    public String getUserList(Model model, PageVo search, @RequestParam(required = false) String searchType, @RequestParam(required = false) String searchValue) throws Exception {
+        List<UserVo> user;
+        if (searchType == null || searchValue == null) {
+            user = ud.selectAll();
+        } else {
+            user = ud.selectAll2(search, searchType, searchValue);
+        }
         model.addAttribute("user", user);
-
-        return "/admin/admin_user2";
+        return "admin/admin_user2";
     }
 
 
