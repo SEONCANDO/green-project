@@ -17,8 +17,8 @@ import javax.servlet.http.HttpSession;
 @RequiredArgsConstructor
 public class PickUpController {
 
-    PickupDao pickupDao;
-    UserDao ud;
+    private final PickupDao pickupDao;
+    private final UserDao ud;
 
     // 예약 첫번째 페이징
     @GetMapping("/pickup")
