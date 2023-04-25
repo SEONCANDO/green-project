@@ -169,14 +169,27 @@ function chBox() {
     const user_id = $("#pickup_userID").val();
     const house_no = $("#pickup_house").val();
     const pu_elevator = $("#pickup_elevator").val();
-    const text_memo = $(".text_memo").val();
+    const pu_memo = $(".text_memo").val();
 
-    const address = {"user_id": user_id, "pu_address_name": pu_name, "pu_address_tel": pu_tel,
-        "pu_address_zip": pu_zip, "pu_address1": pu_address1, "pu_address2": pu_address2,
-        "pu_address3": pu_address3, "pu_address4": pu_address4};
+    let address = {
+        "user_id": user_id,
+        "pu_address_name": pu_name,
+        "pu_address_tel": pu_tel,
+        "pu_address_zip": pu_zip,
+        "pu_address1": pu_address1,
+        "pu_address2": pu_address2,
+        "pu_address3": pu_address3,
+        "pu_address4": pu_address4
+    };
 
-    const info = {"user_id": user_id, "house_no": house_no, "pu_elevator": pu_elevator,
-        "pu_day": pu_day, "pu_img": pu_img, "text_memo": text_memo};
+   let info = {
+        "user_id": user_id,
+        "house_no": house_no,
+        "pu_elevator": pu_elevator,
+        "pu_day": pu_day,
+        "pu_img": pu_img,
+        "pu_memo": pu_memo
+    };
 
     // 필수정보 입력 확인
     if (pu_name === "" || pu_tel === "" || pu_zip === "" || pu_address1 === "" || pu_address2 === "" ||
@@ -191,10 +204,14 @@ function chBox() {
         $.ajax({
             url:"pickupSave.do",
             type:"post",
-            data: address,
-            success: location="/pickup2",
-            error: function() {
-                alert('error')
+            dataType: JSON,
+            data: {"address": address,
+                    "info": JSON.stringify(info)},
+            success: function() {
+                location.href = "/pickup2";
+            },
+            error: function(xhr, status, error) {
+                alert("오류가 발생했습니다.\n" + error);
             }
         })
     }
