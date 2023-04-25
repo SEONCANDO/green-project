@@ -25,10 +25,19 @@
     <form action="/admin/user2" class="search-form" method="get">
     <div class="row" style="margin-bottom: 3%; margin-left: 0%;">
       <div class="col-lg-3 col-md-3 col-sm-12 p-0">
+
         <select class="form-control" name="searchType">
           <option th:value="user_name">회원명</option>
           <option th:value="user_id">아이디</option>
           <option th:value="user_tel">전화번호</option>
+
+        <label for="search-type" hidden>검색 유형</label>
+        <select class="form-control" id="search-type" name="searchType">
+          <option>회원명</option>
+          <option>아이디</option>
+          <option>주소</option>
+          <option>전화번호</option>
+
         </select>
       </div>
       <div class="col-lg-8 col-md-6 col-sm-12 p-0">

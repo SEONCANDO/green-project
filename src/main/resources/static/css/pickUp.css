@@ -206,18 +206,7 @@
     background: #fff url(../img/pickup/date_icon.png) no-repeat center right 4px;
     background-size: 27px;
 }
-/* 개인정보 수거 요일 */
-#text_insertDayOfWeek {
-    display: flex;
-    align-items: center;
-    margin-left: 10px;
-    font-size: 20px;
-}
-#text_dayOfWeek {
-    display: flex;
-    align-items: center;
-    font-size: 20px;
-}
+
 
 /* 개인정보 이미지 upload preview */
 #img_pickup_preview {
