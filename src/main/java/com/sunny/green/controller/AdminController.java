@@ -85,6 +85,7 @@ public class AdminController {
 
 
    // 보영 (회원 목록 조회)
+/*
     @GetMapping("/admin/user2")
     public String getUserList(Model model) {
         List<UserVo> user = ud.selectAll();
@@ -104,6 +105,26 @@ public class AdminController {
         model.addAttribute("user", user);
 
         return "/admin/admin_user2";
+    }
+*/
+
+    @GetMapping("/admin/user-list")
+    public String getUserList(Model model) {
+        List<UserVo> user = ud.selectAll();
+        model.addAttribute("user", user);
+        return "admin/admin_user2";
+    }
+
+    @GetMapping("/admin/user2")
+    public String getUserList(Model model, PageVo search, @RequestParam(required = false) String searchType, @RequestParam(required = false) String searchValue) throws Exception {
+        List<UserVo> user;
+        if (searchType == null || searchValue == null) {
+            user = ud.selectAll();
+        } else {
+            user = ud.selectAll2(search, searchType, searchValue);
+        }
+        model.addAttribute("user", user);
+        return "admin/admin_user2";
     }
 
 
