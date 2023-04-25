@@ -11,8 +11,11 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import javax.mail.Multipart;
 import javax.servlet.http.HttpSession;
+import java.util.List;
 import java.util.Objects;
 
 @Controller
@@ -37,15 +40,22 @@ public class PickUpController {
 
     // 예약 첫번째 페이지 입력값 전달
     @PostMapping("pickupSave.do")
-    public void pickupPageSave(PickupAddressVo address, PickupInfoVo info, HttpSession session) {
-        System.out.println("address>>>>>>>>>>>"+address);
-        System.out.println("info>>>>>>>>>>>"+info);
+    @ResponseBody
+    public void pickupPageSave(PickupAddressVo address, HttpSession session) {
         session.setAttribute("address", address);
-        session.setAttribute("info", info);
         PickupAddressVo address2 = (PickupAddressVo) session.getAttribute("address");
+    }
+    @PostMapping("pickupSave2.do")
+    @ResponseBody
+    public void pickupPageSave(PickupInfoVo info, HttpSession session) {
+        session.setAttribute("info", info);
         PickupInfoVo info2 = (PickupInfoVo) session.getAttribute("info");
-        System.out.println("address2>>>>>>>>>>>"+address2);
-        System.out.println("info2>>>>>>>>>>>"+info2);
+    }
+    //이미지 임시 저장
+    @PostMapping("pickupImg.do")
+    @ResponseBody
+    public void pickupImg(@RequestParam("images") List<MultipartFile> files) {
+        System.out.println(">>>>>>>>>>>>>>"+files);
     }
 
 
@@ -64,6 +74,7 @@ public class PickUpController {
     }
 
     @GetMapping("pickupRealSave.do")
+    @ResponseBody
     public void pickupRealSave(HttpSession session) {
         PickupAddressVo address = (PickupAddressVo) session.getAttribute("address");
         PickupInfoVo info = (PickupInfoVo) session.getAttribute("info");
