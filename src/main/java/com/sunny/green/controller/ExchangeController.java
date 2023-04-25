@@ -2,10 +2,13 @@ package com.sunny.green.controller;
 
 import com.sunny.green.dao.AdminDao;
 import com.sunny.green.dao.ExchangeDao;
+import com.sunny.green.dao.MailDao;
 import com.sunny.green.dao.UserDao;
+
 
 import com.sunny.green.vo.ExchangeVo;
 
+import com.sunny.green.vo.MailVo;
 import com.sunny.green.vo.ProductWithImgVo;
 import com.sunny.green.vo.UserVo;
 import lombok.RequiredArgsConstructor;
@@ -16,6 +19,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import javax.mail.MessagingException;
 import javax.servlet.http.HttpSession;
 import java.util.List;
 import java.util.Random;
@@ -26,6 +30,10 @@ public class ExchangeController {
     private final AdminDao ad;
     private final UserDao ud;
     private final ExchangeDao ed;
+
+//    private final MailService ms;
+
+    private final MailDao md;
     
 
     @GetMapping("/exchange")
@@ -54,7 +62,7 @@ public class ExchangeController {
     }
 
     @PostMapping("/exchange")
-    public String exchange(ExchangeVo ev, UserVo user, RedirectAttributes redirectAttributes) {
+    public String exchange(ExchangeVo ev, UserVo user, RedirectAttributes redirectAttributes) throws MessagingException {
         String chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"; // 예약번호로 사용할 문자열
 
         int length = 8; // 예약번호의 길이
@@ -78,12 +86,12 @@ public class ExchangeController {
         ud.updatePoint(user);
         System.out.println("유저 포인트값 :" + remain_point);
 
-//        MailVo mailVo = new MailVo();
+//       MailVo mailVo = new MailVo();
 //        mailVo.setMail_receiver(ev.getUser_email());
 //        mailVo.setMail_title("교환 정보 내역입니다");
-//        mailVo.setMail_content(ev.getUser_name() +" 회원님께서 변경해주신 값들은 그것들이며 현재 이동규님의 정보값은 " + ev + "정보들 입니다");
+//       mailVo.setMail_content(ev.getUser_name() +" 회원님께서 변경해주신 값들은 그것들이며 현재" + ev.getUser_name()+"님의 정보값은 " + ev + "정보들 입니다");
 //        ms.successMail(mailVo);
-//        System.out.println("메일단 : " +mailVo);
+//        md.insertMail(mailVo);
 
         redirectAttributes.addAttribute("ex_num", ev.getEx_num());
         return "redirect:/exchange3";

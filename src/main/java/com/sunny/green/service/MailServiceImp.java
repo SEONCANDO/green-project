@@ -25,7 +25,7 @@
 //        mimeMessageHelper.setTo(mailVo.getMail_receiver());
 //        mimeMessageHelper.setSubject(mailVo.getMail_title());
 //        mimeMessageHelper.setText(mailVo.getMail_content());
-//
+//        mimeMessageHelper.setFrom("ghh607@naver.com");
 //        javaMailSender.send(mimeMessage);
 //
 //    }
