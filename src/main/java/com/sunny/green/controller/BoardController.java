@@ -35,7 +35,7 @@ public class BoardController {
         UserVo userVo = (UserVo) session.getAttribute("user");
         model.addAttribute("user", userVo);
         if(userVo == null){
-            model.addAttribute("alert","로그인이 되지 않았습니다");
+            model.addAttribute("alert","로그인이 필요한 페이지입니다.");
             model.addAttribute("url","/login");
         }
         else{

@@ -26,7 +26,7 @@ public class PickUpController {
         if(session.getAttribute("user") != null) {
             return "pickup/pickUp";
         } else {
-            model.addAttribute("alert", "로그인을 먼저 해주세요");
+            model.addAttribute("alert", "로그인이 필요한 페이지입니다.");
             model.addAttribute("url", "/login");
             return "alert";
         }
@@ -86,7 +86,7 @@ public class PickUpController {
     public String reservationBd(HttpSession session, Model model) {
 
         if(session.getAttribute("user") == null){
-            model.addAttribute("alert", "로그인을 해주시기 바랍니다.");
+            model.addAttribute("alert", "로그인이 필요한 페이지입니다.");
             model.addAttribute("url", "/login");
         }
         else{
