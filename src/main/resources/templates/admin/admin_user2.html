@@ -22,25 +22,21 @@
 
     <div id="result" th:text="${result}"> ajax test </div>
 <!--검색처리-->
-    <form action="/admin/search" class="search-form" method="get">
-    <div class="search_box">
-    <div class="row no-gutters" style="margin-bottom: 20px; margin-left: 10px">
+    <form action="/admin/user2" class="search-form" method="get">
+    <div class="row" style="margin-bottom: 3%; margin-left: 0%;">
       <div class="col-lg-3 col-md-3 col-sm-12 p-0">
-        <label for="searchType" hidden>검색 유형</label>
-        <select class="search-option" id="searchType" name="searchType">
-          <option value="user_name" >회원명</option>
-          <option value="user_id" >아이디</option>
-          <option value="address1">주소</option>
-          <option value="user_tel">전화번호</option>
+        <select class="form-control" name="searchType">
+          <option th:value="user_name">회원명</option>
+          <option th:value="user_id">아이디</option>
+          <option th:value="user_tel">전화번호</option>
         </select>
       </div>
       <div class="col-lg-8 col-md-6 col-sm-12 p-0">
-        <label for="keyword" hidden>검색어</label>
-        <input type="text" placeholder="검색어..." class="form-control" id="keyword"
-               name="keyword">
+        <input type="text" placeholder="검색어..." class="form-control"
+               name="searchValue">
       </div>
       <div class="col-lg-1 col-md-3 col-sm-12 p-0">
-        <button type="button" class="btn btn-base">
+        <button type="submit" class="btn btn-base">
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                stroke-linecap="round" stroke-linejoin="round"
@@ -50,7 +46,6 @@
           </svg>
         </button>
       </div>
-    </div>
     </div>
     </form>
     <!--검색처리-->
