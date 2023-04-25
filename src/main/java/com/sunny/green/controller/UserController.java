@@ -1,15 +1,10 @@
 package com.sunny.green.controller;
 
-import com.sunny.green.dao.AdminDao;
-import com.sunny.green.dao.ExchangeDao;
-import com.sunny.green.dao.MailDao;
-import com.sunny.green.dao.UserDao;
-import com.sunny.green.vo.AdminVo;
-import com.sunny.green.vo.ExchangeVo;
-import com.sunny.green.vo.MailVo;
-import com.sunny.green.vo.UserVo;
+import com.sunny.green.dao.*;
+import com.sunny.green.vo.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
@@ -17,11 +12,19 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.mail.MessagingException;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
+import java.util.UUID;
 
 @Controller
 @RequiredArgsConstructor
@@ -34,6 +37,9 @@ public class UserController {
 //    private final MailService ms;
 
     private final MailDao md;
+
+    private final ProfileImgDao pid;
+
 
     //마이페이지 매핑
     @GetMapping("/myPage")
@@ -156,6 +162,7 @@ public class UserController {
         }
     }
 
+
     // 마이페이지 개인정보 수정
     @GetMapping("/modify")
     public String modify(HttpSession session, Model model) {
@@ -228,5 +235,28 @@ public class UserController {
     @GetMapping("/info")
     public String info(){
         return "info";
+    }
+
+
+
+    @PostMapping("/uploadProfileImg")
+    @ResponseBody
+    public String upload(@RequestParam("file") MultipartFile file) throws Exception {
+        String originalName = file.getOriginalFilename();
+        String extension = originalName.substring(originalName.lastIndexOf("."));
+        String savedName = UUID.randomUUID().toString() + extension;
+        String savedPath = "/img/profile/" + savedName;
+
+        try (OutputStream os = new FileOutputStream(savedPath)) {
+            os.write(file.getBytes());
+            System.out.println(savedPath);
+        // 파일 저장
+        } catch (IOException e) {
+            // 파일 저장 실패 시 예외 처리
+            e.printStackTrace();
+        }
+
+
+        return savedPath;
     }
 }
