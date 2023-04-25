@@ -1,5 +1,6 @@
 package com.sunny.green.dao;
 
+import com.sunny.green.vo.PageVo;
 import com.sunny.green.vo.UserVo;
 import org.apache.ibatis.annotations.Mapper;
 
@@ -11,6 +12,7 @@ public interface UserDao {
     public int joinUser(UserVo user);
 
     public UserVo selectUser(UserVo user);
+
     public UserVo selectUserId(String userId);
 
     public UserVo selectAll1(String userid);
@@ -23,4 +25,9 @@ public interface UserDao {
 
     //보영
     public List<UserVo> selectAll();
+
+    List<UserVo> selectAll2(PageVo search, String searchType, String keyword);
+
+
+/*   public List<UserVo> selectAll2(PageVo pageVo);*/
 }

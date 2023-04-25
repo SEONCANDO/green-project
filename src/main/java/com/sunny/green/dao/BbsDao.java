@@ -18,4 +18,6 @@ public interface BbsDao {
     public int updateBoard(BbsVo bbs);
 
     public int deleteBoard(int board_num);
+
+    public int updateBoardNum();
 }

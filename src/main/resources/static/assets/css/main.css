@@ -1631,6 +1631,7 @@ p.testimonial-body {
     position: relative;
     background-image: url("../img/event.png");
     background-size: cover;
+    background-position: center;
     width: 100%;
     height: 600px;
 }
@@ -1642,23 +1643,6 @@ p.testimonial-body {
     margin-bottom: 0;
 }
 
-.shop-banner .sale-percent {
-    position: relative;
-    font-size: 60px;
-    font-weight: 700;
-    color: #F28123;
-}
-
-.shop-banner .sale-percent span {
-    position: relative;
-    font-size: 24px;
-    line-height: 1.1em;
-    color: #051922;
-    font-weight: 400;
-    text-align: center;
-    margin-right: 10px;
-    display: inline-block;
-}
 
 #find_btn {
     position: absolute;
