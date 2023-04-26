@@ -8,4 +8,6 @@ import org.apache.ibatis.annotations.Mapper;
 public interface ProfileImgDao {
 
     public int insProfileImg(ProfileImgVo profileImgVo);
+
+    public ProfileImgVo selectProfileImg(String user_id);
 }

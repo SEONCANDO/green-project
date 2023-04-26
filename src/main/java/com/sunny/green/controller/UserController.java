@@ -3,20 +3,24 @@ package com.sunny.green.controller;
 import com.sunny.green.dao.*;
 import com.sunny.green.vo.*;
 import lombok.RequiredArgsConstructor;
+import org.springframework.core.io.FileSystemResource;
+import org.springframework.core.io.Resource;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.mail.MessagingException;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
+import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
@@ -50,7 +54,9 @@ public class UserController {
         } else {
             UserVo userDB = (UserVo) session.getAttribute("user");
             UserVo user = ud.selectAll1(userDB.getUser_id());
+            ProfileImgVo profileImgVo = pid.selectProfileImg(userDB.getUser_id());
             mo.addAttribute("user", user);
+            mo.addAttribute("profileImgVo", profileImgVo);
             return "myPage/myPage";
         }
 
@@ -181,7 +187,7 @@ public class UserController {
     }
 
     @PostMapping("/modify")
-    public String modify1(UserVo user, Model mo){
+    public String modify1(UserVo user, Model mo) {
         int update = ud.updateUser(user);
         if (update == 1) {
             System.out.println(update);
@@ -224,39 +230,52 @@ public class UserController {
 
 
     @GetMapping("testGuest")
-    public String user1(){
-        for(int i = 100; i < 250; i++){
-            UserVo user = UserVo.builder().user_id("test"+i).user_pass("1234").user_email("d@c.com").user_name("관리자"+i).user_tel("01012345678").build();
+    public String user1() {
+        for (int i = 100; i < 250; i++) {
+            UserVo user = UserVo.builder().user_id("test" + i).user_pass("1234").user_email("d@c.com").user_name("관리자" + i).user_tel("01012345678").build();
             ud.joinUser(user);
         }
         return "테스트 계정에 대한 내용";
     }
 
     @GetMapping("/info")
-    public String info(){
+    public String info() {
         return "info";
     }
 
 
+    @Transactional
+    @PostMapping("/uploadProfile")
+    public String pro4(ProductVo productVo, @RequestParam("file") MultipartFile imageFile, HttpSession session) {
+        String fileName = imageFile.getOriginalFilename(); // 파일 이름 추출
+        String uploadPath = "src/main/resources/static/img/profile/"; // 업로드 디렉토리 경로
+        String filePath = uploadPath + fileName; // 저장될 파일 경로
+        String uuid = UUID.randomUUID().toString();
+        String realPath = uploadPath + uuid + fileName;
+        String saveFile = uuid + fileName;
 
-    @PostMapping("/uploadProfileImg")
-    @ResponseBody
-    public String upload(@RequestParam("file") MultipartFile file) throws Exception {
-        String originalName = file.getOriginalFilename();
-        String extension = originalName.substring(originalName.lastIndexOf("."));
-        String savedName = UUID.randomUUID().toString() + extension;
-        String savedPath = "/img/profile/" + savedName;
+        try (OutputStream os = new FileOutputStream(realPath)) {
+            os.write(imageFile.getBytes());
 
-        try (OutputStream os = new FileOutputStream(savedPath)) {
-            os.write(file.getBytes());
-            System.out.println(savedPath);
-        // 파일 저장
+            UserVo userVo = (UserVo) session.getAttribute("user");
+            ProfileImgVo profileImgVo = ProfileImgVo.builder()
+                    .user_id(userVo.getUser_id())
+                    .img_save_name(saveFile)
+                    .img_path(realPath)
+                    .build();
+            pid.insProfileImg(profileImgVo);
         } catch (IOException e) {
             // 파일 저장 실패 시 예외 처리
             e.printStackTrace();
         }
-
-
-        return savedPath;
+        return "redirect:/myPage";
     }
+
+    @GetMapping("/img/profile/{img_save_name}")
+    @ResponseBody
+    public ResponseEntity<Resource> getImage(@PathVariable("img_save_name") String imgSaveName) throws IOException {
+        Resource resource = new FileSystemResource("src/main/resources/static/img/profile/" + imgSaveName);
+        return ResponseEntity.ok().contentType(MediaType.IMAGE_JPEG).body(resource);
+    }
+
 }
