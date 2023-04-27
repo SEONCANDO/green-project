@@ -29,25 +29,21 @@ import java.util.*;
 @RequiredArgsConstructor
 public class AdminController {
 
-
-
     private final UserDao ud;
     private final AdminDao ad;
     private final PageVo pv;
 
-
     private UserService userService;
 
-
     @GetMapping("/admin")
-    public String admin(){
+    public String admin() {
         return "admin/admin_login";
     }
 
     @PostMapping("/admin")
-    public String admin2(AdminVo av, Model mo, HttpSession session){
+    public String admin2(AdminVo av, Model mo, HttpSession session) {
         AdminVo adminVo = ad.selectAdmin(av);
-        if(adminVo != null) {
+        if (adminVo != null) {
             if (adminVo.getAdmin_role() == 1) {
                 mo.addAttribute("alert", "관리자용 로그인에 성공했습니다.");
                 mo.addAttribute("url", "/admin/main");
@@ -57,8 +53,8 @@ public class AdminController {
                 mo.addAttribute("alert", "아이디/비밀번호가 일치하지 않습니다.");
                 mo.addAttribute("url", "/admin");
             }
-        return "alert";
-        } else{
+            return "alert";
+        } else {
             mo.addAttribute("alert", "관리자용 아이디가 존재하지 않습니다.");
             mo.addAttribute("url", "/index");
         }
@@ -72,7 +68,6 @@ public class AdminController {
     }
 
 
-
     @GetMapping("/admin/reservation")
     public String adminRe() {
         return "/admin/admin_reservation";
@@ -83,10 +78,6 @@ public class AdminController {
         return "/admin/admin_user1";
     }
 
-
-   // 보영 (회원 목록 조회)
-
-    @GetMapping("/admin/userList")
     public String getUserList(Model model) {
         List<UserVo> user = ud.selectAll();
         model.addAttribute("user", user);
@@ -105,30 +96,28 @@ public class AdminController {
         return "admin/admin_user2";
     }
 
-
-
-
     // 보영 (회원정보상세)
     @GetMapping("/admin/modify")
-    public String userDetail(Model model, UserVo userVo){
+    public String userDetail(Model model, UserVo userVo) {
         UserVo user = ud.selectAll1(userVo.getUser_id());
         model.addAttribute("user", user);
         System.out.println(user);
         return "admin/admin_user3";
     }
+
     // 보영 (회원정보수정)
     @PostMapping("/admin/modify")
-    public String adminModify(UserVo user, Model model){
+    public String adminModify(UserVo user, Model model) {
         int update = ud.updateUser(user);
         System.out.println(update);
-        model.addAttribute("alert","수정되었습니다");
-        model.addAttribute("url","/admin/user2");
+        model.addAttribute("alert", "수정되었습니다");
+        model.addAttribute("url", "/admin/user2");
 
         return "alert";
     }
 
     @GetMapping("admin/delete")
-    public String deleteUser(@RequestParam("user_id") String user_id){
+    public String deleteUser(@RequestParam("user_id") String user_id) {
         System.out.println("번호 :" + user_id);
         int deleteUser = ud.deleteId(user_id);
         System.out.println(deleteUser);

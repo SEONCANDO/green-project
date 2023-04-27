@@ -13,6 +13,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
+import java.util.Objects;
 
 @Controller
 @RequiredArgsConstructor
@@ -20,6 +21,7 @@ public class PickUpController {
 
     private final PickupDao pickupDao;
     private final UserDao ud;
+
 
     // 예약 첫번째 페이징
     @GetMapping("/pickup")
@@ -35,9 +37,15 @@ public class PickUpController {
 
     // 예약 첫번째 페이지 입력값 전달
     @PostMapping("pickupSave.do")
-    public void pickupSave(PickupAddressVo address, PickupInfoVo info, HttpSession session) {
+    public void pickupPageSave(PickupAddressVo address, PickupInfoVo info, HttpSession session) {
+        System.out.println("address>>>>>>>>>>>"+address);
+        System.out.println("info>>>>>>>>>>>"+info);
         session.setAttribute("address", address);
         session.setAttribute("info", info);
+        PickupAddressVo address2 = (PickupAddressVo) session.getAttribute("address");
+        PickupInfoVo info2 = (PickupInfoVo) session.getAttribute("info");
+        System.out.println("address2>>>>>>>>>>>"+address2);
+        System.out.println("info2>>>>>>>>>>>"+info2);
     }
 
 
@@ -55,20 +63,24 @@ public class PickUpController {
         return "pickup/pickUp3";
     }
 
-    @GetMapping("/pickupSave")
-    public String pickupSave2(HttpSession session) {
+    @GetMapping("pickupRealSave.do")
+    public void pickupRealSave(HttpSession session) {
         PickupAddressVo address = (PickupAddressVo) session.getAttribute("address");
         PickupInfoVo info = (PickupInfoVo) session.getAttribute("info");
         int successVal = pickupDao.pickupAddressSave(address);
         if(successVal==1) {
             int addressNo = address.getPu_address_no();
             info.setPu_address_no(addressNo);
+            System.out.println("info>>>>>>>>>>>"+info);
             int successVal2 = pickupDao.pickupInfoSave(info);
             if(successVal2==1) {
-
+                int infoNo = info.getPu_no();
+                String imgVal = info.getPu_img();
+                if(Objects.equals(imgVal, "Y")) {
+                    System.out.println("성공>>>>>>>");
+                }
             }
         }
-        return "/index";
     }
 
     @GetMapping("/reservationBd")
