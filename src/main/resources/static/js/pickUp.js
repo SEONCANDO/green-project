@@ -90,19 +90,25 @@ document.getElementById("myDateInput").addEventListener("change", function() {
 
 
 // 이미지 첨부
-const upload = document.querySelector('#img_pickup_upload');
+const upload = document.querySelector('.img_pickup_upload');
 upload.addEventListener('change', getImageFiles);
+
+var inputFileList = new Array();     // 이미지 파일을 담아놓을 배열 (업로드 버튼 누를 때 서버에 전송할 데이터)
 
 function getImageFiles(e) {
     const uploadFiles = [];
     const files = e.currentTarget.files;
+    var filesArr = Array.prototype.slice.call(files);
     const imagePreview = document.querySelector('#img_pickup_preview');
     const docFrag = new DocumentFragment();
 
-    if ([...files].length >= 7) {
-        alert('이미지는 최대 6개 까지 업로드가 가능합니다.');
+    // 업로드 된 파일 유효성 체크
+    if (filesArr.length > 6) {
+        alert("이미지는 최대 6개까지 업로드 가능합니다.");
+        $('input[name=images]').val();
         return;
     }
+
 
     // 파일 타입 검사
     [...files].forEach(file => {
@@ -122,6 +128,11 @@ function getImageFiles(e) {
             reader.readAsDataURL(file);
         }
     });
+
+    filesArr.forEach(function(f) {
+        inputFileList.push(f);    // 이미지 파일을 배열에 담는다.
+    });
+
 }
 
 // 첨부 이미지 preview
@@ -161,7 +172,7 @@ function chBox() {
     const pu_day = $("#myDateInput").val();
     let pu_img;
     // 이미지 유무 확인 후 Y,N 입력
-    if ($("#img_pickup_upload")[0].files.length > 0) {
+    if ($(".img_pickup_upload")[0].files.length > 0) {
         pu_img = "Y";
     } else {
         pu_img = "N";
@@ -169,9 +180,15 @@ function chBox() {
     const user_id = $("#pickup_userID").val();
     const house_no = $("#pickup_house").val();
     const pu_elevator = $("#pickup_elevator").val();
-    const pu_memo = $(".text_memo").val();
+    const text_memo = $(".text_memo").val();
 
-    let address = {
+    let formData = new FormData();  // 폼 객체
+
+    for (let i = 0; i < inputFileList.length; i++) {
+        formData.append("images", inputFileList[i]);  // 배열에서 이미지들을 꺼내 폼 객체에 담는다.
+    }
+
+    const address = {
         "user_id": user_id,
         "pu_address_name": pu_name,
         "pu_address_tel": pu_tel,
@@ -182,14 +199,15 @@ function chBox() {
         "pu_address4": pu_address4
     };
 
-   let info = {
+   const info = {
         "user_id": user_id,
         "house_no": house_no,
         "pu_elevator": pu_elevator,
         "pu_day": pu_day,
         "pu_img": pu_img,
-        "pu_memo": pu_memo
-    };
+        "text_memo": text_memo
+   };
+
 
     // 필수정보 입력 확인
     if (pu_name === "" || pu_tel === "" || pu_zip === "" || pu_address1 === "" || pu_address2 === "" ||
@@ -204,11 +222,31 @@ function chBox() {
         $.ajax({
             url:"pickupSave.do",
             type:"post",
-            dataType: JSON,
-            data: {"address": address,
-                    "info": JSON.stringify(info)},
+            data: address,
             success: function() {
-                location.href = "/pickup2";
+                $.ajax({
+                    url: "pickupSave2.do",
+                    type: "post",
+                    data: info,
+                    success: function() {
+                        $.ajax({
+                            type: 'post',
+                            url: 'pickupImg.do',
+                            data: formData,
+                            contentType: false,
+                            processData: false,
+                            enctype: 'multipart/form-data',
+                            cache: false,
+                            success: location.href = "/pickup2",
+                            error: function (xhr, status, error) {
+                                alert("오류가 발생했습니다.\n" + error);
+                            }
+                        })
+                    },
+                    error: function (xhr, status, error) {
+                        alert("오류가 발생했습니다.\n" + error);
+                    }
+                })
             },
             error: function(xhr, status, error) {
                 alert("오류가 발생했습니다.\n" + error);
@@ -217,6 +255,8 @@ function chBox() {
     }
 
 }
+
+
 
 
 
