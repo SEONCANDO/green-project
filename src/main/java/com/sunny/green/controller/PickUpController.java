@@ -52,7 +52,6 @@ public class PickUpController {
     @ResponseBody
     public void pickupImg(@RequestParam("images") List<MultipartFile> files, HttpSession session) {
         session.setAttribute("pickupImg", files);
-
     }
 
     // 예약 두번째 페이징

@@ -11,10 +11,7 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 
 @Service
 @RequiredArgsConstructor
@@ -30,8 +27,6 @@ public class PickupServiceImpl implements PickupService {
     @Override
     public int pickupImg(List<MultipartFile> files, int info_no) {
 
-        List<String> list = new ArrayList<>();
-
         for (MultipartFile file : files) {
 
             String pickupImgDir = "src/main/resources/static/img/pickupUpload/"; // 업로드 디렉토리 경로
@@ -46,7 +41,8 @@ public class PickupServiceImpl implements PickupService {
 
             // 기존 파일 확장자
             String extension = originalFileName.substring(result, length);
-
+            String uuid = UUID.randomUUID().toString();
+            String realPath = pickupImgDir + uuid + originalFileName;
             //파일명에 붙는 현재 시간
             Date currentDate = new Date();
             SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyMMdd");
@@ -55,9 +51,12 @@ public class PickupServiceImpl implements PickupService {
             String newFileName = info_no + "_" + nowDate + "_" + randomNo + extension;  // 저장 파일 새로운 이름
             String savePath = pickupImgDir + newFileName;  // 저장 파일 경로
 
-            try (FileOutputStream fos = new FileOutputStream(savePath)) {
+            try (FileOutputStream fos = new FileOutputStream(realPath)) {
                 fos.write(file.getBytes());
-
+                System.out.println(savePath);
+                System.out.println(newFileName);
+                System.out.println(originalFileName);
+                System.out.println(realPath);
                 // ImgVo에 저장
                 PickupImgVo pickupImgVo = PickupImgVo.builder()
                         .pu_no(info_no)
@@ -69,6 +68,7 @@ public class PickupServiceImpl implements PickupService {
             } catch (IOException e) {
                 // 파일 저장 실패 시 예외 처리
                 e.printStackTrace();
+                System.out.println("실패함");
             }
         }
 
