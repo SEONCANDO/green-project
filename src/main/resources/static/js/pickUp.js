@@ -90,7 +90,7 @@ document.getElementById("myDateInput").addEventListener("change", function() {
 
 
 // 이미지 첨부
-const upload = document.querySelector('#img_pickup_upload');
+const upload = document.querySelector('.img_pickup_upload');
 upload.addEventListener('change', getImageFiles);
 
 var inputFileList = new Array();     // 이미지 파일을 담아놓을 배열 (업로드 버튼 누를 때 서버에 전송할 데이터)
@@ -172,7 +172,7 @@ function chBox() {
     const pu_day = $("#myDateInput").val();
     let pu_img;
     // 이미지 유무 확인 후 Y,N 입력
-    if ($("#img_pickup_upload")[0].files.length > 0) {
+    if ($(".img_pickup_upload")[0].files.length > 0) {
         pu_img = "Y";
     } else {
         pu_img = "N";
@@ -182,11 +182,11 @@ function chBox() {
     const pu_elevator = $("#pickup_elevator").val();
     const text_memo = $(".text_memo").val();
 
-    // let formData = new FormData($('#uploadForm')[0]);  // 폼 객체
-    //
-    // for (let i = 0; i < inputFileList.length; i++) {
-    //     formData.append("images", inputFileList[i]);  // 배열에서 이미지들을 꺼내 폼 객체에 담는다.
-    // }
+    let formData = new FormData();  // 폼 객체
+
+    for (let i = 0; i < inputFileList.length; i++) {
+        formData.append("images", inputFileList[i]);  // 배열에서 이미지들을 꺼내 폼 객체에 담는다.
+    }
 
     const address = {
         "user_id": user_id,
@@ -228,7 +228,21 @@ function chBox() {
                     url: "pickupSave2.do",
                     type: "post",
                     data: info,
-                    success: location.href = "/pickup2",
+                    success: function() {
+                        $.ajax({
+                            type: 'post',
+                            url: 'pickupImg.do',
+                            data: formData,
+                            contentType: false,
+                            processData: false,
+                            enctype: 'multipart/form-data',
+                            cache: false,
+                            success: location.href = "/pickup2",
+                            error: function (xhr, status, error) {
+                                alert("오류가 발생했습니다.\n" + error);
+                            }
+                        })
+                    },
                     error: function (xhr, status, error) {
                         alert("오류가 발생했습니다.\n" + error);
                     }
@@ -243,19 +257,7 @@ function chBox() {
 }
 
 
-// $.ajax({
-//     type: 'post',
-//     url: 'pickupImg.do',
-//     data: formData,
-//     contentType: false,
-//     processData: false,
-//     enctype: 'multipart/form-data',
-//     cache: false,
-//     success: location.href = "/pickup2",
-//     error: function (xhr, status, error) {
-//         alert("오류가 발생했습니다.\n" + error);
-//     }
-// })
+
 
 
 

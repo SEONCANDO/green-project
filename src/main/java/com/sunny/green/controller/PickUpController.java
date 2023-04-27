@@ -1,8 +1,8 @@
 package com.sunny.green.controller;
 
 
-import com.sunny.green.dao.PickupDao;
 import com.sunny.green.dao.UserDao;
+import com.sunny.green.service.PickupServiceImpl;
 import com.sunny.green.vo.PickupAddressVo;
 
 import com.sunny.green.vo.PickupInfoVo;
@@ -13,7 +13,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
-import javax.mail.Multipart;
 import javax.servlet.http.HttpSession;
 import java.util.List;
 import java.util.Objects;
@@ -22,9 +21,8 @@ import java.util.Objects;
 @RequiredArgsConstructor
 public class PickUpController {
 
-    private final PickupDao pickupDao;
+    private final PickupServiceImpl pSI;
     private final UserDao ud;
-
 
     // 예약 첫번째 페이징
     @GetMapping("/pickup")
@@ -43,21 +41,19 @@ public class PickUpController {
     @ResponseBody
     public void pickupPageSave(PickupAddressVo address, HttpSession session) {
         session.setAttribute("address", address);
-        PickupAddressVo address2 = (PickupAddressVo) session.getAttribute("address");
     }
     @PostMapping("pickupSave2.do")
     @ResponseBody
     public void pickupPageSave(PickupInfoVo info, HttpSession session) {
         session.setAttribute("info", info);
-        PickupInfoVo info2 = (PickupInfoVo) session.getAttribute("info");
     }
     //이미지 임시 저장
     @PostMapping("pickupImg.do")
     @ResponseBody
-    public void pickupImg(@RequestParam("images") List<MultipartFile> files) {
-        System.out.println(">>>>>>>>>>>>>>"+files);
-    }
+    public void pickupImg(@RequestParam("images") List<MultipartFile> files, HttpSession session) {
+        session.setAttribute("pickupImg", files);
 
+    }
 
     // 예약 두번째 페이징
     @GetMapping("/pickup2")
@@ -65,7 +61,6 @@ public class PickUpController {
 
         return "pickup/pickUp2";
     }
-
 
     // 예약 세번째 페이징
     @GetMapping("/pickup3")
@@ -78,17 +73,18 @@ public class PickUpController {
     public void pickupRealSave(HttpSession session) {
         PickupAddressVo address = (PickupAddressVo) session.getAttribute("address");
         PickupInfoVo info = (PickupInfoVo) session.getAttribute("info");
-        int successVal = pickupDao.pickupAddressSave(address);
+        int successVal = pSI.pickupAddress(address);
         if(successVal==1) {
             int addressNo = address.getPu_address_no();
             info.setPu_address_no(addressNo);
             System.out.println("info>>>>>>>>>>>"+info);
-            int successVal2 = pickupDao.pickupInfoSave(info);
+            int successVal2 = pSI.pickupInfo(info);
             if(successVal2==1) {
                 int infoNo = info.getPu_no();
                 String imgVal = info.getPu_img();
                 if(Objects.equals(imgVal, "Y")) {
-                    System.out.println("성공>>>>>>>");
+                    List<MultipartFile> pickupImg = (List<MultipartFile>) session.getAttribute("pickupImg");
+                    int successVal3 = pSI.pickupImg(pickupImg, infoNo);
                 }
             }
         }
