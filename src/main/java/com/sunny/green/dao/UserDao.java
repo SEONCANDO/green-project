@@ -13,5 +13,14 @@ public interface UserDao {
     public UserVo selectUser(UserVo user);
     public UserVo selectUserId(String userId);
 
-    List<UserVo> selectAll();
+    public UserVo selectAll1(String userid);
+
+    public int updateUser(UserVo user);
+
+    public int deleteId(String userId);
+
+    public int updatePoint(UserVo vo);
+
+    //보영
+    public List<UserVo> selectAll();
 }

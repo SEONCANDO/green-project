@@ -13,16 +13,7 @@
     margin-right: 300px;
 }
 
-.boardPost{
-    color: black;
-    margin-top: 135px;
-    margin-left: 20px;
-    margin-bottom: 30px;
-    font-size: 40px;
-    font-weight: bold;
-}
-
-.noticePost{
+.post{
     color: black;
     margin-top: 135px;
     margin-left: 20px;

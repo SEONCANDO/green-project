@@ -1,7 +1,9 @@
 package com.sunny.green.controller;
 
 import com.sunny.green.dao.BbsDao;
+import com.sunny.green.dao.CommentDao;
 import com.sunny.green.vo.BbsVo;
+import com.sunny.green.vo.CommentVo;
 import com.sunny.green.vo.UserVo;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,6 +22,7 @@ public class BoardController {
 
     private final BbsDao bd;
     private final UserDao ud;
+    private final CommentDao cd;
 
     // Q&A 목록
     @GetMapping("/board")
@@ -47,7 +50,7 @@ public class BoardController {
 
     // Q&A 글작성
     @PostMapping("/boardPost")
-    public String boardPost1(@ModelAttribute BbsVo bbsVo, HttpSession session) {
+    public String boardPost1(@ModelAttribute BbsVo bbsVo) {
         int insertResult = bd.insertBoard(bbsVo);
         if (insertResult > 0) {           // 성공으로 판단되면 목록으로 돌아가기.
             return "redirect:/board/";
@@ -58,20 +61,26 @@ public class BoardController {
 
     // Q&A 글 상세조회
     @GetMapping("/boardDetail")
-    public String boardDetail(Model model, BbsVo bbsVo, HttpSession session) {
+    public String boardDetail(Model model, BbsVo bbsVo, HttpSession session, CommentVo commentVo) {
         BbsVo bbs = bd.selectBoard(bbsVo.getBoard_num());
         model.addAttribute("bbs", bbs);
         System.out.println(bbs);
         session.getAttribute("user");
+
+//        //댓글 조회
+//        List<CommentVo> com = cd.selectAllComment();
+//        model.addAttribute("com", com);
+
         return "bbs/boardDetail";
+
     }
+
 
     // Q&A 글 수정/삭제 폼
     @GetMapping("/updateBoard1")
     public String updateBoard1(BbsVo bbsVo, Model model, int board_num, HttpSession session1) {
         BbsVo bbs = bd.selectBoard(bbsVo.getBoard_num());
         model.addAttribute("bbs", bbs);
-
         return "bbs/boardUpdate";
     }
 
@@ -92,5 +101,6 @@ public class BoardController {
         int str = bd.deleteBoard(board_num);
         return "redirect:/board";
     }
+
 
 }

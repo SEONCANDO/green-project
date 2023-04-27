@@ -39,7 +39,6 @@
 <!-- features list section -->
 <div class="list-section pt-80 pb-80">
     <div class="container">
-
         <div class="row">
             <div class="col-lg-4 col-md-6 mb-4 mb-lg-0">
                 <div class="list-box d-flex align-items-center">
@@ -93,37 +92,6 @@
         </div>
 
         <div class="row">
-            <div class="col-lg-4 col-md-6 text-center">
-                <div class="single-product-item">
-                    <div class="product-image">
-                       <img src="/assets/img/products/food.png" alt="">
-                    </div>
-                    <h3>마트에서</h3>
-                    <p class="product-price">85$</p>
-                    <a href="#" class="cart-btn"><i class="fas fa-shopping-cart"></i>보러 가기</a>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6 text-center">
-                <div class="single-product-item">
-                    <div class="product-image">
-                       <img src="/assets/img/products/tumbler.png" alt="">
-                    </div>
-                    <h3>카페에서</h3>
-                    <p class="product-price">70$</p>
-                    <a href="#" class="cart-btn"><i class="fas fa-shopping-cart"></i>보러 가기</a>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6 offset-md-3 offset-lg-0 text-center">
-                <div class="single-product-item">
-                    <div class="product-image">
-                       <img src="/assets/img/products/voucher.png" alt="">
-                    </div>
-                    <h3>상품권으로</h3>
-                    <p class="product-price">35$</p>
-                    <a href="#" class="cart-btn"><i class="fas fa-shopping-cart"></i>보러 가기</a>
-                </div>
-            </div>
-        </div>
             <div class="card" style="width: 360px; margin-right: 9px; margin-top: 10px; text-align: center;" th:each="list : ${pv}">
                 <a href="#"><img th:src="@{/img/product/__${list.pro_img_save_name}__}" class="card-img-top" alt="..." style="width: 100%; height:300px;"></a>
                 <div class="card-body">
@@ -151,32 +119,30 @@
                                                       style="width: 70px;" alt="가입 이미지"> <br>
                 <h4 class="h4-line2">회원가입<br>로그인</h4>
 
-                    </div>
-                    <div class="col-sm"><h3>&gt;</h3></div>
-                    <div class="col-sm"><h3>02</h3> <br> <img class="h3-img" src="/assets/img/rsv.png"
-                                                              style="width: 80px;"><br>
-                        <h4 class="h4-line">예약하기</h4>
-                    </div>
-                    <div class="col-sm"><h3>&gt;</h3></div>
-                    <div class="col-sm"><h3>03</h3> <br> <img class="h3-img" src="/assets/img/pickup.png"
-                                                              style="width: 80px;"><br>
-                        <h4 class="h4-line">방문수령</h4>
-                    </div>
-                    <div class="col-sm"><h3>&gt;</h3></div>
-                    <div class="col-sm"><h3>04</h3> <br> <img class="h3-img" src="/assets/img/greenPoint.png"
-                                                              style="width: 80px;"> <br>
-                        <h4 class="h4-line2">GreenPoint<br> 지급/적립</h4>
-                    </div>
-                    <div class="col-sm"><h3>&gt;</h3></div>
-                    <div class="col-sm"><h3>05</h3> <br><img class="h3-img" src="/assets/img/coupon.png"
-                                                             style="width: 80px;"> <br>
-                        <h4 class="h4-line2">E-coupon<br>교환하기 </h4>
-                    </div>
-                </div>
             </div>
-            <div class="main-btn">
-                <a class="boxed-btn"> 자세히 보기</a>
+            <div class="col-sm"><h3>&gt;</h3></div>
+            <div class="col-sm"><h3>02</h3> <br> <img class="h3-img" src="/assets/img/rsv.png"
+                                                      style="width: 80px;" alt="예약 이미지"><br>
+                <h4 class="h4-line">예약하기</h4>
             </div>
+            <div class="col-sm"><h3>&gt;</h3></div>
+            <div class="col-sm"><h3>03</h3> <br> <img class="h3-img" src="/assets/img/pickup.png"
+                                                      style="width: 80px;" alt="수령 이미지"><br>
+                <h4 class="h4-line">방문수령</h4>
+            </div>
+            <div class="col-sm"><h3>&gt;</h3></div>
+            <div class="col-sm"><h3>04</h3> <br> <img class="h3-img" src="/assets/img/greenPoint.png"
+                                                      style="width: 80px;" alt="적립 이미지"> <br>
+                <h4 class="h4-line2">GreenPoint<br> 지급/적립</h4>
+            </div>
+            <div class="col-sm"><h3>&gt;</h3></div>
+            <div class="col-sm"><h3>05</h3> <br><img class="h3-img" src="/assets/img/coupon.png"
+                                                     style="width: 80px;" alt="교환 이미지"> <br>
+                <h4 class="h4-line2">E-coupon<br>교환하기 </h4>
+            </div>
+        </div>
+        <div class="main-btn">
+            <a class="boxed-btn"><i class="fa-solid fa-magnifying-glass"></i> 자세히 보기</a>
         </div>
     </div>
 </section>
@@ -190,13 +156,13 @@
                 <div class="testimonial-sliders">
                     <div class="single-testimonial-slider">
                         <div class="client-meta">
-                            <h3>Saira Hakim <span>Local shop owner</span></h3>
+                            <h3>이oo<span>은평구</span></h3>
+                            <div class="last-icon">
+                                <i class="fas fa-quote-left"></i>
+                            </div>
                             <p class="testimonial-body">
-                                " Sed ut perspiciatis unde omnis iste natus error veritatis et quasi architecto
-                                beatae
-                                vitae dict eaque ipsa quae ab illo inventore Sed ut perspiciatis unde omnis iste
-                                natus
-                                error sit voluptatem accusantium "
+                                " 오래 쓴 가전 이사하면서 버리기도 아깝고 처치곤란이었는데 <br>
+                                예약만 하면 무료로 수거해줘서 수수료 부담도 없고 좋네요. "
                             </p>
                             <div class="last-icon">
                                 <i class="fas fa-quote-right"></i>
@@ -205,13 +171,13 @@
                     </div>
                     <div class="single-testimonial-slider">
                         <div class="client-meta">
-                            <h3>David Niph <span>Local shop owner</span></h3>
+                            <h3>김oo <span>마포구</span></h3>
+                            <div class="last-icon">
+                                <i class="fas fa-quote-left"></i>
+                            </div>
                             <p class="testimonial-body">
-                                " Sed ut perspiciatis unde omnis iste natus error veritatis et quasi architecto
-                                beatae
-                                vitae dict eaque ipsa quae ab illo inventore Sed ut perspiciatis unde omnis iste
-                                natus
-                                error sit voluptatem accusantium "
+                                " 1인 가구라 혼자 무거운 폐가전 옮기기 어려웠는데 <br>
+                                무상으로 수거해주는 시스템이 있다니 알게 되어 다행이에요!"
                             </p>
                             <div class="last-icon">
                                 <i class="fas fa-quote-right"></i>
@@ -220,13 +186,13 @@
                     </div>
                     <div class="single-testimonial-slider">
                         <div class="client-meta">
-                            <h3>Jacob Sikim <span>Local shop owner</span></h3>
+                            <h3>전oo <span>강동구</span></h3>
+                            <div class="last-icon">
+                                <i class="fas fa-quote-left"></i>
+                            </div>
                             <p class="testimonial-body">
-                                " Sed ut perspiciatis unde omnis iste natus error veritatis et quasi architecto
-                                beatae
-                                vitae dict eaque ipsa quae ab illo inventore Sed ut perspiciatis unde omnis iste
-                                natus
-                                error sit voluptatem accusantium "
+                                " 사설 업체는 제대로 버려질까 걱정이 되었는데, <br>
+                                올바른 분리수거와 부품 재활용이 된다니 한결 마음이 가볍네요. "
                             </p>
                             <div class="last-icon">
                                 <i class="fas fa-quote-right"></i>
@@ -243,9 +209,7 @@
 <!-- shop banner -->
 <section class="shop-banner">
     <div class="container">
-        <!--        <h3>December sale is on! <br> with big <span class="orange-text">Discount...</span></h3>
-                <div class="sale-percent"><span>Sale! <br> Upto</span>50% <span>off</span></div>
-                <a href="shop.html" class="cart-btn btn-lg">Shop Now</a>-->
+        <a href="/board" class="cart-btn btn-lg" id="find_btn"><i class="fa-solid fa-magnifying-glass"></i> 자세히 보기</a>
     </div>
 </section>
 <!-- end shop banner -->

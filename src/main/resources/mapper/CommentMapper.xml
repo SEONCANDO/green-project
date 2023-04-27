@@ -5,8 +5,13 @@
 <mapper namespace="com.sunny.green.dao.CommentDao">
 
     <!-- 댓글 리스트 -->
-    <select id="selectCommentList" resultType="com.sunny.green.vo.CommentVo">
-        select * from comment
+    <select id="selectAllComment" resultType="com.sunny.green.vo.CommentVo">
+        select * from comment where com_num = #{com_num}
+    </select>
+
+    <!-- 댓글 수 -->
+    <select id="getCommentTotal" resultType="int">
+        select count(*) from comment where com_num = #{com_num}
     </select>
 
     <!-- 댓글 등록 -->
