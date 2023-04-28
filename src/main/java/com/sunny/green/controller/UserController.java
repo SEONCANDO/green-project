@@ -38,9 +38,7 @@ public class UserController {
 
     @Autowired
     private  AdminDao ad;
-    @Autowired
 
-    private  AdminDao ad;
     @Autowired
     private  ExchangeDao ed;
 

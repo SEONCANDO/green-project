@@ -24,9 +24,6 @@ public class MyController {
     private UserDao ud;
 
     @Autowired
-    private UserDao ud;
-
-    @Autowired
     private ProfileImgDao pid;
 
     @GetMapping("/")

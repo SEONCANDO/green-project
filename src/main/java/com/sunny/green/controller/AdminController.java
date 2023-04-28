@@ -34,8 +34,6 @@ public class AdminController {
 
     @Autowired
     private  AdminDao ad;
-    @Autowired
-=
 
 
     @GetMapping("/admin")
