@@ -57,7 +57,7 @@ public class BoardController {
         int insertResult = bd.insertBoard(bbsVo);
         bd.updateBoardNum();
         if (insertResult > 0) {           // 성공으로 판단되면 목록으로 돌아가기.
-            return "redirect:/board/";
+            return "redirect:board/";
         } else {                          // 실패하면 글작성 페이지에 머무름.
             return "bbs/boardPost";
         }
@@ -96,7 +96,7 @@ public class BoardController {
         System.out.println(bbs);
         int str = bd.updateBoard(bbsVo);
         System.out.println("업데이트 :" + str);
-        return "redirect:/board";
+        return "redirect:board";
     }
 
     // Q&A 글 삭제
@@ -104,7 +104,7 @@ public class BoardController {
     public String deleteBoard(int board_num) {
         int str = bd.deleteBoard(board_num);
         int str1 = bd.updateBoardNum();
-        return "redirect:/board";
+        return "redirect:board";
     }
 
 

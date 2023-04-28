@@ -48,9 +48,9 @@ public class ExchangeController {
         } else {
             List<ProductWithImgVo> pv = ed.selectProductAll();
             mo.addAttribute("pv", pv);
-            return "/exchange/exchange1";
+            return "exchange/exchange1";
         }
-        return "/alert";
+        return "alert";
     }
 
     @GetMapping("/exchange2")
@@ -62,7 +62,7 @@ public class ExchangeController {
         UserVo user = ud.selectAll1(uservo.getUser_id());
         mo.addAttribute("user", user);
         System.out.println("왜 변화가 안되는 것인가" + user);
-        return "/exchange/exchange2";
+        return "exchange/exchange2";
     }
 
     @PostMapping("/exchange")
@@ -98,7 +98,7 @@ public class ExchangeController {
 //        md.insertMail(mailVo);
 
         redirectAttributes.addAttribute("ex_num", ev.getEx_num());
-        return "redirect:/exchange3";
+        return "redirect:exchange3";
     }
 
     @GetMapping("/exchange3")
@@ -107,7 +107,7 @@ public class ExchangeController {
 
         ExchangeVo ev = ed.selectExchangeOne(ex_num);
         mo.addAttribute("ev", ev);
-        return "/exchange/exchange3";
+        return "exchange/exchange3";
     }
 
 

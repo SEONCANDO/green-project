@@ -93,7 +93,6 @@ public class KakaoController {
         try {
             kakaoProfileVo = obMapper2.readValue(response2.getBody(), KakaoProfileVo.class);
         } catch (JsonProcessingException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
 

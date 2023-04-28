@@ -71,12 +71,12 @@ public class AdminController {
 
     @GetMapping("/admin/reservation")
     public String adminRe() {
-        return "/admin/admin_reservation";
+        return "admin/admin_reservation";
     }
 
     @GetMapping("/admin/user1")
     public String adminUs1() {
-        return "/admin/admin_user1";
+        return "admin/admin_user1";
     }
 
     public String getUserList(Model model) {
@@ -122,24 +122,24 @@ public class AdminController {
         System.out.println("번호 :" + user_id);
         int deleteUser = ud.deleteId(user_id);
         System.out.println(deleteUser);
-        return "redirect:/admin/user2";
+        return "redirect:admin/user2";
     }
 
     @GetMapping("/admin/bbs1")
     public String bbs1() {
-        return "/admin/admin_bbs1";
+        return "admin/admin_bbs1";
     }
 
     @GetMapping("/admin/bbs2")
     public String bbs2() {
-        return "/admin/admin_bbs2";
+        return "admin/admin_bbs2";
     }
 
     @GetMapping("admin/product1")
     public String pro1(Model mo) {
         List<ProductVo> product = ad.selectProAll();
         mo.addAttribute("product", product);
-        return "/admin/admin_product1";
+        return "admin/admin_product1";
     }
 
     @GetMapping("admin/product2")
@@ -148,34 +148,34 @@ public class AdminController {
         ProImgVo proImgVo = ad.selectImg(iv.getPro_num());
         mo.addAttribute("product", product);
         mo.addAttribute("proImgVo", proImgVo);
-        return "/admin/admin_product2";
+        return "admin/admin_product2";
     }
 
     @GetMapping("admin/product3")
     public String pro3() {
 
 
-        return "/admin/admin_product3";
+        return "admin/admin_product3";
     }
 
     @GetMapping("admin/deletePro")
     public String deletePro(int pro_num) {
         int otr = ad.deletePro_img(pro_num);
         int str = ad.deletePro(pro_num);
-        return "redirect:/admin";
+        return "redirect:admin";
     }
 
     @GetMapping("admin/product4")
     public String pro5(ProductVo productVo, Model mo) {
         ProductVo pro = ad.selectPro(productVo.getPro_num());
         mo.addAttribute("pro", pro);
-        return "/admin/admin_product4";
+        return "admin/admin_product4";
     }
 
     @PostMapping("/updatePro")
     public String pro6(ProductVo productVo) {
         int str = ad.updatePro(productVo);
-        return "redirect:/admin/product1";
+        return "redirect:admin/product1";
     }
 
 
@@ -183,7 +183,7 @@ public class AdminController {
     @PostMapping("/product3")
     public String pro4(ProductVo productVo, @RequestParam("image") MultipartFile imageFile) {
         String fileName = imageFile.getOriginalFilename(); // 파일 이름 추출
-        String uploadPath = "src/main/resources/static/img/product/"; // 업로드 디렉토리 경로
+        String uploadPath = "/home/ubuntu/greentopia/img/product/"; // 업로드 디렉토리 경로
         String filePath = uploadPath + fileName; // 저장될 파일 경로
         String uuid = UUID.randomUUID().toString();
         String realPath = uploadPath + uuid + fileName;
@@ -207,7 +207,7 @@ public class AdminController {
             // 파일 저장 실패 시 예외 처리
             e.printStackTrace();
         }
-        return "redirect:/admin";
+        return "redirect:admin";
     }
 
 }

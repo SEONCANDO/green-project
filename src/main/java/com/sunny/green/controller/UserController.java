@@ -98,7 +98,7 @@ public class UserController {
             model.addAttribute("url", "/login");
         }
 
-        return "/alert";
+        return "alert";
     }
 
 
@@ -109,9 +109,9 @@ public class UserController {
             model.addAttribute("alert", "이미 로그인이 된 상태입니다.");
             model.addAttribute("url", "/index");
         } else {
-            return "/user/join";
+            return "user/join";
         }
-        return "/alert";
+        return "alert";
     }
 
     //회원가입 기능
@@ -129,7 +129,7 @@ public class UserController {
             model.addAttribute("url", "/index");
             session.setAttribute("user", user);
         }
-        return "/alert";
+        return "alert";
     }
 
     @GetMapping("/breakDown")
@@ -147,7 +147,7 @@ public class UserController {
             return "/myPage/breakDown";
         }
 
-        return "/alert";
+        return "alert";
     }
 
     //로그아웃 기능
@@ -161,7 +161,7 @@ public class UserController {
             mo.addAttribute("alert", "로그아웃되었습니다.");
             mo.addAttribute("url", "/index");
         }
-        return "/alert";
+        return "alert";
     }
 
     //회원가입시 아이디 중복 체크
@@ -191,9 +191,9 @@ public class UserController {
             model.addAttribute("profileImgVo", profileImgVo);
             model.addAttribute("user", user1);
             model.addAttribute("aaa", "bbb");
-            return "/myPage/modify";
+            return "myPage/modify";
         }
-        return "/alert";
+        return "alert";
     }
 
     @PostMapping("/modify")
@@ -226,7 +226,7 @@ public class UserController {
             return "/myPage/greenPoint";
         }
 
-        return "/alert";
+        return "alert";
     }
 
     @GetMapping("/delete")
@@ -237,7 +237,7 @@ public class UserController {
         int delete = ud.deleteId(user_id);
         System.out.println(delete);
         session.setAttribute("user", null);
-        return "redirect:/index";
+        return "redirect:index";
     }
 
     @GetMapping("/info")
@@ -250,7 +250,7 @@ public class UserController {
     @PostMapping("/uploadProfile")
     public String pro4(ProductVo productVo, @RequestParam("file") MultipartFile imageFile, HttpSession session) {
         String fileName = imageFile.getOriginalFilename(); // 파일 이름 추출
-        String uploadPath = "src/main/resources/static/img/profile/"; // 업로드 디렉토리 경로
+        String uploadPath = "/home/ubuntu/greentopia/img/product/"; // 업로드 디렉토리 경로
         String filePath = uploadPath + fileName; // 저장될 파일 경로
         String uuid = UUID.randomUUID().toString();
         String realPath = uploadPath + uuid + fileName;
@@ -269,13 +269,13 @@ public class UserController {
             // 파일 저장 실패 시 예외 처리
             e.printStackTrace();
         }
-        return "redirect:/myPage";
+        return "redirect:myPage";
     }
 
     @GetMapping("/img/profile/{img_save_name}")
     @ResponseBody
     public ResponseEntity<Resource> getImage(@PathVariable("img_save_name") String imgSaveName) throws IOException {
-        Resource resource = new FileSystemResource("src/main/resources/static/img/profile/" + imgSaveName);
+        Resource resource = new FileSystemResource("/home/ubuntu/greentopia/img/product/" + imgSaveName);
         return ResponseEntity.ok().contentType(MediaType.IMAGE_JPEG).body(resource);
     }
 

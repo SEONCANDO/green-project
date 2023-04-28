@@ -38,7 +38,7 @@ public class MyController {
     public String index1(Model mo) {
         List<ProductWithImgVo> pv = ed.selectProductAll();
         mo.addAttribute("pv", pv);
-        return "/index";
+        return "index";
     }
 
 
@@ -48,7 +48,7 @@ public class MyController {
         model.addAttribute("user", uservo);
         ProfileImgVo profileImgVo = pid.selectProfileImg(uservo.getUser_id());
         model.addAttribute("profileImgVo", profileImgVo);
-        return "/myPage/myWrite";
+        return "myPage/myWrite";
     }
 
     @GetMapping("/myComment")
@@ -57,7 +57,7 @@ public class MyController {
         model.addAttribute("user", uservo);
         ProfileImgVo profileImgVo = pid.selectProfileImg(uservo.getUser_id());
         model.addAttribute("profileImgVo", profileImgVo);
-        return "/myPage/myComment";
+        return "myPage/myComment";
     }
 
     

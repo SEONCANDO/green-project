@@ -104,9 +104,9 @@ public class PickUpController {
             System.out.println("번호는 뭘까요? : " + user1);
             model.addAttribute("user", user1);
 
-            return "/myPage/reservationBd";
+            return "myPage/reservationBd";
         }
-        return "/alert";
+        return "alert";
     }
 
 }
