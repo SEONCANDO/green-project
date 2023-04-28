@@ -5,7 +5,7 @@ import com.sunny.green.dao.UserDao;
 
 import com.sunny.green.service.UserService;
 import com.sunny.green.vo.*;
-import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
@@ -26,14 +26,15 @@ import java.time.ZoneId;
 import java.util.*;
 
 @Controller
-@RequiredArgsConstructor
 public class AdminController {
 
-    private final UserDao ud;
-    private final AdminDao ad;
-    private final PageVo pv;
+    @Autowired
+    private  UserDao ud;
+    @Autowired
+    private  AdminDao ad;
+    @Autowired
+    private  PageVo pv;
 
-    private UserService userService;
 
     @GetMapping("/admin")
     public String admin() {
@@ -197,11 +198,10 @@ public class AdminController {
         try (OutputStream os = new FileOutputStream(realPath)) {
             os.write(imageFile.getBytes());
 
-            ProImgVo proImgVo = ProImgVo.builder()
-                    .pro_num(productVo.getPro_num())
-                    .pro_img_save_name(saveFile)
-                    .pro_img_path(realPath)
-                    .build();
+            ProImgVo proImgVo = new ProImgVo();
+            proImgVo.setPro_num(productVo.getPro_num());
+            proImgVo.setPro_img_save_name(saveFile);
+            proImgVo.setPro_img_path(realPath);
             ad.insertProImg(proImgVo);
         } catch (IOException e) {
             // 파일 저장 실패 시 예외 처리

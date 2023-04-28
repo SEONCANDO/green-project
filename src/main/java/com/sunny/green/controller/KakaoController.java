@@ -6,7 +6,7 @@ import com.sunny.green.dao.UserDao;
 import com.sunny.green.vo.KakaoProfileVo;
 import com.sunny.green.vo.OAuthTokenVo;
 import com.sunny.green.vo.UserVo;
-import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
@@ -23,10 +23,11 @@ import javax.servlet.http.HttpSession;
 import java.util.UUID;
 
 @Controller
-@RequiredArgsConstructor
+
 public class KakaoController {
 
-    private final UserDao ud;
+    @Autowired
+    private UserDao ud;
     @GetMapping("/auth/kakao/callback")
     public String Callback(String code, Model model, HttpSession session) {
         //데이터를 리턴해주는 컨트롤러
@@ -102,10 +103,12 @@ public class KakaoController {
         UUID testPass = UUID.randomUUID();
         System.out.println("카카오 서버 패스워드 : " + testPass);
 
-        UserVo user = UserVo.builder().user_id(kakaoProfileVo.getId()).user_email(kakaoProfileVo.getKakao_account().getEmail())
-                .user_name(kakaoProfileVo.getProperties().getNickname()).user_pass(testPass.toString()).user_tel("0100000000").build();
-
-
+        UserVo user = new UserVo();
+        user.setUser_id(kakaoProfileVo.getId());
+        user.setUser_email(kakaoProfileVo.getKakao_account().getEmail());
+        user.setUser_name(kakaoProfileVo.getProperties().getNickname());
+        user.setUser_pass(testPass.toString());
+        user.setUser_tel("0100000000");
         UserVo userDB = ud.selectAll1(user.getUser_id());
         if (userDB != null) {
             System.out.println("카카오 정보 찾았습니다 : " + user);

@@ -2,7 +2,7 @@ package com.sunny.green.controller;
 
 import com.sunny.green.dao.*;
 import com.sunny.green.vo.*;
-import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.core.io.Resource;
 import org.springframework.http.HttpHeaders;
@@ -31,18 +31,22 @@ import java.util.List;
 import java.util.UUID;
 
 @Controller
-@RequiredArgsConstructor
 public class UserController {
 
-    private final UserDao ud;
-    private final AdminDao ad;
-    private final ExchangeDao ed;
+    @Autowired
+    private  UserDao ud;
+    @Autowired
+    private  AdminDao ad;
+    @Autowired
+    private  ExchangeDao ed;
 
 //    private final MailService ms;
 
-    private final MailDao md;
+    @Autowired
+    private  MailDao md;
 
-    private final ProfileImgDao pid;
+    @Autowired
+    private ProfileImgDao pid;
 
 
     //마이페이지 매핑
@@ -136,6 +140,8 @@ public class UserController {
             mo.addAttribute("user", userDB);
             List<ExchangeVo> ex = ed.selectExchangeId(userDB.getUser_id());
             mo.addAttribute("ex", ex);
+            ProfileImgVo profileImgVo = pid.selectProfileImg(userDB.getUser_id());
+            mo.addAttribute("profileImgVo", profileImgVo);
             return "/myPage/breakDown";
         }
 
@@ -179,6 +185,8 @@ public class UserController {
             UserVo user = (UserVo) session.getAttribute("user");
             UserVo user1 = ud.selectAll1(user.getUser_id());
             System.out.println("번호는 뭘까요? : " + user1);
+            ProfileImgVo profileImgVo = pid.selectProfileImg(user.getUser_id());
+            model.addAttribute("profileImgVo", profileImgVo);
             model.addAttribute("user", user1);
             model.addAttribute("aaa", "bbb");
             return "/myPage/modify";
@@ -211,6 +219,8 @@ public class UserController {
             UserVo userDB = (UserVo) session.getAttribute("user");
             UserVo user1 = ud.selectAll1(userDB.getUser_id());
             mo.addAttribute("user", user1);
+            ProfileImgVo profileImgVo = pid.selectProfileImg(userDB.getUser_id());
+            mo.addAttribute("profileImgVo", profileImgVo);
             return "/myPage/greenPoint";
         }
 
@@ -226,16 +236,6 @@ public class UserController {
         System.out.println(delete);
         session.setAttribute("user", null);
         return "redirect:/index";
-    }
-
-
-    @GetMapping("testGuest")
-    public String user1() {
-        for (int i = 100; i < 250; i++) {
-            UserVo user = UserVo.builder().user_id("test" + i).user_pass("1234").user_email("d@c.com").user_name("관리자" + i).user_tel("01012345678").build();
-            ud.joinUser(user);
-        }
-        return "테스트 계정에 대한 내용";
     }
 
     @GetMapping("/info")
@@ -258,11 +258,10 @@ public class UserController {
             os.write(imageFile.getBytes());
 
             UserVo userVo = (UserVo) session.getAttribute("user");
-            ProfileImgVo profileImgVo = ProfileImgVo.builder()
-                    .user_id(userVo.getUser_id())
-                    .img_save_name(saveFile)
-                    .img_path(realPath)
-                    .build();
+            ProfileImgVo profileImgVo = new ProfileImgVo();
+            profileImgVo.setUser_id(userVo.getUser_id());
+            profileImgVo.setImg_save_name(saveFile);
+            profileImgVo.setImg_path(realPath);
             pid.insProfileImg(profileImgVo);
         } catch (IOException e) {
             // 파일 저장 실패 시 예외 처리

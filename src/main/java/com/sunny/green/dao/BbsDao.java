@@ -4,10 +4,12 @@ import com.sunny.green.vo.AdminVo;
 import com.sunny.green.vo.BbsVo;
 import com.sunny.green.vo.CommentVo;
 import org.apache.ibatis.annotations.Mapper;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
 @Mapper
+@Repository
 public interface BbsDao {
 
     public int insertBoard(BbsVo bbsVo);

@@ -7,7 +7,7 @@ import com.sunny.green.vo.PickupAddressVo;
 
 import com.sunny.green.vo.PickupInfoVo;
 import com.sunny.green.vo.UserVo;
-import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -18,11 +18,12 @@ import java.util.List;
 import java.util.Objects;
 
 @Controller
-@RequiredArgsConstructor
 public class PickUpController {
 
-    private final PickupServiceImpl pSI;
-    private final UserDao ud;
+    @Autowired
+    private  PickupServiceImpl pSI;
+    @Autowired
+    private UserDao ud;
 
     // 예약 첫번째 페이징
     @GetMapping("/pickup")
@@ -67,27 +68,27 @@ public class PickUpController {
         return "pickup/pickUp3";
     }
 
-    @GetMapping("pickupRealSave.do")
-    @ResponseBody
-    public void pickupRealSave(HttpSession session) {
-        PickupAddressVo address = (PickupAddressVo) session.getAttribute("address");
-        PickupInfoVo info = (PickupInfoVo) session.getAttribute("info");
-        int successVal = pSI.pickupAddress(address);
-        if(successVal==1) {
-            int addressNo = address.getPu_address_no();
-            info.setPu_address_no(addressNo);
-            System.out.println("info>>>>>>>>>>>"+info);
-            int successVal2 = pSI.pickupInfo(info);
-            if(successVal2==1) {
-                int infoNo = info.getPu_no();
-                String imgVal = info.getPu_img();
-                if(Objects.equals(imgVal, "Y")) {
-                    List<MultipartFile> pickupImg = (List<MultipartFile>) session.getAttribute("pickupImg");
-                    int successVal3 = pSI.pickupImg(pickupImg, infoNo);
-                }
-            }
-        }
-    }
+//    @GetMapping("pickupRealSave.do")
+//    @ResponseBody
+//    public void pickupRealSave(HttpSession session) {
+//        PickupAddressVo address = (PickupAddressVo) session.getAttribute("address");
+//        PickupInfoVo info = (PickupInfoVo) session.getAttribute("info");
+//        int successVal = pSI.pickupAddress(address);
+//        if(successVal==1) {
+//            int addressNo = address.getPu_address_no();
+//            info.setPu_address_no(addressNo);
+//            System.out.println("info>>>>>>>>>>>"+info);
+//            int successVal2 = pSI.pickupInfo(info);
+//            if(successVal2==1) {
+//                int infoNo = info.getPu_no();
+//                String imgVal = info.getPu_img();
+//                if(Objects.equals(imgVal, "Y")) {
+//                    List<MultipartFile> pickupImg = (List<MultipartFile>) session.getAttribute("pickupImg");
+//                    int successVal3 = pSI.pickupImg(pickupImg, infoNo);
+//                }
+//            }
+//        }
+//    }
 
     @GetMapping("/reservationBd")
     public String reservationBd(HttpSession session, Model model) {
