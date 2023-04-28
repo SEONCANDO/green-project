@@ -13,6 +13,7 @@ import com.sunny.green.vo.MailVo;
 import com.sunny.green.vo.ProductWithImgVo;
 import com.sunny.green.vo.UserVo;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -26,15 +27,16 @@ import java.util.List;
 import java.util.Random;
 
 @Controller
-@RequiredArgsConstructor
 public class ExchangeController {
-    private final AdminDao ad;
-    private final UserDao ud;
-    private final ExchangeDao ed;
+
+    @Autowired
+    private AdminDao ad;
+    private UserDao ud;
+    private ExchangeDao ed;
 
 //    private final MailService ms;
 
-    private final MailDao md;
+    private  MailDao md;
 
 
     @GetMapping("/exchange")

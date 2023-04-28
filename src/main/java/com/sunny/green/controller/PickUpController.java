@@ -8,6 +8,7 @@ import com.sunny.green.vo.PickupAddressVo;
 import com.sunny.green.vo.PickupInfoVo;
 import com.sunny.green.vo.UserVo;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -18,11 +19,11 @@ import java.util.List;
 import java.util.Objects;
 
 @Controller
-@RequiredArgsConstructor
 public class PickUpController {
 
-    private final PickupServiceImpl pSI;
-    private final UserDao ud;
+    @Autowired
+    private  PickupServiceImpl pSI;
+    private UserDao ud;
 
     // 예약 첫번째 페이징
     @GetMapping("/pickup")

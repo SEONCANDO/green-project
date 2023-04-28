@@ -3,6 +3,7 @@ package com.sunny.green.controller;
 import com.sunny.green.dao.*;
 import com.sunny.green.vo.*;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.core.io.Resource;
 import org.springframework.http.HttpHeaders;
@@ -31,18 +32,18 @@ import java.util.List;
 import java.util.UUID;
 
 @Controller
-@RequiredArgsConstructor
 public class UserController {
 
-    private final UserDao ud;
-    private final AdminDao ad;
-    private final ExchangeDao ed;
+    @Autowired
+    private  UserDao ud;
+    private  AdminDao ad;
+    private  ExchangeDao ed;
 
 //    private final MailService ms;
 
-    private final MailDao md;
+    private  MailDao md;
 
-    private final ProfileImgDao pid;
+    private ProfileImgDao pid;
 
 
     //마이페이지 매핑
@@ -136,6 +137,8 @@ public class UserController {
             mo.addAttribute("user", userDB);
             List<ExchangeVo> ex = ed.selectExchangeId(userDB.getUser_id());
             mo.addAttribute("ex", ex);
+            ProfileImgVo profileImgVo = pid.selectProfileImg(userDB.getUser_id());
+            mo.addAttribute("profileImgVo", profileImgVo);
             return "/myPage/breakDown";
         }
 
@@ -179,6 +182,8 @@ public class UserController {
             UserVo user = (UserVo) session.getAttribute("user");
             UserVo user1 = ud.selectAll1(user.getUser_id());
             System.out.println("번호는 뭘까요? : " + user1);
+            ProfileImgVo profileImgVo = pid.selectProfileImg(user.getUser_id());
+            model.addAttribute("profileImgVo", profileImgVo);
             model.addAttribute("user", user1);
             model.addAttribute("aaa", "bbb");
             return "/myPage/modify";
@@ -211,6 +216,8 @@ public class UserController {
             UserVo userDB = (UserVo) session.getAttribute("user");
             UserVo user1 = ud.selectAll1(userDB.getUser_id());
             mo.addAttribute("user", user1);
+            ProfileImgVo profileImgVo = pid.selectProfileImg(userDB.getUser_id());
+            mo.addAttribute("profileImgVo", profileImgVo);
             return "/myPage/greenPoint";
         }
 

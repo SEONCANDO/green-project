@@ -6,6 +6,7 @@ import com.sunny.green.dao.UserDao;
 import com.sunny.green.service.UserService;
 import com.sunny.green.vo.*;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
@@ -26,12 +27,12 @@ import java.time.ZoneId;
 import java.util.*;
 
 @Controller
-@RequiredArgsConstructor
 public class AdminController {
 
-    private final UserDao ud;
-    private final AdminDao ad;
-    private final PageVo pv;
+    @Autowired
+    private  UserDao ud;
+    private  AdminDao ad;
+    private  PageVo pv;
 
     private UserService userService;
 
