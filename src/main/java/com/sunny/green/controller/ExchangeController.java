@@ -35,6 +35,12 @@ public class ExchangeController {
     @Autowired
     private ExchangeDao ed;
 
+
+    @Autowired
+    private UserDao ud;
+    @Autowired
+    private ExchangeDao ed;
+
 //    private final MailService ms;
     @Autowired
     private  MailDao md;

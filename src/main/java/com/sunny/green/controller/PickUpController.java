@@ -22,6 +22,7 @@ public class PickUpController {
 
     @Autowired
     private  PickupServiceImpl pSI;
+
     @Autowired
     private UserDao ud;
 

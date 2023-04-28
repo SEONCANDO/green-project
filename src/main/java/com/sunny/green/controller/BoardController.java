@@ -21,6 +21,7 @@ public class BoardController {
 
     @Autowired
     private BbsDao bd;
+
     @Autowired
     private UserDao ud;
     @Autowired

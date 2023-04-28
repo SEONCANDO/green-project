@@ -19,6 +19,10 @@ public class MyController {
 
     @Autowired
     private ExchangeDao ed;
+
+    @Autowired
+    private UserDao ud;
+
     @Autowired
     private UserDao ud;
 

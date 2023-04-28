@@ -5,6 +5,7 @@ import com.sunny.green.dao.UserDao;
 
 import com.sunny.green.service.UserService;
 import com.sunny.green.vo.*;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
@@ -30,10 +31,11 @@ public class AdminController {
 
     @Autowired
     private  UserDao ud;
+
     @Autowired
     private  AdminDao ad;
     @Autowired
-    private  PageVo pv;
+=
 
 
     @GetMapping("/admin")
