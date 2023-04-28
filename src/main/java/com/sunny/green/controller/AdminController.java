@@ -78,11 +78,6 @@ public class AdminController {
         return "/admin/admin_user1";
     }
 
-
-
-    //회원검색
-
-    @GetMapping("/admin/user-list")
     public String getUserList(Model model) {
         List<UserVo> user = ud.selectAll();
         model.addAttribute("user", user);
@@ -100,7 +95,6 @@ public class AdminController {
         model.addAttribute("user", user);
         return "admin/admin_user2";
     }
-
 
     // 보영 (회원정보상세)
     @GetMapping("/admin/modify")

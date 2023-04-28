@@ -28,6 +28,4 @@ public interface UserDao {
 
     List<UserVo> selectAll2(PageVo search, String searchType, String keyword);
 
-/*   public List<UserVo> selectAll2(PageVo pageVo);*/
-
 }
