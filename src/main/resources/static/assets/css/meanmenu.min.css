@@ -50,6 +50,8 @@ a.meanmenu-reveal {
     float: left;
     width: 100%;
     margin-top: 44px;
+    background-color: seagreen;
+    font-family: NanumBarunGothic;
 }
 
 .mean-container .mean-nav ul {

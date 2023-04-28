@@ -21,4 +21,7 @@ public interface BbsDao {
     public int deleteBoard(int board_num);
 
     void insertComment(CommentVo commentVo);
+
+    public int updateBoardNum();
+
 }

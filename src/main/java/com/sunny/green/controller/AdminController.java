@@ -1,8 +1,8 @@
 package com.sunny.green.controller;
 
 import com.sunny.green.dao.AdminDao;
-import com.sunny.green.dao.PickupDao;
 import com.sunny.green.dao.UserDao;
+
 import com.sunny.green.service.UserService;
 import com.sunny.green.vo.*;
 import lombok.RequiredArgsConstructor;
@@ -10,52 +10,52 @@ import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 
-import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
-import java.util.List;
-import java.util.UUID;
+import java.time.Instant;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.util.*;
 
 @Controller
 @RequiredArgsConstructor
 public class AdminController {
 
-
     private final UserDao ud;
     private final AdminDao ad;
-
+    private final PageVo pv;
 
     private UserService userService;
 
-
     @GetMapping("/admin")
-    public String admin(){
+    public String admin() {
         return "admin/admin_login";
     }
 
     @PostMapping("/admin")
-    public String admin2(AdminVo av, Model mo, HttpSession session){
+    public String admin2(AdminVo av, Model mo, HttpSession session) {
         AdminVo adminVo = ad.selectAdmin(av);
-        if(adminVo != null) {
+        if (adminVo != null) {
             if (adminVo.getAdmin_role() == 1) {
-                mo.addAttribute("alert", "관리자용 로그인에 성공했습니다");
+                mo.addAttribute("alert", "관리자용 로그인에 성공했습니다.");
                 mo.addAttribute("url", "/admin/main");
                 session.setAttribute("admin", adminVo);
                 System.out.println(session.getAttribute("admin"));
             } else {
-                mo.addAttribute("alert", "아이디와 비밀번호를 다시 확인하십시오");
+                mo.addAttribute("alert", "아이디/비밀번호가 일치하지 않습니다.");
                 mo.addAttribute("url", "/admin");
             }
-        return "alert";
-        } else{
-            mo.addAttribute("alert", "관리자용 아이디가 존재하지 않습니다");
+            return "alert";
+        } else {
+            mo.addAttribute("alert", "관리자용 아이디가 존재하지 않습니다.");
             mo.addAttribute("url", "/index");
         }
         return "alert";
@@ -68,7 +68,6 @@ public class AdminController {
     }
 
 
-
     @GetMapping("/admin/reservation")
     public String adminRe() {
         return "/admin/admin_reservation";
@@ -79,45 +78,51 @@ public class AdminController {
         return "/admin/admin_user1";
     }
 
-
-    //보영 (회원 목록 조회)
-    @GetMapping("/admin/user2")
     public String getUserList(Model model) {
         List<UserVo> user = ud.selectAll();
         model.addAttribute("user", user);
-        return "/admin/admin_user2";
+        return "admin/admin_user2";
     }
+
+    @GetMapping("/admin/user2")
+    public String getUserList(Model model, PageVo search, @RequestParam(required = false) String searchType, @RequestParam(required = false) String searchValue) throws Exception {
+        List<UserVo> user;
+        if (searchType == null || searchValue == null) {
+            user = ud.selectAll();
+        } else {
+            user = ud.selectAll2(search, searchType, searchValue);
+        }
+        model.addAttribute("user", user);
+        return "admin/admin_user2";
+    }
+
     // 보영 (회원정보상세)
     @GetMapping("/admin/modify")
-    public String userDetail(Model model, UserVo userVo){
+    public String userDetail(Model model, UserVo userVo) {
         UserVo user = ud.selectAll1(userVo.getUser_id());
         model.addAttribute("user", user);
         System.out.println(user);
         return "admin/admin_user3";
     }
+
     // 보영 (회원정보수정)
     @PostMapping("/admin/modify")
-    public String adminModify(UserVo user, Model model){
+    public String adminModify(UserVo user, Model model) {
         int update = ud.updateUser(user);
         System.out.println(update);
-        model.addAttribute("alert","수정되었습니다");
-        model.addAttribute("url","/admin/user2");
+        model.addAttribute("alert", "수정되었습니다");
+        model.addAttribute("url", "/admin/user2");
 
         return "alert";
     }
 
-//    @GetMapping("/admin/delete")
-//    public String deleteUser(HttpSession session, String user_id){
-//        UserVo userDB = (UserVo) session.getAttribute("user");
-//        user_id = userDB.getUser_id();
-//        System.out.println(user_id);
-//        int delete = ud.deleteId(user_id);
-//        System.out.println(delete);
-//        session.setAttribute("user", null);
-//        return "redirect:/index";
-//    }
-
-
+    @GetMapping("admin/delete")
+    public String deleteUser(@RequestParam("user_id") String user_id) {
+        System.out.println("번호 :" + user_id);
+        int deleteUser = ud.deleteId(user_id);
+        System.out.println(deleteUser);
+        return "redirect:/admin/user2";
+    }
 
     @GetMapping("/admin/bbs1")
     public String bbs1() {
@@ -205,6 +210,6 @@ public class AdminController {
         return "redirect:/admin";
     }
 
-
 }
+
 
