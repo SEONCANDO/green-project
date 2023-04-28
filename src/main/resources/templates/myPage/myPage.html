@@ -98,21 +98,21 @@
                         <!--네개의 과정-->
                         <div class="container-fluid"
                              style="height: 30%; border-bottom: 1px solid #e6e6e6; background: linear-gradient(to right, #05c75d, #40c7cc);">
-                            <div class="row">
-                                <div class="col-md-3">
-                                    <img src="/img/myPage/reserve.png" style="width: 27%;">
+                            <div class="row" style="height: 100%;">
+                                <div class="col-md-3" style="display: flex; flex-direction: column; justify-content: center;">
+                                    <img src="/img/myPage/reserve.png" style="width: 27%; margin: 0 auto;">
                                     <p style=" font-family: 'GmarketSansMedium';">1.예약완료</p>
                                 </div>
-                                <div class="col-md-3">
-                                    <img src="/img/myPage/approved.png" style="width: 27%;">
+                                <div class="col-md-3" style="display: flex; flex-direction: column; justify-content: center;">
+                                    <img src="/img/myPage/approved.png" style="width: 27%; margin: 0 auto;">
                                     <p style=" font-family: 'GmarketSansMedium';">2.승인</p>
                                 </div>
-                                <div class="col-md-3">
-                                    <img src="/img/myPage/pickup-car.png" style="width: 27%;">
+                                <div class="col-md-3" style="display: flex; flex-direction: column; justify-content: center;">
+                                    <img src="/img/myPage/pickup-car.png" style="width: 27%; margin: 0 auto;">
                                     <p style=" font-family: 'GmarketSansMedium';">3.수거과정</p>
                                 </div>
-                                <div class="col-md-3">
-                                    <img src="/img/myPage/finish.png" style="width: 27%;">
+                                <div class="col-md-3" style="display: flex; flex-direction: column; justify-content: center;">
+                                    <img src="/img/myPage/finish.png" style="width: 27%; margin: 0 auto;">
                                     <p style=" font-family: 'GmarketSansMedium';">4.수거완료</p>
                                 </div>
                             </div>
@@ -156,28 +156,28 @@
 
                     <div>
                         <div class="container"
-                             style="border: 2px solid #e6e6e6; width: 97%; height: 120px; margin-left: 15px; margin-top: 15px;">
-                            <div class="row">
-                                <div class="col-md-3" style="margin-top: 3%;">
-                                    <img src="/img/myPage/user1.png" alt="" style="width:30%;">
+                             style="border: 2px solid #e6e6e6; width: 97%; height: 100%; margin-left: 15px; margin-top: 15px;">
+                            <div class="row" style="height: 100%;">
+                                <div class="col-md-3" style="margin-top: 2%; display: flex; flex-direction: column; justify-content: center;">
+                                    <img src="/img/myPage/user1.png" alt="" style="width:30%; margin: 0 auto;">
                                     <p><a href="/modify"
                                           style="color: black; letter-spacing: -2px; font-size: 14px; font-weight: 700;">개인정보
                                         수정</a></p>
                                 </div>
-                                <div class="col-md-3" style="margin-top: 3%;">
-                                    <img src="/img/greenPoint.png" style="width:30%">
+                                <div class="col-md-3" style="margin-top: 2%; display: flex; flex-direction: column; justify-content: center;">
+                                    <img src="/img/greenPoint.png" style="width:30%; margin: 0 auto;">
                                     <p><a href="/greenPoint"
                                           style="color: black; letter-spacing: -2px; font-size: 14px; font-weight: 700;">그린포인트</a>
                                     </p>
                                 </div>
-                                <div class="col-md-3" style="margin-top: 3%;">
-                                    <img src="/img/myPage/exchange.png" style="width:30%">
+                                <div class="col-md-3" style="margin-top: 2%; display: flex; flex-direction: column; justify-content: center;">
+                                    <img src="/img/myPage/exchange.png" style="width:30%; margin: 0 auto;">
                                     <p><a th:href="@{/breakDown(user_id=${session.user.user_id})}"
                                           style="color: black; letter-spacing: -2px; font-size: 14px; font-weight: 700;">교환</a>
                                     </p>
                                 </div>
-                                <div class="col-md-3" style="margin-top: 3%;">
-                                    <img src="/img/myPage/reserve1.png" style="width:30%">
+                                <div class="col-md-3" style="margin-top: 2%; display: flex; flex-direction: column; justify-content: center;">
+                                    <img src="/img/myPage/reserve1.png" style="width:30%; margin: 0 auto;">
                                     <p><a href="/reservationBd"
                                           style="color: black; letter-spacing: -2px; font-size: 14px; font-weight: 700;">예약내역</a>
                                     </p>
