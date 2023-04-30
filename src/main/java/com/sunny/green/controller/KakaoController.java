@@ -6,6 +6,7 @@ import com.sunny.green.dao.UserDao;
 import com.sunny.green.vo.KakaoProfileVo;
 import com.sunny.green.vo.OAuthTokenVo;
 import com.sunny.green.vo.UserVo;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -23,11 +24,10 @@ import javax.servlet.http.HttpSession;
 import java.util.UUID;
 
 @Controller
-
+@RequiredArgsConstructor
 public class KakaoController {
 
-    @Autowired
-    private UserDao ud;
+    private final UserDao ud;
     @GetMapping("/auth/kakao/callback")
     public String Callback(String code, Model model, HttpSession session) {
         //데이터를 리턴해주는 컨트롤러

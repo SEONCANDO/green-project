@@ -5,6 +5,7 @@ import com.sunny.green.dao.CommentDao;
 import com.sunny.green.vo.BbsVo;
 import com.sunny.green.vo.CommentVo;
 import com.sunny.green.vo.UserVo;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,15 +18,15 @@ import com.sunny.green.dao.UserDao;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
+@RequiredArgsConstructor
 public class BoardController {
 
-    @Autowired
-    private BbsDao bd;
+    private final BbsDao bd;
 
-    @Autowired
-    private UserDao ud;
-    @Autowired
-    private CommentDao cd;
+
+    private final UserDao ud;
+
+    private final CommentDao cd;
 
     // Q&A 목록
     @GetMapping("/board")

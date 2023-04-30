@@ -6,6 +6,7 @@ import com.sunny.green.dao.UserDao;
 import com.sunny.green.service.UserService;
 import com.sunny.green.vo.*;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
@@ -27,13 +28,12 @@ import java.time.ZoneId;
 import java.util.*;
 
 @Controller
+@RequiredArgsConstructor
 public class AdminController {
 
-    @Autowired
-    private  UserDao ud;
+    private final UserDao ud;
 
-    @Autowired
-    private  AdminDao ad;
+    private final AdminDao ad;
 
 
     @GetMapping("/admin")

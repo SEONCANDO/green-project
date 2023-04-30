@@ -6,6 +6,7 @@ import com.sunny.green.dao.UserDao;
 import com.sunny.green.vo.ProductWithImgVo;
 import com.sunny.green.vo.ProfileImgVo;
 import com.sunny.green.vo.UserVo;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,16 +16,13 @@ import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @Controller
+@RequiredArgsConstructor
 public class MyController {
 
-    @Autowired
-    private ExchangeDao ed;
+    private final ExchangeDao ed;
 
-    @Autowired
-    private UserDao ud;
-
-    @Autowired
-    private ProfileImgDao pid;
+    private final UserDao ud;
+    private final ProfileImgDao pid;
 
     @GetMapping("/")
     public String index(Model mo) {

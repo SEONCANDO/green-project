@@ -37,6 +37,13 @@ dependencies {
 /*    implementation 'org.webjars:sockjs-client:1.6.1'
     implementation 'org.webjars:stomp-websocket:2.7.3'*/
 
+    // lombok
+    implementation 'org.projectlombok:lombok:1.18.22'
+    annotationProcessor 'org.projectlombok:lombok:1.18.22'
+
+    // annotations
+    implementation 'org.jetbrains:annotations:22.0.0'
+
 }
 
 tasks.named('test') {

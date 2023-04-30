@@ -2,6 +2,7 @@ package com.sunny.green.controller;
 
 import com.sunny.green.dao.*;
 import com.sunny.green.vo.*;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.core.io.Resource;
@@ -31,24 +32,24 @@ import java.util.List;
 import java.util.UUID;
 
 @Controller
+@RequiredArgsConstructor
 public class UserController {
 
-    @Autowired
-    private  UserDao ud;
+    private  final UserDao ud;
 
-    @Autowired
-    private  AdminDao ad;
 
-    @Autowired
-    private  ExchangeDao ed;
+    private  final AdminDao ad;
+
+
+    private final ExchangeDao ed;
 
 //    private final MailService ms;
 
-    @Autowired
-    private  MailDao md;
 
-    @Autowired
-    private ProfileImgDao pid;
+    private final MailDao md;
+
+
+    private final ProfileImgDao pid;
 
 
     //마이페이지 매핑
