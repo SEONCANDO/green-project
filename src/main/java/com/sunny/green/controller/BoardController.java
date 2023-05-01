@@ -2,24 +2,27 @@ package com.sunny.green.controller;
 
 import com.sunny.green.dao.BbsDao;
 import com.sunny.green.dao.CommentDao;
+import com.sunny.green.dao.UserDao;
 import com.sunny.green.vo.BbsVo;
 import com.sunny.green.vo.CommentVo;
 import com.sunny.green.vo.UserVo;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.servlet.http.HttpSession;
 import java.util.List;
 
-import com.sunny.green.dao.UserDao;
-import org.springframework.web.bind.annotation.GetMapping;
-
 @Controller
 @RequiredArgsConstructor
+@Log4j2
 public class BoardController {
+
 
     private final BbsDao bd;
 
@@ -69,7 +72,7 @@ public class BoardController {
     public String boardDetail(Model model, BbsVo bbsVo, HttpSession session, CommentVo commentVo) {
         BbsVo bbs = bd.selectBoard(bbsVo.getBoard_num());
         model.addAttribute("bbs", bbs);
-        System.out.println(bbs);
+        log.info(bbs);
         session.getAttribute("user");
 
 //        //댓글 조회
@@ -92,11 +95,11 @@ public class BoardController {
     // Q&A 글 수정
     @PostMapping("/updateBoard2")
     public String updateBoard2(BbsVo bbsVo, Model model) {
-        System.out.println("보드값" + bbsVo.getBoard_num() );
+        log.info("보드값" + bbsVo.getBoard_num() );
         BbsVo bbs = bd.selectBoard(bbsVo.getBoard_num());
-        System.out.println(bbs);
+        log.info(bbs);
         int str = bd.updateBoard(bbsVo);
-        System.out.println("업데이트 :" + str);
+        log.info("업데이트 :" + str);
         return "redirect:board";
     }
 

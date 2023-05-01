@@ -2,17 +2,20 @@ package com.sunny.green.controller;
 
 import com.sunny.green.dao.CommentDao;
 import com.sunny.green.vo.CommentVo;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.servlet.http.HttpSession;
 
 
 @Controller
-
 public class CommentController {
+
 
     @Autowired
     private CommentDao cd;
@@ -53,7 +56,7 @@ public class CommentController {
     @PostMapping("/board/comment/write")
     public String selectAllComment(@ModelAttribute CommentVo commentVo, int com_num) {
         int insertResult = cd.insertComment(commentVo);
-        String redirect_url = "redirect:/boardDetail?board_num="+Integer.toString(com_num);
+        String redirect_url = "redirect:boardDetail?board_num="+Integer.toString(com_num);
         return redirect_url;
     }
 

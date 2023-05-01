@@ -2,33 +2,28 @@ package com.sunny.green.controller;
 
 import com.sunny.green.dao.AdminDao;
 import com.sunny.green.dao.UserDao;
-
-import com.sunny.green.service.UserService;
 import com.sunny.green.vo.*;
-
 import lombok.RequiredArgsConstructor;
+import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
-
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
-import java.time.Instant;
-import java.time.LocalDate;
-import java.time.ZoneId;
-import java.util.*;
+import java.util.List;
+import java.util.UUID;
 
 @Controller
 @RequiredArgsConstructor
+@Log4j2
 public class AdminController {
 
     private final UserDao ud;
@@ -49,7 +44,7 @@ public class AdminController {
                 mo.addAttribute("alert", "관리자용 로그인에 성공했습니다.");
                 mo.addAttribute("url", "/admin/main");
                 session.setAttribute("admin", adminVo);
-                System.out.println(session.getAttribute("admin"));
+                log.info(session.getAttribute("user"));
             } else {
                 mo.addAttribute("alert", "아이디/비밀번호가 일치하지 않습니다.");
                 mo.addAttribute("url", "/admin");
@@ -102,7 +97,7 @@ public class AdminController {
     public String userDetail(Model model, UserVo userVo) {
         UserVo user = ud.selectAll1(userVo.getUser_id());
         model.addAttribute("user", user);
-        System.out.println(user);
+        log.info(user);
         return "admin/admin_user3";
     }
 
@@ -119,9 +114,9 @@ public class AdminController {
 
     @GetMapping("admin/delete")
     public String deleteUser(@RequestParam("user_id") String user_id) {
-        System.out.println("번호 :" + user_id);
+        log.info("번호 :" + user_id);
         int deleteUser = ud.deleteId(user_id);
-        System.out.println(deleteUser);
+        log.info(deleteUser);
         return "redirect:admin/user2";
     }
 
@@ -188,12 +183,9 @@ public class AdminController {
         String uuid = UUID.randomUUID().toString();
         String realPath = uploadPath + uuid + fileName;
         String saveFile = uuid + fileName;
-        System.out.println(fileName);
-        System.out.println(filePath);
-        System.out.println(realPath);
         ad.insertPro(productVo);
         String str = String.valueOf(productVo);
-        System.out.println(str);
+        log.info(str);
 
         try (OutputStream os = new FileOutputStream(realPath)) {
             os.write(imageFile.getBytes());

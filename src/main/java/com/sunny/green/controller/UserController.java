@@ -3,36 +3,28 @@ package com.sunny.green.controller;
 import com.sunny.green.dao.*;
 import com.sunny.green.vo.*;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.core.io.Resource;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
-import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
-import javax.mail.MessagingException;
 import javax.servlet.http.HttpSession;
-import javax.validation.Valid;
-import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.List;
 import java.util.UUID;
 
 @Controller
 @RequiredArgsConstructor
+@Log4j2
 public class UserController {
 
     private  final UserDao ud;
@@ -67,7 +59,7 @@ public class UserController {
             return "myPage/myPage";
         }
 
-        return "/alert";
+        return "alert";
     }
 
     //로그인 창에 들어갈때 쓰는 매핑
@@ -86,7 +78,7 @@ public class UserController {
     @PostMapping("/login")
     public String login1(UserVo user, HttpSession session, Model model) {
         UserVo userDB = ud.selectUser(user);
-        System.out.println(userDB);
+        log.info(userDB);
 
         if (userDB != null) {
             System.out.println(userDB);
@@ -145,7 +137,7 @@ public class UserController {
             mo.addAttribute("ex", ex);
             ProfileImgVo profileImgVo = pid.selectProfileImg(userDB.getUser_id());
             mo.addAttribute("profileImgVo", profileImgVo);
-            return "/myPage/breakDown";
+            return "myPage/breakDown";
         }
 
         return "alert";
@@ -187,7 +179,7 @@ public class UserController {
         } else {
             UserVo user = (UserVo) session.getAttribute("user");
             UserVo user1 = ud.selectAll1(user.getUser_id());
-            System.out.println("번호는 뭘까요? : " + user1);
+            log.info("번호는 뭘까요? : " + user1);
             ProfileImgVo profileImgVo = pid.selectProfileImg(user.getUser_id());
             model.addAttribute("profileImgVo", profileImgVo);
             model.addAttribute("user", user1);
@@ -234,9 +226,9 @@ public class UserController {
     public String delete(HttpSession session, String user_id) {
         UserVo userDB = (UserVo) session.getAttribute("user");
         user_id = userDB.getUser_id();
-        System.out.println(user_id);
+        log.info(user_id);
         int delete = ud.deleteId(user_id);
-        System.out.println(delete);
+        log.info(delete);
         session.setAttribute("user", null);
         return "redirect:index";
     }
@@ -251,7 +243,7 @@ public class UserController {
     @PostMapping("/uploadProfile")
     public String pro4(ProductVo productVo, @RequestParam("file") MultipartFile imageFile, HttpSession session) {
         String fileName = imageFile.getOriginalFilename(); // 파일 이름 추출
-        String uploadPath = "/home/ubuntu/greentopia/img/product/"; // 업로드 디렉토리 경로
+        String uploadPath = "/home/ubuntu/greentopia/img/profile/"; // 업로드 디렉토리 경로
         String filePath = uploadPath + fileName; // 저장될 파일 경로
         String uuid = UUID.randomUUID().toString();
         String realPath = uploadPath + uuid + fileName;
@@ -276,7 +268,7 @@ public class UserController {
     @GetMapping("/img/profile/{img_save_name}")
     @ResponseBody
     public ResponseEntity<Resource> getImage(@PathVariable("img_save_name") String imgSaveName) throws IOException {
-        Resource resource = new FileSystemResource("/home/ubuntu/greentopia/img/product/" + imgSaveName);
+        Resource resource = new FileSystemResource("/home/ubuntu/greentopia/img/profile/" + imgSaveName);
         return ResponseEntity.ok().contentType(MediaType.IMAGE_JPEG).body(resource);
     }
 

@@ -7,6 +7,8 @@ import com.sunny.green.vo.KakaoProfileVo;
 import com.sunny.green.vo.OAuthTokenVo;
 import com.sunny.green.vo.UserVo;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.java.Log;
+import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -17,7 +19,6 @@ import org.springframework.ui.Model;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.client.RestTemplate;
 
 import javax.servlet.http.HttpSession;
@@ -25,7 +26,9 @@ import java.util.UUID;
 
 @Controller
 @RequiredArgsConstructor
+@Log4j2
 public class KakaoController {
+
 
     private final UserDao ud;
     @GetMapping("/auth/kakao/callback")
@@ -40,7 +43,7 @@ public class KakaoController {
         MultiValueMap<String, String> params = new LinkedMultiValueMap<>();
         params.add("grant_type","authorization_code");
         params.add("client_id","7033be3a22ffb05c2b13405c4f9a65ac");
-        params.add("redirect_uri","http://localhost:8080/auth/kakao/callback");
+        params.add("redirect_uri","http://15.165.155.88:8080/auth/kakao/callback");
         params.add("code", code);
 
         HttpEntity<MultiValueMap<String,String>> kakaoTokenRequest
@@ -64,7 +67,7 @@ public class KakaoController {
             e.printStackTrace();
         }
 
-        System.out.println("카카오 액세스 토큰 : " + oauthToken.getAccess_token());
+        log.info("카카오 액세스 토큰 : " + oauthToken.getAccess_token());
 
         /* 토큰을 이용한 사용자 정보 보기 */
         RestTemplate rt2 = new RestTemplate();
@@ -84,7 +87,7 @@ public class KakaoController {
                 String.class
         );
 
-        System.out.println(response2.getBody());
+        log.info(response2.getBody());
 
 
         /* response 데이터를 오브젝트에 담기위하여 gson,json, objectMapper를 사용할 수 있음 */
@@ -96,11 +99,11 @@ public class KakaoController {
             e.printStackTrace();
         }
 
-        System.out.println("카카오 아이디 : " + kakaoProfileVo.getId());
-        System.out.println("카카오 이메일 : " + kakaoProfileVo.getKakao_account().getEmail());
-        System.out.println("카카오 이름 : " + kakaoProfileVo.getProperties().getNickname());
+        log.info("카카오 아이디 : " + kakaoProfileVo.getId());
+        log.info("카카오 이메일 : " + kakaoProfileVo.getKakao_account().getEmail());
+        log.info("카카오 이름 : " + kakaoProfileVo.getProperties().getNickname());
         UUID testPass = UUID.randomUUID();
-        System.out.println("카카오 서버 패스워드 : " + testPass);
+        log.info("카카오 서버 패스워드 : " + testPass);
 
         UserVo user = new UserVo();
         user.setUser_id(kakaoProfileVo.getId());
@@ -117,7 +120,7 @@ public class KakaoController {
             model.addAttribute("url", "/index");
             session.setAttribute("user", userDB);
         } else {
-            System.out.println("카카오 정보 저장해야죠? :" + user);
+            log.info("카카오 정보 저장해야죠? :" + user);
             ud.joinUser(user);
             model.addAttribute("alert", "회원가입을 했습니다");
             model.addAttribute("url", "/index");

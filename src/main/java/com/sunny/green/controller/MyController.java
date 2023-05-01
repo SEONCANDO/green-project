@@ -7,6 +7,7 @@ import com.sunny.green.vo.ProductWithImgVo;
 import com.sunny.green.vo.ProfileImgVo;
 import com.sunny.green.vo.UserVo;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,6 +18,7 @@ import java.util.List;
 
 @Controller
 @RequiredArgsConstructor
+@Log4j2
 public class MyController {
 
     private final ExchangeDao ed;
@@ -58,6 +60,6 @@ public class MyController {
         return "myPage/myComment";
     }
 
-    
+
 
 }

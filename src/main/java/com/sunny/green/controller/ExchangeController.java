@@ -4,15 +4,11 @@ import com.sunny.green.dao.AdminDao;
 import com.sunny.green.dao.ExchangeDao;
 import com.sunny.green.dao.MailDao;
 import com.sunny.green.dao.UserDao;
-
-
-
 import com.sunny.green.vo.ExchangeVo;
-
-import com.sunny.green.vo.MailVo;
 import com.sunny.green.vo.ProductWithImgVo;
 import com.sunny.green.vo.UserVo;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -28,7 +24,9 @@ import java.util.Random;
 
 @Controller
 @RequiredArgsConstructor
+@Log4j2
 public class ExchangeController {
+
 
     private final AdminDao ad;
 
@@ -58,11 +56,11 @@ public class ExchangeController {
     public String exchange(HttpSession httpSession, Model mo, ProductWithImgVo productWithImgVo) {
         ProductWithImgVo pro = ed.selectProOne(productWithImgVo.getPro_num());
         mo.addAttribute("pro", pro);
-        System.out.println(pro);
+        log.info(pro);
         UserVo uservo = (UserVo) httpSession.getAttribute("user");
         UserVo user = ud.selectAll1(uservo.getUser_id());
         mo.addAttribute("user", user);
-        System.out.println("왜 변화가 안되는 것인가" + user);
+        log.info("왜 변화가 안되는 것인가" + user);
         return "exchange/exchange2";
     }
 
@@ -79,17 +77,17 @@ public class ExchangeController {
             reservationId.append(chars.charAt(index));
         }
 
-        System.out.println("코드 번호 :" + reservationId);
+        log.info("코드 번호 :" + reservationId);
         ev.setEx_uuid_num(String.valueOf(reservationId));
 
         int result = ed.insertExchange(ev);
-        System.out.println("저장됨?" + result);
+        log.info("저장됨?" + result);
 
 
         int remain_point = ev.getRemain_point();
         user.setUser_point(remain_point);
         ud.updatePoint(user);
-        System.out.println("유저 포인트값 :" + remain_point);
+        log.info("유저 포인트값 :" + remain_point);
 
 //       MailVo mailVo = new MailVo();
 //        mailVo.setMail_receiver(ev.getUser_email());
