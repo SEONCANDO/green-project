@@ -15,7 +15,4 @@ public interface PickupDao {
     public int pickupImgSave(PickupImgVo pickupImgVo);
     public int pickupImgUpdate(PickupImgVo pickupImgVo);
 
-
-
-
 }

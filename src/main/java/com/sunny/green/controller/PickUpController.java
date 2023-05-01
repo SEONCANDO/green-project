@@ -46,7 +46,6 @@ public class PickUpController {
     @PostMapping("pickupSave2.do")
     @ResponseBody
     public void pickupPageSave(PickupInfoVo info, HttpSession session) {
-        System.out.println("info>>>>>"+info);
         session.setAttribute("info", info);
     }
     //이미지 임시 저장
