@@ -149,10 +149,13 @@
                     <input type="text" id="pickup_address4" name="pickup_address4" placeholder="참고항목" th:value="${session.user.address4}">
                   </td>
                 </tr>
+
+
                 <!--   주거 구분  -->
-                <tr>
-                  <td class="col-2" style="border: 1px solid #c1baba; text-align: center; font-size: 20px; padding: 30px;">
-                    <div class="text_contentHeader">주거 구분</div>
+                <tr style="height: 100px;">
+                  <td class="col-2" style="border: 1px solid #c1baba; text-align: center; font-size: 20px;">
+                    <span class="text_contentHeader">주거 구분</span>
+                    <span class="text_requiredInput">*</span>
                   </td>
                   <td class="col-10" style="border: 1px solid #c1baba; padding: 10px; font-family: NanumBarunGothic, serif;">
                     <div style="display:flex; margin-left: 20px; font-size: 18px;">
@@ -174,14 +177,14 @@
                   </td>
                 </tr>
                 <!--   배출 희망일  -->
-                <tr>
-                  <td class="col-2" style="border: 1px solid #c1baba; text-align: center; font-size: 20px; padding: 20px;">
+                <tr style="font-size: 20px;">
+                  <td class="col-2" style="border: 1px solid #c1baba; text-align: center; padding: 20px;">
                     <span class="text_contentHeader">배출<br>희망일</span>
                     <span class="text_requiredInput">*</span>
                   </td>
                   <td class="col-10" style="border: 1px solid #c1baba; padding: 10px; font-family: NanumBarunGothic, serif;">
                     <div style="display:flex; margin-left: 20px;">
-                      <span style="font-size: 20px;">지정일:
+                      <span>지정일:
                         <input type="text" id="myDateInput" name="pickup_day">
                       </span>
                       <span id="text_insertDayOfWeek">(-)</span>
@@ -334,4 +337,48 @@
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 <script src="/js/pickUp.js"></script>
+<script th:inline="javascript">
+  const userInfoRadio = document.querySelector('input[value="기존 고객정보"]'); // select the "기존 고객정보" radio button
+  const newInfoRadio = document.querySelector('input[value="새로운 정보 입력"]'); // select the "새로운 정보 입력" radio button
+
+  const nameInput = document.getElementById('pickup_name');
+  const pickup_tel = document.getElementById('pickup_tel');
+  const pickup_zip_code = document.getElementById('pickup_zip_code');
+  const pickup_address1 = document.getElementById('pickup_address1');
+  const pickup_address2 = document.getElementById('pickup_address2');
+  const pickup_address3 = document.getElementById('pickup_address3');
+  const pickup_address4 = document.getElementById('pickup_address4');
+
+
+  var user = [[${user}]];
+  console.log(user); // user 객체 확인
+
+
+
+  newInfoRadio.addEventListener('change', () => {
+    if (newInfoRadio.checked) {
+      nameInput.value = '';
+      pickup_tel.value = '';
+      pickup_zip_code.value = '';
+      pickup_address1.value = '';
+      pickup_address2.value = '';
+      pickup_address3.value = '';
+      pickup_address4.value = '';
+    }
+  });
+
+
+  userInfoRadio.addEventListener('change', () => {
+    if (userInfoRadio.checked) {
+      nameInput.value = user.user_name;
+      pickup_tel.value = user.user_tel;
+      pickup_zip_code.value = user.zip_code;
+      pickup_address1.value = user.address1;
+      pickup_address2.value = user.address2;
+      pickup_address3.value = user.address3;
+      pickup_address4.value = user.address4;
+    }
+  });
+
+</script>
 </html>
