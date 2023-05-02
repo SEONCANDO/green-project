@@ -104,43 +104,22 @@
             </div>
             <div class="row">
               <!--  품목 선택 preview 세부 title  -->
-              <table style="border: 2px solid #d5d2d2; margin-top: 15px; width: 92%; margin-left: 4%;" id="preview_row">
-                <tr style="border-bottom: 2px solid #d5d2d2; height: 65px;">
-                  <td class="col-3" style="border-right: 2px solid #d5d2d2">
-                    <div class="text_cateSelectTitle2">대분류</div>
-                  </td>
-                  <td class="col-3" style="border-right: 2px solid #d5d2d2">
-                    <div class="text_cateSelectTitle2">소분류</div>
-                  </td>
-                  <td class="col-3" style="border-right: 2px solid #d5d2d2">
-                    <div class="text_cateSelectTitle2">수량</div>
-                  </td>
-                  <td class="col-3">
-                    <div class="text_cateSelectTitle2">삭제 여부</div>
-                  </td>
-                </tr>
-<!--                <tr style="height: 65px;">-->
-<!--                  <td class="col-3" style="border-right: 2px solid #d5d2d2; font-family: NanumBarunGothic, serif;">-->
-<!--                    <div class="text_mainCategory_preview">세탁기</div>-->
-<!--                  </td>-->
-<!--                  <td class="col-3" style="border-right: 2px solid #d5d2d2; font-family: NanumBarunGothic, serif;">-->
-<!--                    <div class="text_detailCategory_preview" id="category_no">일반 세탁기</div>-->
-<!--                  </td>-->
-<!--                  <td class="col-3" style="border-right: 2px solid #d5d2d2; text-align: center; font-family: NanumBarunGothic, serif;">-->
-<!--                    <button type="button" class="minus" onclick="fnCalcCnt('minus');">-->
-<!--                      <div style="width: 100%; height: 100%; position: absolute; top: -20px;">-</div>-->
-<!--                    </button>-->
-<!--                    <input type="text" class="count_category" name="item_cnt" title="수량 입력" value="1" maxlength="1">-->
-<!--                    <button type="button" class="plus" onclick="fnCalcCnt('plus');">-->
-<!--                      <div style="width: 100%; height: 100%; position: absolute; top: -20px;">+</div>-->
-<!--                    </button>-->
-<!--                  </td>-->
-<!--                  <td class="col-3">-->
-<!--                    <div class="button_inputCategory_delete">-->
-<!--                      <input type="button" value="X" style="color: red; border: none; font-size: 28px;">-->
-<!--                    </div>-->
-<!--                  </td>-->
-<!--                </tr>-->
+              <table style="border: 2px solid #d5d2d2; margin-top: 15px; width: 92%; margin-left: 4%;">
+                <thead>
+                  <tr style="border-bottom: 2px solid #d5d2d2; height: 65px;">
+                    <td class="col-4" style="border-right: 2px solid #d5d2d2">
+                      <div class="text_cateSelectTitle2">상세 분류</div>
+                    </td>
+                    <td class="col-4" style="border-right: 2px solid #d5d2d2">
+                      <div class="text_cateSelectTitle2">수량</div>
+                    </td>
+                    <td class="col-4">
+                      <div class="text_cateSelectTitle2">삭제 여부</div>
+                    </td>
+                  </tr>
+                </thead>
+                <tbody id="preview_row">
+                </tbody>
               </table>
             </div>
           </div>
@@ -148,7 +127,7 @@
           <div class="container">
             <div class="box_pageMove">
               <a href="/pickup" class="btn btn-outline-success">이전</a>
-              <a href="/pickup3" class="btn btn-outline-success">다음</a>
+              <input type="button" class="btn btn-outline-success" value="다음" onclick="return chBox()">
             </div>
           </div>
       </div>
