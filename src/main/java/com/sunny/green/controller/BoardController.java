@@ -36,7 +36,7 @@ public class BoardController {
         UserVo userVo = (UserVo) session.getAttribute("user");
         model.addAttribute("user", userVo);
         if(userVo == null){
-            model.addAttribute("alert","로그인이 되지 않았습니다");
+            model.addAttribute("alert","로그인이 필요한 페이지입니다.");
             model.addAttribute("url","/login");
         }
         else{
@@ -50,6 +50,7 @@ public class BoardController {
     @PostMapping("/boardPost")
     public String boardPost1(@ModelAttribute BbsVo bbsVo) {
         int insertResult = bd.insertBoard(bbsVo);
+        bd.updateBoardNum();
         if (insertResult > 0) {           // 성공으로 판단되면 목록으로 돌아가기.
             return "redirect:/board/";
         } else {                          // 실패하면 글작성 페이지에 머무름.
@@ -115,6 +116,7 @@ public class BoardController {
     @GetMapping("/deleteBoard")
     public String deleteBoard(int board_num) {
         int str = bd.deleteBoard(board_num);
+        int str1 = bd.updateBoardNum();
         return "redirect:/board";
     }
 
