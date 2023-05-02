@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpSession;
 import java.util.List;
 
-import com.sunny.green.dao.UserDao;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 
@@ -21,7 +20,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class BoardController {
 
     private final BbsDao bd;
-    private final UserDao ud;
     private final CommentDao cd;
 
     // Q&A 목록
@@ -60,21 +58,39 @@ public class BoardController {
     }
 
     // Q&A 글 상세조회
-    @GetMapping("/boardDetail")
-    public String boardDetail(Model model, BbsVo bbsVo, HttpSession session, CommentVo commentVo) {
-        BbsVo bbs = bd.selectBoard(bbsVo.getBoard_num());
+    @GetMapping("/boardDetail") // 경로 변수 {boardNum}을 사용하도록 수정
+    public String boardDetail(Model model, CommentVo commentVo, BbsVo bbsVo, HttpSession session, int board_num) {
+        BbsVo bbs = bd.selectBoard(board_num); // boardNum 변수로 수정
         model.addAttribute("bbs", bbs);
         System.out.println(bbs);
         session.getAttribute("user");
+        model.addAttribute("board_num", board_num);
 
-//        //댓글 조회
-//        List<CommentVo> com = cd.selectAllComment();
-//        model.addAttribute("com", com);
+        // 댓글 조회
+        // List<CommentVo> com = cd.selectAllComment();
+        // model.addAttribute("comment", commentVo);
+        // CommentVo commentVo1= (CommentVo) session.getAttribute("comment");
 
         return "bbs/boardDetail";
-
     }
 
+
+//    @GetMapping("/boardDetail")
+//    public String boardDetail(Model model, CommentVo commentVo, BbsVo bbsVo, HttpSession session, @PathVariable("board_num") int boardNum) {
+//        BbsVo bbs = bd.selectBoard(bbsVo.getBoard_num());
+//        model.addAttribute("bbs", bbs);
+//        System.out.println(bbs);
+//        session.getAttribute("user");
+//        model.addAttribute("board_num", boardNum);
+//
+//        //댓글 조회
+////        List<CommentVo> com = cd.selectAllComment();
+////        model.addAttribute("comment", commentVo);
+////        CommentVo commentVo1= (CommentVo) session.getAttribute("comment");
+//
+//        return "bbs/boardDetail";
+//
+//    }
 
     // Q&A 글 수정/삭제 폼
     @GetMapping("/updateBoard1")
