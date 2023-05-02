@@ -5,6 +5,7 @@ import com.sunny.green.vo.PickupAddressVo;
 import com.sunny.green.vo.PickupImgVo;
 import com.sunny.green.vo.PickupInfoVo;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -16,6 +17,7 @@ import java.util.*;
 @Service
 @RequiredArgsConstructor
 public class PickupServiceImpl implements PickupService {
+
 
     private final PickupDao pickupDao;
 
@@ -58,12 +60,11 @@ public class PickupServiceImpl implements PickupService {
                 System.out.println(originalFileName);
                 System.out.println(realPath);
                 // ImgVo에 저장
-                PickupImgVo pickupImgVo = PickupImgVo.builder()
-                        .pu_no(info_no)
-                        .pu_img_origin_name(originalFileName)
-                        .pu_img_save_name(newFileName)
-                        .pu_img_path(savePath)
-                        .build();
+                PickupImgVo pickupImgVo = new PickupImgVo();
+                        pickupImgVo.setPu_no(info_no);
+                        pickupImgVo.setPu_img_origin_name(originalFileName);
+                        pickupImgVo.setPu_img_save_name(newFileName);
+                        pickupImgVo.setPu_img_path(savePath);
                 pickupDao.pickupImgSave(pickupImgVo);   // DB에 이미지 저장
             } catch (IOException e) {
                 // 파일 저장 실패 시 예외 처리

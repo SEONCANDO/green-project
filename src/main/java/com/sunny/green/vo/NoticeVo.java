@@ -1,5 +1,6 @@
 package com.sunny.green.vo;
 
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -17,4 +18,5 @@ public class NoticeVo {
     private String notice_content;
     private String user_id;
     private LocalDateTime notice_date;
+
 }
