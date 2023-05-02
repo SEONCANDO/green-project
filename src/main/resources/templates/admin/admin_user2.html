@@ -91,7 +91,19 @@
                 //page test
                 console.log(currentPage,"curPage,",startPage,"startPage,", endPage,"endPage,",nextPage,"nextPage");
 
-                <!-- href="javascript:showNumber()" 링크 클릭시 함수실행을 시켜줌-->
+                <!-- href="javascript: 함수()" 링크 클릭시 함수실행을 시켜줌-->
+
+            //   <a class="page-link" href="#" aria-label="Next">
+            //     <span aria-hidden="true">&raquo;</span>
+            //   </a>
+            // </li>
+            //   <li class="page-item"><a class="page-link" href="#">1</a></li>
+            //   <li class="page-item"><a class="page-link" href="#">2</a></li>
+            //   <li class="page-item"><a class="page-link" href="#">3</a></li>
+            //   <li class="page-item">
+            //     <a class="page-link" href="#" aria-label="Next">
+            //       <span aria-hidden="true">&raquo;</span>
+            //     </a>
 
                 //맨 첫 페이지
                 if (currentPage > 1 && pageLimit < currentPage) {
@@ -110,7 +122,6 @@
                         pageUrl += " <a href='javascript:" + funName + "(" + i + ");'> " + i + " </a>";
                     }
                 }
-
                 //다음 페이지
                 if (nextPage <= totalPage) {
                     pageUrl += "<a class='page next' href='javascript:" + funName + "(" + (nextPage < totalPage ? nextPage : totalPage) + ");'><li className=\"page-item\">다음</a>";
@@ -133,10 +144,6 @@
         //});
 
     </script>
-
-  <script>
-
-  </script>
 
 </head>
 
@@ -213,18 +220,7 @@
   <!----- 페이징 ----->
   <nav aria-label="Page navigation example">
     <ul class="pagination justify-content-center">
-      <li class="page-item">
-        <a class="page-link" href="#" aria-label="Next">
-          <span aria-hidden="true">&raquo;</span>
-        </a>
-      </li>
-      <li class="page-item"><a class="page-link" href="#">1</a></li>
-      <li class="page-item"><a class="page-link" href="#">2</a></li>
-      <li class="page-item"><a class="page-link" href="#">3</a></li>
-      <li class="page-item">
-        <a class="page-link" href="#" aria-label="Next">
-          <span aria-hidden="true">&raquo;</span>
-        </a>
+      <li class="page-item"  id="pagingul">
       </li>
     </ul>
   </nav>
