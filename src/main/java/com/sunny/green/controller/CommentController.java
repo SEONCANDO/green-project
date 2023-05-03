@@ -16,7 +16,6 @@ import java.util.List;
 
 
 @Controller
-@RequiredArgsConstructor
 public class CommentController {
 
 
@@ -51,6 +50,8 @@ public class CommentController {
     public String boardDetail(CommentVo commentVo, Model model, HttpSession session) {
         CommentVo com = (CommentVo) session.getAttribute("com_num");
         model.addAttribute("com_num", com);
+        return null;
+    }
 
         return "bbs/boardDetail";
     }
