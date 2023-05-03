@@ -6,6 +6,10 @@ import com.sunny.green.vo.*;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.FileSystemResource;
+import org.springframework.core.io.Resource;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
@@ -191,7 +195,7 @@ public class AdminController {
     @PostMapping("/product3")
     public String pro4(ProductVo productVo, @RequestParam("image") MultipartFile imageFile) {
         String fileName = imageFile.getOriginalFilename(); // 파일 이름 추출
-        String uploadPath = "/home/ubuntu/greentopia/img/product/"; // 업로드 디렉토리 경로
+        String uploadPath = "src/main/resources/static/img/product/"; // 업로드 디렉토리 경로
         String filePath = uploadPath + fileName; // 저장될 파일 경로
         String uuid = UUID.randomUUID().toString();
         String realPath = uploadPath + uuid + fileName;
@@ -215,7 +219,12 @@ public class AdminController {
         return "redirect:admin";
     }
 
-
+    @GetMapping("/img/product/{img_save_name}")
+    @ResponseBody
+    public ResponseEntity<Resource> getImage(@PathVariable("img_save_name") String imgSaveName) throws IOException {
+        Resource resource = new FileSystemResource("src/main/resources/static/img/product/" + imgSaveName);
+        return ResponseEntity.ok().contentType(MediaType.IMAGE_JPEG).body(resource);
+    }
 
 }
 
