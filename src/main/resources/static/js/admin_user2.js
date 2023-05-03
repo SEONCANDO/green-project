@@ -118,27 +118,3 @@
 
 } // data 10개씩 끊어오는 함수
 
-
-    <!-- 검색 기능-->
-
-    $('.submitbtn').click(function () {
-        let type = $('select[name=searchType]').val();
-        let value = $('input[name=searchValue]').val();
-
-
-        $.ajax({
-            url: '/pagination', // 데이터를 가져올 URL_
-            type: 'post',
-            dataType: "json",
-            data:{"searchType":type,"searchValue":value},
-            success: function (data) { // 데이터를 가져온 후 실행할 콜백 함수
-                console.log(data); // 데이터 확인용
-                content = data;
-                console.log(data);
-                getData(1);
-            },
-            error: function (e) {
-                console.log("ERROR: ", e);
-            }
-        });
-    });
