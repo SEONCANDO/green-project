@@ -9,9 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpSession;
@@ -80,7 +78,7 @@ public class AdminController {
         model.addAttribute("user", user);
         return "admin/admin_user2";
     }
-
+    // 검색
     @GetMapping("/admin/user2")
     public String getUserList(Model model, PageVo search, @RequestParam(required = false) String searchType, @RequestParam(required = false) String searchValue) throws Exception {
         List<UserVo> user;
@@ -91,6 +89,18 @@ public class AdminController {
         }
         model.addAttribute("user", user);
         return "admin/admin_user2";
+    }
+
+    @PostMapping("/pagination")
+    @ResponseBody
+    public List<UserVo> getUserData(PageVo search, @RequestParam(required = false) String searchType, @RequestParam(required = false) String searchValue) {
+        List<UserVo> user;
+        if (searchType == null || searchValue == null) {
+            user = ud.selectAll();
+        } else {
+            user = ud.selectAll2(search, searchType, searchValue);
+        }
+        return user;
     }
 
     // 보영 (회원정보상세)
@@ -205,13 +215,7 @@ public class AdminController {
         return "redirect:admin";
     }
 
-    //    페이징 데이터 ajax로 넘기는거
-    @RequestMapping("/pagination")
-    @ResponseBody
-    public List<UserVo> getUserData() {
-        List<UserVo> userList = ud.selectAll();
-        return userList;
-    }
+
 
 }
 

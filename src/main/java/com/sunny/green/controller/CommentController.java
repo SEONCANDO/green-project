@@ -4,6 +4,7 @@ import com.sunny.green.dao.CommentDao;
 import com.sunny.green.vo.CommentVo;
 import com.sunny.green.vo.UserVo;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,7 +16,6 @@ import java.util.List;
 
 
 @Controller
-@RequiredArgsConstructor
 public class CommentController {
 
 
@@ -50,6 +50,8 @@ public class CommentController {
     public String boardDetail(CommentVo commentVo, Model model, HttpSession session) {
         CommentVo com = (CommentVo) session.getAttribute("com_num");
         model.addAttribute("com_num", com);
+        return null;
+    }
 
     @GetMapping("/loadCommentList")
     public String selectAllComment(CommentVo commentVo, UserVo user, Model model, HttpSession session) {
