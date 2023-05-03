@@ -133,7 +133,7 @@ public class AdminController {
         log.info("번호 :" + user_id);
         int deleteUser = ud.deleteId(user_id);
         log.info(deleteUser);
-        return "redirect:admin/user2";
+        return "redirect:user2";
     }
 
 
