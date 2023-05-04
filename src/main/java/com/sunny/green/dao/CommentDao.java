@@ -9,9 +9,11 @@ import java.util.List;
 @Repository
 public interface CommentDao {
     public int insertComment(CommentVo commentVo);
-    public List<CommentVo> selectAllComment();
-    public int getCommentTotal(int com_num);
+    public List<CommentVo> selectAllComment(int board_num);
+
+    public int commentTotal(int board_num);
     public int updateComment(CommentVo commentVo);
     public int deleteComment(int com_num);
-
+    public CommentVo selectComment(int com_num);
+    public int updateComNum();
 }

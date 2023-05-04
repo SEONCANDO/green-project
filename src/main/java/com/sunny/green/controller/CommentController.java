@@ -4,65 +4,23 @@ import com.sunny.green.dao.CommentDao;
 import com.sunny.green.vo.CommentVo;
 import com.sunny.green.vo.UserVo;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
-import java.util.List;
 
 
 @Controller
 @RequiredArgsConstructor
+@Log4j2
 public class CommentController {
 
-
-    @Autowired
-    private CommentDao cd;
-
-    public CommentController(CommentDao cd) {
-        this.cd = cd;
-    }
-
-//    @PostMapping("/board/comment/write")
-//    private String insertComment(@RequestParam("com_num")int com_num,
-//                                 @RequestParam("com_content") String com_content) throws Exception{
-//        CommentVo commentVo = new CommentVo();
-//        commentVo.setCom_content(com_content);
-//        commentVo.setCom_num(com_num);
-//        cd.insertComment(commentVo);
-//        String redirect_url = "redirect:/boardDetail?board_num="+Integer.toString(com_num);
-//        return redirect_url;
-//    }
-//
-//    @GetMapping("/selectAllComment")
-//    private int selectAllComment(@RequestParam("com_num") int com_num, Model model, CommentVo commentVo) throws Exception{
-//        CommentVo com = new CommentVo();
-//        com.setCom_num(com_num);
-//        model.addAttribute("com_num", com);
-//        return cd.insertComment(commentVo);
-//    }
-//---------------
-
-    @GetMapping("/selectAllComment")
-    public String boardDetail(CommentVo commentVo, Model model, HttpSession session) {
-        CommentVo com = (CommentVo) session.getAttribute("com_num");
-        model.addAttribute("com_num", com);
-
-    @GetMapping("/loadCommentList")
-    public String selectAllComment(CommentVo commentVo, UserVo user, Model model, HttpSession session) {
-        CommentVo com = (CommentVo) session.getAttribute("comment");
-        model.addAttribute("comment", commentVo);
-        model.addAttribute("user", user);
-        List<CommentVo> bbs = cd.selectAllComment();
-        UserVo userVo = (UserVo) session.getAttribute("user");
-        return "bbs/boardDetail";
-
-    }
-
+    private final CommentDao cd;
+    
+    // 댓글 입력
     @PostMapping("insertComment.do")
+    @ResponseBody
     public void postComment(CommentVo commentVo, HttpSession session)  {
         System.out.println("commentVo1>>>>>"+commentVo);
 
@@ -73,8 +31,28 @@ public class CommentController {
         }
         System.out.println("commentVo2>>>>>"+commentVo);
         int insertResult = cd.insertComment(commentVo);
-//        String redirect_url = "redirect:/boardDetail?board_num="+Integer.toString(com_num);
-//        return "bbs/boardDetail";
+
+    }
+    
+    // 댓글 수정
+    @PostMapping("/updateComment.do")
+    @ResponseBody
+    public void updateComment(@RequestParam("data-com-num") int com_num) {
+        log.info("댓글값" + com_num);
+        CommentVo comment = cd.selectComment(com_num);
+        int str = cd.updateComment(comment);
+        log.info("코멘트 내용 :" + comment);
+        log.info("댓글 수정>>>>>"+str);
+    }
+    
+    // 댓글 삭제
+    @GetMapping("deleteComment.do")
+    @ResponseBody
+    public void deleteComment(int com_num) {
+        int str = cd.deleteComment(com_num);
+        System.out.println("댓글 삭제>>>>>"+str);
+        log.info("정보값 " + com_num);
+//        int str1 = cd.updateComNum();
     }
 
 }
