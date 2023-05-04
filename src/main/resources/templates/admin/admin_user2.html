@@ -103,10 +103,10 @@
 
       //페이징처리 ----
       let totalPage = Math.ceil(content.length / itemsPerPage);  // 총 페이지 수
-      // pageLink(현재페이지, 전체페이지, 호출할 함수이름)  // --------- 해결해야함 !!
+      // pageLink(현재페이지, 전체페이지, 호출할 함수이름)
       let htmlStr = pageLink(currentPage, totalPage, "getData");
       // common.js - pageLink
-      $("#div_paginate").html(htmlStr);  // --------- 해결해야함 !!
+      $("#div_paginate").html(htmlStr);
 
       $('#t_body').empty();
       // 데이터를 테이블에 추가
@@ -114,7 +114,7 @@
         if (i >= startIndex && i < endIndex) {
           userTable.append(
                   '<tr>' +
-                  '<td>' + item.user_id + '</td>' +
+                  '<td><a href="/admin/modify?user_id=' + item.user_id + '">' + item.user_id + '</a></td>' +
                   '<td>' + item.user_pass + '</td>' +
                   '<td>' + item.user_name + '</td>' +
                   '<td>' + item.user_email + '</td>' +
@@ -158,7 +158,7 @@
                  name="searchValue">
         </div>
         <div class="col-lg-1 col-md-3 col-sm-12 p-0">
-          <button class="btn btn-base submitbtn">
+          <button class="btn btn-base submitbtn"  name="search">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                  viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                  stroke-linecap="round" stroke-linejoin="round"
@@ -214,10 +214,8 @@
     </ul>
   </nav>
   <!----- 페이징 ----->
-<script>
 
-
-
+  <script>
 
   $('.submitbtn').click(function () {
     let type = $('select[name=searchType]').val();
@@ -232,7 +230,6 @@
       success: function (data) { // 데이터를 가져온 후 실행할 콜백 함수
         console.log(data); // 데이터 확인용
         content = data;
-        console.log(data);
         getData(1);
       },
       error: function (e) {

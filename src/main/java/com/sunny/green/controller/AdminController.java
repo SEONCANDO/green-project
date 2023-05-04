@@ -1,6 +1,7 @@
 package com.sunny.green.controller;
 
 import com.sunny.green.dao.AdminDao;
+import com.sunny.green.dao.PickupDao;
 import com.sunny.green.dao.UserDao;
 import com.sunny.green.vo.*;
 import lombok.RequiredArgsConstructor;
@@ -25,8 +26,8 @@ import java.util.UUID;
 public class AdminController {
 
     private final UserDao ud;
-
     private final AdminDao ad;
+    private final PickupDao pd;
 
 
     @GetMapping("/admin")
@@ -62,22 +63,13 @@ public class AdminController {
     }
 
 
-    @GetMapping("/admin/reservation")
-    public String adminRe() {
-        return "admin/admin_reservation";
-    }
+
 
     @GetMapping("/admin/user1")
     public String adminUs1() {
         return "admin/admin_user1";
     }
 
-
-    public String getUserList(Model model) {
-        List<UserVo> user = ud.selectAll();
-        model.addAttribute("user", user);
-        return "admin/admin_user2";
-    }
     // 검색
     @GetMapping("/admin/user2")
     public String getUserList(Model model, PageVo search, @RequestParam(required = false) String searchType, @RequestParam(required = false) String searchValue) throws Exception {
@@ -100,6 +92,7 @@ public class AdminController {
         } else {
             user = ud.selectAll2(search, searchType, searchValue);
         }
+        System.out.println(">>>>>>>>>>>>>"+user);
         return user;
     }
 
@@ -129,7 +122,7 @@ public class AdminController {
         log.info("번호 :" + user_id);
         int deleteUser = ud.deleteId(user_id);
         log.info(deleteUser);
-        return "redirect:admin/user2";
+        return "redirect:user2";
     }
 
 
@@ -213,6 +206,47 @@ public class AdminController {
             e.printStackTrace();
         }
         return "redirect:admin";
+    }
+//   ---------------------------------- rs
+
+
+    // rs_검색 및 데이터 불러오기
+    @GetMapping("/admin/reservation")
+    public String getPickupList(Model model, PageVo search, @RequestParam(required = false) String searchType_rs, @RequestParam(required = false) String searchValue_rs) throws Exception {
+        List<PickupDetailVo> pickup;
+        if (searchType_rs == null || searchValue_rs == null) {
+            pickup = pd.rsList();
+            log.info(pickup);
+        } else {
+            pickup = pd.rsList2(search, searchType_rs, searchValue_rs);
+            log.info(pickup);
+        }
+        model.addAttribute("pickup", pickup);
+        return "admin/admin_reservation";
+    }
+    // rs_페잉징
+    @PostMapping("/pagination/rs_page")
+    @ResponseBody
+    public List<PickupDetailVo> getPickupInfo(PageVo search, @RequestParam(required = false) String searchType_rs, @RequestParam(required = false) String searchValue_rs) {
+        List<PickupDetailVo> pickup;
+        if (searchType_rs == null || searchValue_rs == null) {
+            pickup = pd.rsList();
+            log.info("제발 되주십시오" + pickup);
+        } else {
+            pickup = pd.rsList2(search, searchType_rs, searchValue_rs);
+            log.info("되나?1" + pickup);
+        }
+        System.out.println(">>>>>>>>>>>>>"+pickup);
+        return pickup;
+    }
+
+    // 예약정보상세
+    @GetMapping("/rs_info")
+    public String rsDetail(Model model, PickupDetailVo  pickupDetailVo ) {
+        PickupDetailVo rs_info = pd.rs_info(pickupDetailVo.getPu_no(),pickupDetailVo.getPu_address_no());
+        model.addAttribute("rs_info", rs_info);
+        log.info(rs_info);
+        return "admin/admin_rs_info";
     }
 
 

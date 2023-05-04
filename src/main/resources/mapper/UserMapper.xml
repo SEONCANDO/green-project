@@ -83,5 +83,8 @@
     </select>
 
 
+    <select id="selectAll1" resultType="com.sunny.green.vo.UserVo">
+        select * from user where user_id = #{user_id}
+    </select>
 </mapper>
 
