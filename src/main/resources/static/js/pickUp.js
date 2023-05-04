@@ -7,49 +7,6 @@ $(function loadJQuery() {
     document.getElementsByTagName("head")[0].appendChild(oScript);
 })
 
-// const userInfoRadio = document.querySelector('input[value="기존 고객정보"]'); // select the "기존 고객정보" radio button
-// const newInfoRadio = document.querySelector('input[value="새로운 정보 입력"]'); // select the "새로운 정보 입력" radio button
-//
-// const nameInput = document.getElementById('pickup_name');
-// const pickup_tel = document.getElementById('pickup_tel');
-// const pickup_zip_code = document.getElementById('pickup_zip_code');
-// const pickup_address1 = document.getElementById('pickup_address1');
-// const pickup_address2 = document.getElementById('pickup_address2');
-// const pickup_address3 = document.getElementById('pickup_address3');
-// const pickup_address4 = document.getElementById('pickup_address4');
-//
-//
-// var user = [[${user}]];
-// console.log(user); // user 객체 확인
-//
-//
-//
-// newInfoRadio.addEventListener('change', () => {
-//     if (newInfoRadio.checked) {
-//         nameInput.value = '';
-//         pickup_tel.value = '';
-//         pickup_zip_code.value = '';
-//         pickup_address1.value = '';
-//         pickup_address2.value = '';
-//         pickup_address3.value = '';
-//         pickup_address4.value = '';
-//     }
-// });
-//
-//
-// userInfoRadio.addEventListener('change', () => {
-//     if (userInfoRadio.checked) {
-//         nameInput.value = user.user_name;
-//         pickup_tel.value = user.user_tel;
-//         pickup_zip_code.value = user.zip_code;
-//         pickup_address1.value = user.address1;
-//         pickup_address2.value = user.address2;
-//         pickup_address3.value = user.address3;
-//         pickup_address4.value = user.address4;
-//     }
-// });
-
-
 // 주소 검색기능
 jQuery.noConflict(
     function sample4_execDaumPostcode() {

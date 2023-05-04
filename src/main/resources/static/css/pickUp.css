@@ -120,7 +120,6 @@
 /* 사용자 약관 text */
 #text_checkBox {
     font-size: 30px;
-    margin-left: 10px;
     font-weight: 600;
     color: #272785;
 }
@@ -216,7 +215,8 @@
     list-style: none;
 }
 #img_pickup_preview > li > img{
-    width: 150px;
+    max-width: 150px;
+    max-height: 150px;
 }
 /* 개인정보 이미지 upload preview 삭제버튼 */
 .delBtn {
@@ -229,8 +229,8 @@
     padding: 0;
     border: none;
     border-radius: 5px;
-    top: -46px;
-    left: -36px;
+    top: -52px;
+    left: -31px;
     position: relative;
 }
 
@@ -238,6 +238,7 @@
 .text_memo {
     width: 750px;
     height: 200px;
+    font-size: 20px;
 }
 
 /* pickup page 저장 및 이동 */
@@ -257,7 +258,7 @@
 }
 /* page 이동 */
 .box_pageMove > a {
-    width: 100px;
+    width: 135px;
     height: 55px;
     font-size: 29px;
     border-radius: 15px;

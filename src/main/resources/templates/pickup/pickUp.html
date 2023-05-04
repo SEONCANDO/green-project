@@ -49,10 +49,10 @@
         <!--   개인정보 동의   -->
         <div class="container" style="margin-bottom: 10px;">
           <div class="box_checkBox">
-            <div style="display:flex; align-items: center;">
+            <div style="display:flex; align-items: center; margin-right: 10px;">
               <input id="checkBox_colPersonInfo" type="checkbox" name="permission_check"/>
             </div>
-            <label id="text_checkBox" for="checkBox_colPersonInfo">개인정보 제공 동의</label>
+            <div id="text_checkBox">개인정보 제공 동의</div>
             <div id="text_checkBox2">(필수)</div>
           </div>
         </div>
@@ -184,7 +184,7 @@
                   </td>
                   <td class="col-10" style="border: 1px solid #c1baba; padding: 10px; font-family: NanumBarunGothic, serif;">
                     <div style="display:flex; margin-left: 20px;">
-                      <span>지정일:
+                      <span style="margin-right: 7px;">지정일:
                         <input type="text" id="myDateInput" name="pickup_day">
                       </span>
                       <span id="text_insertDayOfWeek">(-)</span>
@@ -199,7 +199,7 @@
                   </td>
                   <td class="col-10" style="border: 1px solid #c1baba; padding: 10px; font-family: NanumBarunGothic, serif;">
                       <input name="pickup_img" type="file" class="img_pickup_upload" accept="image/*" required multiple />
-                    <div>
+                    <div style="height: 163px; margin-top: 10px;">
                       <ul id="img_pickup_preview"></ul>
                     </div>
                   </td>

@@ -32,5 +32,8 @@
     <update id="pickupImgUpdate">
         UPDATE pickup_img set pu_no = #{pu_no} where pu_img_no = #{pu_img_no}
     </update>
+    <select id="pickupImgView" resultType="com.sunny.green.vo.PickupImgVo">
+        SELECT * from pickup_img where pu_img_no = #{pu_img_no};
+    </select>
 
 </mapper>
