@@ -211,12 +211,17 @@
 #img_pickup_preview {
     height: 120px;
     display: flex;
-    gap: 10px;
+    gap: 15px;
     list-style: none;
 }
+
+#img_pickup_preview > li{
+    width: 142px;
+    position: relative;
+}
+
 #img_pickup_preview > li > img{
-    max-width: 150px;
-    max-height: 150px;
+    width: 100% !important;
 }
 /* 개인정보 이미지 upload preview 삭제버튼 */
 .delBtn {
@@ -229,9 +234,9 @@
     padding: 0;
     border: none;
     border-radius: 5px;
-    top: -52px;
-    left: -31px;
-    position: relative;
+    top: 0;
+    right: 15px;
+    position: absolute;
 }
 
 /* 개인정보 메모 */
