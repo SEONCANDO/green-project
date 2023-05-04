@@ -6,12 +6,12 @@
 
     <!-- 댓글 리스트 -->
     <select id="selectAllComment" resultType="com.sunny.green.vo.CommentVo">
-        select * from comment where com_num = #{com_num}
+        select * from comment where board_num = #{board_num}
     </select>
 
     <!-- 댓글 수 -->
-    <select id="getCommentTotal" resultType="int">
-        select count(*) from comment where com_num = #{com_num}
+    <select id="CommentTotal" resultType="int">
+        select count(*) from comment where board_num = #{board_num}
     </select>
 
     <!-- 댓글 등록 -->
@@ -19,8 +19,15 @@
         insert into comment(user_id, com_content, com_date, board_num) values (#{user_id}, #{com_content}, NOW(), #{board_num})
     </insert>
 
+    <!-- 특정 댓글 -->
+    <select id="selectBoard" resultType="com.sunny.green.vo.CommentVo">
+        select *
+        from comment
+        where com_num = #{com_num}
+    </select>
+
     <!-- 댓글 수정-->
-    <update id="updateComment">
+    <update id="updateComment" useGeneratedKeys="true" keyProperty="com_num">
         update comment
         set com_content = #{com_content}
         where com_num = #{com_num}

@@ -5,15 +5,15 @@ import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Map;
 
 @Mapper
 @Repository
 public interface PickupDao {
 
-
     public int pickupAddressSave(PickupAddressVo pickupAddressVo);
     public int pickupInfoSave(PickupInfoVo pickupInfoVo);
-    public int pickupCategorySave(PickupCategoryVo pickupCategoryVo);
+    public int pickupCategorySave(PickupCategoryVo items);
     public int pickupImgSave(PickupImgVo pickupImgVo);
 
 
@@ -26,5 +26,7 @@ public interface PickupDao {
     // rs_info 상세정보 --- 예약자 관련 table 전체 불러옴
     public PickupDetailVo rs_info(int pu_no,int pu_address_no);
 
+    public int pickupImgUpdate(PickupImgVo pickupImgVo);
+    public PickupImgVo pickupImgView(Integer pu_no);
 
 }
