@@ -243,7 +243,7 @@ public class UserController {
     @PostMapping("/uploadProfile")
     public String pro4(ProductVo productVo, @RequestParam("file") MultipartFile imageFile, HttpSession session) {
         String fileName = imageFile.getOriginalFilename(); // 파일 이름 추출
-        String uploadPath = "/home/ubuntu/greentopia/img/profile/"; // 업로드 디렉토리 경로
+        String uploadPath = "src/main/resources/static/img/profile/"; // 업로드 디렉토리 경로
         String filePath = uploadPath + fileName; // 저장될 파일 경로
         String uuid = UUID.randomUUID().toString();
         String realPath = uploadPath + uuid + fileName;
@@ -268,7 +268,7 @@ public class UserController {
     @GetMapping("/img/profile/{img_save_name}")
     @ResponseBody
     public ResponseEntity<Resource> getImage(@PathVariable("img_save_name") String imgSaveName) throws IOException {
-        Resource resource = new FileSystemResource("/home/ubuntu/greentopia/img/profile/" + imgSaveName);
+        Resource resource = new FileSystemResource("src/main/resources/static/img/profile/" + imgSaveName);
         return ResponseEntity.ok().contentType(MediaType.IMAGE_JPEG).body(resource);
     }
 

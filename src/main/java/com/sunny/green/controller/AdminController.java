@@ -6,12 +6,14 @@ import com.sunny.green.vo.*;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.FileSystemResource;
+import org.springframework.core.io.Resource;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpSession;
@@ -74,12 +76,13 @@ public class AdminController {
         return "admin/admin_user1";
     }
 
+
     public String getUserList(Model model) {
         List<UserVo> user = ud.selectAll();
         model.addAttribute("user", user);
         return "admin/admin_user2";
     }
-
+    // 검색
     @GetMapping("/admin/user2")
     public String getUserList(Model model, PageVo search, @RequestParam(required = false) String searchType, @RequestParam(required = false) String searchValue) throws Exception {
         List<UserVo> user;
@@ -90,6 +93,18 @@ public class AdminController {
         }
         model.addAttribute("user", user);
         return "admin/admin_user2";
+    }
+
+    @PostMapping("/pagination")
+    @ResponseBody
+    public List<UserVo> getUserData(PageVo search, @RequestParam(required = false) String searchType, @RequestParam(required = false) String searchValue) {
+        List<UserVo> user;
+        if (searchType == null || searchValue == null) {
+            user = ud.selectAll();
+        } else {
+            user = ud.selectAll2(search, searchType, searchValue);
+        }
+        return user;
     }
 
     // 보영 (회원정보상세)
@@ -112,13 +127,15 @@ public class AdminController {
         return "alert";
     }
 
+
     @GetMapping("admin/delete")
     public String deleteUser(@RequestParam("user_id") String user_id) {
         log.info("번호 :" + user_id);
         int deleteUser = ud.deleteId(user_id);
         log.info(deleteUser);
-        return "redirect:admin/user2";
+        return "redirect:user2";
     }
+
 
     @GetMapping("/admin/bbs1")
     public String bbs1() {
@@ -178,7 +195,7 @@ public class AdminController {
     @PostMapping("/product3")
     public String pro4(ProductVo productVo, @RequestParam("image") MultipartFile imageFile) {
         String fileName = imageFile.getOriginalFilename(); // 파일 이름 추출
-        String uploadPath = "/home/ubuntu/greentopia/img/product/"; // 업로드 디렉토리 경로
+        String uploadPath = "src/main/resources/static/img/product/"; // 업로드 디렉토리 경로
         String filePath = uploadPath + fileName; // 저장될 파일 경로
         String uuid = UUID.randomUUID().toString();
         String realPath = uploadPath + uuid + fileName;
@@ -200,6 +217,13 @@ public class AdminController {
             e.printStackTrace();
         }
         return "redirect:admin";
+    }
+
+    @GetMapping("/img/product/{img_save_name}")
+    @ResponseBody
+    public ResponseEntity<Resource> getImage(@PathVariable("img_save_name") String imgSaveName) throws IOException {
+        Resource resource = new FileSystemResource("src/main/resources/static/img/product/" + imgSaveName);
+        return ResponseEntity.ok().contentType(MediaType.IMAGE_JPEG).body(resource);
     }
 
 }
