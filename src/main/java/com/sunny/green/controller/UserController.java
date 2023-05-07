@@ -226,7 +226,7 @@ public class UserController {
             mo.addAttribute("user", user1);
             ProfileImgVo profileImgVo = pid.selectProfileImg(userDB.getUser_id());
             mo.addAttribute("profileImgVo", profileImgVo);
-            return "/myPage/greenPoint";
+            return "myPage/greenPoint";
         }
 
         return "alert";
