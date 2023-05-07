@@ -36,4 +36,13 @@
         where notice_num = #{notice_num}
     </delete>
 
+    <!-- 번호 자동 조정 -->
+    <update id="updateNoticeNum">
+        <selectKey keyProperty="notice_num" order="BEFORE">
+            SELECT @num := 0
+        </selectKey>
+        UPDATE notice, (SELECT @num := 0) r
+        SET notice.notice_num = (@num := @num + 1)
+    </update>
+
 </mapper>

@@ -25,8 +25,11 @@ public class CommentController {
 
     @PostMapping("insertComment.do")
     @ResponseBody
-    public void postComment(CommentVo commentVo, HttpSession session) {
-        System.out.println("commentVo1>>>>>" + commentVo);
+
+    public void postComment(CommentVo commentVo, HttpSession session)  {
+        System.out.println("commentVo1>>>>>"+commentVo);
+//        cd.updateComNum();
+
 
         if (session.getAttribute("user") != null) {
             UserVo user = (UserVo) session.getAttribute("user");
@@ -38,16 +41,6 @@ public class CommentController {
     }
 
     // 댓글 수정
-//    @PostMapping("/updateComment.do")
-//    @ResponseBody
-//    public void updateComment(CommentVo commentVo) {
-//        log.info("댓글값" + commentVo.getCom_num() );
-//        CommentVo comment = cd.selectComment(commentVo.getCom_num());
-//        int str = cd.updateComment(comment);
-//        log.info("코멘트 내용 :" + comment);
-//        log.info("댓글 수정>>>>>"+str);
-//    }
-
     @PostMapping("/updateComment.do")
     @ResponseBody
     public void updateComment(CommentVo commentVo) {
