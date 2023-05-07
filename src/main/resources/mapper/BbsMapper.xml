@@ -45,4 +45,5 @@
         UPDATE board, (SELECT @num := 0) r
         SET board.board_num = (@num := @num + 1)
     </update>
+
 </mapper>

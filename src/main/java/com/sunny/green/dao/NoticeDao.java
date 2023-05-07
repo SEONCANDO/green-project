@@ -18,5 +18,7 @@ public interface NoticeDao {
 
     public int updateNotice(NoticeVo notice);
 
-    public int deleteBoard(int notice_num);
+    public int deleteNotice(int notice_num);
+
+    public int updateNoticeNum();
 }

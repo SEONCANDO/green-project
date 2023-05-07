@@ -27,7 +27,7 @@ public class BoardController {
 
     private final CommentDao cd;
 
-    // Q&A 목록
+    // 목록
     @GetMapping("/board")
     public String index(Model model) {
         List<BbsVo> bbs = bd.selectBoardAll();
@@ -91,7 +91,7 @@ public class BoardController {
 
     // Q&A 글 수정
     @PostMapping("/updateBoard2")
-    public String updateBoard2(BbsVo bbsVo) {
+    public String updateBoard2(BbsVo bbsVo, Model model) {
         log.info("보드값" + bbsVo.getBoard_num() );
         BbsVo bbs = bd.selectBoard(bbsVo.getBoard_num());
         log.info(bbs);
