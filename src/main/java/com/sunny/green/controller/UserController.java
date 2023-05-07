@@ -27,10 +27,10 @@ import java.util.UUID;
 @Log4j2
 public class UserController {
 
-    private  final UserDao ud;
+    private final UserDao ud;
 
 
-    private  final AdminDao ad;
+    private final AdminDao ad;
 
 
     private final ExchangeDao ed;
@@ -270,6 +270,21 @@ public class UserController {
     public ResponseEntity<Resource> getImage(@PathVariable("img_save_name") String imgSaveName) throws IOException {
         Resource resource = new FileSystemResource("src/main/resources/static/img/profile/" + imgSaveName);
         return ResponseEntity.ok().contentType(MediaType.IMAGE_JPEG).body(resource);
+    }
+
+    @GetMapping("/pokemon")
+    public String testadmin() {
+        for (int i = 0; i < 100; i++) {
+            UserVo userVo = UserVo.builder().
+                    user_id("begood" + i)
+                    .user_pass("1234")
+                    .user_name("계정" + i)
+                    .user_email("d@c.com")
+                    .user_tel("01012345678")
+                    .build();
+            ud.joinUser(userVo);
+        }
+        return "존재감 있음";
     }
 
 }
