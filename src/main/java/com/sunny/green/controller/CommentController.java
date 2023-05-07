@@ -4,7 +4,9 @@ import com.sunny.green.dao.CommentDao;
 import com.sunny.green.vo.CommentVo;
 import com.sunny.green.vo.UserVo;
 import lombok.RequiredArgsConstructor;
+
 import lombok.extern.log4j.Log4j2;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,7 +20,7 @@ public class CommentController {
 
     private final CommentDao cd;
 
-    
+
     // 댓글 입력
 
     @PostMapping("insertComment.do")
@@ -31,12 +33,10 @@ public class CommentController {
             String userId = user.getUser_id();
             commentVo.setUser_id(userId);
         }
-        System.out.println("commentVo2>>>>>"+commentVo);
+        System.out.println("commentVo2>>>>>" + commentVo);
         int insertResult = cd.insertComment(commentVo);
 
-    }
 
-    
     // 댓글 수정
 //    @PostMapping("/updateComment.do")
 //    @ResponseBody
@@ -72,4 +72,5 @@ public class CommentController {
 //        int str1 = cd.updateComNum();
   
     }
+
 }
