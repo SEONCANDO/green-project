@@ -45,4 +45,25 @@
 <!--        UPDATE board, (SELECT @num := 0) r-->
 <!--        SET board.board_num = (@num := @num + 1)-->
 <!--    </update>-->
+
+      <select id="selectAllBoard" resultType="com.sunny.green.vo.BbsVo">
+          select * from board;
+      </select>
+
+    <!--    rsList 검색  -->
+    <select id="searchBoard" resultType="com.sunny.green.vo.BbsVo">
+        SELECT *
+        FROM bbs;
+        <where>
+            <if test="searchType=='board_title' and keyword != null and keyword != '' ">
+                AND board_title like CONCAT('%', #{keyword}, '%')
+            </if>
+            <if test="searchType=='user_id' and keyword != null and keyword != '' ">
+                AND user_id like CONCAT('%', #{keyword}, '%')
+            </if>
+            <if test="searchType=='board_date' and keyword != null and keyword != '' ">
+                AND board_date like CONCAT('%', #{keyword}, '%')
+            </if>
+        </where>
+    </select>
 </mapper>
