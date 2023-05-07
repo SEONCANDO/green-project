@@ -221,9 +221,9 @@
                 </div>
                 <ul class="notice_list" th:each="main : ${nv}">
                     <li>
-                        <p th:utext="${main.notice_title}">
-                            <a href="#">공지1</a>
-                        </p>
+
+                        <a th:href="@{/noticeDetail(notice_num=${main.notice_num})}" th:utext="${main.notice_title}">공지1</a>
+
                         <span class="date" th:utext="${main.notice_date}">2023-03-24</span>
                     </li>
                 </ul>
