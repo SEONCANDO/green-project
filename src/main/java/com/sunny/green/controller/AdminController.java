@@ -235,10 +235,10 @@ public class AdminController {
         List<PickupDetailVo> pickup;
         if (searchType_rs == null || searchValue_rs == null) {
             pickup = pd.rsList();
-            log.info("제발 되주십시오" + pickup);
+
         } else {
             pickup = pd.rsList2(search, searchType_rs, searchValue_rs);
-            log.info("되나?1" + pickup);
+
         }
         System.out.println(">>>>>>>>>>>>>"+pickup);
         return pickup;
@@ -247,11 +247,12 @@ public class AdminController {
     // 예약정보상세
     @GetMapping("/rs_info")
     public String rsDetail(Model model, PickupDetailVo  pickupDetailVo ) {
-        PickupDetailVo rs_info = pd.rs_info(pickupDetailVo.getPu_no(),pickupDetailVo.getPu_address_no());
+        PickupDetailVo rs_info = pd.rs_info(pickupDetailVo.getPu_no());
         model.addAttribute("rs_info", rs_info);
         log.info(rs_info);
         return "admin/admin_rs_info";
     }
+
 
     @GetMapping("/img/product/{img_save_name}")
     @ResponseBody
