@@ -120,15 +120,18 @@ firstCategoryButtons.forEach(button => {
 
         secondCategoryButtons.forEach(button => button.addEventListener('click', addItem));
 
+
+
         // 추가 버튼 클릭 시 실행될 함수
-        function addItem() {
+        function addItem(event) {
             const categoryVal = event.target.value;
-            const previewCategories = document.querySelectorAll('.text_detailCategory_preview');
+            console.log(categoryVal);
+            let previewCategories = document.querySelectorAll('.text_detailCategory_preview');
             let categoryExists = false;
 
             // 이미 존재하는 값을 확인
             previewCategories.forEach(function(previewCategory) {
-                if (previewCategory.innerText === categoryVal) {
+                if (previewCategory.value === categoryVal) {
                     categoryExists = true;
                 }
             });
@@ -137,17 +140,18 @@ firstCategoryButtons.forEach(button => {
             if (!categoryExists) {
                 const newButtonHtml = `
                   <tr style="height: 65px; border-bottom: 2px solid #d5d2d2;">
-                    <td class="col-4" style="border-right: 2px solid #d5d2d2; font-family: NanumBarunGothic, serif;">
-                      <div class="text_detailCategory_preview">${categoryVal}</div>
+                    <td class="col-4" style="border-right: 2px solid #d5d2d2; font-family: NanumBarunGothic, serif; text-align: center;">
+                      <input type="text" name="categoryVal[]" class="text_detailCategory_preview" value="${categoryVal}" style="border: none" readonly>
                     </td>
                     <td class="col-4" style="border-right: 2px solid #d5d2d2; text-align: center; font-family: NanumBarunGothic, serif;">
                       <button type="button" class="minus" onclick="fnCalcCnt('minus');">
                         <div style="width: 100%; height: 100%; position: absolute; top: -20px;">-</div>
                       </button>
-                      <input type="text" class="count_category" name="item_cnt" title="수량 입력" value="1" maxlength="1">
+                      <input type="text" class="count_category" name="itemCnt[]" value="1" maxlength="1">
                       <button type="button" class="plus" onclick="fnCalcCnt('plus');">
                         <div style="width: 100%; height: 100%; position: absolute; top: -20px;">+</div>
                       </button>
+                      
                     </td>
                     <td class="col-4">
                       <div class="button_inputCategory_delete">
@@ -172,9 +176,11 @@ function fnCalcCnt(action) {
 
     if (action === 'plus') {
         count++;
+        console.log("plus>>>>>"+count);
     } else if (action === 'minus') {
         if (count > 1) { // count 값이 1 이상일 때만 감소
             count--;
+            console.log("minus>>>>>"+count);
         }
     }
 
@@ -186,15 +192,34 @@ function categoryDel() {
     $(event.target).closest('tr').remove();  // 현재 클릭된 삭제 버튼이 속한 행을 제거
 }
 
-// 다음 페이지 이동시, 수량 입력여부 확인
-function chBox() {
+
+
+// submit 버튼 클릭 이벤트
+const form = document.getElementById('myForm');
+form.addEventListener('submit', function(event) {
+    event.preventDefault();
+
     var previewRow = document.getElementById("preview_row");
     var closestRowWithChildNodes = previewRow.closest('tbody:has(>*)');
     if (closestRowWithChildNodes != null) {
-        location.href = "/pickup3";
+        const items = [];
+        const trs = document.querySelectorAll('#preview_row tr');
+        trs.forEach(function(tr) {
+            const categoryVal = tr.querySelector('.text_detailCategory_preview').value;
+            const countVal = tr.querySelector('.count_category').value;
+            items.push({ categoryVal, countVal });
+        });
+
+        // 수집한 값들을 데이터로 사용하여 다른 페이지로 전송
+        const queryParams = new URLSearchParams();
+        items.forEach(function(item) {
+            queryParams.append('categoryVal', item.categoryVal);
+            queryParams.append('countVal', item.countVal);
+        });
+
+        window.location.href = '/pickup3?' + queryParams.toString();
     } else {
         alert("카테고리를 선택해주세요.");
         return false;
     }
-}
-
+});

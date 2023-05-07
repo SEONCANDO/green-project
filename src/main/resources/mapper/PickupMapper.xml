@@ -32,5 +32,36 @@
     <update id="pickupImgUpdate">
         UPDATE pickup_img set pu_no = #{pu_no} where pu_img_no = #{pu_img_no}
     </update>
+    <select id="pickupImgView" resultType="com.sunny.green.vo.PickupImgVo">
+        SELECT * from pickup_img where pu_img_no = #{pu_img_no};
+    </select>
+
+    <!--   admin_rs 에서 모든 예약자정보를 가져옴 -->
+    <select id="rsList" resultType="com.sunny.green.vo.PickupDetailVo">
+        SELECT * FROM pickup_info;
+    </select>
+
+    <!--    rsList 검색  -->
+    <select id="rsList2" resultType="com.sunny.green.vo.PickupDetailVo">
+        SELECT *
+        FROM pickup_info;
+        <where>
+            <if test="searchType=='pu_day' and keyword != null and keyword != '' ">
+                AND pu_day like CONCAT('%', #{keyword}, '%')
+            </if>
+            <if test="searchType=='pu_date' and keyword != null and keyword != '' ">
+                AND pu_date like CONCAT('%', #{keyword}, '%')
+            </if>
+            <if test="searchType=='user_id' and keyword != null and keyword != '' ">
+                AND user_id like CONCAT('%', #{keyword}, '%')
+            </if>
+        </where>
+    </select>
+
+    <!--    예약자상세조회-->
+    <select id="rs_info" resultType="com.sunny.green.vo.PickupDetailVo">
+        SELECT * FROM pickup_info LEFT JOIN pickup_address ON pickup_info.#{pu_address_no} = pickup_address.#{pu_address_no}
+        JOIN pickup_img ON pickup_info.#{pu_no} = pickup_img.#{pu_no};
+    </select>
 
 </mapper>
