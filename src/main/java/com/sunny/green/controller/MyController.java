@@ -1,8 +1,10 @@
 package com.sunny.green.controller;
 
 import com.sunny.green.dao.ExchangeDao;
+import com.sunny.green.dao.NoticeDao;
 import com.sunny.green.dao.ProfileImgDao;
 import com.sunny.green.dao.UserDao;
+import com.sunny.green.vo.NoticeVo;
 import com.sunny.green.vo.ProductWithImgVo;
 import com.sunny.green.vo.ProfileImgVo;
 import com.sunny.green.vo.UserVo;
@@ -26,10 +28,14 @@ public class MyController {
     private final UserDao ud;
     private final ProfileImgDao pid;
 
+    private final NoticeDao nd;
+
     @GetMapping("/")
     public String index(Model mo) {
         List<ProductWithImgVo> pv = ed.selectProductAll();
+        List<NoticeVo> nv = nd.selectMainNotice();
         mo.addAttribute("pv", pv);
+        mo.addAttribute("nv", nv);
 
         return "index";
     }

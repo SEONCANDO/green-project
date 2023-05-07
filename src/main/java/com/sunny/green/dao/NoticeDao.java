@@ -21,4 +21,6 @@ public interface NoticeDao {
     public int deleteNotice(int notice_num);
 
     public int updateNoticeNum();
+
+    public List<NoticeVo> selectMainNotice();
 }

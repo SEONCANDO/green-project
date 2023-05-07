@@ -45,4 +45,8 @@
         SET notice.notice_num = (@num := @num + 1)
     </update>
 
+    <select id="selectMainNotice" resultType="com.sunny.green.vo.NoticeVo">
+        select * from notice order by notice_num desc limit 0,4;
+    </select>
+
 </mapper>
