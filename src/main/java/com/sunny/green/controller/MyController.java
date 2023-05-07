@@ -42,7 +42,9 @@ public class MyController {
     @GetMapping("/index")
     public String index1(Model mo) {
         List<ProductWithImgVo> pv = ed.selectProductAll();
+        List<NoticeVo> nv = nd.selectMainNotice();
         mo.addAttribute("pv", pv);
+        mo.addAttribute("nv", nv);
         return "index";
     }
 
