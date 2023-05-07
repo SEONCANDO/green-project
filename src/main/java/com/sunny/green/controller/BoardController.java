@@ -82,11 +82,27 @@ public class BoardController {
 
 
     // Q&A 글 수정/삭제 폼
+//    @GetMapping("/updateBoard1")
+//    public String updateBoard1(BbsVo bbsVo, Model model, int board_num, HttpSession session1) {
+//        BbsVo bbs = bd.selectBoard(bbsVo.getBoard_num());
+//        model.addAttribute("bbs", bbs);
+//        return "bbs/boardUpdate";
+//    }
+
     @GetMapping("/updateBoard1")
     public String updateBoard1(BbsVo bbsVo, Model model, int board_num, HttpSession session1) {
         BbsVo bbs = bd.selectBoard(bbsVo.getBoard_num());
         model.addAttribute("bbs", bbs);
-        return "bbs/boardUpdate";
+
+        // Check if the logged-in user is the author of the post
+        UserVo user = (UserVo) session1.getAttribute("user");
+        if (user != null && bbs.getUser_id() == user.getUser_id()) {
+            return "bbs/boardUpdate";
+        } else {
+            model.addAttribute("alert", "글 작성자만 수정할 수 있습니다.");
+            model.addAttribute("url", "/boardDetail?board_num=" + board_num);
+            return "alert";
+        }
     }
 
     // Q&A 글 수정
