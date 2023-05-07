@@ -224,7 +224,7 @@
 
                         <a th:href="@{/noticeDetail(notice_num=${main.notice_num})}" th:utext="${main.notice_title}">공지1</a>
 
-                        <span class="date" th:utext="${#temporals.format(main.notice_date, 'yyyy-MM-dd HH:mm')}">2023-03-24</span>
+                        <span class="date" th:utext="${#temporals.format(main.notice_date, 'yyyy-MM-dd')}"></span>
                     </li>
                 </ul>
             </div>
