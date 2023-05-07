@@ -60,8 +60,7 @@
 
     <!--    예약자상세조회-->
     <select id="rs_info" resultType="com.sunny.green.vo.PickupDetailVo">
-        SELECT * FROM pickup_info LEFT JOIN pickup_address ON pickup_info.#{pu_address_no} = pickup_address.#{pu_address_no}
-        JOIN pickup_img ON pickup_info.#{pu_no} = pickup_img.#{pu_no};
+        SELECT * FROM pickup_info LEFT JOIN pickup_address ON pickup_info.pu_address_no = pickup_address.pu_address_no JOIN pickup_img ON pickup_info.pu_no = pickup_img.pu_no;
     </select>
 
 </mapper>

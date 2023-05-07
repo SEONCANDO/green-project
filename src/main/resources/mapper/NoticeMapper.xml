@@ -45,4 +45,25 @@
         SET notice.notice_num = (@num := @num + 1)
     </update>
 
+    <select id="selectMainNotice" resultType="com.sunny.green.vo.NoticeVo">
+        select * from notice order by notice_num desc limit 0,4;
+    </select>
+
+    <select id="selectAllNotice" resultType="com.sunny.green.vo.NoticeVo">
+        select * from notice;
+    </select>
+
+    <select id="searchNotice" resultType="com.sunny.green.vo.NoticeVo">
+        SELECT *
+        FROM notice;
+        <where>
+            <if test="searchType=='notice_title' and keyword != null and keyword != '' ">
+                AND notice_title like CONCAT('%', #{keyword}, '%')
+            </if>
+            <if test="searchType=='user_id' and keyword != null and keyword != '' ">
+                AND user_id like CONCAT('%', #{keyword}, '%')
+            </if>
+        </where>
+    </select>
+
 </mapper>

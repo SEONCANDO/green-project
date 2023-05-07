@@ -3,6 +3,7 @@ package com.sunny.green.dao;
 import com.sunny.green.vo.AdminVo;
 import com.sunny.green.vo.BbsVo;
 import com.sunny.green.vo.CommentVo;
+import com.sunny.green.vo.PageVo;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
@@ -27,5 +28,9 @@ public interface BbsDao {
     public int deleteBoardWithComments(int board_num);
 
     public int updateBoardNum();
+
+    public List<BbsVo> selectAllBoard();
+
+    public List<BbsVo> searchBoard(PageVo search, String searchType, String keyword);
 
 }

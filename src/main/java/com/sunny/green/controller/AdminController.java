@@ -1,8 +1,6 @@
 package com.sunny.green.controller;
 
-import com.sunny.green.dao.AdminDao;
-import com.sunny.green.dao.PickupDao;
-import com.sunny.green.dao.UserDao;
+import com.sunny.green.dao.*;
 import com.sunny.green.vo.*;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
@@ -32,7 +30,8 @@ public class AdminController {
     private final UserDao ud;
     private final AdminDao ad;
     private final PickupDao pd;
-
+    private final NoticeDao nd;
+    private final BbsDao bd;
 
     @GetMapping("/admin")
     public String admin() {
@@ -129,17 +128,6 @@ public class AdminController {
         return "redirect:user2";
     }
 
-
-    @GetMapping("/admin/bbs1")
-    public String bbs1() {
-        return "admin/admin_bbs1";
-    }
-
-    @GetMapping("/admin/bbs2")
-    public String bbs2() {
-        return "admin/admin_bbs2";
-    }
-
     @GetMapping("admin/product1")
     public String pro1(Model mo) {
         List<ProductVo> product = ad.selectProAll();
@@ -213,6 +201,66 @@ public class AdminController {
     }
 //   ---------------------------------- rs
 
+    // 게시판_검색 및 데이터 불러오기
+    @GetMapping("/admin/bbs1")
+    public String getNoticeList(Model model, PageVo search ,@RequestParam(required = false) String searchType_rs ,@RequestParam(required = false) String searchValue_rs) throws Exception {
+        List<NoticeVo> noticeVos;
+        if (searchType_rs == null || searchValue_rs == null) {
+            noticeVos = nd.selectAllNotice();
+            log.info(noticeVos);
+        } else {
+            noticeVos = nd.searchNotice(search, searchType_rs, searchValue_rs);
+            log.info(noticeVos);
+        }
+        model.addAttribute("noticeVos", noticeVos);
+        return "admin/admin_bbs1";
+    }
+
+    @PostMapping("/pagination/notice_page")
+    @ResponseBody
+    public List<NoticeVo> getNoticeInfo(PageVo search, @RequestParam(required = false) String searchType_rs, @RequestParam(required = false) String searchValue_rs) {
+        List<NoticeVo> noticeVos;
+        if (searchType_rs == null || searchValue_rs == null) {
+            noticeVos = nd.selectAllNotice();
+
+        } else {
+            noticeVos = nd.searchNotice(search, searchType_rs, searchValue_rs);
+            log.info(noticeVos);
+        }
+        log.info(">>>>>>>>>>>>>"+noticeVos);
+        return noticeVos;
+    }
+
+    // rs_검색 및 데이터 불러오기
+    @GetMapping("/admin/bbs2")
+    public String getBbsList(Model model, PageVo search, @RequestParam(required = false) String searchType_rs, @RequestParam(required = false) String searchValue_rs) throws Exception {
+        List<BbsVo> bbsVos;
+        if (searchType_rs == null || searchValue_rs == null) {
+            bbsVos = bd.selectAllBoard();
+            log.info(bbsVos);
+        } else {
+            bbsVos = bd.searchBoard(search, searchType_rs, searchValue_rs);
+            log.info(bbsVos);
+        }
+        model.addAttribute("bbsVos", bbsVos);
+        return "admin/admin_bbs2";
+    }
+    // rs_페잉징
+    @PostMapping("/pagination/board_page")
+    @ResponseBody
+    public List<BbsVo> getBbsInfo(PageVo search, @RequestParam(required = false) String searchType_rs, @RequestParam(required = false) String searchValue_rs) {
+        List<BbsVo> bbsVos;
+        if (searchType_rs == null || searchValue_rs == null) {
+            bbsVos = bd.selectAllBoard();
+            log.info(bbsVos);
+
+        } else {
+            bbsVos = bd.searchBoard(search, searchType_rs, searchValue_rs);
+            log.info(bbsVos);
+
+        }
+        return bbsVos;
+    }
 
     // rs_검색 및 데이터 불러오기
     @GetMapping("/admin/reservation")
@@ -240,7 +288,7 @@ public class AdminController {
             pickup = pd.rsList2(search, searchType_rs, searchValue_rs);
 
         }
-        System.out.println(">>>>>>>>>>>>>"+pickup);
+        log.info(">>>>>>>>>>>>>"+pickup);
         return pickup;
     }
 
