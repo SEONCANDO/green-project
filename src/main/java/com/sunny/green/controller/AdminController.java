@@ -203,28 +203,28 @@ public class AdminController {
 
     // 게시판_검색 및 데이터 불러오기
     @GetMapping("/admin/bbs1")
-    public String getNoticeList(Model model, PageVo search ,@RequestParam(required = false) String searchType_rs ,@RequestParam(required = false) String searchValue_rs) throws Exception {
+    public String getNoticeList(Model model, PageVo search ,@RequestParam(required = false) String searchType ,@RequestParam(required = false) String searchValue) throws Exception {
         List<NoticeVo> noticeVos;
-        if (searchType_rs == null || searchValue_rs == null) {
+        if (searchType == null || searchValue == null) {
             noticeVos = nd.selectAllNotice();
             log.info(noticeVos);
         } else {
-            noticeVos = nd.searchNotice(search, searchType_rs, searchValue_rs);
+            noticeVos = nd.searchNotice(search, searchType, searchValue);
             log.info(noticeVos);
         }
         model.addAttribute("noticeVos", noticeVos);
         return "admin/admin_bbs1";
     }
 
-    @PostMapping("/pagination/notice_page")
+    @PostMapping("/pagination_notice_page")
     @ResponseBody
-    public List<NoticeVo> getNoticeInfo(PageVo search, @RequestParam(required = false) String searchType_rs, @RequestParam(required = false) String searchValue_rs) {
+    public List<NoticeVo> getNoticeInfo(PageVo search, @RequestParam(required = false) String searchType, @RequestParam(required = false) String searchValue) {
         List<NoticeVo> noticeVos;
-        if (searchType_rs == null || searchValue_rs == null) {
+        if (searchType == null || searchValue == null) {
             noticeVos = nd.selectAllNotice();
 
         } else {
-            noticeVos = nd.searchNotice(search, searchType_rs, searchValue_rs);
+            noticeVos = nd.searchNotice(search, searchType, searchValue);
             log.info(noticeVos);
         }
         log.info(">>>>>>>>>>>>>"+noticeVos);
@@ -233,29 +233,29 @@ public class AdminController {
 
     // rs_검색 및 데이터 불러오기
     @GetMapping("/admin/bbs2")
-    public String getBbsList(Model model, PageVo search, @RequestParam(required = false) String searchType_rs, @RequestParam(required = false) String searchValue_rs) throws Exception {
+    public String getBbsList(Model model, PageVo search, @RequestParam(required = false) String searchType, @RequestParam(required = false) String searchValue) throws Exception {
         List<BbsVo> bbsVos;
-        if (searchType_rs == null || searchValue_rs == null) {
+        if (searchType == null || searchValue == null) {
             bbsVos = bd.selectAllBoard();
             log.info(bbsVos);
         } else {
-            bbsVos = bd.searchBoard(search, searchType_rs, searchValue_rs);
+            bbsVos = bd.searchBoard(search, searchType, searchValue);
             log.info(bbsVos);
         }
         model.addAttribute("bbsVos", bbsVos);
         return "admin/admin_bbs2";
     }
     // rs_페잉징
-    @PostMapping("/pagination/board_page")
+    @PostMapping("/pagination_board_page")
     @ResponseBody
-    public List<BbsVo> getBbsInfo(PageVo search, @RequestParam(required = false) String searchType_rs, @RequestParam(required = false) String searchValue_rs) {
+    public List<BbsVo> getBbsInfo(PageVo search, @RequestParam(required = false) String searchType, @RequestParam(required = false) String searchValue) {
         List<BbsVo> bbsVos;
-        if (searchType_rs == null || searchValue_rs == null) {
+        if (searchType == null || searchValue == null) {
             bbsVos = bd.selectAllBoard();
             log.info(bbsVos);
 
         } else {
-            bbsVos = bd.searchBoard(search, searchType_rs, searchValue_rs);
+            bbsVos = bd.searchBoard(search, searchType, searchValue);
             log.info(bbsVos);
 
         }
@@ -277,7 +277,7 @@ public class AdminController {
         return "admin/admin_reservation";
     }
     // rs_페잉징
-    @PostMapping("/pagination/rs_page")
+    @PostMapping("/pagination_rs_page")
     @ResponseBody
     public List<PickupDetailVo> getPickupInfo(PageVo search, @RequestParam(required = false) String searchType_rs, @RequestParam(required = false) String searchValue_rs) {
         List<PickupDetailVo> pickup;

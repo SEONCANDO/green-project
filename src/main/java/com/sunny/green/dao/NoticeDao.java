@@ -27,5 +27,5 @@ public interface NoticeDao {
 
     public List<NoticeVo> selectAllNotice();
 
-    public List<NoticeVo> searchNotice(PageVo search, String searchType, String keyword);
+    public List<NoticeVo> searchNotice(PageVo search, String searchType, String searchValue);
 }

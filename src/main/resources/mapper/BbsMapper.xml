@@ -72,16 +72,13 @@
     <!--    rsList 검색  -->
     <select id="searchBoard" resultType="com.sunny.green.vo.BbsVo">
         SELECT *
-        FROM bbs;
+        FROM board
         <where>
-            <if test="searchType=='board_title' and keyword != null and keyword != '' ">
-                AND board_title like CONCAT('%', #{keyword}, '%')
+            <if test="searchType=='board_title' and searchValue != null and searchValue != '' ">
+                AND board_title like CONCAT('%', #{searchValue}, '%')
             </if>
-            <if test="searchType=='user_id' and keyword != null and keyword != '' ">
-                AND user_id like CONCAT('%', #{keyword}, '%')
-            </if>
-            <if test="searchType=='board_date' and keyword != null and keyword != '' ">
-                AND board_date like CONCAT('%', #{keyword}, '%')
+            <if test="searchType=='user_id' and searchValue != null and searchValue != '' ">
+                AND user_id like CONCAT('%', #{searchValue}, '%')
             </if>
         </where>
     </select>

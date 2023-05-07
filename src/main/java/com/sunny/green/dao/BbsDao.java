@@ -31,6 +31,6 @@ public interface BbsDao {
 
     public List<BbsVo> selectAllBoard();
 
-    public List<BbsVo> searchBoard(PageVo search, String searchType, String keyword);
+    public List<BbsVo> searchBoard(PageVo search, String searchType, String searchValue);
 
 }

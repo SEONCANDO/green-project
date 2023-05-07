@@ -44,16 +44,16 @@
     <!--    rsList 검색  -->
     <select id="rsList2" resultType="com.sunny.green.vo.PickupDetailVo">
         SELECT *
-        FROM pickup_info;
+        FROM pickup_info
         <where>
-            <if test="searchType=='pu_day' and keyword != null and keyword != '' ">
-                AND pu_day like CONCAT('%', #{keyword}, '%')
+            <if test="searchType_rs=='pu_day' and searchValue_rs != null and searchValue_rs != '' ">
+                AND pu_day like CONCAT('%', #{searchValue_rs}, '%')
             </if>
-            <if test="searchType=='pu_date' and keyword != null and keyword != '' ">
-                AND pu_date like CONCAT('%', #{keyword}, '%')
+            <if test="searchType_rs=='pu_date' and searchValue_rs != null and searchValue_rs != '' ">
+                AND pu_date like CONCAT('%', #{searchValue_rs}, '%')
             </if>
-            <if test="searchType=='user_id' and keyword != null and keyword != '' ">
-                AND user_id like CONCAT('%', #{keyword}, '%')
+            <if test="searchType_rs=='user_id' and searchValue_rs != null and searchValue_rs != '' ">
+                AND user_id like CONCAT('%', #{searchValue_rs}, '%')
             </if>
         </where>
     </select>
