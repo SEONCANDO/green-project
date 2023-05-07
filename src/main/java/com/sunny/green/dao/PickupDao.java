@@ -28,4 +28,5 @@ public interface PickupDao {
     public int pickupImgUpdate(PickupImgVo pickupImgVo);
     public PickupImgVo pickupImgView(Integer pu_no);
 
+    public List<PickupDetailVo> myPageReservation(String user_id);
 }

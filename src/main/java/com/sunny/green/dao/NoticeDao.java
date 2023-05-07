@@ -28,4 +28,6 @@ public interface NoticeDao {
     public List<NoticeVo> selectAllNotice();
 
     public List<NoticeVo> searchNotice(PageVo search, String searchType, String searchValue);
+
+    public List<NoticeVo> myPageNotice(String user_Id);
 }

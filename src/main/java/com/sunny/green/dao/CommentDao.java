@@ -18,4 +18,6 @@ public interface CommentDao {
     public int updateComNum();
 
     List<CommentVo> getCommentsByBoardNum(int boardNum);
+
+    List<CommentVo> myPageComment(String user_id);
 }

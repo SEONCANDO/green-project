@@ -6,6 +6,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDateTime;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -23,7 +25,7 @@ public class PickupInfoVo {
 
     private String pu_day; // 예약요청날짜
 
-    private String pu_date; // 접수날짜
+    private LocalDateTime pu_date; // 접수날짜
 
     private String pu_img;
 

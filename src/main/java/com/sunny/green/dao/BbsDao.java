@@ -33,4 +33,5 @@ public interface BbsDao {
 
     public List<BbsVo> searchBoard(PageVo search, String searchType, String searchValue);
 
+    public List<BbsVo> myPageBoard(String user_id);
 }

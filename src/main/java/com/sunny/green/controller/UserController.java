@@ -43,6 +43,9 @@ public class UserController {
 
     private final ProfileImgDao pid;
 
+    private final BbsDao bd;
+    private final PickupDao pd;
+    private final CommentDao cd;
 
     //마이페이지 매핑
     @GetMapping("/myPage")
@@ -54,8 +57,15 @@ public class UserController {
             UserVo userDB = (UserVo) session.getAttribute("user");
             UserVo user = ud.selectAll1(userDB.getUser_id());
             ProfileImgVo profileImgVo = pid.selectProfileImg(userDB.getUser_id());
+            List<BbsVo> bv = bd.myPageBoard(userDB.getUser_id());
+            List<PickupDetailVo> pdv = pd.myPageReservation(userDB.getUser_id());
+            log.info("bv" + bv);
+            List<CommentVo> cv = cd.myPageComment(userDB.getUser_id());
             mo.addAttribute("user", user);
             mo.addAttribute("profileImgVo", profileImgVo);
+            mo.addAttribute("bv", bv);
+            mo.addAttribute("pdv", pdv);
+            mo.addAttribute("cv", cv);
             return "myPage/myPage";
         }
 

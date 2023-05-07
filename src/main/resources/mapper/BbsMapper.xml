@@ -82,4 +82,8 @@
             </if>
         </where>
     </select>
+
+    <select id="myPageBoard" resultType="com.sunny.green.vo.BbsVo">
+        select * from board where user_id = #{user_id} order by board_num desc limit 0,8;
+    </select>
 </mapper>

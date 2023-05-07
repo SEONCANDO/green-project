@@ -55,4 +55,7 @@
     </delete>
 
 
+    <select id="myPageComment" resultType="com.sunny.green.vo.CommentVo">
+        select * from comment where user_id = #{user_id} order by com_num desc limit 0,8;
+    </select>
 </mapper>
