@@ -25,10 +25,10 @@ public class CommentController {
 
     @PostMapping("insertComment.do")
     @ResponseBody
-    public void postComment(CommentVo commentVo, HttpSession session) {
-        System.out.println("commentVo1>>>>>" + commentVo);
-//        cd.updateComNum();
 
+    public void postComment(CommentVo commentVo, HttpSession session)  {
+        System.out.println("commentVo1>>>>>"+commentVo);
+//        cd.updateComNum();
 
 
         if (session.getAttribute("user") != null) {
@@ -62,7 +62,7 @@ public class CommentController {
         int str = cd.deleteComment(com_num);
         System.out.println("댓글 삭제>>>>>"+str);
         log.info("정보값 " + com_num);
-//        int str1 = cd.updateComNum();
+        int str1 = cd.updateComNum();
 
     }
 

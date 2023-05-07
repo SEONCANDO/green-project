@@ -10,19 +10,12 @@ import java.util.List;
 public interface CommentDao {
     public int insertComment(CommentVo commentVo);
     public List<CommentVo> selectAllComment(int board_num);
-
-
     public int commentTotal(int board_num);
     public int updateComment(CommentVo commentVo);
     public int deleteComment(int com_num);
-
-
-
+    public CommentVo selectComment(int com_num);
+    public int deleteCommentByBoardNum(int board_num);
     public int updateComNum();
 
-
-    public CommentVo selectComment(int com_num);
-
-
-
+    List<CommentVo> getCommentsByBoardNum(int boardNum);
 }

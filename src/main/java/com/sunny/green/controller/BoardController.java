@@ -77,32 +77,19 @@ public class BoardController {
         log.info("com>>>>>>"+com);
         model.addAttribute("com", com);
 
+        // 댓글 총 개수 조회
+        int commentCount = cd.commentTotal(board_num);
+        model.addAttribute("commentCount", commentCount);
+
         return "bbs/boardDetail";
     }
 
-
     // Q&A 글 수정/삭제 폼
-//    @GetMapping("/updateBoard1")
-//    public String updateBoard1(BbsVo bbsVo, Model model, int board_num, HttpSession session1) {
-//        BbsVo bbs = bd.selectBoard(bbsVo.getBoard_num());
-//        model.addAttribute("bbs", bbs);
-//        return "bbs/boardUpdate";
-//    }
-
     @GetMapping("/updateBoard1")
     public String updateBoard1(BbsVo bbsVo, Model model, int board_num, HttpSession session1) {
         BbsVo bbs = bd.selectBoard(bbsVo.getBoard_num());
         model.addAttribute("bbs", bbs);
-
-        // Check if the logged-in user is the author of the post
-        UserVo user = (UserVo) session1.getAttribute("user");
-        if (user != null && bbs.getUser_id() == user.getUser_id()) {
             return "bbs/boardUpdate";
-        } else {
-            model.addAttribute("alert", "글 작성자만 수정할 수 있습니다.");
-            model.addAttribute("url", "/boardDetail?board_num=" + board_num);
-            return "alert";
-        }
     }
 
     // Q&A 글 수정
@@ -119,10 +106,22 @@ public class BoardController {
     // Q&A 글 삭제
     @GetMapping("/deleteBoard")
     public String deleteBoard(int board_num) {
-        int str = bd.deleteBoard(board_num);
-        int str1 = bd.updateBoardNum();
+        // 해당 게시글에 속한 댓글 삭제
+        cd.deleteCommentByBoardNum(board_num);
+
+        // 게시글 삭제
+        bd.deleteBoard(board_num);
+        bd.updateBoardNum();
+
         return "redirect:board";
     }
+
+
+
+
+
+
+
 
 
 }

@@ -37,12 +37,23 @@
     </delete>
 
 
-<!--    &lt;!&ndash; 번호 자동 조정 &ndash;&gt;-->
-<!--    <update id="updateBoardNum">-->
-<!--        <selectKey keyProperty="board_num" order="BEFORE">-->
-<!--            SELECT @num := 0-->
-<!--        </selectKey>-->
-<!--        UPDATE board, (SELECT @num := 0) r-->
-<!--        SET board.board_num = (@num := @num + 1)-->
-<!--    </update>-->
+    <!-- 번호 자동 조정 -->
+    <update id="updateBoardNum">
+        <selectKey keyProperty="board_num" order="BEFORE">
+            SELECT @num := 0
+        </selectKey>
+        UPDATE board, (SELECT @num := 0) r
+        SET board.board_num = (@num := @num + 1)
+    </update>
+
+    <!-- 게시글과 해당 댓글들을 함께 삭제 -->
+    <delete id="deleteBoardWithComments">
+        <!-- 해당 게시글의 댓글을 삭제 -->
+        DELETE FROM comment WHERE board_num = #{board_num}
+        <!-- 해당 게시글 삭제 -->
+        DELETE FROM board WHERE board_num = #{board_num}
+    </delete>
+
+
+
 </mapper>

@@ -10,7 +10,7 @@
     </select>
 
     <!-- 댓글 수 -->
-    <select id="CommentTotal" resultType="int">
+    <select id="commentTotal" resultType="int">
         select count(*) from comment where board_num = #{board_num}
     </select>
 
@@ -20,7 +20,6 @@
     </insert>
 
     <!-- 특정 댓글 -->
-
     <select id="selectComment" resultType="com.sunny.green.vo.CommentVo">
         select *
         from comment
@@ -41,13 +40,19 @@
         where com_num = #{com_num}
     </delete>
 
-    <!--    &lt;!&ndash; 번호 자동 조정 &ndash;&gt;-->
-    <!--    <update id="updateComNum">-->
-    <!--        <selectKey keyProperty="com_num" order="BEFORE">-->
-    <!--            SELECT @num := 0-->
-    <!--        </selectKey>-->
-    <!--        UPDATE comment, (SELECT @num := 0) r-->
-    <!--        SET comment.comment_num = (@num := @num + 1)-->
-    <!--    </update>-->
+    <!-- 번호 자동 조정 -->
+    <update id="updateComNum">
+        <selectKey keyProperty="com_num" order="BEFORE">
+            SELECT @num := 0
+        </selectKey>
+        UPDATE comment, (SELECT @num := 0) r
+        SET comment.com_num = (@num := @num + 1)
+    </update>
+
+    <!-- 해당 게시물의 댓글 삭제 -->
+    <delete id="deleteCommentByBoardNum" parameterType="int">
+        DELETE FROM comment WHERE board_num = #{board_num}
+    </delete>
+
 
 </mapper>
