@@ -16,8 +16,6 @@ public interface CommentDao {
     public int updateComment(CommentVo commentVo);
     public int deleteComment(int com_num);
 
-    CommentVo selectComment(int comNum);
 
-    public CommentVo selectComment(int com_num);
     public int updateComNum();
 }
