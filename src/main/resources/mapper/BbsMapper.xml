@@ -69,6 +69,10 @@
           select * from board;
       </select>
 
+    <select id="selectAllBoard2" resultType="com.sunny.green.vo.BbsVo">
+        select * from board where user_id = #{user_id};
+    </select>
+
     <!--    rsList 검색  -->
     <select id="searchBoard" resultType="com.sunny.green.vo.BbsVo">
         SELECT *
