@@ -30,7 +30,7 @@
     let user_id= cur_session;
 
     $(function () {
-        const websocket = new WebSocket("ws://localhost:8080/ws/chat");
+        const websocket = new WebSocket("ws://15.165.155.88:8080/ws/chat");
 
         websocket.onmessage = onMessage;
         websocket.onopen = onOpen;

@@ -25,8 +25,8 @@ public class CommentController {
 
     @PostMapping("insertComment.do")
     @ResponseBody
-    public void postComment(CommentVo commentVo, HttpSession session)  {
-        System.out.println("commentVo1>>>>>"+commentVo);
+    public void postComment(CommentVo commentVo, HttpSession session) {
+        System.out.println("commentVo1>>>>>" + commentVo);
 
         if (session.getAttribute("user") != null) {
             UserVo user = (UserVo) session.getAttribute("user");
@@ -35,7 +35,7 @@ public class CommentController {
         }
         System.out.println("commentVo2>>>>>" + commentVo);
         int insertResult = cd.insertComment(commentVo);
-
+    }
 
     // 댓글 수정
 //    @PostMapping("/updateComment.do")
