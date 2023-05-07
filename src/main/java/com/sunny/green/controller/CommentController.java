@@ -17,8 +17,10 @@ import javax.servlet.http.HttpSession;
 public class CommentController {
 
     private final CommentDao cd;
+
     
     // 댓글 입력
+
     @PostMapping("insertComment.do")
     @ResponseBody
     public void postComment(CommentVo commentVo, HttpSession session)  {
@@ -58,6 +60,6 @@ public class CommentController {
         System.out.println("댓글 삭제>>>>>"+str);
         log.info("정보값 " + com_num);
 //        int str1 = cd.updateComNum();
+  
     }
-
 }

@@ -27,6 +27,7 @@
         where user_id = #{user_id}
     </select>
 
+
     <!-- 유저 정보 불러오기   -->
     <select id="selectAll1" resultType="com.sunny.green.vo.UserVo">
         select *
@@ -66,8 +67,7 @@
     </update>
 
     <select id="selectAll" resultType="com.sunny.green.vo.UserVo">
-        SELECT *
-        FROM user;
+        SELECT * FROM user;
     </select>
 
 
