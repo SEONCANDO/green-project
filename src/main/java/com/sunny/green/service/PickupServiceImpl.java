@@ -33,7 +33,7 @@ public class PickupServiceImpl implements PickupService {
 
         for (MultipartFile file : files) {
 
-            String pickupImgDir = "/home/ubuntu/greentopia2/img/pickupUpload/"; // 업로드 디렉토리 경로
+            String pickupImgDir = "src/main/resources/static/img/pickupUpload/"; // 업로드 디렉토리 경로
             String dbImgDir = "/img/pickupUpload/"; // DB 업로드 디렉토리 경로
 
             String originalFileName = file.getOriginalFilename();  // 기존 파일 이름
@@ -167,11 +167,11 @@ public class PickupServiceImpl implements PickupService {
     @Override
     public List<PickupImgVo> pickupImgView(List<Integer> pu_img_no) {
         List<PickupImgVo> pickupImg = new ArrayList<>();
-            for (Integer img :pu_img_no) {
-                PickupImgVo pickupImgVo = new PickupImgVo();
-                pickupImgVo = pickupDao.pickupImgView(img);
-                pickupImg.add(pickupImgVo);
-            }
+        for (Integer img :pu_img_no) {
+            PickupImgVo pickupImgVo = new PickupImgVo();
+            pickupImgVo = pickupDao.pickupImgView(img);
+            pickupImg.add(pickupImgVo);
+        }
         return pickupImg;
     }
 }
