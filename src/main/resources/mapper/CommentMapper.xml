@@ -54,4 +54,25 @@
     </delete>
 
 
+    <select id="myPageComment" resultType="com.sunny.green.vo.CommentVo">
+        select * from comment where user_id = #{user_id} order by com_num desc limit 0,8;
+    </select>
+
+    <select id="selectAllComments" resultType="com.sunny.green.vo.CommentVo">
+        select * from comment where user_id = #{user_id};
+    </select>
+
+    <!--    rsList 검색  -->
+    <select id="searchComment" resultType="com.sunny.green.vo.CommentVo">
+        SELECT *
+        FROM board
+        <where>
+            <if test="searchType=='com_content' and searchValue != null and searchValue != '' ">
+                AND com_content like CONCAT('%', #{searchValue}, '%')
+            </if>
+            <if test="searchType=='user_id' and searchValue != null and searchValue != '' ">
+                AND user_id like CONCAT('%', #{searchValue}, '%')
+            </if>
+        </where>
+    </select>
 </mapper>

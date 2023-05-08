@@ -8,7 +8,7 @@
     <meta charset="UTF-8">
     <title> 관리자페이지 </title>
 
-    <!--   민지 (pagination이용하기 위함 jquery 추가)-->
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
     <script>
@@ -17,7 +17,7 @@
 
         $(document).ready(function () {
             $.ajax({
-                url: '/pagination/rs_page', // 데이터를 가져올 URL_
+                url: '/pagination_rs_page', // 데이터를 가져올 URL_
                 type: 'post',
                 dataType: "json",
                 success: function (data) { // 데이터를 가져온 후 실행할 콜백 함수
@@ -213,15 +213,15 @@
     <script>
 
         $('.submitbtn').click(function () {
-            let type = $('select[name=searchType]').val();
-            let value = $('input[name=searchValue]').val();
+            let type = $('select[name=searchType_rs]').val();
+            let value = $('input[name=searchValue_rs]').val();
 
 
             $.ajax({
-                url: '/pagination/rs_page', // 데이터를 가져올 URL_
+                url: '/pagination_rs_page', // 데이터를 가져올 URL_
                 type: 'post',
                 dataType: "json",
-                data:{"searchType":type,"searchValue":value},
+                data:{"searchType_rs":type,"searchValue_rs":value},
                 success: function (data) { // 데이터를 가져온 후 실행할 콜백 함수
                     console.log(data); // 데이터 확인용
                     content = data;

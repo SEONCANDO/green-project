@@ -30,7 +30,9 @@ public interface BbsDao {
     public int updateBoardNum();
 
     public List<BbsVo> selectAllBoard();
+    public List<BbsVo> selectAllBoard2(String user_id);
 
-    public List<BbsVo> searchBoard(PageVo search, String searchType, String keyword);
+    public List<BbsVo> searchBoard(PageVo search, String searchType, String searchValue);
 
+    public List<BbsVo> myPageBoard(String user_id);
 }

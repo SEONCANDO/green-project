@@ -55,15 +55,18 @@
 
     <select id="searchNotice" resultType="com.sunny.green.vo.NoticeVo">
         SELECT *
-        FROM notice;
+        FROM notice
         <where>
-            <if test="searchType=='notice_title' and keyword != null and keyword != '' ">
-                AND notice_title like CONCAT('%', #{keyword}, '%')
+            <if test="searchType=='notice_title' and searchValue != null and searchValue != '' ">
+                AND notice_title like CONCAT('%', #{searchValue}, '%')
             </if>
-            <if test="searchType=='user_id' and keyword != null and keyword != '' ">
-                AND user_id like CONCAT('%', #{keyword}, '%')
+            <if test="searchType=='user_id' and searchValue != null and searchValue != '' ">
+                AND user_id like CONCAT('%', #{searchValue}, '%')
             </if>
         </where>
     </select>
 
+    <select id="myPageNotice" resultType="com.sunny.green.vo.NoticeVo">
+        select * from notice where user_id = #{user_id} order by notice_num desc limit 0,8;
+    </select>
 </mapper>

@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @Data
@@ -27,7 +28,7 @@ public class PickupDetailVo {
 
     private String pu_day; // 예약요청날짜
 
-    private String pu_date; // 접수날짜
+    private LocalDateTime pu_date; // 접수날짜
 
     private String pu_img;
 
@@ -49,6 +50,7 @@ public class PickupDetailVo {
 
     private String pu_address4;
 
+    private int give_point;
     // img table
 
     private String pu_img_origin_name;

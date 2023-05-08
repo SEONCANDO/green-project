@@ -61,7 +61,7 @@
 
             <div class="boxes1" style="float: right; margin-right: 5%;"
                  th:if="${session.user} != null">
-                <div th:if="${session.user.user_id} == ${notice.user_id}" class="row" style="flex-wrap: inherit;">
+                <div th:if="${session.user.user_id} == ${notice.user_id}" class="row" style="flex-wrap: inherit; margin-top: 3%;">
                     <a class="btn col-md-4" role="button"
                        style="background: #2a6a47; color: white; font-weight: 700; border: none; width: 70px;"
                        href="/notice">목록</a>
