@@ -18,7 +18,6 @@
     <insert id="insertComment" useGeneratedKeys="true" keyProperty="com_num">
         insert into comment(user_id, com_content, com_date, board_num) values (#{user_id}, #{com_content}, NOW(), #{board_num})
     </insert>
-
     <!-- 특정 댓글 -->
     <select id="selectComment" resultType="com.sunny.green.vo.CommentVo">
         select *
