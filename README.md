@@ -43,26 +43,54 @@
    <table>
     <tbody>
      <tr>
-      <td>
-       3
+     <td align="center">
+       메인페이지
       </td>
-      <td>
-       3
-      </td>
-       <td>
-        3
+      <td align="center">
+       로그인&회원가입
       </td>
      </tr>
      <tr>
       <td>
-       3
+       <img width="100%" src="https://github.com/LOBSTER10000/Green-Project/assets/111476138/4b115380-3fd5-4dc7-b39c-3a0fa5c505cb">
+     </td>
+      <td>
+       <img width="100%" src="https://github.com/LOBSTER10000/Green-Project/assets/111476138/56905a2a-00f9-45f6-aa81-5d7b8b215cad">
+      </td>
+     </tr>
+     <tr>
+      <td align="center">수거 예약</td>
+      <td align="center">포인트 교환</td>
+     </tr>
+     <tr>
+      <td>
+       <img width="100%" src="https://github.com/LOBSTER10000/Green-Project/assets/111476138/d66f572f-b6e4-4176-aa3d-fdaa8b9928de">
       </td>
        <td>
-        3
+         <img width="100%" height="30%" src="https://github.com/LOBSTER10000/Green-Project/assets/111476138/e4bec78c-4e90-481e-af54-2f98654aa996">
       </td>
+     </tr>
+      <tr>
+      <td align="center">마이페이지</td>
+      <td align="center">관리자페이지</td>
+     </tr>
+     <tr>
       <td>
-       3
+       <img width="100%" src="https://github.com/LOBSTER10000/Green-Project/assets/111476138/b10f113f-eed2-4301-b2e9-445c57fc7d4a">
       </td>
+       <td>
+        <img width="100%" src="https://github.com/LOBSTER10000/Green-Project/assets/111476138/e5de00e0-9e82-4a8f-bb2c-d5170ec2be9b">
+      </td>
+     </tr>
+     <tr>
+      <td align="center">게시판</td>
+      <td align="center"></td>
+     </tr>
+     <tr>
+       <td>
+        <img width="100%" src="https://github.com/LOBSTER10000/Green-Project/assets/111476138/f601db8a-9a3e-4217-a333-bc54d72df8b9">
+      </td>
+       <td></td>
      </tr>
     </tbody>
  </table>
