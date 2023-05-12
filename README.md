@@ -1,10 +1,9 @@
 ## SpringBoot-Project-GREENTOPIA 그린토피아
-> 스프링부트로 + Thymeleaf를 이용한 무상 수거 예약 사이트
+> 스프링부트 + Thymeleaf를 이용한 무상 수거 예약 사이트
 
 
 [![Contributors][contributors-shield]][contributors-url]
 <img width="100%" src="https://github.com/LOBSTER10000/Green-Project/assets/111476138/4b115380-3fd5-4dc7-b39c-3a0fa5c505cb">
-
 
 
 >  일상생활 속에서 "누구나" "어디서든" 환경보존에 동참하기 위해 보다 편리하게 접근 장벽을 낮추는 효율적인 무상수거 시스템입니다
@@ -19,7 +18,7 @@
    
    (3) 고객들과의 대화를 위해 1:1 대화를 비롯한 카카오톡 채널 오픈
 
- * 왜 
+ * 왜
 ## ⏲개발기간
  * 2023년 3월 24일 ~ 2023년 5월 8일
  
@@ -77,8 +76,8 @@
   
   🟩 <strong>그린포인트 교환</strong>
   
-    * 수거로 지급받은 그린포인트를 활용한 
-    *
+    * 수거로 지급받은 그린포인트를 활용한 교환시스템
+    * 교환 내역을 통한 메일 발송
   
   🟩 <strong>채팅 기능</strong>
   
@@ -86,10 +85,13 @@
   
   🟩 <strong>공지사항&QNA</strong>
   
-    * 
-    *
+    * Admin 계정으로만 CRUD가 가능한 공지사항
+    * User 계정으로 CRUD가 가능한 QNA
     
- 🟩 <strong>예약기능</strong>
+ 🟩 <strong>관리자페이지</strong>
+ 
+    * Ajax를 이용한 데이터 페이징, 검색 기능
+    * 각 데이터들 수정,삭제 기능
 
 ## 📃 참고
   
