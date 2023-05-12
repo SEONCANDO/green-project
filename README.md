@@ -1,14 +1,16 @@
-## GREENTOPIA
+## GREENTOPIA (그린)으로 만든 유(토피아)
 
 
-
-
-<img width="100%" src="https://github.com/LOBSTER10000/Green-Project/assets/111476138/4b115380-3fd5-4dc7-b39c-3a0fa5c505cb">
 
 [![Contributors][contributors-shield]][contributors-url]
+<img width="100%" src="https://github.com/LOBSTER10000/Green-Project/assets/111476138/4b115380-3fd5-4dc7-b39c-3a0fa5c505cb">
 
-> 💻 일상생활 속에서 "누구나" "어디서든" 환경보존에 동참하기 위해 보다 편리하게 접근 장벽을 낮추는 효율적인 무상수거 시스템
-> 
+
+
+>  일상생활 속에서 "누구나" "어디서든" 환경보존에 동참하기 위해 보다 편리하게 접근 장벽을 낮추는 효율적인 무상수거 시스템입니다
+
+## 💻 프로젝트 설명
+ * 어떤 일들을 하는가? 
 
 ## ⏲개발기간
  * 2023년 3월 24일 ~ 2023년 5월 8일
@@ -31,7 +33,7 @@
 
  
 ## 📌주요기능
-
+  * 로그인
 
 <!-- ## 설치 방법
 
