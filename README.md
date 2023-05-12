@@ -5,11 +5,10 @@
 
 <img width="100%" src="https://github.com/LOBSTER10000/Green-Project/assets/111476138/4b115380-3fd5-4dc7-b39c-3a0fa5c505cb">
 
-[![NPM Version][npm-image]][npm-url]
-[![Build Status][travis-image]][travis-url]
-[![Downloads Stats][npm-downloads]][npm-url]
+[![Contributors][contributors-shield]][contributors-url]
 
-> 💻 한 두 문단으로 프로젝트 소개 글을 작성합니다.
+> 💻 일상생활 속에서 "누구나" "어디서든" 환경보존에 동참하기 위해 보다 편리하게 접근 장벽을 낮추는 효율적인 무상수거 시스템
+> 
 
 ## ⏲개발기간
  * 2023년 3월 24일 ~ 2023년 5월 8일
@@ -28,6 +27,7 @@
  * Framework : <img src="https://img.shields.io/badge/springboot-6DB33F?style=flat-square&logo=springboot idea&logoColor=white"/> Spring boot (2.7.6)
  * Database : <img src="https://img.shields.io/badge/mysql-4479A1?style=flat-square&logo=mysql&logoColor=white"/> Mysql (workbench 8.0)
  * ORM : <img src="https://img.shields.io/badge/Mybatis-F5A805?style=flat-square&logo=Mybatis&logoColor=white"/> Mybatis 3.0.0
+ * Server : <img src="https://img.shields.io/badge/AWS Lightsail-F58105?style=flat-square&logo=AWS Lightsail&logoColor=white"/> AWS Lightsail
 
  
 ## 📌주요기능
@@ -94,9 +94,6 @@ XYZ 라이센스를 준수하며 ``LICENSE``에서 자세한 정보를 확인할
 5. 풀리퀘스트를 보내주세요.
 
 <!-- Markdown link & img dfn's -->
-[npm-image]: https://img.shields.io/npm/v/datadog-metrics.svg?style=flat-square
-[npm-url]: https://npmjs.org/package/datadog-metrics
-[npm-downloads]: https://img.shields.io/npm/dm/datadog-metrics.svg?style=flat-square
-[travis-image]: https://img.shields.io/travis/dbader/node-datadog-metrics/master.svg?style=flat-square
-[travis-url]: https://travis-ci.org/dbader/node-datadog-metrics
-[wiki]: https://github.com/yourname/yourproject/wiki -->
+[contributors-shield]: https://img.shields.io/github/contributors/othneildrew/Best-README-Template.svg?style=for-the-badge
+[contributors-url]: https://github.com/LOBSTER10000/Green-Project/graphs/contributors
+ -->
