@@ -1,5 +1,5 @@
-## GREENTOPIA (그린)으로 만든 유(토피아)
-
+## SpringBoot-Project-GREENTOPIA 그린토피아
+> 스프링부트로 + Thymeleaf를 이용한 무상 수거 예약 사이트
 
 
 [![Contributors][contributors-shield]][contributors-url]
@@ -10,8 +10,16 @@
 >  일상생활 속에서 "누구나" "어디서든" 환경보존에 동참하기 위해 보다 편리하게 접근 장벽을 낮추는 효율적인 무상수거 시스템입니다
 
 ## 💻 프로젝트 설명
- * 어떤 일들을 하는가? 
+웹 배포 주소 : <http://15.165.155.88:8080>
+ * 주로 어떤 일들을 제공하는가? 
+ 
+   (1) 환경보존에 동참하기 위해 효율적인 무상수거 예약 기능
+   
+   (2) 발급받은 그린포인트를 이용한 포인트 교환 기능
+   
+   (3) 고객들과의 대화를 위해 1:1 대화를 비롯한 카카오톡 채널 오픈
 
+ * 왜 
 ## ⏲개발기간
  * 2023년 3월 24일 ~ 2023년 5월 8일
  
@@ -31,10 +39,60 @@
  * ORM : <img src="https://img.shields.io/badge/Mybatis-F5A805?style=flat-square&logo=Mybatis&logoColor=white"/> Mybatis 3.0.0
  * Server : <img src="https://img.shields.io/badge/AWS Lightsail-F58105?style=flat-square&logo=AWS Lightsail&logoColor=white"/> AWS Lightsail
 
+## 📺 화면 구성
+ <div>
+   <table>
+    <tbody>
+     <tr>
+      <td>
+       3
+      </td>
+      <td>
+       3
+      </td>
+       <td>
+        3
+      </td>
+     </tr>
+     <tr>
+      <td>
+       3
+      </td>
+       <td>
+        3
+      </td>
+      <td>
+       3
+      </td>
+     </tr>
+    </tbody>
+ </table>
+</div>
  
 ## 📌주요기능
-  * 로그인
+  🟩 <strong>무상수거 예약</strong>
+  
+    * 수거 날짜 선택, 주소 입력 가능
+    * 정확한 물품 확인을 위한 사진 업로드 기능
+  
+  🟩 <strong>그린포인트 교환</strong>
+  
+    * 수거로 지급받은 그린포인트를 활용한 
+    *
+  
+  🟩 <strong>채팅 기능</strong>
+  
+    * 카카오 채널을 비롯한 1:1 채팅 기능 2가지 구현
+  
+  🟩 <strong>공지사항&QNA</strong>
+  
+    * 
+    *
+    
+ 🟩 <strong>예약기능</strong>
 
+## 📃 참고
+  
 <!-- ## 설치 방법
 
 OS X & 리눅스:
