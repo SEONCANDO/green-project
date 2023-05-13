@@ -27,6 +27,13 @@
         where user_id = #{user_id}
     </select>
 
+    <!-- 유저 아이디 찾기 -->
+    <select id="selectUserId2" resultType="com.sunny.green.vo.UserVo">
+        select user_id
+        from user
+        where user_name = #{user_name} and user_email = #{user_email}
+    </select>
+
     <!-- 유저 정보 불러오기   -->
     <select id="selectAll1" resultType="com.sunny.green.vo.UserVo">
         select *

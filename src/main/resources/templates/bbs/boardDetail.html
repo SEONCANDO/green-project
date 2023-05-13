@@ -125,7 +125,7 @@
 
             <table>
                 <tbody th:if="${com} != null">
-                <tr th:each="comments : ${com}" th:id="'comment-' + ${comments.com_num}">
+                <tr th:each="comments : ${com}" th:id="'comment-' + ${comments.com_num}" style="text-align: center;">
                     <td th:utext="${comments.user_id}"></td>
                     <td th:utext="${#temporals.format(comments.com_date, 'yyyy-MM-dd HH:mm')}"></td>
                     <td>

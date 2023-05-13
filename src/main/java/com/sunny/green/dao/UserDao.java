@@ -17,6 +17,8 @@ public interface UserDao {
 
     public UserVo selectUserId(String userId);
 
+    public UserVo selectUserId2(String user_name, String user_email);
+
     public UserVo selectAll1(String userId);
 
     public int updateUser(UserVo user);
