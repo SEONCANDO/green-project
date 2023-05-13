@@ -31,6 +31,8 @@ public class KakaoController {
 
 
     private final UserDao ud;
+
+    //카카오 로그인 방법
     @GetMapping("/auth/kakao/callback")
     public String Callback(String code, Model model, HttpSession session) {
         //데이터를 리턴해주는 컨트롤러
@@ -113,7 +115,7 @@ public class KakaoController {
         user.setUser_tel("0100000000");
         UserVo userDB = ud.selectAll1(user.getUser_id());
         if (userDB != null) {
-            System.out.println("카카오 정보 찾았습니다 : " + user);
+            log.info("카카오 정보 찾았습니다 : " + user);
             if (userDB.getUser_name() != null) {
                 model.addAttribute("alert", userDB.getUser_name() + "님 반갑습니다");
             }

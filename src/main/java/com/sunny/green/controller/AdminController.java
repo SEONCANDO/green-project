@@ -95,7 +95,7 @@ public class AdminController {
         } else {
             user = ud.selectAll2(search, searchType, searchValue);
         }
-        System.out.println(">>>>>>>>>>>>>"+user);
+        log.info(">>>>>>>>>>>>>"+user);
         return user;
     }
 
@@ -112,7 +112,7 @@ public class AdminController {
     @PostMapping("/admin/modify")
     public String adminModify(UserVo user, Model model) {
         int update = ud.updateUser(user);
-        System.out.println(update);
+        log.info(update);
         model.addAttribute("alert", "수정되었습니다");
         model.addAttribute("url", "/admin/user2");
 
@@ -216,6 +216,8 @@ public class AdminController {
         return "admin/admin_bbs1";
     }
 
+
+    // 공지사항 페이징 & 검색
     @PostMapping("/pagination_notice_page")
     @ResponseBody
     public List<NoticeVo> getNoticeInfo(PageVo search, @RequestParam(required = false) String searchType, @RequestParam(required = false) String searchValue) {
@@ -231,7 +233,7 @@ public class AdminController {
         return noticeVos;
     }
 
-    // rs_검색 및 데이터 불러오기
+    // QNA_검색 및 데이터 불러오기
     @GetMapping("/admin/bbs2")
     public String getBbsList(Model model, PageVo search, @RequestParam(required = false) String searchType, @RequestParam(required = false) String searchValue) throws Exception {
         List<BbsVo> bbsVos;
@@ -245,7 +247,7 @@ public class AdminController {
         model.addAttribute("bbsVos", bbsVos);
         return "admin/admin_bbs2";
     }
-    // rs_페잉징
+    // QNA_페잉징
     @PostMapping("/pagination_board_page")
     @ResponseBody
     public List<BbsVo> getBbsInfo(PageVo search, @RequestParam(required = false) String searchType, @RequestParam(required = false) String searchValue) {
@@ -262,7 +264,7 @@ public class AdminController {
         return bbsVos;
     }
 
-    // rs_검색 및 데이터 불러오기
+    // 예약_검색 및 데이터 불러오기
     @GetMapping("/admin/reservation")
     public String getPickupList(Model model, PageVo search, @RequestParam(required = false) String searchType_rs, @RequestParam(required = false) String searchValue_rs) throws Exception {
         List<PickupDetailVo> pickup;
@@ -276,7 +278,7 @@ public class AdminController {
         model.addAttribute("pickup", pickup);
         return "admin/admin_reservation";
     }
-    // rs_페잉징
+    // 예약_페이징
     @PostMapping("/pagination_rs_page")
     @ResponseBody
     public List<PickupDetailVo> getPickupInfo(PageVo search, @RequestParam(required = false) String searchType_rs, @RequestParam(required = false) String searchValue_rs) {

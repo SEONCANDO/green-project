@@ -39,6 +39,7 @@ public class ExchangeController {
     private final MailDao md;
 
 
+    // 교환 창1
     @GetMapping("/exchange")
     public String exchange1(HttpSession session, Model mo) {
         if (session.getAttribute("user") == null) {
@@ -52,6 +53,7 @@ public class ExchangeController {
         return "alert";
     }
 
+    //교환창2
     @GetMapping("/exchange2")
     public String exchange(HttpSession httpSession, Model mo, ProductWithImgVo productWithImgVo) {
         ProductWithImgVo pro = ed.selectProOne(productWithImgVo.getPro_num());
@@ -64,6 +66,7 @@ public class ExchangeController {
         return "exchange/exchange2";
     }
 
+    //교환 기능
     @PostMapping("/exchange")
     public String exchange(ExchangeVo ev, UserVo user, RedirectAttributes redirectAttributes) throws MessagingException {
         String chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"; // 예약번호로 사용할 문자열
@@ -100,6 +103,7 @@ public class ExchangeController {
         return "redirect:exchange3";
     }
 
+    //교환창 3
     @GetMapping("/exchange3")
     public String exchange3(Model mo, @RequestParam("ex_num") int ex_num) {
 

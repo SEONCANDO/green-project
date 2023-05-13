@@ -47,7 +47,7 @@ public class BoardController {
         else{
             return "bbs/boardPost";
         }
-        System.out.println("밸류값" + userVo);
+        log.info("밸류값" + userVo);
         return "alert";
     }
 

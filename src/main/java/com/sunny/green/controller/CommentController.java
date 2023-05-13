@@ -27,7 +27,7 @@ public class CommentController {
     @ResponseBody
 
     public void postComment(CommentVo commentVo, HttpSession session)  {
-        System.out.println("commentVo1>>>>>"+commentVo);
+        log.info("commentVo1>>>>>"+commentVo);
 //        cd.updateComNum();
 
 
@@ -60,7 +60,7 @@ public class CommentController {
     @ResponseBody
     public void deleteComment(int com_num) {
         int str = cd.deleteComment(com_num);
-        System.out.println("댓글 삭제>>>>>"+str);
+        log.info("댓글 삭제>>>>>"+str);
         log.info("정보값 " + com_num);
         int str1 = cd.updateComNum();
 

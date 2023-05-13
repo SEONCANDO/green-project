@@ -29,6 +29,8 @@ public class MyController {
     private final BbsDao bd;
     private final CommentDao cd;
 
+
+    //메인 페이지
     @GetMapping("/")
     public String index(Model mo) {
         List<ProductWithImgVo> pv = ed.selectProductAll();
@@ -39,6 +41,7 @@ public class MyController {
         return "index";
     }
 
+    //메인 페이지
     @GetMapping("/index")
     public String index1(Model mo) {
         List<ProductWithImgVo> pv = ed.selectProductAll();
@@ -49,6 +52,7 @@ public class MyController {
     }
 
 
+    // 마이페이지 내가 쓴글
     @GetMapping("/myWrite")
     public String myWrite(Model model, HttpSession session, PageVo search, @RequestParam(required = false) String searchType, @RequestParam(required = false) String searchValue) throws Exception{
         UserVo uservo = (UserVo) session.getAttribute("user");
@@ -67,6 +71,8 @@ public class MyController {
         return "myPage/myWrite";
     }
 
+
+    //내가 쓴글 페이징
     @PostMapping("/pagination_myWrite")
     @ResponseBody
     public List<BbsVo> getNoticeInfo(HttpSession session, PageVo search, @RequestParam(required = false) String searchType, @RequestParam(required = false) String searchValue) {
@@ -83,6 +89,7 @@ public class MyController {
         return bbsVos;
     }
 
+    //내가 쓴 댓글
     @GetMapping("/myComment")
     public String myComment(Model model, HttpSession session, PageVo search, @RequestParam(required = false) String searchType, @RequestParam(required = false) String searchValue) throws Exception{
         UserVo uservo = (UserVo) session.getAttribute("user");
@@ -101,6 +108,7 @@ public class MyController {
         return "myPage/myComment";
     }
 
+    //내가 쓴 댓글 페이징 검색
     @PostMapping("/pagination_myComment")
     @ResponseBody
     public List<CommentVo> getCommentInfo(HttpSession session, PageVo search, @RequestParam(required = false) String searchType, @RequestParam(required = false) String searchValue) {

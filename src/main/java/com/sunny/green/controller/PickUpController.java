@@ -84,16 +84,16 @@ public class PickUpController {
             item.put("countVal", countVals.get(i));
             items.add(item);
         }
-        System.out.println("items>>>>>>"+items);
+        log.info("items>>>>>>"+items);
         List<PickupCategoryVo> changeItems = pSI.pickupCategorySet(items);
-        System.out.println("changeItems>>>>>>"+changeItems);
+        log.info("changeItems>>>>>>"+changeItems);
 
         PickupInfoVo info = (PickupInfoVo) session.getAttribute("info");
         String imgVal = info.getPu_img();
         if (Objects.equals(imgVal, "Y")) {
             List<Integer> imgNo = (List<Integer>) session.getAttribute("imgNo");
             List<PickupImgVo> pickupImg = pSI.pickupImgView(imgNo);
-            System.out.println("pickupImg>>>>>>"+pickupImg);
+            log.info("pickupImg>>>>>>"+pickupImg);
             model.addAttribute("pickupImg", pickupImg);
         } else {
             model.addAttribute("pickupImg", "None");
@@ -108,7 +108,7 @@ public class PickUpController {
         PickupAddressVo address = (PickupAddressVo) session.getAttribute("address");
         PickupInfoVo info = (PickupInfoVo) session.getAttribute("info");
         List<PickupCategoryVo> items = (List<PickupCategoryVo>) session.getAttribute("changeItems");
-        System.out.println("마지막items>>>>>>"+items);
+        log.info("마지막items>>>>>>"+items);
 
         int successVal = pSI.pickupAddress(address);
         if(successVal==1) {

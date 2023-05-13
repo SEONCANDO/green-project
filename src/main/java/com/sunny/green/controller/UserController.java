@@ -135,6 +135,7 @@ public class UserController {
         return "alert";
     }
 
+    //마이페이지 예약확인
     @GetMapping("/breakDown")
     public String exchange(HttpSession session, Model mo) {
         if (session.getAttribute("user") == null) {
@@ -199,6 +200,7 @@ public class UserController {
         return "alert";
     }
 
+    //개인정보 수정
     @PostMapping("/modify")
     public String modify1(UserVo user, Model mo) {
         int update = ud.updateUser(user);
@@ -232,6 +234,7 @@ public class UserController {
         return "alert";
     }
 
+    //아이디 삭제
     @GetMapping("/delete")
     public String delete(HttpSession session, String user_id) {
         UserVo userDB = (UserVo) session.getAttribute("user");
@@ -243,18 +246,21 @@ public class UserController {
         return "redirect:index";
     }
 
+
+    //소개
     @GetMapping("/info")
     public String info() {
         return "info";
     }
 
 
+
+    //마이페이지 프로필 업로드
     @Transactional
     @PostMapping("/uploadProfile")
     public String pro4(ProductVo productVo, @RequestParam("file") MultipartFile imageFile, HttpSession session) {
         String fileName = imageFile.getOriginalFilename(); // 파일 이름 추출
         String uploadPath = "/home/ubuntu/greentopia2/img/profile/"; // 업로드 디렉토리 경로
-        String filePath = uploadPath + fileName; // 저장될 파일 경로
         String uuid = UUID.randomUUID().toString();
         String realPath = uploadPath + uuid + fileName;
         String saveFile = uuid + fileName;
@@ -275,6 +281,8 @@ public class UserController {
         return "redirect:myPage";
     }
 
+
+    //업로드 사진 restful api로 가져오기
     @GetMapping("/img/profile/{img_save_name}")
     @ResponseBody
     public ResponseEntity<Resource> getImage(@PathVariable("img_save_name") String imgSaveName) throws IOException {
