@@ -120,8 +120,6 @@ firstCategoryButtons.forEach(button => {
 
         secondCategoryButtons.forEach(button => button.addEventListener('click', addItem));
 
-
-
         // 추가 버튼 클릭 시 실행될 함수
         function addItem(event) {
             const categoryVal = event.target.value;
@@ -155,7 +153,7 @@ firstCategoryButtons.forEach(button => {
                     </td>
                     <td class="col-4">
                       <div class="button_inputCategory_delete">
-                        <input type="button" onclick="categoryDel()" value="X" style="color: red; border: none; font-size: 28px;">
+                        <input type="button" onclick="categoryDel()" value="X" style="color: red; background:none; border: none; font-size: 28px;">
                       </div>
                     </td>
                   </tr>

@@ -222,6 +222,7 @@
 
 #img_pickup_preview > li > img{
     width: 100% !important;
+    max-height: 150px;
 }
 /* 개인정보 이미지 upload preview 삭제버튼 */
 .delBtn {
@@ -240,7 +241,7 @@
 }
 
 /* 개인정보 메모 */
-.text_memo {
+.pu_memo {
     width: 750px;
     height: 200px;
     font-size: 20px;

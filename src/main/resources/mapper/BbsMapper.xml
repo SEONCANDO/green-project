@@ -46,28 +46,26 @@
         SET board.board_num = (@num := @num + 1)
     </update>
 
-    <!-- 게시글과 해당 댓글들을 함께 삭제 -->
-    <delete id="deleteBoardWithComments">
-        <!-- 해당 게시글의 댓글을 삭제 -->
-        DELETE FROM comment WHERE board_num = #{board_num}
-        <!-- 해당 게시글 삭제 -->
-        DELETE FROM board WHERE board_num = #{board_num}
-    </delete>
+<!--    &lt;!&ndash; 게시글과 해당 댓글들을 함께 삭제 &ndash;&gt;-->
+<!--    <delete id="deleteBoardWithComments">-->
+<!--        &lt;!&ndash; 해당 게시글의 댓글을 삭제 &ndash;&gt;-->
+<!--        DELETE FROM comment WHERE board_num = #{board_num}-->
+<!--        &lt;!&ndash; 해당 게시글 삭제 &ndash;&gt;-->
+<!--        DELETE FROM board WHERE board_num = #{board_num}-->
+<!--    </delete>-->
 
+    <!--    &lt;!&ndash; 번호 자동 조정 &ndash;&gt;-->
+    <!--    <update id="updateBoardNum">-->
+    <!--        <selectKey keyProperty="board_num" order="BEFORE">-->
+    <!--            SELECT @num := 0-->
+    <!--        </selectKey>-->
+    <!--        UPDATE board, (SELECT @num := 0) r-->
+    <!--        SET board.board_num = (@num := @num + 1)-->
+    <!--    </update>-->
 
-
-<!--    &lt;!&ndash; 번호 자동 조정 &ndash;&gt;-->
-<!--    <update id="updateBoardNum">-->
-<!--        <selectKey keyProperty="board_num" order="BEFORE">-->
-<!--            SELECT @num := 0-->
-<!--        </selectKey>-->
-<!--        UPDATE board, (SELECT @num := 0) r-->
-<!--        SET board.board_num = (@num := @num + 1)-->
-<!--    </update>-->
-
-      <select id="selectAllBoard" resultType="com.sunny.green.vo.BbsVo">
-          select * from board;
-      </select>
+    <select id="selectAllBoard" resultType="com.sunny.green.vo.BbsVo">
+        select * from board;
+    </select>
 
     <select id="selectAllBoard2" resultType="com.sunny.green.vo.BbsVo">
         select * from board where user_id = #{user_id};

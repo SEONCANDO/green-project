@@ -1,6 +1,6 @@
 // jQuery 불러오기
 $(function loadJQuery() {
-    var oScript = document.createElement("script");
+    let oScript = document.createElement("script");
     oScript.type = "text/javascript";
     oScript.charset = "utf-8";
     oScript.src = "http://code.jquery.com/jquery-1.6.2.min.js";
@@ -178,9 +178,9 @@ function chBox() {
     const user_id = $("#pickup_userID").val();
     let house_no = $("#pickup_house").val();
     let pu_elevator = $("#pickup_elevator").val();
-    let text_memo = $(".text_memo").val();
-    if (text_memo === "") {
-        text_memo = "None";
+    let pu_memo = $(".pu_memo").val();
+    if (pu_memo === "") {
+        pu_memo = "None";
     }
 
 
@@ -201,14 +201,14 @@ function chBox() {
         "pu_address4": pu_address4
     };
 
-   const info = {
+    const info = {
         "user_id": user_id,
         "house_no": house_no,
         "pu_elevator": pu_elevator,
         "pu_day": pu_day,
         "pu_img": pu_img,
-        "text_memo": text_memo
-   };
+        "pu_memo": pu_memo
+    };
     console.log(formData);
 
     // 필수정보 입력 확인

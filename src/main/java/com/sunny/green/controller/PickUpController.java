@@ -114,6 +114,7 @@ public class PickUpController {
         if(successVal==1) {
             int addressNo = address.getPu_address_no();
             info.setPu_address_no(addressNo);
+            log.info("info>>>>>>"+info);
             int successVal2 = pSI.pickupInfo(info);
             if(successVal2==1) {
                 int infoNo = info.getPu_no();
@@ -151,7 +152,7 @@ public class PickUpController {
     @GetMapping("/img/pickupUpload/{pu_img_save_name}")
     @ResponseBody
     public ResponseEntity<Resource> getImage(@PathVariable("pu_img_save_name") String imgSaveName) throws IOException {
-        Resource resource = new FileSystemResource("/home/ubuntu/greentopia2/img/pickupUpload/" + imgSaveName);
+        Resource resource = new FileSystemResource("src/main/resources/static/img/pickupUpload/" + imgSaveName);
         return ResponseEntity.ok().contentType(MediaType.IMAGE_JPEG).body(resource);
     }
 
