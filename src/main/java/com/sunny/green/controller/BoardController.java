@@ -3,6 +3,7 @@ package com.sunny.green.controller;
 import com.sunny.green.dao.BbsDao;
 import com.sunny.green.dao.CommentDao;
 import com.sunny.green.dao.UserDao;
+import com.sunny.green.service.BoardService;
 import com.sunny.green.vo.BbsVo;
 import com.sunny.green.vo.CommentVo;
 import com.sunny.green.vo.UserVo;
@@ -26,6 +27,8 @@ public class BoardController {
     private final BbsDao bd;
 
     private final CommentDao cd;
+
+    private final BoardService bs;
 
     // 목록
     @GetMapping("/board")
@@ -54,8 +57,8 @@ public class BoardController {
     // Q&A 글작성
     @PostMapping("/boardPost")
     public String boardPost1(@ModelAttribute BbsVo bbsVo) {
-        int insertResult = bd.insertBoard(bbsVo);
-        bd.updateBoardNum();
+        int insertResult = bs.insertBoard(bbsVo);
+        bs.updateBoardNum();
         if (insertResult > 0) {           // 성공으로 판단되면 목록으로 돌아가기.
             return "redirect:board/";
         } else {                          // 실패하면 글작성 페이지에 머무름.
@@ -98,7 +101,7 @@ public class BoardController {
         log.info("보드값" + bbsVo.getBoard_num() );
         BbsVo bbs = bd.selectBoard(bbsVo.getBoard_num());
         log.info(bbs);
-        int str = bd.updateBoard(bbsVo);
+        int str = bs.updateBoard(bbsVo);
         log.info("업데이트 :" + str);
         return "redirect:board";
     }
