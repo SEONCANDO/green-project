@@ -22,22 +22,24 @@
     <div class="container" id="box" style="margin-top: 140px; font-family: GmarketSansMedium,serif;">
             <div class="row">
                 <div class="col-md-6" style="height: 450px;">
-                    <div class="container">
-                        <p>아이디 찾기</p>
-                        이름 : <input type="text" name="id_name" id="id_name"> <br>
-                        이메일 : <input type="email" name="id_email" id="id_email"> <br>
-                        <button type="button" onclick="checkUserId()">찾기</button><br>
+                    <p style="margin-top: 10%; font-size: 30px; font-weight: 700;">아이디 찾기</p>
+                    <div class="container" style="text-align: left;">
+
+                        이름 : <input type="text" name="id_name" id="id_name" style="margin-left: 2.5%;"> <br>
+                        이메일 : <input type="email" name="id_email" id="id_email" style="margin-top: 3%;"> <br>
+                        <button type="button" onclick="checkUserId()" style="margin-left:5%; margin-top: 5%;">찾기</button><br>
                         <span id="idCheckMessage"></span>
                     </div>
                 </div>
 
                 <div class="col-md-6" style="background: linear-gradient(to left, #0F4229, rgba(26, 121, 64, 0.8)); height: 450px;">
-                    <div class="container">
-                        <p>비밀번호 찾기</p>
-                        이름 : <input type="text" name="pass_name" id="pass_name"> <br>
-                        아이디 : <input type="text" name="pass_id" id="pass_id"> <br>
-                        이메일 : <input type="email" name="pass_email" id="pass_email"> <br>
-                        <button type="button" onclick="checkUserPass()">메일로 발송하기</button><br>
+                    <p style="margin-top: 10%; font-size: 30px; font-weight: 700;">비밀번호 찾기</p>
+                    <div class="container" style="text-align: left;">
+
+                        이름 : <input type="text" name="pass_name" id="pass_name" style="margin-left: 2.5%;"> <br>
+                        아이디 : <input type="text" name="pass_id" id="pass_id" style="margin-top: 3%;"> <br>
+                        이메일 : <input type="email" name="pass_email" id="pass_email" style="margin-top: 3%;"> <br>
+                        <button type="button" onclick="checkUserPass()" style="margin-left:5%; margin-top: 5%;">메일로 발송하기</button><br>
                         <span id="passCheckMessage"></span>
                     </div>
                 </div>

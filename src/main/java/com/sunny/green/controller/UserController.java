@@ -1,7 +1,6 @@
 package com.sunny.green.controller;
 
 import com.sunny.green.dao.*;
-import com.sunny.green.service.MailService;
 import com.sunny.green.service.ProfileImgService;
 import com.sunny.green.service.UserService;
 import com.sunny.green.vo.*;
