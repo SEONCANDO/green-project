@@ -4,6 +4,7 @@ import com.sunny.green.dao.AdminDao;
 import com.sunny.green.dao.ExchangeDao;
 import com.sunny.green.dao.MailDao;
 import com.sunny.green.dao.UserDao;
+import com.sunny.green.service.ExchangeService;
 import com.sunny.green.vo.ExchangeVo;
 import com.sunny.green.vo.ProductWithImgVo;
 import com.sunny.green.vo.UserVo;
@@ -37,6 +38,8 @@ public class ExchangeController {
 //    private final MailService ms;
 
     private final MailDao md;
+
+    private final ExchangeService es;
 
 
     // 교환 창1
@@ -89,7 +92,7 @@ public class ExchangeController {
 
         int remain_point = ev.getRemain_point();
         user.setUser_point(remain_point);
-        ud.updatePoint(user);
+        es.updatePoint(user);
         log.info("유저 포인트값 :" + remain_point);
 
 //       MailVo mailVo = new MailVo();
