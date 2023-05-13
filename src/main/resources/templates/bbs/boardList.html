@@ -63,12 +63,12 @@
                     <tbody>
                     <tr th:each="list : ${bbs}">
                         <td>
-                            <a th:href="@{/boardDetail(board_num=${list.board_num})}" th:utext="${list.board_num}"
+                            <a th:href="@{boardDetail(board_num=${list.board_num})}" th:utext="${list.board_num}"
                                style="color:black;">
                             </a>
                         </td>
                         <td style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">
-                            <a th:href="@{/boardDetail(board_num=${list.board_num})}" th:utext="${list.board_title}"
+                            <a th:href="@{boardDetail(board_num=${list.board_num})}" th:utext="${list.board_title}"
                                style="display: inline-block; max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"></a>
                         </td>
                         <td th:utext="${list.user_id}"></td>

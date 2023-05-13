@@ -64,7 +64,7 @@
                         <tr style="text-align: center;" th:each="coList : ${cv}">
                             <td><input type="checkbox" class="checkbox_item"></td>
                             <td th:utext="${coList.com_num}">1</td>
-                            <td><a th:href="@{/boardDetail(board_num=${coList.board_num})}"
+                            <td><a th:href="@{boardDetail(board_num=${coList.board_num})}"
                                    style="color: black;" th:utext="${coList.com_content}">파이팅55555555555555555555555555555555555555555555555555</a></td>
                             <td th:utext="${coList.user_id}">test1</td>
                             <td th:utext="${coList.com_date}">04-05</td>

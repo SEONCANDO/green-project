@@ -64,7 +64,7 @@
                         <tr style="text-align: center; width: 100%;" th:each="bvList : ${bv}">
                             <td><input type="checkbox" class="checkbox_item"></td>
                             <td th:text="${bvList.board_num}">1</td>
-                            <td><a th:href="@{/boardDetail(board_num=${bvList.board_num})}"
+                            <td><a th:href="@{boardDetail(board_num=${bvList.board_num})}"
                                    style="color: black;" th:utext="${bvList.board_title}">파이팅55555555555555555555555555555555555555555555555555</a></td>
                             <td th:utext="${bvList.user_id}">test1</td>
                             <td th:utext="${#temporals.format(bvList.board_date, 'yyyy-MM-dd HH:mm')}">04-05</td>

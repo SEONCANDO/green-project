@@ -222,7 +222,7 @@
                 <ul class="notice_list" th:each="main : ${nv}">
                     <li>
 
-                        <a th:href="@{/noticeDetail(notice_num=${main.notice_num})}" th:utext="${main.notice_title}">공지1</a>
+                        <a th:href="@{noticeDetail(notice_num=${main.notice_num})}" th:utext="${main.notice_title}">공지1</a>
 
                         <span class="date" th:utext="${#temporals.format(main.notice_date, 'yyyy-MM-dd')}"></span>
                     </li>

@@ -63,12 +63,12 @@
                     <tbody>
                     <tr th:each="list : ${notice}">
                         <td>
-                            <a th:href="@{/noticeDetail(notice_num=${list.notice_num})}" th:utext="${list.notice_num}"
+                            <a th:href="@{noticeDetail(notice_num=${list.notice_num})}" th:utext="${list.notice_num}"
                                style="color:black;">
                             </a>
                         </td>
                         <td style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">
-                            <a th:href="@{/noticeDetail(notice_num=${list.notice_num})}" th:utext="${list.notice_title}"
+                            <a th:href="@{noticeDetail(notice_num=${list.notice_num})}" th:utext="${list.notice_title}"
                                style="display: inline-block; max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"></a>
                         </td>
                         <td th:utext="${list.user_id}"></td>

@@ -27,7 +27,7 @@
             <tbody>
             <tr th:each="list : ${product}">
                 <td th:text="${list.pro_num}">0</td>
-                <td><a th:text="${list.pro_name}" th:href="@{/product2(pro_num=${list.pro_num})}">1</a></td>
+                <td><a th:text="${list.pro_name}" th:href="@{product2(pro_num=${list.pro_num})}">1</a></td>
                 <td th:text="${list.pro_from}">3</td>
                 <td th:text="${list.pro_point}">4</td>
             </tr>
