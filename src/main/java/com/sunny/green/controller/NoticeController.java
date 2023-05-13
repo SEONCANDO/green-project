@@ -1,6 +1,7 @@
 package com.sunny.green.controller;
 
 import com.sunny.green.dao.NoticeDao;
+import com.sunny.green.service.NoticeService;
 import com.sunny.green.vo.NoticeVo;
 import com.sunny.green.vo.UserVo;
 import lombok.RequiredArgsConstructor;
@@ -19,12 +20,7 @@ import java.util.List;
 @Log4j2
 public class NoticeController {
     private final NoticeDao nd;
-
-//    @GetMapping("/notice")
-//    public String index(Model model, HttpSession session, UserVo uservo) {
-//        uservo = (UserVo) session.getAttribute("user");
-//        return "bbs/noticeList";
-//    }
+    private final NoticeService ns;
 
     // 공지사항 목록
     @GetMapping("/notice")
@@ -53,8 +49,8 @@ public class NoticeController {
     // 공지사항 글작성
     @PostMapping("/noticePost")
     public String noticePost(@ModelAttribute NoticeVo noticeVo) {
-        int insertResult = nd.insertNotice(noticeVo);
-        nd.updateNoticeNum();
+        int insertResult = ns.insertNotice(noticeVo);
+        ns.updateNoticeNum();
         if (insertResult > 0) {           // 성공으로 판단되면 목록으로 돌아가기.
             return "redirect:notice/";
         } else {                          // 실패하면 글작성 페이지에 머무름.
@@ -89,7 +85,7 @@ public class NoticeController {
         log.info("공지사항값" + noticeVo.getNotice_num() );
         NoticeVo notice = nd.selectNotice(noticeVo.getNotice_num());
         log.info(notice);
-        int str = nd.updateNotice(noticeVo);
+        int str = ns.updateNotice(noticeVo);
         log.info("업데이트 :" + str);
         return "redirect:notice";
     }
