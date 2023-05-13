@@ -19,6 +19,7 @@ import java.util.List;
 @RequiredArgsConstructor
 @Log4j2
 public class NoticeController {
+
     private final NoticeDao nd;
     private final NoticeService ns;
 

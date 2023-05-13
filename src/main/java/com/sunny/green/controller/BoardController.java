@@ -25,9 +25,7 @@ import java.util.List;
 public class BoardController {
 
     private final BbsDao bd;
-
     private final CommentDao cd;
-
     private final BoardService bs;
 
     // 목록

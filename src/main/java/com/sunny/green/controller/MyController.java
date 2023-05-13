@@ -21,10 +21,8 @@ import java.util.List;
 public class MyController {
 
     private final ExchangeDao ed;
-
     private final UserDao ud;
     private final ProfileImgDao pid;
-
     private final NoticeDao nd;
     private final BbsDao bd;
     private final CommentDao cd;

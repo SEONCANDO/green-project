@@ -30,27 +30,15 @@ import java.util.UUID;
 public class UserController {
 
     private final UserDao ud;
-
-
     private final AdminDao ad;
-
-
     private final ExchangeDao ed;
-
 //    private final MailService ms;
-
-
     private final MailDao md;
-
-
     private final ProfileImgDao pid;
-
     private final BbsDao bd;
     private final PickupDao pd;
     private final CommentDao cd;
-
     private final UserService us;
-
     private final ProfileImgService ps;
 
     //마이페이지 매핑

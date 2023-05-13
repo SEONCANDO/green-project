@@ -30,17 +30,11 @@ public class ExchangeController {
 
 
     private final AdminDao ad;
-
     private final UserDao ud;
-
     private final ExchangeDao ed;
-
-//    private final MailService ms;
-
+//  private final MailService ms;
     private final MailDao md;
-
     private final ExchangeService es;
-
 
     // 교환 창1
     @GetMapping("/exchange")

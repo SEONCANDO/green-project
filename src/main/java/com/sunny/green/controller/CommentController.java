@@ -22,15 +22,11 @@ public class CommentController {
 
 
     // 댓글 입력
-
     @PostMapping("insertComment.do")
     @ResponseBody
 
     public void postComment(CommentVo commentVo, HttpSession session)  {
         log.info("commentVo1>>>>>"+commentVo);
-//        cd.updateComNum();
-
-
         if (session.getAttribute("user") != null) {
             UserVo user = (UserVo) session.getAttribute("user");
             String userId = user.getUser_id();
