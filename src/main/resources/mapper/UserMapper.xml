@@ -34,6 +34,13 @@
         where user_name = #{user_name} and user_email = #{user_email}
     </select>
 
+    <!-- 유저 비밀번호 찾기 -->
+    <select id="selectUserPass" resultType="com.sunny.green.vo.UserVo">
+        select user_pass
+        from user
+        where user_name = #{user_name} and user_id = #{user_id} and user_email = #{user_email}
+    </select>
+
     <!-- 유저 정보 불러오기   -->
     <select id="selectAll1" resultType="com.sunny.green.vo.UserVo">
         select *

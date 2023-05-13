@@ -177,6 +177,21 @@ public class UserController {
         return checkUser;
     }
 
+    //비밀번호 찾기
+    @PostMapping("/checkUserPass")
+    @ResponseBody
+    public String checkUserPass(@RequestParam("user_name") String user_name, @RequestParam("user_id") String user_id, @RequestParam("user_email") String user_email){
+        UserVo existingUser = ud.selectUserPass(user_name, user_id, user_email);
+        if (existingUser != null) {
+
+            return "exist";
+        } else {
+
+            return "not exist";
+        }
+    }
+
+
 
     // 마이페이지 개인정보 수정
     @GetMapping("/modify")
