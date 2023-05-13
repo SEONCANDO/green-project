@@ -1,6 +1,7 @@
 package com.sunny.green.controller;
 
 import com.sunny.green.dao.*;
+import com.sunny.green.service.MailService;
 import com.sunny.green.service.ProfileImgService;
 import com.sunny.green.service.UserService;
 import com.sunny.green.vo.*;
@@ -15,6 +16,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.mail.MessagingException;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.List;
@@ -28,7 +30,7 @@ public class UserController {
     private final AdminDao ad;
     private final ExchangeDao ed;
 //    private final MailService ms;
-    private final MailDao md;
+//    private final MailDao md;
     private final ProfileImgDao pid;
     private final BbsDao bd;
     private final PickupDao pd;
@@ -180,10 +182,16 @@ public class UserController {
     //비밀번호 찾기
     @PostMapping("/checkUserPass")
     @ResponseBody
-    public String checkUserPass(@RequestParam("user_name") String user_name, @RequestParam("user_id") String user_id, @RequestParam("user_email") String user_email){
+    public String checkUserPass(@RequestParam("user_name") String user_name, @RequestParam("user_id") String user_id, @RequestParam("user_email") String user_email) throws MessagingException {
         UserVo existingUser = ud.selectUserPass(user_name, user_id, user_email);
         if (existingUser != null) {
 
+//        MailVo mailVo = new MailVo();
+//        mailVo.setMail_receiver(existingUser.getUser_email());
+//        mailVo.setMail_title("그린토피아 비밀번호 내역입니다");
+//         mailVo.setMail_content(existingUser.getUser_name() +" 회원님의 비밀번호는" + existingUser.getUser_pass()+"입니다");
+//          ms.successMail(mailVo);
+//           md.insertMail(mailVo);
             return "exist";
         } else {
 

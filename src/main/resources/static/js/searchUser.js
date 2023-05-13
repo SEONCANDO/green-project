@@ -27,10 +27,10 @@ function checkUserPass() {
         type: "POST",
         data: {user_name: userName, user_id: userId ,user_email: userEmail},
         success: function (response) {
-            if (response != null) {
+            if (response == "exist") {
                 $('#passCheckMessage').text("해당되는 회원님의 이메일로 번호를 발송했습니다.");
             } else {
-                $('#idCheckMessage').text("해당 정보에 해당하는 아이디가 존재하지 않습니다, 다시 확인해주십시오.");
+                $('#passCheckMessage').text("해당 정보에 해당하는 아이디가 존재하지 않습니다, 다시 확인해주십시오.");
             }
         },
         error: function () {
