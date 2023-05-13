@@ -20,11 +20,21 @@
 
  * 왜 프로젝트를 만들게 되었는가? 
  
-   (1) 
+   (1) 국내 전자 쓰레기 배출량은 해마다 5.5%씩 증가인데 폐가전 재활용률은 EU의 총 43%에 불과함
    
-   (2)
-   
-   (3) 
+   (2) 사람들에게 인지도를 높여, 무상수거에 대한 진입장벽을 낮추기 위해서 제작
+ 
+ * 어떠한 효과를 기대할 수 있는가? 
+  
+    (1) 환경보호 -> 대기, 수질, 토양 등 환경 문제 유발 방지
+  
+    (2) 에너지 절약 -> 자원회수를 통해 재활용 함으로써 에너지 절약 실현
+  
+    (3) 경제적 이득 -> 연계된 기업들의 수익 및 일자리 창출
+  
+    (4) 자원 재활용 촉진 -> 자원의 효율적 회수 및 재활용
+  
+    (5) 대중인식 개선 -> 인식개선과 지속 가능한 생활 습관을 장려 가능
    
 ## ⏲개발기간
  * 2023년 3월 24일 ~ 2023년 5월 8일
@@ -40,7 +50,7 @@
 ## ⚙개발환경
  * Java : <img src="https://img.shields.io/badge/Java-007396?style=flat-square&logo=Java&logoColor=white"/> Java 11
  * IDE : <img src="https://img.shields.io/badge/intellij idea-000000?style=flat-square&logo=intellij idea&logoColor=white"/> Intellij 2023-01-01
- * Framework : <img src="https://img.shields.io/badge/springboot-6DB33F?style=flat-square&logo=springboot idea&logoColor=white"/> Spring boot (2.7.6)
+ * Framework : <img src="https://img.shields.io/badge/SpringBoot-6DB33F?style=flat-square&logo=springboot&logoColor=white"/> Spring boot (2.7.6)
  * Database : <img src="https://img.shields.io/badge/mysql-4479A1?style=flat-square&logo=mysql&logoColor=white"/> Mysql (workbench 8.0)
  * ORM : <img src="https://img.shields.io/badge/Mybatis-F5A805?style=flat-square&logo=Mybatis&logoColor=white"/> Mybatis 3.0.0
  * Server : <img src="https://img.shields.io/badge/AWS Lightsail-F58105?style=flat-square&logo=AWS Lightsail&logoColor=white"/> AWS Lightsail
