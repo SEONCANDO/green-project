@@ -1,6 +1,8 @@
 package com.sunny.green.controller;
 
 import com.sunny.green.dao.*;
+import com.sunny.green.service.ProfileImgService;
+import com.sunny.green.service.UserService;
 import com.sunny.green.vo.*;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
@@ -47,6 +49,10 @@ public class UserController {
     private final PickupDao pd;
     private final CommentDao cd;
 
+    private final UserService us;
+
+    private final ProfileImgService ps;
+
     //마이페이지 매핑
     @GetMapping("/myPage")
     public String myPage(HttpSession session, Model mo) {
@@ -87,16 +93,16 @@ public class UserController {
     //로그인 할 때 나타나는 post매핑
     @PostMapping("/login")
     public String login1(UserVo user, HttpSession session, Model model) {
-        UserVo userDB = ud.selectUser(user);
+        UserVo userDB = us.selectUser(user);
         log.info(userDB);
 
         if (userDB != null) {
-            System.out.println(userDB);
+
             session.setAttribute("user", userDB);
             model.addAttribute("alert", "로그인에 성공했습니다.");
             model.addAttribute("url", "/index");
         } else {
-            System.out.println("실패했습니다");
+            log.info("실패했습니다");
             model.addAttribute("alert", "아이디/비밀번호가 일치하지 않습니다");
             model.addAttribute("url", "/login");
         }
@@ -121,13 +127,7 @@ public class UserController {
     @PostMapping("/join")
     public String join1(UserVo user, Model model, HttpSession session) {
 
-        if (ud.joinUser(user) != 0) {
-            AdminVo adminVo = new AdminVo();
-            adminVo.setAdmin_id(user.getUser_id());
-            adminVo.setAdmin_pass(user.getUser_pass());
-            adminVo.setUser_id(user.getUser_id());
-            adminVo.setUser_pass(user.getUser_pass());
-            ad.insertAdmin(adminVo);
+        if (us.joinUser(user) != 0) {
             model.addAttribute("alert", "회원가입이 완료되었습니다.");
             model.addAttribute("url", "/index");
             session.setAttribute("user", user);
@@ -203,9 +203,9 @@ public class UserController {
     //개인정보 수정
     @PostMapping("/modify")
     public String modify1(UserVo user, Model mo) {
-        int update = ud.updateUser(user);
+        int update = us.updateUser(user);
         if (update == 1) {
-            System.out.println(update);
+            log.info(update);
             mo.addAttribute("alert", "정보가 수정되었습니다");
             mo.addAttribute("url", "/myPage");
 
@@ -247,7 +247,7 @@ public class UserController {
     }
 
 
-    //소개
+    //메인페이지 소개
     @GetMapping("/info")
     public String info() {
         return "info";
@@ -255,27 +255,13 @@ public class UserController {
 
 
 
-    //마이페이지 프로필 업로드
-    @Transactional
+    //마이페이지 프로필사진 업로드
     @PostMapping("/uploadProfile")
     public String pro4(ProductVo productVo, @RequestParam("file") MultipartFile imageFile, HttpSession session) {
-        String fileName = imageFile.getOriginalFilename(); // 파일 이름 추출
-        String uploadPath = "/home/ubuntu/greentopia2/img/profile/"; // 업로드 디렉토리 경로
-        String uuid = UUID.randomUUID().toString();
-        String realPath = uploadPath + uuid + fileName;
-        String saveFile = uuid + fileName;
-
-        try (OutputStream os = new FileOutputStream(realPath)) {
-            os.write(imageFile.getBytes());
-
+        try {
             UserVo userVo = (UserVo) session.getAttribute("user");
-            ProfileImgVo profileImgVo = new ProfileImgVo();
-            profileImgVo.setUser_id(userVo.getUser_id());
-            profileImgVo.setImg_save_name(saveFile);
-            profileImgVo.setImg_path(realPath);
-            pid.insProfileImg(profileImgVo);
+            ps.uploadProfileImg(imageFile, userVo);
         } catch (IOException e) {
-            // 파일 저장 실패 시 예외 처리
             e.printStackTrace();
         }
         return "redirect:myPage";
@@ -286,7 +272,7 @@ public class UserController {
     @GetMapping("/img/profile/{img_save_name}")
     @ResponseBody
     public ResponseEntity<Resource> getImage(@PathVariable("img_save_name") String imgSaveName) throws IOException {
-        Resource resource = new FileSystemResource("/home/ubuntu/greentopia2/img/profile/" + imgSaveName);
+        Resource resource = new FileSystemResource("/src/main/resources/static/img/profile/" + imgSaveName);
         return ResponseEntity.ok().contentType(MediaType.IMAGE_JPEG).body(resource);
     }
 
