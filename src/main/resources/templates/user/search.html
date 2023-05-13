@@ -15,6 +15,26 @@
             -webkit-box-shadow: 20px 16px 19px 0px rgba(0,0,0,0.72);
             -moz-box-shadow: 20px 16px 19px 0px rgba(0,0,0,0.72);
         }
+
+        #button1 {
+            border: none;
+            width: 120px;
+            height: 50px;
+            font-weight: 700;
+            font-size: 20px;
+            background: rgba(26, 121, 64, 0.8);
+        }
+
+        #button2 {
+            border: none;
+            width: 120px;
+            height: 50px;
+            font-weight: 700;
+            font-size: 20px;
+            background: white;
+        }
+
+        
     </style>
 </head>
 <body>
@@ -27,8 +47,9 @@
 
                         이름 : <input type="text" name="id_name" id="id_name" style="margin-left: 2.5%;"> <br>
                         이메일 : <input type="email" name="id_email" id="id_email" style="margin-top: 3%;"> <br>
-                        <button type="button" onclick="checkUserId()" style="margin-left:5%; margin-top: 5%;">찾기</button><br>
-                        <span id="idCheckMessage"></span>
+                        <button type="button" onclick="checkUserId()" id="button1" style="margin-left:15%; margin-top: 5%;">찾기</button><br>
+                        <br>
+                        <span id="idCheckMessage" style="font-weight: 700; color: red;"></span>
                     </div>
                 </div>
 
@@ -39,8 +60,9 @@
                         이름 : <input type="text" name="pass_name" id="pass_name" style="margin-left: 2.5%;"> <br>
                         아이디 : <input type="text" name="pass_id" id="pass_id" style="margin-top: 3%;"> <br>
                         이메일 : <input type="email" name="pass_email" id="pass_email" style="margin-top: 3%;"> <br>
-                        <button type="button" onclick="checkUserPass()" style="margin-left:5%; margin-top: 5%;">메일로 발송하기</button><br>
-                        <span id="passCheckMessage"></span>
+                        <button type="button" onclick="checkUserPass()" id="button2" style="margin-left:15%; margin-top: 5%;">메일 발송</button><br>
+                        <br>
+                        <span id="passCheckMessage" style="font-weight: 700;"></span>
                     </div>
                 </div>
             </div>
