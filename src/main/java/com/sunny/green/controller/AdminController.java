@@ -1,6 +1,8 @@
 package com.sunny.green.controller;
 
 import com.sunny.green.dao.*;
+import com.sunny.green.service.AdminService;
+import com.sunny.green.service.ProductService;
 import com.sunny.green.vo.*;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
@@ -32,15 +34,20 @@ public class AdminController {
     private final PickupDao pd;
     private final NoticeDao nd;
     private final BbsDao bd;
+    private final AdminService as;
+    private final ProductService ps;
 
+
+    //관리자 페이지
     @GetMapping("/admin")
     public String admin() {
         return "admin/admin_login";
     }
 
+    // 관리자용 로그인 방법
     @PostMapping("/admin")
     public String admin2(AdminVo av, Model mo, HttpSession session) {
-        AdminVo adminVo = ad.selectAdmin(av);
+        AdminVo adminVo = as.selectAdmin(av);
         if (adminVo != null) {
             if (adminVo.getAdmin_role() == 1) {
                 mo.addAttribute("alert", "관리자용 로그인에 성공했습니다.");
@@ -59,6 +66,7 @@ public class AdminController {
         return "alert";
     }
 
+    //관리자페이지 메인
     @GetMapping("/admin/main")
     public String admin1() {
 
@@ -67,13 +75,13 @@ public class AdminController {
 
 
 
-
+   //관리자 페이지 유저관리1
     @GetMapping("/admin/user1")
     public String adminUs1() {
         return "admin/admin_user1";
     }
 
-    // 검색
+    //관리자페이지 유저관리2
     @GetMapping("/admin/user2")
     public String getUserList(Model model, PageVo search, @RequestParam(required = false) String searchType, @RequestParam(required = false) String searchValue) throws Exception {
         List<UserVo> user;
@@ -86,6 +94,7 @@ public class AdminController {
         return "admin/admin_user2";
     }
 
+    //관리자페이지 유저검색 & 페이징
     @PostMapping("/pagination")
     @ResponseBody
     public List<UserVo> getUserData(PageVo search, @RequestParam(required = false) String searchType, @RequestParam(required = false) String searchValue) {
@@ -111,7 +120,7 @@ public class AdminController {
     // 보영 (회원정보수정)
     @PostMapping("/admin/modify")
     public String adminModify(UserVo user, Model model) {
-        int update = ud.updateUser(user);
+        int update = as.updateUser(user);
         log.info(update);
         model.addAttribute("alert", "수정되었습니다");
         model.addAttribute("url", "/admin/user2");
@@ -120,6 +129,7 @@ public class AdminController {
     }
 
 
+    // 어드민 페이지 유저관리 아이디 삭제
     @GetMapping("admin/delete")
     public String deleteUser(@RequestParam("user_id") String user_id) {
         log.info("번호 :" + user_id);
@@ -128,6 +138,7 @@ public class AdminController {
         return "redirect:user2";
     }
 
+    // 어드민 페이지 상품 등록1
     @GetMapping("admin/product1")
     public String pro1(Model mo) {
         List<ProductVo> product = ad.selectProAll();
@@ -135,6 +146,7 @@ public class AdminController {
         return "admin/admin_product1";
     }
 
+    // 어드민 페이지 상품 등록2
     @GetMapping("admin/product2")
     public String pro2(Model mo, ProductVo vo, ProImgVo iv) {
         ProductVo product = ad.selectPro(vo.getPro_num());
@@ -144,6 +156,7 @@ public class AdminController {
         return "admin/admin_product2";
     }
 
+    // 어드민 페이지 상품등록3
     @GetMapping("admin/product3")
     public String pro3() {
 
@@ -151,6 +164,7 @@ public class AdminController {
         return "admin/admin_product3";
     }
 
+    // 어드민 페이지 상품 삭제
     @GetMapping("admin/deletePro")
     public String deletePro(int pro_num) {
         int otr = ad.deletePro_img(pro_num);
@@ -158,6 +172,7 @@ public class AdminController {
         return "redirect:admin";
     }
 
+    //어드민 페이지 상품 등록 확인
     @GetMapping("admin/product4")
     public String pro5(ProductVo productVo, Model mo) {
         ProductVo pro = ad.selectPro(productVo.getPro_num());
@@ -165,38 +180,18 @@ public class AdminController {
         return "admin/admin_product4";
     }
 
+    //어드민 페이지 상품등록 업데이트
     @PostMapping("/updatePro")
     public String pro6(ProductVo productVo) {
-        int str = ad.updatePro(productVo);
+        int str = as.updatePro(productVo);
         return "redirect:admin/product1";
     }
 
 
-    @Transactional
+    //어드민 페이지 상품 등록
     @PostMapping("/product3")
-    public String pro4(ProductVo productVo, @RequestParam("image") MultipartFile imageFile) {
-        String fileName = imageFile.getOriginalFilename(); // 파일 이름 추출
-        String uploadPath = "/home/ubuntu/greentopia2/img/product/"; // 업로드 디렉토리 경로
-        String filePath = uploadPath + fileName; // 저장될 파일 경로
-        String uuid = UUID.randomUUID().toString();
-        String realPath = uploadPath + uuid + fileName;
-        String saveFile = uuid + fileName;
-        ad.insertPro(productVo);
-        String str = String.valueOf(productVo);
-        log.info(str);
-
-        try (OutputStream os = new FileOutputStream(realPath)) {
-            os.write(imageFile.getBytes());
-
-            ProImgVo proImgVo = new ProImgVo();
-            proImgVo.setPro_num(productVo.getPro_num());
-            proImgVo.setPro_img_save_name(saveFile);
-            proImgVo.setPro_img_path(realPath);
-            ad.insertProImg(proImgVo);
-        } catch (IOException e) {
-            // 파일 저장 실패 시 예외 처리
-            e.printStackTrace();
-        }
+    public String registerProduct(ProductVo productVo, @RequestParam("image") MultipartFile imageFile) throws IOException {
+        ps.registerProduct(productVo, imageFile);
         return "redirect:admin";
     }
 //   ---------------------------------- rs
@@ -247,6 +242,7 @@ public class AdminController {
         model.addAttribute("bbsVos", bbsVos);
         return "admin/admin_bbs2";
     }
+
     // QNA_페잉징
     @PostMapping("/pagination_board_page")
     @ResponseBody
@@ -304,10 +300,11 @@ public class AdminController {
     }
 
 
+    // 업로드된 상품 이미지 restful api로 불러오기
     @GetMapping("/img/product/{img_save_name}")
     @ResponseBody
     public ResponseEntity<Resource> getImage(@PathVariable("img_save_name") String imgSaveName) throws IOException {
-        Resource resource = new FileSystemResource("/home/ubuntu/greentopia2/img/product/" + imgSaveName);
+        Resource resource = new FileSystemResource("/src/main/resources/static/img/product/" + imgSaveName);
         return ResponseEntity.ok().contentType(MediaType.IMAGE_JPEG).body(resource);
     }
 
