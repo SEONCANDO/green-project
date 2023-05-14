@@ -29,7 +29,7 @@
                         <span th:utext="${pro.pro_from}"></span>
                         <p class="products" th:utext="${pro.pro_name}"></p>
                         <span class="products" style="font-size: 26px; font-weight: 1000;"
-                              th:utext="${pro.pro_point}"></span>
+                              th:utext="${#numbers.formatInteger(pro.pro_point, 3, 'COMMA')}"></span>
                         <span style="font-size: 24px;">p</span>
                     </div>
 
@@ -40,7 +40,7 @@
                         </div>
 
                         <div style="padding-top: 15px; padding-bottom: 15px; display: flex;">
-                            <p style="font-size: 16px; font-weight: 600;" th:utext="${pro.pro_point}"></p>
+                            <p style="font-size: 16px; font-weight: 600;" th:utext="${#numbers.formatInteger(pro.pro_point, 3, 'COMMA')}"></p>
                             <p style="font-size: 16px; font-weight: 600;">p</p>
                         </div>
                     </div>

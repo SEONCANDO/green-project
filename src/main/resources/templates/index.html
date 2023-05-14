@@ -97,7 +97,10 @@
                 <div class="card-body">
                     <h4 class="card-title"><a th:text="${list.pro_name}" style="color: dodgerblue;">스타벅스 1만원권</a></h4>
                     <h6 class="card-subtitle mb-2 text-muted" style="font-size: 16px; font-weight: 700;">모바일 상품권</h6>
-                    <p style="color: red; font-weight: 700; font-size: 16px; font-family: 'NanumBarunGothic', sans-serif;" >그린포인트 : [[${list.pro_point}]]p</p>
+                    <p style="color: red; font-weight: 700; font-size: 16px; font-family: 'NanumBarunGothic', sans-serif;"
+                       th:text="'그린포인트 : '+${#numbers.formatInteger(list.pro_point, 3, 'COMMA')} + 'p'">
+                        10000p
+                    </p>
                 </div>
                 <div style="border-top: 1px solid #e6e6e6;">
                     <p style="text-align: left; margin-left: 10px; font-weight: 700; font-size: 16px; font-family: 'NanumBarunGothic', sans-serif;">lnc. 그린토피아</p>
