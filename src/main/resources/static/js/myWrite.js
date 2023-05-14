@@ -103,7 +103,7 @@ function getData(num) {
                 '<td><a href="/boardDetail?board_num=' + item.board_num + '">' + item.board_num + '</td>' +
                 '<td>' + item.board_title + '</td>' +
                 '<td>' + item.user_id + '</td>' +
-                '<td>' + item.board_date + '</td>' +
+                '<td>' + item.board_date.replace("T", " ") + '</td>' +
                 '</tr>'
             );
         }

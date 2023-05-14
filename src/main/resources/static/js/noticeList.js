@@ -103,7 +103,7 @@ function getData(num) {
                 '<td><a style="color: black;" href="/noticeDetail?notice_num=' + item.notice_num + '">' + item.notice_num + '</td>' +
                 '<td><a style="display: inline-block; max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;" href="/noticeDetail?notice_num=' + item.notice_num + '">' + item.notice_title + '</td>' +
                 '<td>' + item.user_id + '</td>' +
-                '<td>' + item.notice_date + '</td>' +
+                '<td>' + item.notice_date.replace("T", " ") + '</td>' +
                 '</tr>'
             );
         }
