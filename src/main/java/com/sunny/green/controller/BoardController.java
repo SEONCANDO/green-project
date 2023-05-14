@@ -6,15 +6,14 @@ import com.sunny.green.dao.UserDao;
 import com.sunny.green.service.BoardService;
 import com.sunny.green.vo.BbsVo;
 import com.sunny.green.vo.CommentVo;
+import com.sunny.green.vo.PageVo;
 import com.sunny.green.vo.UserVo;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
 import java.util.List;
@@ -30,12 +29,34 @@ public class BoardController {
 
     // 목록
     @GetMapping("/board")
-    public String index(Model model) {
-        List<BbsVo> bbs = bd.selectBoardAll();
+    public String getBbsList(Model model, PageVo search, @RequestParam(required = false) String searchType, @RequestParam(required = false) String searchValue) throws Exception {
+        List<BbsVo> bbs;
+        if (searchType == null || searchValue == null) {
+            bbs = bd.selectBoardAll();
+            log.info(bbs);
+        } else {
+            bbs = bd.searchBoard(search, searchType, searchValue);
+            log.info(bbs);
+        }
         model.addAttribute("bbs", bbs);
         return "bbs/boardList";
     }
+    // 페이징 & 검색
+    @PostMapping("/pagination_board")
+    @ResponseBody
+    public List<BbsVo> getBbsInfo(PageVo search, @RequestParam(required = false) String searchType, @RequestParam(required = false) String searchValue) {
+        List<BbsVo> bbs;
+        if (searchType == null || searchValue == null) {
+            bbs = bd.selectAllBoard();
+            log.info(bbs);
 
+        } else {
+            bbs = bd.searchBoard(search, searchType, searchValue);
+            log.info(bbs);
+
+        }
+        return bbs;
+    }
     // Q&A 글작성 폼
     @GetMapping("/boardPost")
     public String boardPost(UserVo user, HttpSession session, Model model) {
