@@ -13,6 +13,8 @@
     <title>게시글 작성</title>
     <script src="/js/ckeditor/ckeditor.js"></script>
     <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script src="/js/noticeList.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 </head>
 
 <body>
@@ -27,9 +29,9 @@
                 <div class="col-lg-3 col-md-3 col-sm-12 p-0">
                     <label for="search-type" hidden>검색 유형</label>
                     <select class="form-control" id="search-type" name="searchType">
-                        <option>제목</option>
-                        <option>아이디</option>
-                        <option>작성일</option>
+                        <option selected disabled value="">검색유형</option>
+                        <option th:value="notice_title">제목</option>
+                        <option th:value="user_id">아이디</option>
                     </select>
                 </div>
                 <div class="col-lg-8 col-md-6 col-sm-12 p-0">
@@ -38,7 +40,7 @@
                            name="searchValue">
                 </div>
                 <div class="col-lg-1 col-md-3 col-sm-12 p-0">
-                    <button type="submit" class="btn btn-base">
+                    <button type="submit" class="btn btn-base submitBtn">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                              viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                              stroke-linecap="round" stroke-linejoin="round"
@@ -60,7 +62,7 @@
                         <td class="col-md-3">작성일</td>
                     </tr>
                     </thead>
-                    <tbody>
+                    <tbody id="t_body">
                     <tr th:each="list : ${notice}">
                         <td>
                             <a th:href="@{noticeDetail(notice_num=${list.notice_num})}" th:utext="${list.notice_num}"
@@ -91,18 +93,40 @@
         </div>
 
 
-        <div class="container">
-            <nav id="pagination" aria-label="Page navigation">
+        <div class="row" style="margin-top: 5%; margin-left: 50%;">
+            <!----- 페이징 ----->
+            <nav aria-label="Page navigation example">
                 <ul class="pagination justify-content-center">
-                <span th:each="pageNum : ${pageList}" th:inline="text">
-                     <a th:href="@{'/?page=' + ${pageNum}}">[[${pageNum}]]</a>
-                </span>
-                    <li class="page-item"><a class="page-link" href="#">이전</a></li>
-                    <li class="page-item"><a class="page-link" href="#">1</a></li>
-                    <li class="page-item"><a class="page-link" href="#">다음</a></li>
+                    <li class="page-item" id="pagingul">
+
+                    </li>
                 </ul>
             </nav>
         </div>
+        <script>
+            $('.submitBtn').click(function () {
+                let searchType = $('select[name=searchType]').val();
+                let searchValue = $('input[name=searchValue]').val();
+
+                $.ajax({
+                    url: '/pagination_notice', // 데이터를 가져올 URL_
+                    type: 'post', // HTTP 요청 방법(Method)을 POST로 변경
+                    dataType: "json",
+                    data: {"searchType": searchType, "searchValue": searchValue},
+                    success: function (data) { // 데이터를 가져온 후 실행할 콜백 함수
+                        console.log(data); // 데이터 확인용
+                        content = data;
+                        console.log("데이터" + data);
+                        getData(1);
+                        console.log("타입" + searchType);
+                        console.log("밸류" + searchValue);
+                    },
+                    error: function (e) {
+                        console.log("ERROR: ", e);
+                    }
+                });
+            });
+        </script>
 
     </div>
 </div>

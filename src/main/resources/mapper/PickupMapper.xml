@@ -66,6 +66,6 @@
 
 
     <select id="myPageReservation" resultType="com.sunny.green.vo.PickupDetailVo">
-        select * from pickup_info where user_id = #{user_id} order by pu_no desc limit 0,4;
+        select * from pickup_info where user_id = #{user_id} order by pu_no desc limit 0,3;
     </select>
 </mapper>

@@ -65,7 +65,7 @@
     <!--    rsList 검색  -->
     <select id="searchComment" resultType="com.sunny.green.vo.CommentVo">
         SELECT *
-        FROM board
+        FROM comment
         <where>
             <if test="searchType=='com_content' and searchValue != null and searchValue != '' ">
                 AND com_content like CONCAT('%', #{searchValue}, '%')

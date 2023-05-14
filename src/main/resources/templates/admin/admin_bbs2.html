@@ -94,19 +94,19 @@
         </div>
             <script>
                 $('.submitBtn').click(function () {
-                    let type = $('select[name=searchType]').val();
-                    let value = $('input[name=searchValue]').val();
+                    let searchType = $('select[name=searchType]').val();
+                    let searchValue = $('input[name=searchValue]').val();
 
                     $.ajax({
                         url: '/pagination_board_page', // 데이터를 가져올 URL_
                         type: 'post',
                         dataType: "json",
-                        data:{"searchType":type,"searchValue":value},
+                        data:{"searchType":searchType,"searchValue":searchValue},
                         success: function (data) { // 데이터를 가져온 후 실행할 콜백 함수
                             console.log(data); // 데이터 확인용
                             console.log("데이터" + data);
-                            console.log("타입" + type);
-                            console.log("밸류" + value);
+                            console.log("타입" + searchType);
+                            console.log("밸류" + searchValue);
                             getData(1);
                         },
                         error: function (e) {

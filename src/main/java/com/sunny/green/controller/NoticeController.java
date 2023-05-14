@@ -3,14 +3,13 @@ package com.sunny.green.controller;
 import com.sunny.green.dao.NoticeDao;
 import com.sunny.green.service.NoticeService;
 import com.sunny.green.vo.NoticeVo;
+import com.sunny.green.vo.PageVo;
 import com.sunny.green.vo.UserVo;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
 import java.util.List;
@@ -25,12 +24,35 @@ public class NoticeController {
 
     // 공지사항 목록
     @GetMapping("/notice")
-    public String index(Model model) {
-        List<NoticeVo> notice = nd.selectNoticeAll();
+    public String getNoticeList(Model model, PageVo search , @RequestParam(required = false) String searchType , @RequestParam(required = false) String searchValue) throws Exception {
+        List<NoticeVo> notice;
+        if (searchType == null || searchValue == null) {
+            notice = nd.selectAllNotice();
+            log.info(notice);
+        } else {
+            notice = nd.searchNotice(search, searchType, searchValue);
+            log.info(notice);
+        }
         model.addAttribute("notice", notice);
         return "bbs/noticeList";
     }
 
+    //페이징 및 검색
+    @PostMapping("/pagination_notice")
+    @ResponseBody
+    public List<NoticeVo> getNoticeInfo(PageVo search, @RequestParam(required = false) String searchType, @RequestParam(required = false) String searchValue) {
+        List<NoticeVo> notice;
+        if (searchType == null || searchValue == null) {
+            notice = nd.selectAllNotice();
+
+        } else {
+            notice = nd.searchNotice(search, searchType, searchValue);
+            log.info(notice);
+        }
+        log.info(">>>>>>>>>>>>>"+notice);
+        return notice;
+    }
+    
     // 공지사항 글작성 폼
     @GetMapping("/noticePost")
     public String noticePost(UserVo user, HttpSession session, Model model) {

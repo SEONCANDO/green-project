@@ -1,10 +1,10 @@
 
-    let content;
+let content;
 
 
-    $(document).ready(function () {
+$(document).ready(function () {
     $.ajax({
-        url: '/pagination_board_page', // 데이터를 가져올 URL_
+        url: '/pagination_notice', // 데이터를 가져올 URL_
         type: 'post',
         dataType: "json",
         success: function (data) { // 데이터를 가져온 후 실행할 콜백 함수
@@ -21,8 +21,8 @@
 
 
 
-    // 페이징 처리
-    function pageLink(currentPage, totalPage, funName){
+// 페이징 처리
+function pageLink(currentPage, totalPage, funName){
     // pageLink 설정하기(?)
     let pageUrl = "";
     let pageLimit = 5;
@@ -30,8 +30,8 @@
     let endPage = startPage - 1 + pageLimit ;
 
     if (totalPage < endPage) {
-    endPage = totalPage;
-}
+        endPage = totalPage;
+    }
 
     let nextPage = endPage + 1;
 
@@ -42,30 +42,30 @@
 
     //맨 첫 페이지
     if (currentPage > 1 && pageLimit < currentPage) {
-    pageUrl += "<a class='page first' href='javascript:" + funName + "(1);'><li className=\"page-item\"></a>";
-}
+        pageUrl += "<a class='page first' href='javascript:" + funName + "(1);'><li className=\"page-item\"></a>";
+    }
     //이전 페이지
     if (currentPage > pageLimit) {
-    pageUrl += " <a class='page prev' href='javascript:" + funName + "(" + (startPage == 1 ? 1 : startPage - 1) + ");'><li className=\"page-item\"></a>";
-}
+        pageUrl += " <a class='page prev' href='javascript:" + funName + "(" + (startPage == 1 ? 1 : startPage - 1) + ");'><li className=\"page-item\"></a>";
+    }
     //~pageLimit 맞게 페이지 수 보여줌
     for (var i = startPage; i <= endPage; i++) {
-    //현재페이지면 진하게 표시
-    if (i == currentPage) {
-    pageUrl += " <a href='#'><strong>" + i + "</strong></a>"
-} else {
-    pageUrl += " <a href='javascript:" + funName + "(" + i + ");'> " + i + " </a>";
-}
-}
+        //현재페이지면 진하게 표시
+        if (i == currentPage) {
+            pageUrl += " <a href='#'><strong>" + i + "</strong></a>"
+        } else {
+            pageUrl += " <a href='javascript:" + funName + "(" + i + ");'> " + i + " </a>";
+        }
+    }
 
     //다음 페이지
     if (nextPage <= totalPage) {
-    pageUrl += "<a class='page next' href='javascript:" + funName + "(" + (nextPage < totalPage ? nextPage : totalPage) + ");'><li className=\"page-item\"></a>";
-}
+        pageUrl += "<a class='page next' href='javascript:" + funName + "(" + (nextPage < totalPage ? nextPage : totalPage) + ");'><li className=\"page-item\"></a>";
+    }
     //맨 마지막 페이지
     if (currentPage < totalPage && nextPage < totalPage) {
-    pageUrl += "<a class='page last' href='javascript:" + funName + "(" + totalPage + ");'><li className=\"page-item\"></a>";
-}
+        pageUrl += "<a class='page last' href='javascript:" + funName + "(" + totalPage + ");'><li className=\"page-item\"></a>";
+    }
     //pageUrl_ test
     console.log(pageUrl);
     // 현재 페이지 번호를 업데이트합니다.
@@ -76,7 +76,7 @@
 
 
 }
-    function getData(num) {
+function getData(num) {
     // 한페이지에 10개를 보여주기 위한 함수 설정
     let itemsPerPage = 10;  // 한 페이지에 보여줄 데이터의 수
     let currentPage = num;    // 현재 페이지 번호
@@ -92,21 +92,21 @@
     // pageLink(현재페이지, 전체페이지, 호출할 함수이름)  // --------- 해결해야함 !!
     let htmlStr = pageLink(currentPage, totalPage, "getData");
     // common.js - pageLink
-    $("#pagingul").html(htmlStr);  // --------- 해결해야함 !!
+    $("#div_paginate").html(htmlStr);  // --------- 해결해야함 !!
 
     $('#t_body').empty();
     // 데이터를 테이블에 추가
     $.each(content, function(i, item) {
-    if (i >= startIndex && i < endIndex) {
-    userTable.append(
-    '<tr>' +
-    '<td><a href="/boardDetail?board_num=' + item.board_num + '">' + item.board_num + '</td>' +
-    '<td>' + item.board_title + '</td>' +
-    '<td>' + item.user_id + '</td>' +
-    '<td>' + item.board_date + '</td>' +
-    '</tr>'
-    );
-}
-});
+        if (i >= startIndex && i < endIndex) {
+            userTable.append(
+                '<tr>' +
+                '<td><a style="color: black;" href="/noticeDetail?notice_num=' + item.notice_num + '">' + item.notice_num + '</td>' +
+                '<td><a style="display: inline-block; max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;" href="/noticeDetail?notice_num=' + item.notice_num + '">' + item.notice_title + '</td>' +
+                '<td>' + item.user_id + '</td>' +
+                '<td>' + item.notice_date + '</td>' +
+                '</tr>'
+            );
+        }
+    });
 
 } // data 10개씩 끊어오는 함수
