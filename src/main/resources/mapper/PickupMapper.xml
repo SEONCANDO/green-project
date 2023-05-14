@@ -64,4 +64,8 @@
                                   JOIN pickup_img ON pickup_info.#{pu_no} = pickup_img.#{pu_no};
     </select>
 
+
+    <select id="myPageReservation" resultType="com.sunny.green.vo.PickupDetailVo">
+        select * from pickup_info where user_id = #{user_id} order by pu_no desc limit 0,4;
+    </select>
 </mapper>
