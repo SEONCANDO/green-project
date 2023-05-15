@@ -73,6 +73,12 @@ public class AdminController {
         return "admin/admin_main";
     }
 
+    //업체
+
+    @GetMapping("/admin/services")
+    public String adminServices(){
+        return "admin/admin_services";
+    }
 
 
    //관리자 페이지 유저관리1

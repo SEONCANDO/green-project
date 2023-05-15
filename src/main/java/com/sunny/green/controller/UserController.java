@@ -101,6 +101,7 @@ public class UserController {
         return "alert";
     }
 
+    //서비스 업체
 
     //회원가입 들어가는 매핑
     @GetMapping("/join")
@@ -295,5 +296,4 @@ public class UserController {
         Resource resource = new FileSystemResource("/src/main/resources/static/img/profile/" + imgSaveName);
         return ResponseEntity.ok().contentType(MediaType.IMAGE_JPEG).body(resource);
     }
-
 }
