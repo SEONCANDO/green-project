@@ -29,7 +29,7 @@
 <body>
 <div layout:fragment="admin_content">
     <div class="container" id="box" style="margin-top: 50px; text-align: center" th:object="${rs_info}"  >
-        <form action="/rs_info" method="post">
+        <form action="/rs_information" method="post">
             <h2>예약자 상세정보</h2>
             <div align="center">
                 <div class="container" style="text-align: center; width: 600px"   >
@@ -52,7 +52,7 @@
 
                             <tr>
                                 <td>
-                                    주소
+                                    이름
                                 </td>
                                 <td>
 
@@ -114,6 +114,24 @@
                             <td>접수요청메모</td>
                             <td>
                                 <input type="text" class="form-control" name="pu_memo" id="pu_memo" th:value="${rs_info.pu_memo}" readonly >
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>엘레베이터 여부</td>
+                            <td>
+                                <input type="text" class="form-control" name="pu_elevator" id="pu_elevator" th:value="${rs_info.pu_elevator}" readonly >
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>예약 상태</td>
+                            <td>
+                                <select class="form-control" name="pu_status" id="pu_status" style="background-color: white;">
+                                    <option value="예약대기">예약대기</option>
+                                    <option value="예약취소">예약취소</option>
+                                    <option value="수거중">수거중</option>
+                                </select>
                             </td>
                         </tr>
 

@@ -293,7 +293,7 @@ public class UserController {
     @GetMapping("/img/profile/{img_save_name}")
     @ResponseBody
     public ResponseEntity<Resource> getImage(@PathVariable("img_save_name") String imgSaveName) throws IOException {
-        Resource resource = new FileSystemResource("/src/main/resources/static/img/profile/" + imgSaveName);
+        Resource resource = new FileSystemResource("/home/ubuntu/greentopia2/img/profile/" + imgSaveName);
         return ResponseEntity.ok().contentType(MediaType.IMAGE_JPEG).body(resource);
     }
 }

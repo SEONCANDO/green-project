@@ -24,7 +24,7 @@ public class ProductServiceImpl implements ProductService{
     @Transactional
     public void registerProduct(ProductVo productVo, MultipartFile imageFile) throws IOException {
         String fileName = imageFile.getOriginalFilename(); // 파일 이름 추출
-        String uploadPath = "/src/main/resources/static/img/product/"; // 업로드 디렉토리 경로
+        String uploadPath = "/home/ubuntu/greentopia2/img/product/"; // 업로드 디렉토리 경로
         String uuid = UUID.randomUUID().toString();
         String realPath = uploadPath + uuid + fileName;
         String saveFile = uuid + fileName;

@@ -46,14 +46,14 @@
         SELECT *
         FROM pickup_info;
         <where>
-            <if test="searchType=='pu_day' and keyword != null and keyword != '' ">
-                AND pu_day like CONCAT('%', #{keyword}, '%')
+            <if test="searchType=='pu_memo' and searchValue != null and searchValue != '' ">
+                AND pu_memo like CONCAT('%', #{searchValue}, '%')
             </if>
-            <if test="searchType=='pu_date' and keyword != null and keyword != '' ">
-                AND pu_date like CONCAT('%', #{keyword}, '%')
+            <if test="searchType=='pu_date' and searchValue != null and searchValue != '' ">
+                AND pu_date like CONCAT('%', #{searchValue}, '%')
             </if>
-            <if test="searchType=='user_id' and keyword != null and keyword != '' ">
-                AND user_id like CONCAT('%', #{keyword}, '%')
+            <if test="searchType=='user_id' and searchValue != null and searchValue != '' ">
+                AND user_id like CONCAT('%', #{searchValue}, '%')
             </if>
         </where>
     </select>
@@ -64,6 +64,13 @@
                                   JOIN pickup_img ON pickup_info.#{pu_no} = pickup_img.#{pu_no};
     </select>
 
+    <select id="pu_information" resultType="com.sunny.green.vo.PickupDetailVo">
+        SELECT p.*, h.*, a.*
+        FROM pickup_info p
+                 JOIN pickup_house h ON p.house_no = h.house_no
+                 JOIN pickup_address a ON p.pu_address_no = a.pu_address_no
+        WHERE p.pu_no = #{pu_no}
+    </select>
 
     <select id="myPageReservation" resultType="com.sunny.green.vo.PickupDetailVo">
         select * from pickup_info where user_id = #{user_id} order by pu_no desc limit 0,3;

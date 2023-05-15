@@ -33,6 +33,7 @@ public class PickupDetailVo {
 
     private String pu_memo;
 
+    private String pu_status;
     //address table
 
     private String pu_address_name;
@@ -49,14 +50,15 @@ public class PickupDetailVo {
 
     private String pu_address4;
 
-    private int give_point;
     // img table
 
     private String pu_img_origin_name;
     private String pu_img_save_name;
     private String pu_img_path;
 
+   // pickup house
 
+    private String house_name;
 
 
 

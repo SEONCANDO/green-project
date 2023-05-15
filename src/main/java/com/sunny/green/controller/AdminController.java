@@ -268,28 +268,28 @@ public class AdminController {
 
     // 예약_검색 및 데이터 불러오기
     @GetMapping("/admin/reservation")
-    public String getPickupList(Model model, PageVo search, @RequestParam(required = false) String searchType_rs, @RequestParam(required = false) String searchValue_rs) throws Exception {
+    public String getPickupList(Model model, PageVo search, @RequestParam(required = false) String searchType, @RequestParam(required = false) String searchValue) throws Exception {
         List<PickupDetailVo> pickup;
-        if (searchType_rs == null || searchValue_rs == null) {
+        if (searchType == null || searchValue == null) {
             pickup = pd.rsList();
             log.info(pickup);
         } else {
-            pickup = pd.rsList2(search, searchType_rs, searchValue_rs);
+            pickup = pd.rsList2(search, searchType, searchValue);
             log.info(pickup);
         }
         model.addAttribute("pickup", pickup);
         return "admin/admin_reservation";
     }
     // 예약_페이징
-    @PostMapping("/pagination_rs_page")
+    @PostMapping("/pagination_rsPage")
     @ResponseBody
-    public List<PickupDetailVo> getPickupInfo(PageVo search, @RequestParam(required = false) String searchType_rs, @RequestParam(required = false) String searchValue_rs) {
+    public List<PickupDetailVo> getPickupInfo(PageVo search, @RequestParam(required = false) String searchType, @RequestParam(required = false) String searchValue) {
         List<PickupDetailVo> pickup;
-        if (searchType_rs == null || searchValue_rs == null) {
+        if (searchType == null || searchValue == null) {
             pickup = pd.rsList();
 
         } else {
-            pickup = pd.rsList2(search, searchType_rs, searchValue_rs);
+            pickup = pd.rsList2(search, searchType, searchValue);
 
         }
         log.info(">>>>>>>>>>>>>"+pickup);
@@ -299,9 +299,9 @@ public class AdminController {
     // 예약정보상세
     @GetMapping("/rs_info")
     public String rsDetail(Model model, PickupDetailVo  pickupDetailVo ) {
-        PickupDetailVo rs_info = pd.rs_info(pickupDetailVo.getPu_no());
+        PickupDetailVo rs_info = pd.pu_information(pickupDetailVo.getPu_no());
         model.addAttribute("rs_info", rs_info);
-        log.info(rs_info);
+        log.info("인포메이션"+rs_info);
         return "admin/admin_rs_info";
     }
 
@@ -310,7 +310,7 @@ public class AdminController {
     @GetMapping("/img/product/{img_save_name}")
     @ResponseBody
     public ResponseEntity<Resource> getImage(@PathVariable("img_save_name") String imgSaveName) throws IOException {
-        Resource resource = new FileSystemResource("/src/main/resources/static/img/product/" + imgSaveName);
+        Resource resource = new FileSystemResource("/home/ubuntu/greentopia2/img/product/" + imgSaveName);
         return ResponseEntity.ok().contentType(MediaType.IMAGE_JPEG).body(resource);
     }
 
