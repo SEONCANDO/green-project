@@ -27,7 +27,7 @@ public class PickupDetailVo {
 
     private String pu_day; // 예약요청날짜
 
-    private LocalDateTime pu_date; // 접수날짜
+    private String pu_date; // 접수날짜
 
     private String pu_img;
 

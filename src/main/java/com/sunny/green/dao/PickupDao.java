@@ -31,4 +31,10 @@ public interface PickupDao {
     public PickupDetailVo pu_information(int pu_no);
 
     public List<PickupDetailVo> myPageReservation(String user_id);
+
+    public int update_info(PickupDetailVo pickupDetailVo);
+
+    public List<PickupDetailVo> rs_service1();
+
+    public List<PickupDetailVo> rs_service2(PageVo search, String searchType_rs, String searchValue_rs);
 }

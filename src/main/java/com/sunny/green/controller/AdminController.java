@@ -17,6 +17,8 @@ import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 @Controller
@@ -69,10 +71,30 @@ public class AdminController {
     }
 
     @GetMapping("/admin/services1")
-    public String adminServices1(){
+    public String adminServices1(Model model, PageVo search, @RequestParam(required = false) String searchType, @RequestParam(required = false) String searchValue) throws Exception{
+        List<PickupDetailVo> service;
+        if (searchType == null || searchValue == null) {
+            service = pd.rs_service1();
+        } else {
+            service = pd.rs_service2(search, searchType , searchValue);
+        }
+        model.addAttribute("service", service);
         return "admin/admin_services1";
     }
 
+    //관리자페이지 유저검색 & 페이징
+    @PostMapping("/paging_service1")
+    @ResponseBody
+    public List<PickupDetailVo> getServiceData(PageVo search, @RequestParam(required = false) String searchType, @RequestParam(required = false) String searchValue) {
+        List<PickupDetailVo> service;
+        if (searchType == null || searchValue == null) {
+            service = pd.rs_service1();
+        } else {
+            service = pd.rs_service2(search, searchType, searchValue);
+        }
+        log.info(">>>>>>>>>>>>>"+service);
+        return service;
+    }
 
     //해당 업체 예약 정보 전달
     @GetMapping("/admin/services2")
@@ -305,6 +327,13 @@ public class AdminController {
         return "admin/admin_rs_info";
     }
 
+    // 예약정보 변경
+    @PostMapping("/rs_information")
+    public String rsUpdate(PickupDetailVo pickupDetailVo){
+        int result = pd.update_info(pickupDetailVo);
+        log.info("변경됨?"+result);
+        return "redirect:admin/reservation";
+    }
 
     // 업로드된 상품 이미지 restful api로 불러오기
     @GetMapping("/img/product/{img_save_name}")

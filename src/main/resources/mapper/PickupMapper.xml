@@ -72,7 +72,36 @@
         WHERE p.pu_no = #{pu_no}
     </select>
 
+    <update id="update_info">
+        update pickup_info set pu_status = #{pu_status}
+        where pu_no = #{pu_no}
+    </update>
+
     <select id="myPageReservation" resultType="com.sunny.green.vo.PickupDetailVo">
         select * from pickup_info where user_id = #{user_id} order by pu_no desc limit 0,3;
+    </select>
+
+
+    <!--   admin_rs 에서 모든 예약자정보를 가져옴 -->
+    <select id="rs_service1" resultType="com.sunny.green.vo.PickupDetailVo">
+        SELECT * FROM pickup_info where pu_status = '수거중';
+    </select>
+
+    <!--    rsList 검색  -->
+    <select id="rs_service2" resultType="com.sunny.green.vo.PickupDetailVo">
+        SELECT *
+        FROM pickup_info;
+        where pu_status = '수거중';
+        <where>
+            <if test="searchType=='pu_memo' and searchValue != null and searchValue != '' ">
+                AND pu_memo like CONCAT('%', #{searchValue}, '%')
+            </if>
+            <if test="searchType=='pu_date' and searchValue != null and searchValue != '' ">
+                AND pu_date like CONCAT('%', #{searchValue}, '%')
+            </if>
+            <if test="searchType=='user_id' and searchValue != null and searchValue != '' ">
+                AND user_id like CONCAT('%', #{searchValue}, '%')
+            </if>
+        </where>
     </select>
 </mapper>
