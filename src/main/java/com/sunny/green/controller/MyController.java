@@ -49,6 +49,12 @@ public class MyController {
         return "index";
     }
 
+    // 업체 소개 페이지
+    @GetMapping("/business")
+    public String business(){
+
+        return "business/business";
+    }
 
     // 마이페이지 내가 쓴글
     @GetMapping("/myWrite")

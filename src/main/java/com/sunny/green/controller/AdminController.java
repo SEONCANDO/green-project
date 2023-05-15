@@ -6,23 +6,18 @@ import com.sunny.green.service.ProductService;
 import com.sunny.green.vo.*;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.core.io.Resource;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpSession;
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.OutputStream;
 import java.util.List;
-import java.util.UUID;
 
 @Controller
 @RequiredArgsConstructor
@@ -73,11 +68,16 @@ public class AdminController {
         return "admin/admin_main";
     }
 
-    //업체
+    @GetMapping("/admin/services1")
+    public String adminServices1(){
+        return "admin/admin_services1";
+    }
 
-    @GetMapping("/admin/services")
-    public String adminServices(){
-        return "admin/admin_services";
+
+    //해당 업체 예약 정보 전달
+    @GetMapping("/admin/services2")
+    public String adminServices2(){
+        return "admin/admin_services2";
     }
 
 
