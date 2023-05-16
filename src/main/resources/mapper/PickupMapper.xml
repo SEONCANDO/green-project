@@ -140,4 +140,6 @@
     <update id="update_last2">
         update pickup_category set give_point = #{give_point} where pu_no = #{pu_no}
     </update>
+
+
 </mapper>

@@ -23,7 +23,9 @@
                     <tbody>
                       <tr>
                           <td>예약 번호</td>
-                          <td th:utext="${pick.pu_no}" th:value="${pick.pu_no}"></td>
+                          <td>
+                              <input type="number" name="pu_no" th:value="${pick.pu_no}" readonly>
+                          </td>
                       </tr>
                       <tr>
                           <td>아이디</td>
@@ -63,6 +65,14 @@
                       <tr>
                           <td>총합 포인트</td>
                           <td><input type="text" name="user_point" readonly></td>
+                      </tr>
+                      <tr>
+                          <td>예약 상태</td>
+                          <td>
+                              <select class="form-control" name="pu_status" id="pu_status" style="background-color: white;">
+                                  <option value="포인트지급">포인트지급</option>
+                              </select>
+                          </td>
                       </tr>
                     </tbody>
                 </table>

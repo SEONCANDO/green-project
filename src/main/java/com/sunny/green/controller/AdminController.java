@@ -135,14 +135,18 @@ public class AdminController {
         return "admin/admin_point2";
     }
 
+    //포인트 지급
     @PostMapping("/update_last")
-    public String updateLast(PickupCategoryVo pickupCategoryVo, UserVo userVo){
+    public String updateLast(PickupCategoryVo pickupCategoryVo, UserVo userVo, Model model, PickupDetailVo pickupDetailVo){
         int str1 = pd.update_last2(pickupCategoryVo);
         int str2 = ud.update_last1(userVo);
+        int str3 = pd.update_info(pickupDetailVo);
         log.info("str1 " + str1);
         log.info("str2" + str2);
-
-        return "redirect:admin/point1";
+        log.info("str3" + str3);
+        model.addAttribute("alert", "지급 완료되었습니다");
+        model.addAttribute("url", "/admin/point1");
+        return "alert";
     }
     //해당 업체 예약 정보 전달
     @GetMapping("/admin/services2")
