@@ -15,6 +15,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.mail.MessagingException;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.time.LocalDateTime;
@@ -98,10 +99,29 @@ public class AdminController {
 
     //해당 업체 예약 정보 전달
     @GetMapping("/admin/services2")
-    public String adminServices2(){
+    public String adminServices2(Model model, PickupDetailVo pickupDetailVo){
+        PickupDetailVo pick = pd.pu_information(pickupDetailVo.getPu_no());
+        UserVo user = ud.selectEmail(pick.getUser_id());
+        log.info(user);
+        model.addAttribute("pick", pick);
+        model.addAttribute("mail", user);
         return "admin/admin_services2";
     }
 
+    //업체 예약 완료
+    @PostMapping("/update_service")
+    public String updateService(PickupDetailVo pickupDetailVo) throws MessagingException {
+        PickupDetailVo pick = pd.pu_information(pickupDetailVo.getPu_no());
+        UserVo user = ud.selectEmail(pick.getUser_id());
+        pd.update_info(pickupDetailVo);
+        //        MailVo mailVo = new MailVo();
+        //mailVo.setMail_receiver(user.getUser_email());
+//       mailVo.setMail_title("안녕하세요. 회원님 그린토피아 예약 안내입니다.");
+//         mailVo.setMail_content("안녕하세요. 그린토피아입니다. 회원님께서 예약하신" +pick.getPu_day() + "일에 맞춰 저희 업체에서 찾아갈 예정입니다. 예약 전날 회원님에게 다시 한번 연락을 드릴 예정이며, 혹시라도 문의 사항이 있을 경우다시 한번 연락 주시기 바랍니다. 감사합니다.");
+//          ms.successMail(mailVo);
+//           md.insertMail(mailVo);
+        return "redirect:admin/services1";
+    }
 
    //관리자 페이지 유저관리1
     @GetMapping("/admin/user1")
@@ -326,6 +346,7 @@ public class AdminController {
         log.info("인포메이션"+rs_info);
         return "admin/admin_rs_info";
     }
+
 
     // 예약정보 변경
     @PostMapping("/rs_information")

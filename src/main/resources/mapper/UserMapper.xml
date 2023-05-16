@@ -100,4 +100,8 @@
         </where>
     </select>
 
+    <!-- 특정 이메일 불러오기 -->
+    <select id="selectEmail" resultType="com.sunny.green.vo.UserVo">
+        select user_email from user where user_id = #{user_id}
+    </select>
 </mapper>

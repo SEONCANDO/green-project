@@ -75,4 +75,7 @@
     <select id="selectAdmin2" resultType="com.sunny.green.vo.AdminVo">
         select * from admin where user_id = #{user_id}
     </select>
+
+
+
 </mapper>

@@ -101,7 +101,7 @@
     if (i >= startIndex && i < endIndex) {
     userTable.append(
     '<tr style="text-align: center;">' +
-    '<td><a href="/rs_info?pu_no=' + item.pu_no + '">' + item.pu_no + '</td>' +
+    '<td><a href="/admin/services2?pu_no=' + item.pu_no + '">' + item.pu_no + '</td>' +
     '<td>' + item.pu_address_no + '</td>' +
     '<td>' + item.user_id + '</td>' +
     '<td>' + item.pu_day + '</td>' +

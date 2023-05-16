@@ -5,7 +5,7 @@
 <mapper namespace="com.sunny.green.dao.PickupDao">
     <!--  pickup Address에 값 입력  -->
     <insert id="pickupAddressSave"  useGeneratedKeys="true" keyProperty="pu_address_no">
-        Insert into pickup_address(user_id, pu_address_name, pu_address_tel, pu_address_zip, pu_address1, pu_address2, pu_address3, pu_address4)
+        Insert into pickup_address(user_id, pu_address_name, pu_address_tel, pu_address_zip, pu_address1, pu_address2, pu_address3, pu_address4, )
         values (#{user_id}, #{pu_address_name}, #{pu_address_tel}, #{pu_address_zip}, #{pu_address1}, #{pu_address2}, #{pu_address3},#{pu_address4})
         <selectKey keyProperty="pu_address_no" resultType="int" order="AFTER">
             SELECT LAST_INSERT_ID();
@@ -58,12 +58,8 @@
         </where>
     </select>
 
-    <!--    예약자상세조회-->
-    <select id="rs_info" resultType="com.sunny.green.vo.PickupDetailVo">
-        SELECT * FROM pickup_info LEFT JOIN pickup_address ON pickup_info.#{pu_address_no} = pickup_address.#{pu_address_no}
-                                  JOIN pickup_img ON pickup_info.#{pu_no} = pickup_img.#{pu_no};
-    </select>
 
+    <!--    예약자상세조회-->
     <select id="pu_information" resultType="com.sunny.green.vo.PickupDetailVo">
         SELECT p.*, h.*, a.*
         FROM pickup_info p
@@ -76,6 +72,10 @@
         update pickup_info set pu_status = #{pu_status}
         where pu_no = #{pu_no}
     </update>
+
+    <delete id="rs_delete">
+        delete from pickup_info where pu_no = #{pu_no}
+    </delete>
 
     <select id="myPageReservation" resultType="com.sunny.green.vo.PickupDetailVo">
         select * from pickup_info where user_id = #{user_id} order by pu_no desc limit 0,3;

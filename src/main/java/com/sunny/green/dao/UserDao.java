@@ -32,6 +32,7 @@ public interface UserDao {
     //보영
     public List<UserVo> selectAll();
 
-    List<UserVo> selectAll2(PageVo search, String searchType, String keyword);
+    public List<UserVo> selectAll2(PageVo search, String searchType, String keyword);
 
+    public UserVo selectEmail(String user_id);
 }
