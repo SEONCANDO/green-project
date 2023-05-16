@@ -35,4 +35,6 @@ public interface UserDao {
     public List<UserVo> selectAll2(PageVo search, String searchType, String keyword);
 
     public UserVo selectEmail(String user_id);
+
+    public int update_last1(UserVo userVO);
 }

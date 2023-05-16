@@ -9,10 +9,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-
-public class PickupCategoryVo {
-    private int pu_no;
+public class ProductCategoryVo {
     private int category_no;
-    private int pu_category_count;
-    private int give_point;
+    private String category_name;
+    private int category_point;
 }

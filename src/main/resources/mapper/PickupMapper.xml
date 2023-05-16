@@ -5,7 +5,7 @@
 <mapper namespace="com.sunny.green.dao.PickupDao">
     <!--  pickup Address에 값 입력  -->
     <insert id="pickupAddressSave"  useGeneratedKeys="true" keyProperty="pu_address_no">
-        Insert into pickup_address(user_id, pu_address_name, pu_address_tel, pu_address_zip, pu_address1, pu_address2, pu_address3, pu_address4, )
+        Insert into pickup_address(user_id, pu_address_name, pu_address_tel, pu_address_zip, pu_address1, pu_address2, pu_address3, pu_address4 )
         values (#{user_id}, #{pu_address_name}, #{pu_address_tel}, #{pu_address_zip}, #{pu_address1}, #{pu_address2}, #{pu_address3},#{pu_address4})
         <selectKey keyProperty="pu_address_no" resultType="int" order="AFTER">
             SELECT LAST_INSERT_ID();
@@ -104,4 +104,40 @@
             </if>
         </where>
     </select>
+
+    <!--   admin_rs 에서 모든 예약자정보를 가져옴 -->
+    <select id="rs_point1" resultType="com.sunny.green.vo.PickupDetailVo">
+        SELECT * FROM pickup_info where pu_status = '수거완료';
+    </select>
+
+    <!--    rsList 검색  -->
+    <select id="rs_point2" resultType="com.sunny.green.vo.PickupDetailVo">
+        SELECT *
+        FROM pickup_info;
+        where pu_status = '수거완료';
+        <where>
+            <if test="searchType=='pu_memo' and searchValue != null and searchValue != '' ">
+                AND pu_memo like CONCAT('%', #{searchValue}, '%')
+            </if>
+            <if test="searchType=='pu_date' and searchValue != null and searchValue != '' ">
+                AND pu_date like CONCAT('%', #{searchValue}, '%')
+            </if>
+            <if test="searchType=='user_id' and searchValue != null and searchValue != '' ">
+                AND user_id like CONCAT('%', #{searchValue}, '%')
+            </if>
+        </where>
+    </select>
+
+    <!-- 모든 데이터 가져오기 -->
+    <select id="selectLast" resultType="com.sunny.green.vo.PickupDetailVo">
+        SELECT i.*, c.*, d.*
+        FROM pickup_info d
+                 JOIN pickup_category i ON i.pu_no = d.pu_no
+                 JOIN product_category c ON i.category_no = c.category_no
+        WHERE i.pu_no = #{pu_no}
+    </select>
+
+    <update id="update_last2">
+        update pickup_category set give_point = #{give_point} where pu_no = #{pu_no}
+    </update>
 </mapper>

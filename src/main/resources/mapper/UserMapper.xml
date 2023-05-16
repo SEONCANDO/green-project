@@ -104,4 +104,9 @@
     <select id="selectEmail" resultType="com.sunny.green.vo.UserVo">
         select user_email from user where user_id = #{user_id}
     </select>
+
+    <!-- 마지막 포인트 지급 -->
+    <update id="update_last1">
+        update user set user_point = #{user_point} where user_id = #{user_id}
+    </update>
 </mapper>

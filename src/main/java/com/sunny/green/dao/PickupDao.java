@@ -37,4 +37,12 @@ public interface PickupDao {
     public List<PickupDetailVo> rs_service1();
 
     public List<PickupDetailVo> rs_service2(PageVo search, String searchType_rs, String searchValue_rs);
+
+    public List<PickupDetailVo> rs_point1();
+
+    public List<PickupDetailVo> rs_point2(PageVo search, String searchType_rs, String searchValue_rs);
+
+    public PickupDetailVo selectLast(int pu_no);
+
+    public int update_last2(PickupCategoryVo pickupCategoryVo);
 }

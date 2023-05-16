@@ -97,6 +97,53 @@ public class AdminController {
         return service;
     }
 
+    @GetMapping("/admin/point1")
+    public String adminPoint1(Model model, PageVo search, @RequestParam(required = false) String searchType, @RequestParam(required = false) String searchValue) throws Exception{
+        List<PickupDetailVo> point;
+        if (searchType == null || searchValue == null) {
+            point = pd.rs_point1();
+        } else {
+            point = pd.rs_point2(search, searchType , searchValue);
+        }
+        model.addAttribute("service", point);
+        return "admin/admin_point";
+    }
+
+    @PostMapping("/paging_point1")
+    @ResponseBody
+    public List<PickupDetailVo> getPointData(PageVo search, @RequestParam(required = false) String searchType, @RequestParam(required = false) String searchValue) {
+        List<PickupDetailVo> point;
+        if (searchType == null || searchValue == null) {
+            point = pd.rs_point1();
+        } else {
+            point = pd.rs_point2(search, searchType, searchValue);
+        }
+        log.info(">>>>>>>>>>>>>"+point);
+        return point;
+    }
+
+    @GetMapping("/admin/point2")
+    public String lastInsert(UserVo userVo, HttpSession session, PickupDetailVo pickupDetailVo, Model model){
+        PickupDetailVo pick = pd.pu_information(pickupDetailVo.getPu_no());
+        log.info("pick :" + pick);
+        PickupDetailVo pick1 = pd.selectLast(pick.getPu_no());
+        log.info("pick1" + pick1);
+        model.addAttribute("pick", pick1);
+        UserVo user = ud.selectAll1(pick1.getUser_id());
+        model.addAttribute("user", user);
+        log.info("user :" + user);
+        return "admin/admin_point2";
+    }
+
+    @PostMapping("/update_last")
+    public String updateLast(PickupCategoryVo pickupCategoryVo, UserVo userVo){
+        int str1 = pd.update_last2(pickupCategoryVo);
+        int str2 = ud.update_last1(userVo);
+        log.info("str1 " + str1);
+        log.info("str2" + str2);
+
+        return "redirect:admin/point1";
+    }
     //해당 업체 예약 정보 전달
     @GetMapping("/admin/services2")
     public String adminServices2(Model model, PickupDetailVo pickupDetailVo){

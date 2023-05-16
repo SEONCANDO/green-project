@@ -60,7 +60,13 @@ public class PickupDetailVo {
 
     private String house_name;
 
+    // category_no
 
+    private int category_no;
+    private String category_name;
+    private int category_point;
 
-
+    //pu_category
+    private int pu_category_count;
+    private int give_point;
 }
