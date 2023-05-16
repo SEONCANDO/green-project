@@ -101,13 +101,15 @@
      </tr>
      <tr>
       <td align="center">게시판</td>
-      <td align="center"></td>
+      <td align="center">포인트 지급</td>
      </tr>
      <tr>
        <td>
         <img width="100%" src="https://github.com/LOBSTER10000/Green-Project/assets/111476138/f601db8a-9a3e-4217-a333-bc54d72df8b9">
       </td>
-       <td></td>
+       <td>
+      <img width="100%" src="https://github.com/LOBSTER10000/Green-Project/assets/111476138/2b80d5b2-ce25-46fe-829c-bea1c5de6d9d">
+      </td>
      </tr>
     </tbody>
  </table>
