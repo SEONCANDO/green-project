@@ -58,6 +58,29 @@
         </where>
     </select>
 
+    <!--   admin_rs 에서 모든 예약자정보를 가져옴 -->
+    <select id="oneList1" resultType="com.sunny.green.vo.PickupDetailVo">
+        SELECT * FROM pickup_info where user_id = #{user_id};
+    </select>
+
+    <!--    rsList 검색  -->
+    <select id="oneList2" resultType="com.sunny.green.vo.PickupDetailVo">
+        SELECT *
+        FROM pickup_info
+        where user_id = #{user_id};
+        <where>
+            <if test="searchType=='pu_memo' and searchValue != null and searchValue != '' ">
+                AND pu_memo like CONCAT('%', #{searchValue}, '%')
+            </if>
+            <if test="searchType=='pu_date' and searchValue != null and searchValue != '' ">
+                AND pu_date like CONCAT('%', #{searchValue}, '%')
+            </if>
+            <if test="searchType=='user_id' and searchValue != null and searchValue != '' ">
+                AND user_id like CONCAT('%', #{searchValue}, '%')
+            </if>
+        </where>
+    </select>
+
 
     <!--    예약자상세조회-->
     <select id="pu_information" resultType="com.sunny.green.vo.PickupDetailVo">

@@ -1,6 +1,7 @@
 package com.sunny.green.controller;
 
 
+import com.sunny.green.dao.PickupDao;
 import com.sunny.green.dao.UserDao;
 import com.sunny.green.service.PickupServiceImpl;
 import com.sunny.green.vo.*;
@@ -28,7 +29,7 @@ public class PickUpController {
 
     private final PickupServiceImpl pSI;
     private final UserDao ud;
-
+    private final PickupDao pd;
     // 예약 첫번째 페이징
     @GetMapping("/pickup")
     public String pickupPage(HttpSession session, Model model) {
@@ -141,11 +142,13 @@ public class PickUpController {
             UserVo user1 = ud.selectAll1(user.getUser_id());
             System.out.println("번호는 뭘까요? : " + user1);
             model.addAttribute("user", user1);
-
+            List<PickupDetailVo> pickup = pd.oneList1(user.getUser_id());
+            model.addAttribute("pickup", pickup);
             return "myPage/reservationBd";
         }
         return "alert";
     }
+
 
     @GetMapping("/img/pickupUpload/{pu_img_save_name}")
     @ResponseBody

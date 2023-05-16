@@ -66,9 +66,14 @@ public class AdminController {
 
     //관리자페이지 메인
     @GetMapping("/admin/main")
-    public String admin1() {
-
-        return "admin/admin_main";
+    public String admin1(Model mo, HttpSession session) {
+        if (session.getAttribute("admin") == null) {
+            mo.addAttribute("alert", "관리자용 로그인이 필요한 페이지입니다.");
+            mo.addAttribute("url", "/admin");
+        } else {
+            return "admin/admin_main";
+        }
+        return "alert";
     }
 
     @GetMapping("/admin/services1")
@@ -124,15 +129,23 @@ public class AdminController {
 
     @GetMapping("/admin/point2")
     public String lastInsert(UserVo userVo, HttpSession session, PickupDetailVo pickupDetailVo, Model model){
-        PickupDetailVo pick = pd.pu_information(pickupDetailVo.getPu_no());
-        log.info("pick :" + pick);
-        PickupDetailVo pick1 = pd.selectLast(pick.getPu_no());
-        log.info("pick1" + pick1);
-        model.addAttribute("pick", pick1);
-        UserVo user = ud.selectAll1(pick1.getUser_id());
-        model.addAttribute("user", user);
-        log.info("user :" + user);
-        return "admin/admin_point2";
+        if (session.getAttribute("admin") == null) {
+            model.addAttribute("alert", "관리자용 로그인이 필요한 페이지입니다.");
+            model.addAttribute("url", "/admin");
+        } else {
+            PickupDetailVo pick = pd.pu_information(pickupDetailVo.getPu_no());
+            log.info("pick :" + pick);
+            PickupDetailVo pick1 = pd.selectLast(pick.getPu_no());
+            log.info("pick1" + pick1);
+            model.addAttribute("pick", pick1);
+            UserVo user = ud.selectAll1(pick1.getUser_id());
+            model.addAttribute("user", user);
+            log.info("user :" + user);
+            return "admin/admin_point2";
+        }
+        return "alert";
+
+
     }
 
     //포인트 지급
@@ -150,13 +163,20 @@ public class AdminController {
     }
     //해당 업체 예약 정보 전달
     @GetMapping("/admin/services2")
-    public String adminServices2(Model model, PickupDetailVo pickupDetailVo){
-        PickupDetailVo pick = pd.pu_information(pickupDetailVo.getPu_no());
-        UserVo user = ud.selectEmail(pick.getUser_id());
-        log.info(user);
-        model.addAttribute("pick", pick);
-        model.addAttribute("mail", user);
-        return "admin/admin_services2";
+    public String adminServices2(Model model, PickupDetailVo pickupDetailVo, HttpSession session){
+        if (session.getAttribute("admin") == null) {
+            model.addAttribute("alert", "관리자용 로그인이 필요한 페이지입니다.");
+            model.addAttribute("url", "/admin");
+        } else {
+            PickupDetailVo pick = pd.pu_information(pickupDetailVo.getPu_no());
+            UserVo user = ud.selectEmail(pick.getUser_id());
+            log.info(user);
+            model.addAttribute("pick", pick);
+            model.addAttribute("mail", user);
+            return "admin/admin_services2";
+        }
+
+        return "alert";
     }
 
     //업체 예약 완료
@@ -176,8 +196,15 @@ public class AdminController {
 
    //관리자 페이지 유저관리1
     @GetMapping("/admin/user1")
-    public String adminUs1() {
-        return "admin/admin_user1";
+    public String adminUs1(Model model, HttpSession session) {
+        if (session.getAttribute("admin") == null) {
+            model.addAttribute("alert", "관리자용 로그인이 필요한 페이지입니다.");
+            model.addAttribute("url", "/admin");
+        } else {
+
+            return "admin/admin_user1";
+        }
+        return "alert";
     }
 
     //관리자페이지 유저관리2
@@ -209,11 +236,17 @@ public class AdminController {
 
     // 보영 (회원정보상세)
     @GetMapping("/admin/modify")
-    public String userDetail(Model model, UserVo userVo) {
-        UserVo user = ud.selectAll1(userVo.getUser_id());
-        model.addAttribute("user", user);
-        log.info(user);
-        return "admin/admin_user3";
+    public String userDetail(Model model, UserVo userVo, HttpSession session) {
+        if (session.getAttribute("admin") == null) {
+            model.addAttribute("alert", "관리자용 로그인이 필요한 페이지입니다.");
+            model.addAttribute("url", "/admin");
+        } else {
+            UserVo user = ud.selectAll1(userVo.getUser_id());
+            model.addAttribute("user", user);
+            log.info(user);
+            return "admin/admin_user3";
+        }
+        return "alert";
     }
 
     // 보영 (회원정보수정)
