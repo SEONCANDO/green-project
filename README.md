@@ -1,8 +1,6 @@
 ## SpringBoot-Project-GREENTOPIA 그린토피아
 > 스프링부트 + Thymeleaf를 이용한 무상 수거 예약 사이트
 
-* 발표 PPT : https://url.kr/3hzd4n
-
 <img width="100%" src="https://github.com/LOBSTER10000/Green-Project/assets/111476138/4b115380-3fd5-4dc7-b39c-3a0fa5c505cb">
 
 >  일상생활 속에서 "누구나" "어디서든" 환경보존에 동참하기 위해 보다 편리하게 접근 장벽을 낮추는 효율적인 무상수거 시스템입니다
