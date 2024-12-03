@@ -1,7 +1,6 @@
 ## SpringBoot-Project-GREENTOPIA 그린토피아
 > 스프링부트 + Thymeleaf를 이용한 무상 수거 예약 사이트
 
-* 웹 배포 주소 : http://15.165.155.88:8080 <br>
 * 발표 PPT : https://url.kr/3hzd4n
 
 <img width="100%" src="https://github.com/LOBSTER10000/Green-Project/assets/111476138/4b115380-3fd5-4dc7-b39c-3a0fa5c505cb">
